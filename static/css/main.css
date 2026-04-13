@@ -219,21 +219,34 @@ a:hover { color: var(--primary-hover); }
   box-shadow: var(--focus-ring);
 }
 
-/* ─── AUTH PAGE (FIXED HEIGHT - NO SCROLL) ─── */
+/* ─── AUTH PAGE (PROFESSIONAL ZERO-SCROLL) ─── */
 .auth-split-container {
   display: flex;
-  height: 100vh;
+  height: calc(100vh - 72px); 
   width: 100%;
   overflow: hidden;
   background: var(--bg-color);
   position: relative;
 }
 
+/* ─── AUTH PAGE (UNIFIED SCROLL MODIFIER) ─── */
+.auth-split-container.scrollable {
+  height: auto;
+  min-height: calc(100vh - 72px);
+  overflow: visible;
+}
+
+.auth-split-container.scrollable .auth-illustration-side,
+.auth-split-container.scrollable .auth-form-side {
+  height: auto;
+  min-height: calc(100vh - 72px);
+  overflow: visible;
+}
+
 .auth-illustration-side {
-  flex: 1.25;
-  position: sticky;
-  top: 0;
-  height: 100vh;
+  flex: 1.1; /* Adjusted for better form focus */
+  position: relative;
+  height: 100%;
   background: #08090d;
   display: flex;
   align-items: center;
@@ -264,22 +277,24 @@ a:hover { color: var(--primary-hover); }
 }
 
 .auth-form-side {
-  flex: 0.75;
+  flex: 0.9;
   background: var(--bg-color);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem 2rem; /* Extreme vertical compaction */
+  padding: var(--space-8);
   position: relative;
   z-index: 10;
-  height: 100vh;
-  overflow: hidden;
+  height: 100%;
+  overflow-y: auto;
 }
 
-@media (max-height: 720px) {
-  .auth-form-side { padding: 1rem 2rem; overflow-y: auto; }
-}
+/* Scrollbar styling for form-side */
+.auth-form-side::-webkit-scrollbar { width: 5px; }
+.auth-form-side::-webkit-scrollbar-track { background: var(--bg-color); }
+.auth-form-side::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+.auth-form-side::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
 
 .auth-split-container.reverse { flex-direction: row-reverse; }
 .auth-split-container.reverse .auth-illustration-side::after {
@@ -289,6 +304,8 @@ a:hover { color: var(--primary-hover); }
 .auth-side-card {
   width: 100%;
   max-width: 440px;
+  max-height: 100%;
+  padding: var(--space-4) 0;
   animation: authFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -376,15 +393,72 @@ a:hover { color: var(--primary-hover); }
   border-radius: var(--radius-md);
 }
 
-.role-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); margin-bottom: var(--space-6); }
+.role-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-6); }
+
+/* Premium Role Cards */
+.role-option-card {
+  padding: var(--space-5) var(--space-4);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.role-option-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(99, 102, 241, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.role-option-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.role-option-card:hover::before { opacity: 1; }
+
+input[type="radio"]:checked + .role-option-card {
+  border-color: var(--primary);
+  background: rgba(99, 102, 241, 0.08);
+  box-shadow: 0 0 25px -10px rgba(99, 102, 241, 0.4), 
+              inset 0 0 0 1px var(--primary);
+  transform: translateY(-4px) scale(1.02);
+}
+
+.role-option-card .role-icon {
+  font-size: 24px;
+  margin-bottom: var(--space-2);
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.role-option-card:hover .role-icon {
+  transform: scale(1.2) rotate(8deg);
+}
+
+.role-option-card .role-title {
+  font-weight: 700;
+  color: #fff;
+  font-size: 14px;
+}
+
 /* Custom Checkbox */
 .custom-checkbox {
   appearance: none;
   -webkit-appearance: none;
-  width: 18px;
-  height: 18px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 16px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
   border-radius: 4px;
   cursor: pointer;
   position: relative;
