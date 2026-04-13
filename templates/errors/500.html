@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Server Error — WebMaps{% endblock %}
+
+{% block content %}
+<div class="error-page-wrapper">
+  <div class="error-page-card">
+
+    <div class="error-illustration-wrap error-500-glow">
+      <img src="{% static 'images/500_illustration.png' %}" alt="Server Error">
+    </div>
+
+    <span class="error-badge error-badge--red">500 · Server Error</span>
+
+    <h1>Something Broke</h1>
+
+    <p>A fault occurred in our core system. Our team has been notified and is working to restore service as quickly as possible.</p>
+
+    <div class="error-actions">
+      <button onclick="location.reload()" class="btn btn-lg" style="width: 100%; height: 50px; font-weight: 700; background: var(--danger); color: #fff; border: none; border-radius: var(--radius-sm); cursor: pointer;">
+        Try Again
+      </button>
+      <a href="{% url 'maps:home' %}" class="btn btn-outline btn-lg" style="width: 100%; height: 50px; font-weight: 600;">
+        Back to Home
+      </a>
+    </div>
+
+    <p class="error-footer-code">HTTP 500 · Internal Server Error</p>
+  </div>
+</div>
+
+<style>
+  .error-page-wrapper {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 40px 20px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(239, 68, 68, 0.08), transparent 60%), var(--bg-color);
+  }
+  .error-page-card {
+    width: 100%; max-width: 420px;
+    display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center;
+  }
+  .error-illustration-wrap { width: 180px; height: 180px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .error-500-glow { background: radial-gradient(circle, rgba(239, 68, 68, 0.12), transparent 70%); }
+  .error-illustration-wrap img {
+    width: 100%; height: 100%; object-fit: contain;
+    filter: drop-shadow(0 0 24px rgba(239, 68, 68, 0.35));
+    animation: floatImg 4s ease-in-out infinite;
+  }
+  @keyframes floatImg { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  .error-badge { display: inline-flex; align-items: center; padding: 4px 14px; border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+  .error-badge--red { background: rgba(239, 68, 68, 0.1); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.25); }
+  .error-page-card h1 { font-size: 28px; font-weight: 800; color: #fff; margin: 0; letter-spacing: -0.025em; }
+  .error-page-card > p { font-size: 15px; color: var(--text-secondary); line-height: 1.65; margin: 0; max-width: 340px; }
+  .error-actions { display: flex; flex-direction: column; gap: 12px; width: 100%; margin-top: 4px; }
+  .error-footer-code { margin: 0; font-size: 11px; color: var(--text-muted); font-family: 'SF Mono','Fira Code',monospace; opacity: 0.5; letter-spacing: 0.05em; }
+</style>
+{% endblock %}

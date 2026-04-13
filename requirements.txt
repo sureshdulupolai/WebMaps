@@ -1,0 +1,13 @@
+Django
+djangorestframework
+djangorestframework-simplejwt
+django-cors-headers
+django-ratelimit
+python-decouple
+Pillow
+argon2-cffi
+razorpay
+requests
+python-slugify
+bleach
+cryptography

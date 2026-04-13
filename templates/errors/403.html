@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Access Denied — WebMaps{% endblock %}
+
+{% block content %}
+<div class="error-page-wrapper">
+  <div class="error-page-card">
+
+    <div class="error-illustration-wrap error-403-glow">
+      <img src="{% static 'images/403_illustration.png' %}" alt="Forbidden">
+    </div>
+
+    <span class="error-badge error-badge--purple">403 · Forbidden</span>
+
+    <h1>Access Denied</h1>
+
+    <p>You don't have permission to view this page. If you think this is a mistake, please sign in with the correct account.</p>
+
+    <div class="error-actions">
+      <a href="{% url 'auth_app:login' %}" class="btn btn-lg" style="width: 100%; height: 50px; font-weight: 700; background: #9333ea; color: #fff; border: none; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center;">
+        Sign In
+      </a>
+      <a href="{% url 'maps:home' %}" class="btn btn-outline btn-lg" style="width: 100%; height: 50px; font-weight: 600;">
+        Back to Home
+      </a>
+    </div>
+
+    <p class="error-footer-code">HTTP 403 · Permission Denied</p>
+  </div>
+</div>
+
+<style>
+  .error-page-wrapper {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 40px 20px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(168, 85, 247, 0.08), transparent 60%), var(--bg-color);
+  }
+  .error-page-card {
+    width: 100%; max-width: 420px;
+    display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center;
+  }
+  .error-illustration-wrap { width: 180px; height: 180px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .error-403-glow { background: radial-gradient(circle, rgba(168, 85, 247, 0.12), transparent 70%); }
+  .error-illustration-wrap img {
+    width: 100%; height: 100%; object-fit: contain;
+    filter: drop-shadow(0 0 24px rgba(168, 85, 247, 0.35));
+    animation: floatImg 4s ease-in-out infinite;
+  }
+  @keyframes floatImg { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  .error-badge { display: inline-flex; align-items: center; padding: 4px 14px; border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+  .error-badge--purple { background: rgba(168, 85, 247, 0.1); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.25); }
+  .error-page-card h1 { font-size: 28px; font-weight: 800; color: #fff; margin: 0; letter-spacing: -0.025em; }
+  .error-page-card > p { font-size: 15px; color: var(--text-secondary); line-height: 1.65; margin: 0; max-width: 340px; }
+  .error-actions { display: flex; flex-direction: column; gap: 12px; width: 100%; margin-top: 4px; }
+  .error-footer-code { margin: 0; font-size: 11px; color: var(--text-muted); font-family: 'SF Mono','Fira Code',monospace; opacity: 0.5; letter-spacing: 0.05em; }
+</style>
+{% endblock %}

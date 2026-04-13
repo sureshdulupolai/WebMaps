@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{% block meta_description %}WebMaps — Discover businesses and services near you on an interactive map.{% endblock %}">
+  <meta name="keywords" content="{% block meta_keywords %}maps, business local, service finder, webmaps{% endblock %}">
+  <link rel="canonical" href="{{ request.build_absolute_uri }}">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{% block og_title %}WebMaps{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}Discover businesses and services near you on an interactive map.{% endblock %}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ request.build_absolute_uri }}">
+  <meta property="og:image" content="{% block og_image %}{% static 'img/og-image.jpg' %}{% endblock %}">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% block twitter_title %}WebMaps{% endblock %}">
+  <meta name="twitter:description" content="{% block twitter_description %}Discover businesses and services near you on an interactive map.{% endblock %}">
+  
+  <title>{% block title %}WebMaps{% endblock %}</title>
+
+  {% block extra_schema %}{% endblock %}
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>">
+
+  {% block extra_css %}{% endblock %}
+
+  <!-- Theme Loader Script (prevent FOUC) -->
+  <script src="{% static 'js/theme_init.js' %}"></script>
+</head>
+<body {% block body_attrs %}{% endblock %}>
+
+<!-- ══ NAVBAR ══════════════════════════════════════════ -->
+<header role="banner">
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner container">
+    <a href="{% url 'maps:home' %}" class="nav-brand">
+      <div class="brand-icon"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg></div>
+      WebMaps
+    </a>
+
+    <ul class="nav-links">
+      {% if request.user.is_authenticated %}
+        {% if request.user.role == 'host' %}
+          <li><a href="{% url 'hosts:dashboard' %}" id="nav-dashboard">Dashboard</a></li>
+          <li><a href="{% url 'hosts:listing_create' %}" id="nav-add">Add Listing</a></li>
+        {% elif request.user.role == 'admin' %}
+          <li><a href="{% url 'adminpanel:dashboard' %}" id="nav-admin">Admin Panel</a></li>
+        {% endif %}
+      {% endif %}
+    </ul>
+
+    <div class="nav-actions">
+      {% if request.user.is_authenticated %}
+        <!-- Notification Bell -->
+        <div class="pos-relative">
+          <button class="btn-icon px-3 py-2" id="notif-bell" aria-label="Notifications">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+            <span class="notif-badge d-none" id="notif-badge">0</span>
+          </button>
+          <div class="notif-dropdown" id="notif-dropdown">
+            <div class="notif-header">
+              <span>Notifications</span>
+              <button id="notif-mark-read" class="btn-text text-xs" aria-label="Mark all notifications as read">Mark all read</button>
+            </div>
+            <div id="notif-list"><div class="notif-empty">Loading...</div></div>
+          </div>
+        </div>
+
+        <!-- User Menu -->
+        <a href="{% url 'users:profile' %}" class="btn btn-outline btn-sm" id="nav-profile">
+          {{ request.user.username }}
+        </a>
+        <form method="post" action="{% url 'auth_app:logout' %}" class="m-0">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-outline btn-sm" id="nav-logout">Sign Out</button>
+        </form>
+      {% else %}
+        <a href="{% url 'auth_app:login' %}" class="btn btn-outline btn-sm px-6" id="nav-login">Sign In</a>
+        <a href="{% url 'auth_app:register' %}" class="btn btn-primary btn-sm px-6" id="nav-register">Get Started</a>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+</header>
+
+<!-- ══ MESSAGES ═════════════════════════════════════════ -->
+{% if messages %}
+  <div class="fixed-top-right z-5000">
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} mb-2 slide-down">
+        {{ message }}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<!-- ══ MAIN CONTENT ══════════════════════════════════════ -->
+<main role="main">
+  {% block content %}{% endblock %}
+</main>
+
+<!-- ══ SCRIPTS ════════════════════════════════════════════ -->
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/modals.js' %}"></script>
+<script src="{% static 'js/analytics.js' %}"></script>
+{% block extra_js %}{% endblock %}
+
+</body>
+</html>

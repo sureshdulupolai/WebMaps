@@ -1,0 +1,1552 @@
+[2026-04-10 23:57:08,132] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-10 23:57:14,413] ERROR webmaps Captured error: TemplateSyntaxError: Invalid block tag on line 15: 'static', expected 'endblock'. Did you forget to register or load this tag? @ /
+[2026-04-10 23:57:15,414] ERROR django.request Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 505, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\Desktop\WebMaps\maps\views.py", line 24, in home_view
+    return render(request, 'maps/home.html')
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\loader_tags.py", line 132, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\loader_tags.py", line 129, in get_parent
+    return self.find_template(parent, context)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\loader_tags.py", line 107, in find_template
+    template, origin = context.template.engine.find_template(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template_name,
+        ^^^^^^^^^^^^^^
+        skip=history,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 558, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 15: 'static', expected 'endblock'. Did you forget to register or load this tag?
+[2026-04-10 23:57:15,447] ERROR django.server "GET / HTTP/1.1" 500 235478
+[2026-04-10 23:58:05,895] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-10 23:58:10,509] INFO django.server "GET / HTTP/1.1" 200 9180
+[2026-04-10 23:58:11,344] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 24855
+[2026-04-10 23:58:11,375] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-10 23:58:11,515] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-10 23:58:11,658] INFO django.server "GET /static/js/maps.js HTTP/1.1" 200 9623
+[2026-04-10 23:58:20,006] INFO django.server "GET / HTTP/1.1" 200 9180
+[2026-04-11 00:01:46,720] INFO django.server "GET / HTTP/1.1" 200 10248
+[2026-04-11 00:01:46,774] INFO django.server "GET /static/js/maps.js HTTP/1.1" 200 10422
+[2026-04-11 00:04:11,419] INFO django.server "GET / HTTP/1.1" 200 10370
+[2026-04-11 00:04:11,546] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 10422
+[2026-04-11 00:09:05,859] INFO django.server "GET / HTTP/1.1" 200 11601
+[2026-04-11 00:09:06,028] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 10934
+[2026-04-11 00:22:45,477] INFO django.server "GET / HTTP/1.1" 200 11601
+[2026-04-11 00:22:45,618] INFO django.server "GET /static/js/modals.js HTTP/1.1" 304 0
+[2026-04-11 00:22:45,619] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 27320
+[2026-04-11 00:22:45,644] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 304 0
+[2026-04-11 00:22:45,700] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 12980
+[2026-04-11 00:23:01,551] INFO django.server "GET /api/maps/search/?q=sakinaka&category=&rating=4&distance=10&price= HTTP/1.1" 200 238
+[2026-04-11 00:25:55,464] INFO django.server "GET / HTTP/1.1" 200 11601
+[2026-04-11 00:25:55,514] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-11 00:25:55,515] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 13053
+[2026-04-11 00:26:05,384] INFO django.server "GET /api/maps/search/?q=sakinaka&category=&rating=4&distance=10&price= HTTP/1.1" 200 238
+[2026-04-11 00:26:10,742] INFO django.server "GET /auth/login/ HTTP/1.1" 200 4593
+[2026-04-11 00:26:20,680] INFO django.server "GET /auth/register/ HTTP/1.1" 200 8443
+[2026-04-11 00:26:32,701] INFO django.server "GET /auth/login/ HTTP/1.1" 200 4593
+[2026-04-11 00:26:34,051] INFO django.server "GET /auth/register/ HTTP/1.1" 200 8443
+[2026-04-11 00:34:26,798] INFO django.server "GET / HTTP/1.1" 200 13418
+[2026-04-11 00:34:26,847] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 28087
+[2026-04-11 00:34:26,859] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 304 0
+[2026-04-11 00:34:35,424] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6410
+[2026-04-11 00:34:35,487] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-11 00:34:36,603] INFO django.server "GET /auth/register/ HTTP/1.1" 200 10260
+[2026-04-11 00:52:12,753] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\users\validators.py changed, reloading.
+[2026-04-11 00:52:15,510] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-11 00:52:29,050] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\auth_app\views.py changed, reloading.
+[2026-04-11 00:52:31,154] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-11 00:52:37,125] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\auth_app\urls.py changed, reloading.
+[2026-04-11 00:52:39,716] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-11 00:56:09,118] INFO django.server "GET /auth/register/ HTTP/1.1" 200 14813
+[2026-04-11 00:56:09,170] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-11 00:56:09,170] INFO django.server "GET /static/js/modals.js HTTP/1.1" 304 0
+[2026-04-11 00:56:09,178] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 304 0
+[2026-04-11 00:59:50,774] INFO django.server "GET /auth/register/ HTTP/1.1" 200 15104
+[2026-04-11 00:59:50,825] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-11 01:00:15,920] INFO django.server "GET / HTTP/1.1" 200 14645
+[2026-04-11 01:00:15,972] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 304 0
+[2026-04-11 01:00:41,607] INFO django.server "GET /auth/login/ HTTP/1.1" 200 10438
+[2026-04-11 01:00:42,565] INFO django.server "GET /auth/register/ HTTP/1.1" 200 15104
+[2026-04-11 01:00:44,037] INFO django.server "GET /auth/login/ HTTP/1.1" 200 10438
+[2026-04-11 01:00:47,193] INFO django.server "GET / HTTP/1.1" 200 14645
+[2026-04-12 11:24:56,617] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-12 11:25:01,937] INFO django.server "GET / HTTP/1.1" 200 14645
+[2026-04-12 11:25:02,014] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-12 11:25:02,014] INFO django.server "GET /static/js/modals.js HTTP/1.1" 304 0
+[2026-04-12 11:25:02,014] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 304 0
+[2026-04-12 11:25:02,033] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 304 0
+[2026-04-12 11:25:32,191] INFO django.server "GET /auth/login/ HTTP/1.1" 200 10438
+[2026-04-12 11:25:40,270] INFO django.server "GET / HTTP/1.1" 200 14645
+[2026-04-12 11:52:36,215] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-12 11:53:03,338] INFO django.server "GET / HTTP/1.1" 200 15387
+[2026-04-12 11:53:27,804] INFO django.server "GET / HTTP/1.1" 200 15387
+[2026-04-12 11:53:28,692] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-12 11:53:28,807] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 28333
+[2026-04-12 11:53:28,904] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-12 11:53:29,380] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 13053
+[2026-04-12 11:53:52,374] INFO django.server "GET /auth/login/ HTTP/1.1" 200 10559
+[2026-04-12 11:53:52,537] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-12 11:57:07,805] INFO django.server "GET / HTTP/1.1" 200 15387
+[2026-04-12 11:58:06,891] INFO django.server "GET / HTTP/1.1" 200 15387
+[2026-04-12 11:58:08,207] INFO django.server "GET / HTTP/1.1" 200 15387
+[2026-04-12 11:58:11,647] INFO django.server "GET /auth/register/ HTTP/1.1" 200 15187
+[2026-04-12 11:58:15,381] INFO django.server "GET /auth/login/ HTTP/1.1" 200 10559
+[2026-04-12 11:58:17,337] INFO django.server "GET /auth/register/ HTTP/1.1" 200 15187
+[2026-04-12 11:58:18,470] INFO django.server "GET /auth/login/ HTTP/1.1" 200 10559
+[2026-04-12 11:58:19,680] INFO django.server "GET /auth/password-reset/ HTTP/1.1" 200 6940
+[2026-04-12 11:58:25,803] INFO django.server "POST /auth/password-reset/ HTTP/1.1" 200 7035
+[2026-04-12 11:58:29,891] INFO django.server "GET /auth/register/ HTTP/1.1" 200 15187
+[2026-04-12 11:58:31,140] INFO django.server "GET /auth/login/ HTTP/1.1" 200 10559
+[2026-04-12 11:58:32,102] INFO django.server "GET / HTTP/1.1" 200 15387
+[2026-04-12 11:59:20,392] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-12 11:59:41,687] INFO django.server "GET / HTTP/1.1" 200 16759
+[2026-04-12 12:00:11,938] INFO django.server "GET /auth/register/ HTTP/1.1" 200 15187
+[2026-04-12 12:00:13,890] INFO django.server "GET / HTTP/1.1" 200 16759
+[2026-04-12 12:00:16,255] INFO django.server "GET / HTTP/1.1" 200 16759
+[2026-04-12 12:00:16,557] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-12 12:11:46,242] INFO django.server "GET / HTTP/1.1" 200 15155
+[2026-04-12 12:11:46,290] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-12 12:11:56,722] INFO django.server "GET / HTTP/1.1" 200 15155
+[2026-04-12 12:12:32,606] INFO django.server "GET / HTTP/1.1" 200 13329
+[2026-04-12 12:12:32,646] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 5541
+[2026-04-12 12:12:32,647] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-04-12 12:12:57,514] INFO django.server "GET / HTTP/1.1" 200 13329
+[2026-04-12 12:12:57,555] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 12:12:57,555] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-04-12 12:14:30,621] INFO django.server "GET / HTTP/1.1" 200 10656
+[2026-04-12 12:14:30,680] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 12:14:30,702] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-04-12 12:14:30,703] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 1292
+[2026-04-12 12:14:32,174] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6930
+[2026-04-12 12:14:32,241] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 3332
+[2026-04-12 12:14:33,584] INFO django.server "GET /auth/register/ HTTP/1.1" 200 13583
+[2026-04-12 12:14:35,927] INFO django.server "GET / HTTP/1.1" 200 10656
+[2026-04-12 12:18:38,211] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-12 12:19:11,593] INFO django.server "GET / HTTP/1.1" 200 10656
+[2026-04-12 12:19:11,764] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 30189
+[2026-04-12 12:19:11,776] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 5541
+[2026-04-12 12:19:11,780] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-12 12:19:11,793] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-12 12:19:11,796] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 1292
+[2026-04-12 12:19:30,961] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6930
+[2026-04-12 12:19:31,052] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-12 12:19:31,078] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 6112
+[2026-04-12 12:20:08,609] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9710
+[2026-04-12 12:20:08,868] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-12 12:20:08,965] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-12 12:29:07,571] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-12 12:29:13,518] INFO django.server "GET / HTTP/1.1" 200 10531
+[2026-04-12 12:29:13,644] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-04-12 12:29:13,645] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 12:29:13,689] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 12:29:58,059] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\auth_app\views.py changed, reloading.
+[2026-04-12 12:30:02,562] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-12 12:30:35,580] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\auth_app\urls.py changed, reloading.
+[2026-04-12 12:30:38,169] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-12 12:30:43,372] INFO django.server "GET / HTTP/1.1" 200 10340
+[2026-04-12 12:30:50,429] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\users\services.py changed, reloading.
+[2026-04-12 12:30:53,316] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-12 12:34:37,089] INFO django.server "GET / HTTP/1.1" 200 10340
+[2026-04-12 12:34:37,149] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-04-12 12:34:37,168] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 12:34:37,393] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 4616
+[2026-04-12 12:39:17,408] INFO django.server "GET / HTTP/1.1" 200 10340
+[2026-04-12 12:39:17,458] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-04-12 12:39:17,458] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 12:39:17,469] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 12:40:33,643] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-12 12:40:55,629] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 12:40:55,674] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 6459
+[2026-04-12 12:43:05,033] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 12:43:05,074] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 12:43:05,085] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-04-12 12:43:05,087] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 3821
+[2026-04-12 12:43:05,846] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 12:43:07,048] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 12:44:33,848] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 12:44:33,893] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 12:44:33,893] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 12:45:18,371] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 12:45:18,448] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 12:45:18,449] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 5303
+[2026-04-12 12:46:20,337] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-12 12:46:21,734] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 12:46:21,838] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 12:46:21,849] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 12:46:26,780] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 12:46:26,857] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 30020
+[2026-04-12 12:46:26,889] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 6459
+[2026-04-12 12:46:26,905] INFO django.server "GET /static/js/main.js HTTP/1.1" 304 0
+[2026-04-12 12:46:26,920] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-04-12 12:46:26,921] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 5303
+[2026-04-12 12:46:32,756] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 12:46:49,782] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-12 12:46:53,054] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 12:46:53,097] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-04-12 12:46:53,103] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 12:47:11,570] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 12:47:11,618] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 12:47:11,624] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 12:47:16,283] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 12:47:16,347] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 12:47:16,354] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 12:47:24,414] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 12:47:37,716] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 12:47:37,786] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 12:47:39,760] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-12 12:47:54,099] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 12:47:54,225] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 12:48:03,189] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 12:48:03,253] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 12:48:17,818] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 12:48:17,879] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 12:48:28,481] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 12:48:29,569] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 6459
+[2026-04-12 12:48:29,867] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 13053
+[2026-04-12 12:48:29,897] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-12 12:48:29,905] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 5303
+[2026-04-12 12:48:30,212] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 30020
+[2026-04-12 12:48:30,536] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-12 12:48:30,551] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-12 12:48:32,928] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 12:48:33,045] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-12 12:48:33,046] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 12:48:33,065] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 12:49:41,441] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 12:49:41,492] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 12:49:41,500] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 12:49:43,109] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 12:49:43,194] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 6459
+[2026-04-12 12:49:43,195] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 30020
+[2026-04-12 12:49:43,202] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-12 12:49:43,203] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-12 12:49:43,213] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-12 12:49:43,217] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-12 12:49:43,226] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 13053
+[2026-04-12 12:49:43,227] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 5303
+[2026-04-12 12:49:55,835] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 12:49:55,919] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 12:49:55,922] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 12:50:30,581] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 12:50:30,658] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-04-12 12:50:30,658] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-12 12:50:30,659] INFO django.server "GET /static/js/main.js HTTP/1.1" 304 0
+[2026-04-12 12:50:30,671] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 12:53:12,924] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 12:53:13,033] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-12 12:53:13,033] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 12:53:13,040] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 12:56:24,034] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 12:56:24,122] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-12 12:56:24,130] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 12:56:24,132] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-04-12 12:56:24,135] INFO django.server "GET /static/js/main.js HTTP/1.1" 304 0
+[2026-04-12 12:56:24,146] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 13:02:02,537] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 13:02:02,573] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-12 13:02:02,582] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-04-12 13:02:02,583] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 13:02:02,587] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 13:02:02,587] INFO django.server "GET /static/js/main.js HTTP/1.1" 304 0
+[2026-04-12 13:02:07,129] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 13:02:07,188] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 6459
+[2026-04-12 13:02:07,191] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-12 13:02:07,194] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 30020
+[2026-04-12 13:02:07,206] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-12 13:02:07,211] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-12 13:02:07,216] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 13053
+[2026-04-12 13:02:07,221] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-12 13:02:07,222] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 5303
+[2026-04-12 13:02:29,075] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 13:02:29,947] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 13:02:30,923] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 13:02:30,981] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-12 13:02:30,986] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-12 13:02:30,986] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 6459
+[2026-04-12 13:02:30,988] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-12 13:02:30,988] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-12 13:02:30,990] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 13053
+[2026-04-12 13:02:30,994] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 30020
+[2026-04-12 13:02:31,000] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 5303
+[2026-04-12 13:02:59,849] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\middleware\middleware.py changed, reloading.
+[2026-04-12 13:03:00,114] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\middleware\middleware.py changed, reloading.
+[2026-04-12 13:03:00,508] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\middleware\middleware.py changed, reloading.
+[2026-04-12 13:03:04,021] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-12 13:03:04,627] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-12 13:03:35,665] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 13:03:36,767] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-12 13:03:36,785] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 30117
+[2026-04-12 13:03:36,787] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 13053
+[2026-04-12 13:03:36,803] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 5303
+[2026-04-12 13:03:36,820] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 6459
+[2026-04-12 13:03:37,119] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-12 13:03:37,531] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-12 13:03:37,563] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-12 13:04:36,744] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 13:04:36,838] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 29923
+[2026-04-12 13:04:40,599] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 13:04:40,710] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-12 13:04:50,462] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 13:04:50,616] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 29923
+[2026-04-12 13:04:50,658] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 6636
+[2026-04-12 13:04:50,659] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-12 13:04:50,660] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-12 13:04:50,666] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-12 13:04:50,667] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-12 13:04:50,677] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 13053
+[2026-04-12 13:04:50,722] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 5359
+[2026-04-12 13:05:10,242] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 13:05:10,375] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 29923
+[2026-04-12 13:05:10,382] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 6636
+[2026-04-12 13:05:10,406] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-12 13:05:10,408] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-12 13:05:10,410] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-12 13:05:10,415] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-12 13:05:10,424] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 13053
+[2026-04-12 13:05:10,461] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 5359
+[2026-04-12 13:05:24,830] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 13:05:25,247] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 29923
+[2026-04-12 13:05:25,249] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 6636
+[2026-04-12 13:05:25,275] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-04-12 13:05:25,377] INFO django.server "GET /static/js/main.js HTTP/1.1" 304 0
+[2026-04-12 13:05:25,405] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 5359
+[2026-04-12 13:05:50,222] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 13:05:50,355] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 6636
+[2026-04-12 13:05:50,365] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 29923
+[2026-04-12 13:05:50,382] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-12 13:05:50,384] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-12 13:05:50,391] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-12 13:05:50,387] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-12 13:05:50,434] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 13053
+[2026-04-12 13:05:50,443] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 5359
+[2026-04-12 13:06:45,474] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-12 13:06:50,723] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 13:06:50,750] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 13:06:50,833] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-12 13:06:50,840] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 13:06:50,846] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 13:06:50,958] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 13:06:50,968] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-12 13:06:51,160] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 13:06:54,090] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 13:06:54,179] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 6636
+[2026-04-12 13:06:54,186] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-12 13:06:54,187] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 29923
+[2026-04-12 13:06:54,188] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-12 13:06:54,189] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-12 13:06:54,190] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-12 13:06:54,202] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 13053
+[2026-04-12 13:06:54,211] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 5359
+[2026-04-12 13:08:45,129] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\middleware\middleware.py changed, reloading.
+[2026-04-12 13:08:45,175] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\middleware\middleware.py changed, reloading.
+[2026-04-12 13:08:45,271] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\middleware\middleware.py changed, reloading.
+[2026-04-12 13:08:49,486] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-12 13:08:50,509] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-12 13:08:50,743] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-12 13:09:12,419] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 13:09:12,507] INFO django.server "GET / HTTP/1.1" 200 11018
+[2026-04-12 13:09:12,854] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 13:09:12,856] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-12 13:09:12,859] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 13:09:13,464] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 29923
+[2026-04-12 13:09:13,486] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 6636
+[2026-04-12 13:09:13,510] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-12 13:09:13,541] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 5359
+[2026-04-12 13:09:13,542] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 13053
+[2026-04-12 13:09:14,175] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-12 13:09:15,080] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-12 13:09:15,131] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-12 13:21:02,236] INFO django.server "GET / HTTP/1.1" 200 11449
+[2026-04-12 13:21:02,347] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 7966
+[2026-04-12 13:21:02,366] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 29923
+[2026-04-12 13:21:02,396] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-12 13:21:02,454] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-12 13:21:02,485] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-12 13:21:02,528] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 6670
+[2026-04-12 13:21:02,568] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-12 13:21:02,583] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 13053
+[2026-04-12 13:21:09,577] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-12 13:31:56,159] INFO django.server "GET / HTTP/1.1" 200 11860
+[2026-04-12 13:31:56,206] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-12 13:31:56,221] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-04-12 13:31:56,224] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 10388
+[2026-04-12 13:31:56,229] INFO django.server "GET /static/js/main.js HTTP/1.1" 304 0
+[2026-04-12 13:31:56,237] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 13:32:03,898] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-12 13:35:07,421] INFO django.server "GET / HTTP/1.1" 200 11860
+[2026-04-12 13:35:07,486] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-12 13:35:07,486] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 13:35:07,504] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 13:35:10,080] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-12 13:35:10,270] INFO django.server "GET / HTTP/1.1" 200 11860
+[2026-04-12 13:35:10,400] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 10388
+[2026-04-12 13:35:10,411] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-12 13:35:10,423] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 29923
+[2026-04-12 13:35:10,435] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-12 13:35:10,452] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-12 13:35:10,461] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 13254
+[2026-04-12 13:35:10,539] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-12 13:35:10,742] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 6670
+[2026-04-12 13:35:13,111] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-12 13:39:36,253] INFO django.server "GET / HTTP/1.1" 200 11860
+[2026-04-12 13:39:36,306] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-12 13:39:36,315] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 304 0
+[2026-04-12 13:39:36,332] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 13:39:36,334] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 13:39:43,598] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-12 13:40:07,465] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9710
+[2026-04-12 13:40:07,569] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4394
+[2026-04-12 14:00:51,216] INFO django.server "GET / HTTP/1.1" 200 11860
+[2026-04-12 14:00:51,253] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-12 14:00:51,263] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 14:00:51,268] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 304 0
+[2026-04-12 14:00:51,277] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-04-12 14:00:51,288] INFO django.server "GET /static/js/main.js HTTP/1.1" 304 0
+[2026-04-12 14:00:51,293] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 14:00:53,304] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9710
+[2026-04-12 14:00:53,350] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-12 14:02:33,603] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9710
+[2026-04-12 14:07:28,015] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9710
+[2026-04-12 14:07:28,132] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-12 14:16:06,258] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9728
+[2026-04-12 14:16:06,322] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 29923
+[2026-04-12 14:16:06,332] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-12 14:16:06,343] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-12 14:16:06,358] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-12 14:16:06,366] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 5751
+[2026-04-12 14:16:06,407] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-12 14:16:31,690] INFO webmaps New user registered: sureshone@gmail.com (role=host)
+[2026-04-12 14:16:31,752] INFO webmaps New user registered: sureshone@gmail.com
+[2026-04-12 14:16:32,158] INFO django.server "POST /auth/register/ HTTP/1.1" 302 0
+[2026-04-12 14:16:32,297] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 8211
+[2026-04-12 14:16:35,337] ERROR webmaps Captured error: TemplateDoesNotExist: hosts/listing_form.html @ /hosts/listing/create/
+[2026-04-12 14:16:36,284] ERROR django.request Internal Server Error: /hosts/listing/create/
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\Desktop\WebMaps\auth_app\decorators.py", line 38, in wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\user\Desktop\WebMaps\auth_app\decorators.py", line 52, in wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\views\decorators\http.py", line 43, in inner
+    return func(request, *args, **kwargs)
+  File "C:\Users\user\Desktop\WebMaps\hosts\views.py", line 77, in listing_create_view
+    return render(request, 'hosts/listing_form.html', {'action': 'create'})
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: hosts/listing_form.html
+[2026-04-12 14:16:36,306] ERROR django.server "GET /hosts/listing/create/ HTTP/1.1" 500 107804
+[2026-04-12 14:16:36,720] WARNING django.request Not Found: /favicon.ico
+[2026-04-12 14:16:36,726] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4732
+[2026-04-12 14:25:10,874] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 8211
+[2026-04-12 14:25:10,959] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-12 14:25:12,196] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 8211
+[2026-04-12 14:25:12,286] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 29923
+[2026-04-12 14:25:12,310] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-12 14:25:12,344] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-12 14:25:12,405] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-12 14:25:12,464] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-12 14:26:31,112] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 8211
+[2026-04-12 14:26:31,617] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-12 14:26:31,619] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-12 14:26:31,620] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 29923
+[2026-04-12 14:26:31,637] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-12 14:26:31,655] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-12 14:27:06,635] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 9918
+[2026-04-12 14:27:12,114] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 9918
+[2026-04-12 14:27:13,512] WARNING django.request Not Found: /favicon.ico
+[2026-04-12 14:27:13,513] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4732
+[2026-04-12 14:27:18,705] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 9918
+[2026-04-12 14:27:18,774] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-12 14:27:18,776] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-12 14:27:18,777] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-12 14:27:18,785] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-12 14:27:18,787] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 29923
+[2026-04-12 14:27:58,062] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 9918
+[2026-04-12 14:27:58,136] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-12 14:27:58,137] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-12 14:27:58,137] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-12 14:27:58,140] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-12 14:27:58,145] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 29923
+[2026-04-12 14:28:00,724] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 9918
+[2026-04-12 14:28:00,779] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-12 14:28:00,780] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-12 14:28:00,780] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-12 14:28:00,781] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-12 14:28:00,781] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 29923
+[2026-04-12 14:31:05,995] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 9918
+[2026-04-12 14:31:06,075] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-12 14:31:06,076] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-12 14:31:06,077] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 29923
+[2026-04-12 14:31:06,084] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-12 14:31:06,086] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-12 14:31:58,028] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 302 0
+[2026-04-12 14:31:58,156] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6930
+[2026-04-12 14:31:58,271] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-12 14:31:58,273] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-12 14:31:58,273] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-12 14:31:58,274] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-12 14:31:58,276] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 29923
+[2026-04-12 14:31:58,414] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 5751
+[2026-04-12 14:32:14,479] INFO webmaps User logged in: sureshone@gmail.com
+[2026-04-12 14:32:14,486] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-12 14:32:14,546] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 10519
+[2026-04-12 14:32:18,634] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 10519
+[2026-04-12 14:34:57,827] ERROR webmaps Captured error: VariableDoesNotExist: Failed lookup for key [listing] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'action': 'create'}] @ /hosts/listing/create/
+[2026-04-12 14:34:58,494] ERROR django.request Internal Server Error: /hosts/listing/create/
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 880, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'listing'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 886, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(
+                                            ~~~~~~~^
+        type(current), bit
+        ^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+AttributeError: type object 'RequestContext' has no attribute 'listing'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+                      ~~~^^^^^
+ValueError: invalid literal for int() with base 10: 'listing'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\Desktop\WebMaps\auth_app\decorators.py", line 38, in wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\user\Desktop\WebMaps\auth_app\decorators.py", line 52, in wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\views\decorators\http.py", line 43, in inner
+    return func(request, *args, **kwargs)
+  File "C:\Users\user\Desktop\WebMaps\hosts\views.py", line 77, in listing_create_view
+    return render(request, 'hosts/listing_form.html', {'action': 'create'})
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 736, in resolve
+    arg_vals.append(arg.resolve(context))
+                    ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Users\user\Desktop\env\Lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )  # missing attribute
+    ^
+django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'action': 'create'}]
+[2026-04-12 14:34:58,540] ERROR django.server "GET /hosts/listing/create/ HTTP/1.1" 500 211440
+[2026-04-12 14:34:58,934] WARNING django.request Not Found: /favicon.ico
+[2026-04-12 14:34:58,937] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4732
+[2026-04-12 14:36:46,965] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 10850
+[2026-04-12 14:40:06,391] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 10850
+[2026-04-12 14:40:06,454] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 29923
+[2026-04-12 14:40:06,464] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-12 14:40:06,471] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-12 14:40:06,480] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-12 14:40:06,488] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-12 14:40:57,363] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 10850
+[2026-04-12 14:40:57,440] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-12 14:40:57,440] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-12 14:40:57,442] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-12 14:40:57,443] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-12 14:40:57,445] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 29923
+[2026-04-12 14:41:58,907] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 10847
+[2026-04-12 14:41:58,974] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-12 14:41:58,974] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-12 14:41:58,975] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-12 14:41:58,975] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-12 14:41:58,985] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 29923
+[2026-04-12 15:22:18,545] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 302 0
+[2026-04-12 15:22:18,589] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6930
+[2026-04-12 15:22:18,640] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-12 15:22:18,649] INFO django.server "GET /static/js/main.js HTTP/1.1" 304 0
+[2026-04-12 15:22:18,666] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-04-12 15:22:18,672] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-12 15:22:32,671] INFO webmaps User logged in: sureshone@gmail.com
+[2026-04-12 15:22:32,673] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-12 15:22:32,718] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 4923
+[2026-04-12 15:22:32,781] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 17094
+[2026-04-12 15:22:32,918] WARNING django.request Not Found: /favicon.ico
+[2026-04-12 15:22:32,920] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4732
+[2026-04-12 15:23:59,800] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 10900
+[2026-04-12 15:24:14,627] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 15719
+[2026-04-12 15:24:17,356] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 10900
+[2026-04-12 15:24:19,091] INFO django.server "GET /users/profile/ HTTP/1.1" 200 9418
+[2026-04-12 15:24:22,182] INFO django.server "GET /users/profile/ HTTP/1.1" 200 9418
+[2026-04-12 15:24:23,543] INFO django.server "GET / HTTP/1.1" 200 11860
+[2026-04-12 15:24:23,598] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 304 0
+[2026-04-12 15:24:23,616] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 15:24:27,076] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9728
+[2026-04-12 15:24:27,796] INFO django.server "GET /auth/login/ HTTP/1.1" 302 0
+[2026-04-12 15:24:27,816] INFO django.server "GET / HTTP/1.1" 200 11860
+[2026-04-12 15:24:32,065] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-12 15:24:47,331] INFO django.server "GET /api/maps/search/?q=sakinaka%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 238
+[2026-04-12 20:13:07,056] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-12 20:13:29,313] INFO django.server "GET / HTTP/1.1" 200 11860
+[2026-04-12 20:13:29,398] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-12 20:13:29,402] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-04-12 20:13:29,402] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 20:13:29,420] INFO django.server "GET /static/js/modals.js HTTP/1.1" 304 0
+[2026-04-12 20:13:29,429] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 304 0
+[2026-04-12 20:13:29,430] INFO django.server "GET /static/js/main.js HTTP/1.1" 304 0
+[2026-04-12 20:13:29,449] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 20:13:29,461] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 304 0
+[2026-04-12 20:16:25,624] INFO django.server "GET / HTTP/1.1" 200 11860
+[2026-04-12 20:16:34,128] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-12 20:17:02,668] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-12 20:19:12,628] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6930
+[2026-04-12 20:19:12,688] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-12 20:19:28,478] INFO django.server "GET / HTTP/1.1" 200 11860
+[2026-04-12 20:19:37,252] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-12 20:41:07,452] INFO django.server "GET / HTTP/1.1" 200 12137
+[2026-04-12 20:41:14,921] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-12 20:41:20,047] INFO django.server "GET / HTTP/1.1" 200 12137
+[2026-04-12 20:41:21,885] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-12 20:42:15,948] INFO django.server "GET / HTTP/1.1" 200 12137
+[2026-04-12 20:42:22,483] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-12 20:54:04,428] INFO django.server "GET / HTTP/1.1" 200 11704
+[2026-04-12 20:54:04,545] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 304 0
+[2026-04-12 20:54:04,944] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 16035
+[2026-04-12 20:54:07,137] INFO django.server "GET / HTTP/1.1" 200 11704
+[2026-04-12 20:54:32,194] INFO django.server "GET / HTTP/1.1" 200 11704
+[2026-04-12 20:54:33,226] INFO django.server "GET / HTTP/1.1" 200 11704
+[2026-04-12 20:54:33,642] INFO django.server "GET / HTTP/1.1" 200 11704
+[2026-04-12 20:54:33,897] INFO django.server "GET / HTTP/1.1" 200 11704
+[2026-04-12 20:54:34,195] INFO django.server "GET / HTTP/1.1" 200 11704
+[2026-04-12 20:54:42,562] INFO django.server "GET / HTTP/1.1" 200 11714
+[2026-04-12 20:54:43,912] INFO django.server - Broken pipe from ('127.0.0.1', 56658)
+[2026-04-12 20:54:45,014] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-12 20:55:33,600] INFO django.server "GET / HTTP/1.1" 200 11714
+[2026-04-12 20:55:33,663] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-12 20:55:37,276] INFO django.server "GET / HTTP/1.1" 200 11714
+[2026-04-12 20:55:41,153] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-12 20:58:17,249] INFO django.server "GET / HTTP/1.1" 200 12508
+[2026-04-12 20:58:17,333] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 17398
+[2026-04-12 20:58:17,362] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 15641
+[2026-04-12 20:58:22,615] INFO django.server "GET / HTTP/1.1" 200 12508
+[2026-04-12 20:58:22,682] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 20:58:23,901] INFO django.server "GET / HTTP/1.1" 200 12508
+[2026-04-12 20:58:23,964] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 20:58:26,197] INFO django.server - Broken pipe from ('127.0.0.1', 51164)
+[2026-04-12 20:58:26,412] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-12 20:59:03,939] INFO django.server "GET / HTTP/1.1" 200 12508
+[2026-04-12 20:59:03,996] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-12 20:59:04,008] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 20:59:11,643] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-12 21:00:08,522] INFO django.server "GET / HTTP/1.1" 200 12508
+[2026-04-12 21:00:08,705] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16936
+[2026-04-12 21:00:08,736] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-12 21:00:27,672] INFO django.server - Broken pipe from ('127.0.0.1', 52791)
+[2026-04-13 00:24:05,581] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-13 00:27:22,235] INFO django.server "GET / HTTP/1.1" 200 12508
+[2026-04-13 00:27:22,273] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-13 00:27:22,286] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-13 00:27:22,293] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-04-13 00:27:22,338] INFO django.server "GET /static/js/main.js HTTP/1.1" 304 0
+[2026-04-13 00:27:22,713] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 6668
+[2026-04-13 00:27:22,917] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 13139
+[2026-04-13 00:27:29,560] INFO django.server "GET / HTTP/1.1" 200 12508
+[2026-04-13 00:27:32,907] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-13 00:27:32,917] INFO django.server "GET / HTTP/1.1" 200 12508
+[2026-04-13 00:27:34,903] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-13 00:41:37,856] INFO django.server "GET / HTTP/1.1" 200 13051
+[2026-04-13 00:41:46,606] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-13 00:44:17,185] INFO django.server "GET / HTTP/1.1" 200 13051
+[2026-04-13 00:51:08,267] INFO django.server "GET / HTTP/1.1" 200 13051
+[2026-04-13 00:51:08,559] INFO django.server "GET /static/js/modals.js HTTP/1.1" 304 0
+[2026-04-13 00:51:08,567] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-13 00:51:08,670] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 304 0
+[2026-04-13 00:51:08,703] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 18969
+[2026-04-13 00:51:08,759] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-13 00:51:08,785] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 13168
+[2026-04-13 00:51:24,957] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-13 01:08:52,210] INFO django.server "GET / HTTP/1.1" 200 12853
+[2026-04-13 01:08:52,338] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-13 01:08:52,339] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 304 0
+[2026-04-13 01:09:32,046] INFO django.server "GET / HTTP/1.1" 200 12853
+[2026-04-13 01:09:36,222] INFO django.server "GET / HTTP/1.1" 200 12853
+[2026-04-13 01:09:40,424] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-13 01:09:57,270] INFO django.server "GET / HTTP/1.1" 200 12853
+[2026-04-13 01:09:57,352] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 19483
+[2026-04-13 01:09:57,353] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 18046
+[2026-04-13 01:09:57,406] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 01:09:57,426] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 01:09:57,565] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 01:09:57,569] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 01:09:57,666] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 6668
+[2026-04-13 01:09:57,726] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 13168
+[2026-04-13 01:10:05,226] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-13 01:10:50,417] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-13 01:11:04,245] INFO django.server "GET / HTTP/1.1" 200 12853
+[2026-04-13 01:11:05,088] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 18046
+[2026-04-13 01:11:05,097] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 13168
+[2026-04-13 01:11:05,110] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 6668
+[2026-04-13 01:11:05,119] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 01:11:05,121] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 18646
+[2026-04-13 01:11:05,514] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 01:11:05,550] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 01:11:05,557] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 01:11:13,424] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-13 01:11:28,160] INFO django.server "GET / HTTP/1.1" 200 12853
+[2026-04-13 01:11:28,270] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 18646
+[2026-04-13 01:11:28,272] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 01:11:28,273] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 01:11:28,273] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 01:11:28,274] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 18046
+[2026-04-13 01:11:28,279] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 01:11:28,288] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 13168
+[2026-04-13 01:11:28,361] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 6668
+[2026-04-13 01:11:35,829] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-13 01:42:33,219] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 01:42:33,367] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 18046
+[2026-04-13 01:42:33,389] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 18914
+[2026-04-13 01:42:33,464] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 01:42:33,484] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 01:42:33,506] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 01:42:33,537] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 01:42:33,612] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 13173
+[2026-04-13 01:42:33,705] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 6668
+[2026-04-13 01:42:36,899] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-13 01:42:54,904] INFO django.server "GET /api/maps/search/?q=sakinaka&category=&rating=&distance=10&price= HTTP/1.1" 200 238
+[2026-04-13 01:43:05,022] INFO django.server "GET /api/maps/search/?q=sakinaka&category=&rating=&distance=10&price= HTTP/1.1" 200 238
+[2026-04-13 01:45:46,074] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 01:45:46,177] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 18046
+[2026-04-13 01:45:46,177] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 18914
+[2026-04-13 01:45:46,185] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 01:45:46,193] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 01:45:46,195] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 01:45:46,200] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 01:45:46,210] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 12912
+[2026-04-13 01:45:46,213] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 6668
+[2026-04-13 01:45:53,932] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-13 01:47:37,433] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9459
+[2026-04-13 01:47:37,504] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-13 01:47:38,451] INFO django.server "GET /auth/login/ HTTP/1.1" 200 5943
+[2026-04-13 01:47:41,495] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9459
+[2026-04-13 01:47:42,284] INFO django.server "GET /auth/login/ HTTP/1.1" 200 5943
+[2026-04-13 01:47:43,081] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9459
+[2026-04-13 01:47:43,765] INFO django.server "GET /auth/login/ HTTP/1.1" 200 5943
+[2026-04-13 01:48:15,060] WARNING webmaps Rate limit hit: register from f528764d...
+[2026-04-13 01:48:15,083] WARNING django.request Too Many Requests: /auth/register/
+[2026-04-13 01:48:15,087] WARNING django.server "GET /auth/register/ HTTP/1.1" 429 71
+[2026-04-13 01:48:15,702] WARNING django.request Not Found: /favicon.ico
+[2026-04-13 01:48:15,704] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4732
+[2026-04-13 01:48:17,142] WARNING webmaps Rate limit hit: register from f528764d...
+[2026-04-13 01:48:17,145] WARNING django.request Too Many Requests: /auth/register/
+[2026-04-13 01:48:17,148] WARNING django.server "GET /auth/register/ HTTP/1.1" 429 71
+[2026-04-13 16:34:07,371] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-13 16:34:17,904] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 16:34:18,020] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-13 16:34:18,021] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-04-13 16:34:18,065] INFO django.server "GET /static/js/modals.js HTTP/1.1" 304 0
+[2026-04-13 16:34:18,091] INFO django.server "GET /static/js/main.js HTTP/1.1" 304 0
+[2026-04-13 16:34:18,093] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 304 0
+[2026-04-13 16:34:18,133] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 304 0
+[2026-04-13 16:34:18,137] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-13 16:34:18,765] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 20606
+[2026-04-13 16:34:30,004] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-13 16:34:33,474] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9080
+[2026-04-13 16:34:33,567] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4341
+[2026-04-13 16:35:31,920] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6366
+[2026-04-13 16:36:52,757] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 16:46:21,698] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-13 16:47:15,024] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 16:47:15,444] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 16:47:15,476] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 16:47:15,480] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 16:47:15,570] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 16:47:15,646] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 16:47:15,679] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 16:47:16,312] WARNING django.server "GET /static/images/login_illustration.png HTTP/1.1" 404 1947
+[2026-04-13 16:47:35,618] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 16:47:35,750] WARNING django.server "GET /static/images/login_illustration.png HTTP/1.1" 404 1947
+[2026-04-13 16:47:38,295] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 16:47:38,444] WARNING django.server "GET /static/images/login_illustration.png HTTP/1.1" 404 1947
+[2026-04-13 16:47:39,217] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 16:47:40,878] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9551
+[2026-04-13 16:47:41,001] WARNING django.server "GET /static/images/register_illustration.png HTTP/1.1" 404 1956
+[2026-04-13 16:47:42,009] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 16:47:42,180] WARNING django.server "GET /static/images/login_illustration.png HTTP/1.1" 404 1947
+[2026-04-13 16:47:43,268] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9551
+[2026-04-13 16:47:43,443] WARNING django.server "GET /static/images/register_illustration.png HTTP/1.1" 404 1956
+[2026-04-13 16:47:44,857] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9551
+[2026-04-13 16:47:45,064] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-13 16:47:45,067] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-13 16:47:45,118] WARNING django.server "GET /static/images/register_illustration.png HTTP/1.1" 404 1956
+[2026-04-13 16:47:45,261] WARNING webmaps Rate limit hit: register from f528764d...
+[2026-04-13 16:47:45,313] WARNING django.request Too Many Requests: /auth/register/
+[2026-04-13 16:47:45,329] WARNING django.server "GET /auth/register/ HTTP/1.1" 429 71
+[2026-04-13 16:47:45,798] WARNING django.request Not Found: /favicon.ico
+[2026-04-13 16:47:45,805] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4732
+[2026-04-13 16:47:47,554] WARNING webmaps Rate limit hit: register from f528764d...
+[2026-04-13 16:47:47,567] WARNING django.request Too Many Requests: /auth/register/
+[2026-04-13 16:47:47,581] WARNING django.server "GET /auth/register/ HTTP/1.1" 429 71
+[2026-04-13 16:47:49,451] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 16:47:49,595] WARNING django.server "GET /static/images/login_illustration.png HTTP/1.1" 404 1947
+[2026-04-13 16:47:51,368] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 16:47:53,268] WARNING webmaps Rate limit hit: login from f528764d...
+[2026-04-13 16:47:53,273] WARNING django.request Too Many Requests: /auth/login/
+[2026-04-13 16:47:53,283] WARNING django.server "GET /auth/login/ HTTP/1.1" 429 71
+[2026-04-13 16:47:56,483] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 16:48:00,220] WARNING webmaps Rate limit hit: login from f528764d...
+[2026-04-13 16:48:00,225] WARNING django.request Too Many Requests: /auth/login/
+[2026-04-13 16:48:00,231] WARNING django.server "GET /auth/login/ HTTP/1.1" 429 71
+[2026-04-13 16:48:05,033] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-13 16:48:20,654] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 16:48:20,768] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-13 16:48:20,790] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-13 16:48:20,894] WARNING django.server "GET /static/images/login_illustration.png HTTP/1.1" 404 1947
+[2026-04-13 16:48:29,399] WARNING webmaps Rate limit hit: login from f528764d...
+[2026-04-13 16:48:29,407] WARNING django.request Too Many Requests: /auth/login/
+[2026-04-13 16:48:29,412] WARNING django.server "GET /auth/login/ HTTP/1.1" 429 71
+[2026-04-13 16:48:43,416] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9551
+[2026-04-13 16:48:43,546] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-13 16:48:43,570] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-13 16:48:43,576] WARNING django.server "GET /static/images/register_illustration.png HTTP/1.1" 404 1956
+[2026-04-13 16:50:50,064] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 16:50:50,230] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-13 16:50:50,275] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-13 16:50:50,315] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 16:51:30,609] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9551
+[2026-04-13 16:51:30,777] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-13 16:51:30,806] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-13 16:51:30,865] INFO django.server "GET /static/images/register_illustration.png HTTP/1.1" 200 649560
+[2026-04-13 16:51:53,924] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 16:51:54,393] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 304 0
+[2026-04-13 16:52:12,403] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 16:52:13,058] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 16:52:16,343] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9551
+[2026-04-13 16:52:17,224] INFO django.server "GET /static/images/register_illustration.png HTTP/1.1" 200 649560
+[2026-04-13 16:52:20,564] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 16:53:02,810] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 16:53:02,880] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 304 0
+[2026-04-13 16:53:04,466] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 16:53:04,550] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 16:53:04,551] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 16:53:04,580] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 16:53:04,613] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 16:53:04,630] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 16:53:04,661] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 16:53:04,672] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 16:53:08,276] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9551
+[2026-04-13 16:53:08,362] INFO django.server "GET /static/images/register_illustration.png HTTP/1.1" 304 0
+[2026-04-13 16:53:12,026] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 16:53:13,531] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9551
+[2026-04-13 16:53:14,544] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 16:53:15,901] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 16:53:38,513] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 304 0
+[2026-04-13 16:53:38,869] WARNING django.request Not Found: /favicon.ico
+[2026-04-13 16:53:38,871] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4732
+[2026-04-13 16:55:15,502] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 16:55:15,565] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-13 16:55:15,579] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 304 0
+[2026-04-13 16:55:15,583] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-13 16:55:48,607] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9551
+[2026-04-13 16:55:48,726] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-13 16:55:48,727] INFO django.server "GET /static/images/register_illustration.png HTTP/1.1" 304 0
+[2026-04-13 16:55:48,727] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-13 16:56:30,815] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9551
+[2026-04-13 16:56:30,872] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-13 16:56:30,892] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-13 16:57:45,029] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-13 17:02:33,435] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-13 17:02:38,382] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:02:38,436] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-13 17:02:38,449] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 304 0
+[2026-04-13 17:02:38,486] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-13 17:03:02,470] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:03:10,849] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-13 17:04:33,727] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\WebMaps\settings.py changed, reloading.
+[2026-04-13 17:04:36,246] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-13 17:04:52,746] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\middleware\middleware.py changed, reloading.
+[2026-04-13 17:04:55,298] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-13 17:11:39,470] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-13 17:11:47,059] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:11:47,499] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-13 17:11:47,507] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 304 0
+[2026-04-13 17:11:47,590] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-13 17:11:50,626] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:12:00,469] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-13 17:12:03,496] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:07,794] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:07,977] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:08,207] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:11,630] WARNING django.request Not Found: /auth/login/suresh
+[2026-04-13 17:12:11,636] WARNING django.server "GET /auth/login/suresh HTTP/1.1" 404 5953
+[2026-04-13 17:12:11,809] WARNING django.request Not Found: /favicon.ico
+[2026-04-13 17:12:11,818] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4732
+[2026-04-13 17:12:17,607] INFO django.server "GET /auth/login HTTP/1.1" 301 0
+[2026-04-13 17:12:17,651] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:19,756] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:22,548] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:23,836] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:12:24,181] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:12:24,270] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:12:24,270] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:12:24,386] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 17:12:24,603] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 17:12:24,612] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:12:25,071] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:25,139] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:12:25,140] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:12:25,140] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:12:25,161] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:12:25,169] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:12:25,184] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 17:12:25,240] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 17:12:25,965] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:26,040] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:12:26,041] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:12:26,041] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:12:26,074] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:12:26,112] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:12:26,135] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 17:12:26,140] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 17:12:26,311] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:26,476] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:12:26,486] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:12:26,500] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:12:26,522] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:26,523] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:12:26,533] INFO django.server - Broken pipe from ('127.0.0.1', 54017)
+[2026-04-13 17:12:26,587] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:12:26,587] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:12:26,588] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:12:26,614] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:12:26,628] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:12:26,651] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 17:12:26,687] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 17:12:26,690] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:26,793] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:12:26,794] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:12:26,794] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:12:26,831] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 17:12:26,835] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:12:26,849] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:12:26,852] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 17:12:26,973] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:27,039] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:12:27,040] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:12:27,050] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:12:27,066] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:12:27,114] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:12:27,115] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:27,150] INFO django.server - Broken pipe from ('127.0.0.1', 62720)
+[2026-04-13 17:12:27,174] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:12:27,178] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:12:27,204] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:12:27,210] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 17:12:27,232] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:12:27,236] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:12:27,257] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 17:12:27,365] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:27,460] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:12:27,461] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:12:27,481] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:12:27,495] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 17:12:27,516] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:12:27,521] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:12:27,544] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:27,548] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 17:12:27,700] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:12:27,700] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:12:27,701] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:12:27,726] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:12:27,741] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 17:12:27,766] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:27,768] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 17:12:27,769] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:12:27,838] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:12:27,840] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:12:27,840] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:12:27,910] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:12:27,911] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:27,953] INFO django.server - Broken pipe from ('127.0.0.1', 50243)
+[2026-04-13 17:12:27,966] INFO django.server - Broken pipe from ('127.0.0.1', 59735)
+[2026-04-13 17:12:28,001] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:12:28,001] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:12:28,031] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 17:12:28,050] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:12:28,068] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:12:28,070] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:28,111] INFO django.server - Broken pipe from ('127.0.0.1', 51321)
+[2026-04-13 17:12:28,115] INFO django.server - Broken pipe from ('127.0.0.1', 51018)
+[2026-04-13 17:12:28,156] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:12:28,157] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:12:28,182] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:12:28,235] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:28,237] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 17:12:28,297] INFO django.server - Broken pipe from ('127.0.0.1', 55864)
+[2026-04-13 17:12:28,315] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:12:28,335] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:12:28,383] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 17:12:28,402] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:12:28,420] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:12:28,432] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:12:28,469] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 17:12:50,098] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:51,103] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:51,471] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:51,770] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:51,969] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:52,366] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:52,586] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:52,781] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:52,954] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:54,082] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:54,405] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:12:54,406] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:12:54,406] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:12:54,448] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:12:54,454] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 17:12:54,469] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 17:12:54,472] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:12:55,287] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:12:55,359] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:12:55,361] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:12:55,362] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:12:55,391] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:12:55,411] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:12:55,434] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 17:12:55,445] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 17:13:08,283] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-13 17:13:11,831] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:13:12,863] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 17:13:12,890] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:13:12,919] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:13:12,941] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 17:13:13,142] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:13:13,167] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:13:13,238] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:13:14,164] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:13:14,237] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:13:14,239] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:13:14,253] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:13:14,261] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:13:14,276] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:13:14,303] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 17:13:14,374] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 17:13:15,021] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:13:15,102] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:13:15,103] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:13:15,110] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:13:15,131] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:13:15,150] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:13:15,178] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 17:13:15,191] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 17:13:15,685] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:13:15,755] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:13:15,757] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:13:15,767] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:13:15,786] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:13:15,811] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:13:15,834] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 17:13:15,839] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 17:13:16,403] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:13:16,467] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:13:16,467] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:13:16,474] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:13:16,499] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:13:16,523] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 17:13:16,524] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:13:16,548] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 17:13:17,080] WARNING webmaps Rate limit hit: login from f528764d...
+[2026-04-13 17:13:17,463] WARNING django.request Too Many Requests: /auth/login/
+[2026-04-13 17:13:17,468] WARNING django.server "GET /auth/login/ HTTP/1.1" 429 4801
+[2026-04-13 17:13:17,974] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:13:17,975] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:13:17,980] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:13:18,008] WARNING webmaps Rate limit hit: login from f528764d...
+[2026-04-13 17:13:18,011] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:13:18,027] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:13:18,034] WARNING django.request Too Many Requests: /auth/login/
+[2026-04-13 17:13:18,036] WARNING django.server "GET /auth/login/ HTTP/1.1" 429 4801
+[2026-04-13 17:13:18,220] INFO django.server - Broken pipe from ('127.0.0.1', 59944)
+[2026-04-13 17:13:18,402] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:13:18,413] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:13:18,449] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:13:18,468] INFO django.server "GET /static/images/429_illustration.png HTTP/1.1" 200 713899
+[2026-04-13 17:13:18,509] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:13:18,517] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:18:22,568] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:18:22,614] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-13 17:18:22,625] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-13 17:18:22,626] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 304 0
+[2026-04-13 17:20:53,277] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:20:53,338] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:20:53,340] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:20:53,359] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:20:53,365] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:20:53,369] INFO django.server - Broken pipe from ('127.0.0.1', 60369)
+[2026-04-13 17:20:53,406] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:20:53,424] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:20:53,452] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 17:20:53,458] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:20:53,463] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:20:53,470] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:20:53,476] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 17:20:53,540] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:20:53,601] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:20:53,608] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:20:53,630] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 17:20:53,640] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:20:53,643] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:20:53,647] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:20:53,653] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 17:20:53,750] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:20:53,812] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:20:53,812] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:20:53,814] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:20:53,827] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:20:53,835] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:20:53,844] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 17:20:53,846] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 17:20:53,951] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:20:54,016] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:20:54,024] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:20:54,024] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:20:54,033] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:20:54,043] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:20:54,050] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 17:20:54,051] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 17:20:54,111] WARNING webmaps Rate limit hit: login from f528764d...
+[2026-04-13 17:20:54,131] WARNING django.request Too Many Requests: /auth/login/
+[2026-04-13 17:20:54,136] WARNING django.server "GET /auth/login/ HTTP/1.1" 429 8185
+[2026-04-13 17:20:54,213] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:20:54,213] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:20:54,217] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:20:54,227] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:20:54,236] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:20:54,250] INFO django.server "GET /static/images/429_illustration.png HTTP/1.1" 200 713899
+[2026-04-13 17:20:54,313] WARNING webmaps Rate limit hit: login from f528764d...
+[2026-04-13 17:20:54,332] WARNING django.request Too Many Requests: /auth/login/
+[2026-04-13 17:20:54,339] WARNING django.server "GET /auth/login/ HTTP/1.1" 429 8185
+[2026-04-13 17:20:54,421] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:20:54,421] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:20:54,427] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:20:54,457] INFO django.server "GET /static/images/429_illustration.png HTTP/1.1" 200 713899
+[2026-04-13 17:20:54,473] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:20:54,481] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:20:54,501] WARNING webmaps Rate limit hit: login from f528764d...
+[2026-04-13 17:20:54,517] WARNING django.request Too Many Requests: /auth/login/
+[2026-04-13 17:20:54,519] WARNING django.server "GET /auth/login/ HTTP/1.1" 429 8185
+[2026-04-13 17:20:54,560] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:20:54,569] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:20:54,571] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:20:54,581] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:20:54,589] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:20:54,599] INFO django.server "GET /static/images/429_illustration.png HTTP/1.1" 200 713899
+[2026-04-13 17:20:54,703] WARNING webmaps Rate limit hit: login from f528764d...
+[2026-04-13 17:20:54,721] WARNING django.request Too Many Requests: /auth/login/
+[2026-04-13 17:20:54,723] WARNING django.server "GET /auth/login/ HTTP/1.1" 429 8185
+[2026-04-13 17:20:54,769] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:20:54,777] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:20:54,778] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:20:54,791] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:20:54,798] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:20:54,804] INFO django.server "GET /static/images/429_illustration.png HTTP/1.1" 200 713899
+[2026-04-13 17:21:12,303] WARNING webmaps Rate limit hit: login from f528764d...
+[2026-04-13 17:21:12,314] WARNING django.request Too Many Requests: /auth/login/
+[2026-04-13 17:21:12,316] WARNING django.server "GET /auth/login/ HTTP/1.1" 429 8185
+[2026-04-13 17:21:14,176] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:21:16,540] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:21:16,731] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:21:16,911] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:21:17,111] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:21:17,413] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:21:17,658] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:21:17,884] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:21:18,068] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:21:18,440] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:21:18,607] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:21:18,813] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:21:18,986] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:21:19,182] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:21:19,372] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:21:19,591] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:21:19,950] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:21:20,152] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:21:20,496] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:21:20,698] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:21:20,852] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:21:21,060] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:21:21,424] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:21:23,829] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-13 17:21:27,813] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9551
+[2026-04-13 17:21:27,878] INFO django.server "GET /static/images/register_illustration.png HTTP/1.1" 304 0
+[2026-04-13 17:21:29,785] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9551
+[2026-04-13 17:21:29,957] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9551
+[2026-04-13 17:21:30,092] WARNING webmaps Rate limit hit: register from f528764d...
+[2026-04-13 17:21:30,125] WARNING django.request Too Many Requests: /auth/register/
+[2026-04-13 17:21:30,133] WARNING django.server "GET /auth/register/ HTTP/1.1" 429 8191
+[2026-04-13 17:21:30,275] WARNING webmaps Rate limit hit: register from f528764d...
+[2026-04-13 17:21:30,317] WARNING django.request Too Many Requests: /auth/register/
+[2026-04-13 17:21:30,325] WARNING django.server "GET /auth/register/ HTTP/1.1" 429 8191
+[2026-04-13 17:21:30,456] WARNING webmaps Rate limit hit: register from f528764d...
+[2026-04-13 17:21:30,487] WARNING django.request Too Many Requests: /auth/register/
+[2026-04-13 17:21:30,491] WARNING django.server "GET /auth/register/ HTTP/1.1" 429 8191
+[2026-04-13 17:21:37,206] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:21:48,327] INFO django.server "GET /api/maps/search/?q=Chandivali%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 197
+[2026-04-13 17:21:56,174] INFO django.server "GET /api/maps/search/?q=Chandivali%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 197
+[2026-04-13 17:22:10,329] INFO django.server "GET /api/maps/search/?q=Surat%2C+Gujarat&category=&rating=&distance=10&price= HTTP/1.1" 200 155
+[2026-04-13 17:22:41,579] INFO django.server "GET /api/maps/search/?q=sakinaka&category=&rating=&distance=10&price= HTTP/1.1" 200 237
+[2026-04-13 17:23:26,936] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\WebMaps\settings.py changed, reloading.
+[2026-04-13 17:23:31,794] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-13 17:23:36,649] WARNING django.request Not Found: /suresh
+[2026-04-13 17:23:36,658] WARNING django.server "GET /suresh HTTP/1.1" 404 4717
+[2026-04-13 17:23:36,820] WARNING django.request Not Found: /favicon.ico
+[2026-04-13 17:23:36,827] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4732
+[2026-04-13 17:23:48,707] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\WebMaps\settings.py changed, reloading.
+[2026-04-13 17:24:10,461] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-13 17:24:16,755] WARNING django.request Not Found: /suresh
+[2026-04-13 17:24:16,760] WARNING django.server "GET /suresh HTTP/1.1" 404 179
+[2026-04-13 17:24:19,125] WARNING django.request Not Found: /suresh
+[2026-04-13 17:24:19,145] WARNING django.server "GET /suresh HTTP/1.1" 404 179
+[2026-04-13 17:26:59,261] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\middleware\middleware.py changed, reloading.
+[2026-04-13 17:27:04,832] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-13 17:27:16,513] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\WebMaps\settings.py changed, reloading.
+[2026-04-13 17:27:20,384] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-13 17:27:37,676] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\WebMaps\urls.py changed, reloading.
+[2026-04-13 17:27:44,004] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-13 17:28:44,199] WARNING django.request Not Found: /suresh
+[2026-04-13 17:28:44,202] WARNING django.server "GET /suresh HTTP/1.1" 404 5810
+[2026-04-13 17:28:44,291] WARNING django.request Not Found: /static/images/404_illustration.png
+[2026-04-13 17:28:44,299] WARNING django.request Not Found: /static/css/main.css
+[2026-04-13 17:28:44,301] WARNING django.server "GET /static/images/404_illustration.png HTTP/1.1" 404 5866
+[2026-04-13 17:28:44,301] WARNING django.server "GET /static/css/main.css HTTP/1.1" 404 5836
+[2026-04-13 17:28:56,732] WARNING django.request Not Found: /suresh
+[2026-04-13 17:28:56,733] WARNING django.server "GET /suresh HTTP/1.1" 404 5810
+[2026-04-13 17:28:56,790] WARNING django.request Not Found: /static/css/main.css
+[2026-04-13 17:28:56,801] WARNING django.server "GET /static/css/main.css HTTP/1.1" 404 5836
+[2026-04-13 17:28:56,811] WARNING django.request Not Found: /static/js/theme_init.js
+[2026-04-13 17:28:56,815] WARNING django.request Not Found: /static/images/404_illustration.png
+[2026-04-13 17:28:56,817] WARNING django.server "GET /static/images/404_illustration.png HTTP/1.1" 404 5866
+[2026-04-13 17:28:56,817] WARNING django.server "GET /static/js/theme_init.js HTTP/1.1" 404 5844
+[2026-04-13 17:28:56,831] WARNING django.request Not Found: /static/js/main.js
+[2026-04-13 17:28:56,843] WARNING django.server "GET /static/js/main.js HTTP/1.1" 404 5832
+[2026-04-13 17:28:56,852] WARNING django.request Not Found: /static/js/analytics.js
+[2026-04-13 17:28:56,863] WARNING django.request Not Found: /static/js/modals.js
+[2026-04-13 17:28:56,864] WARNING django.server "GET /static/js/analytics.js HTTP/1.1" 404 5842
+[2026-04-13 17:28:56,865] WARNING django.server "GET /static/js/modals.js HTTP/1.1" 404 5836
+[2026-04-13 17:31:11,339] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\WebMaps\urls.py changed, reloading.
+[2026-04-13 17:31:14,668] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-13 17:31:52,747] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\middleware\middleware.py changed, reloading.
+[2026-04-13 17:31:58,012] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-13 17:33:02,512] WARNING django.request Not Found: /suresh
+[2026-04-13 17:33:02,513] WARNING django.server "GET /suresh HTTP/1.1" 404 5810
+[2026-04-13 17:33:02,573] WARNING django.request Not Found: /static/css/main.css
+[2026-04-13 17:33:02,578] WARNING django.request Not Found: /static/js/theme_init.js
+[2026-04-13 17:33:02,579] WARNING django.server "GET /static/css/main.css HTTP/1.1" 404 5836
+[2026-04-13 17:33:02,580] WARNING django.server "GET /static/js/theme_init.js HTTP/1.1" 404 5844
+[2026-04-13 17:33:02,597] WARNING django.request Not Found: /static/images/404_illustration.png
+[2026-04-13 17:33:02,600] WARNING django.request Not Found: /static/js/main.js
+[2026-04-13 17:33:02,601] WARNING django.server "GET /static/js/main.js HTTP/1.1" 404 5832
+[2026-04-13 17:33:02,601] WARNING django.server "GET /static/images/404_illustration.png HTTP/1.1" 404 5866
+[2026-04-13 17:33:02,633] WARNING django.request Not Found: /static/js/modals.js
+[2026-04-13 17:33:02,641] WARNING django.request Not Found: /static/js/analytics.js
+[2026-04-13 17:33:02,643] WARNING django.server "GET /static/js/modals.js HTTP/1.1" 404 5836
+[2026-04-13 17:33:02,644] WARNING django.server "GET /static/js/analytics.js HTTP/1.1" 404 5842
+[2026-04-13 17:33:04,678] WARNING django.request Not Found: /suresh
+[2026-04-13 17:33:04,680] WARNING django.server "GET /suresh HTTP/1.1" 404 5810
+[2026-04-13 17:33:04,744] WARNING django.request Not Found: /static/js/theme_init.js
+[2026-04-13 17:33:04,749] WARNING django.request Not Found: /static/js/main.js
+[2026-04-13 17:33:04,756] WARNING django.request Not Found: /static/css/main.css
+[2026-04-13 17:33:04,758] WARNING django.request Not Found: /static/images/404_illustration.png
+[2026-04-13 17:33:04,760] WARNING django.server "GET /static/js/theme_init.js HTTP/1.1" 404 5844
+[2026-04-13 17:33:04,760] WARNING django.server "GET /static/js/main.js HTTP/1.1" 404 5832
+[2026-04-13 17:33:04,761] WARNING django.server "GET /static/css/main.css HTTP/1.1" 404 5836
+[2026-04-13 17:33:04,762] WARNING django.server "GET /static/images/404_illustration.png HTTP/1.1" 404 5866
+[2026-04-13 17:33:04,782] WARNING django.request Not Found: /static/js/modals.js
+[2026-04-13 17:33:04,785] WARNING django.request Not Found: /static/js/analytics.js
+[2026-04-13 17:33:04,789] WARNING django.server "GET /static/js/modals.js HTTP/1.1" 404 5836
+[2026-04-13 17:33:04,791] WARNING django.server "GET /static/js/analytics.js HTTP/1.1" 404 5842
+[2026-04-13 17:33:19,983] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-13 17:33:26,247] WARNING django.request Not Found: /suresh
+[2026-04-13 17:33:26,249] WARNING django.server "GET /suresh HTTP/1.1" 404 5810
+[2026-04-13 17:33:26,309] WARNING django.request Not Found: /static/css/main.css
+[2026-04-13 17:33:26,312] WARNING django.request Not Found: /static/js/theme_init.js
+[2026-04-13 17:33:26,313] WARNING django.server "GET /static/css/main.css HTTP/1.1" 404 5836
+[2026-04-13 17:33:26,314] WARNING django.server "GET /static/js/theme_init.js HTTP/1.1" 404 5844
+[2026-04-13 17:33:26,345] WARNING django.request Not Found: /static/images/404_illustration.png
+[2026-04-13 17:33:26,347] WARNING django.request Not Found: /static/js/main.js
+[2026-04-13 17:33:26,348] WARNING django.server "GET /static/images/404_illustration.png HTTP/1.1" 404 5866
+[2026-04-13 17:33:26,349] WARNING django.server "GET /static/js/main.js HTTP/1.1" 404 5832
+[2026-04-13 17:33:26,364] WARNING django.request Not Found: /static/js/modals.js
+[2026-04-13 17:33:26,366] WARNING django.request Not Found: /static/js/analytics.js
+[2026-04-13 17:33:26,367] WARNING django.server "GET /static/js/modals.js HTTP/1.1" 404 5836
+[2026-04-13 17:33:26,369] WARNING django.server "GET /static/js/analytics.js HTTP/1.1" 404 5842
+[2026-04-13 17:33:31,124] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:33:31,175] WARNING django.request Not Found: /static/css/main.css
+[2026-04-13 17:33:31,190] WARNING django.server "GET /static/css/main.css HTTP/1.1" 404 5836
+[2026-04-13 17:33:31,195] WARNING django.request Not Found: /static/js/theme_init.js
+[2026-04-13 17:33:31,201] WARNING django.request Not Found: /static/js/main.js
+[2026-04-13 17:33:31,203] WARNING django.server "GET /static/js/theme_init.js HTTP/1.1" 404 5844
+[2026-04-13 17:33:31,206] WARNING django.server "GET /static/js/main.js HTTP/1.1" 404 5832
+[2026-04-13 17:33:31,259] WARNING django.request Not Found: /static/js/modals.js
+[2026-04-13 17:33:31,263] WARNING django.request Not Found: /static/js/analytics.js
+[2026-04-13 17:33:31,264] WARNING django.server "GET /static/js/analytics.js HTTP/1.1" 404 5842
+[2026-04-13 17:33:31,265] WARNING django.server "GET /static/js/modals.js HTTP/1.1" 404 5836
+[2026-04-13 17:33:55,216] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-13 17:33:59,688] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:34:00,227] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 17:34:00,229] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 17:34:00,594] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 17:34:00,762] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 17:34:00,806] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 17:34:07,265] WARNING django.request Not Found: /suresh
+[2026-04-13 17:34:07,272] WARNING django.server "GET /suresh HTTP/1.1" 404 5810
+[2026-04-13 17:34:07,364] INFO django.server "GET /static/images/404_illustration.png HTTP/1.1" 200 750533
+[2026-04-13 17:34:08,003] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-13 17:36:08,555] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-04-13 17:36:08,562] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5894
+[2026-04-13 17:36:30,454] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 17:36:34,074] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 17:36:34,124] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-13 17:36:34,124] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 304 0
+[2026-04-13 19:35:42,614] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9551
+[2026-04-13 19:35:42,675] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-13 19:35:42,686] INFO django.server "GET /static/images/register_illustration.png HTTP/1.1" 304 0
+[2026-04-13 19:35:42,697] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-13 19:36:56,757] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 19:36:56,854] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 304 0
+[2026-04-13 19:39:35,827] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 19:39:35,922] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 23738
+[2026-04-13 19:39:35,979] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 19:39:36,044] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 19:39:36,174] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 19:39:36,271] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 19:39:36,286] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 19:39:36,310] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 19:46:16,695] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 19:46:16,740] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10726
+[2026-04-13 19:46:24,973] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6764
+[2026-04-13 19:46:25,026] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-13 19:46:26,000] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9551
+[2026-04-13 19:47:11,320] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9797
+[2026-04-13 19:47:11,384] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10726
+[2026-04-13 19:47:11,415] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 19:47:11,417] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 19:47:11,445] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 19:47:11,462] INFO django.server "GET /static/images/register_illustration.png HTTP/1.1" 200 649560
+[2026-04-13 19:47:11,472] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 19:47:11,596] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 19:47:58,508] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9797
+[2026-04-13 19:47:58,572] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10726
+[2026-04-13 19:47:58,594] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 19:47:58,596] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 19:47:58,623] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 19:47:58,645] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 19:47:58,648] INFO django.server "GET /static/images/register_illustration.png HTTP/1.1" 200 649560
+[2026-04-13 19:47:58,681] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 19:48:01,759] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9797
+[2026-04-13 19:48:01,801] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10726
+[2026-04-13 19:48:01,820] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 19:48:01,820] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 19:48:01,838] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 19:48:01,844] INFO django.server "GET /static/images/register_illustration.png HTTP/1.1" 200 649560
+[2026-04-13 19:48:01,851] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 19:48:01,859] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 19:48:26,966] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6810
+[2026-04-13 19:48:27,026] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-13 19:52:03,992] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9797
+[2026-04-13 19:52:04,382] INFO django.server "GET /static/js/main.js HTTP/1.1" 304 0
+[2026-04-13 19:52:04,387] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10822
+[2026-04-13 19:52:04,407] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-04-13 19:52:04,454] INFO django.server "GET /static/js/modals.js HTTP/1.1" 304 0
+[2026-04-13 19:52:04,492] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 304 0
+[2026-04-13 19:52:04,507] INFO django.server "GET /static/images/register_illustration.png HTTP/1.1" 200 649560
+[2026-04-13 19:52:04,540] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 19:52:35,897] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6810
+[2026-04-13 19:52:35,985] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 19:52:35,989] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10822
+[2026-04-13 19:52:36,001] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 19:52:36,016] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 19:52:36,036] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 19:52:36,054] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 19:52:36,075] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 19:52:37,275] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9797
+[2026-04-13 19:53:58,107] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6810
+[2026-04-13 19:53:58,173] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-13 19:53:59,550] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9797
+[2026-04-13 19:54:00,800] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6810
+[2026-04-13 19:54:01,764] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9797
+[2026-04-13 19:54:03,430] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6810
+[2026-04-13 19:54:04,034] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9797
+[2026-04-13 19:54:05,802] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6810
+[2026-04-13 19:56:34,198] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6810
+[2026-04-13 19:56:34,300] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10938
+[2026-04-13 19:56:34,300] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 19:56:34,319] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 19:56:34,351] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 19:56:34,370] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 19:56:34,391] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 19:56:34,403] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 19:56:46,618] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6810
+[2026-04-13 19:56:46,678] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10938
+[2026-04-13 19:56:46,703] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 19:56:46,704] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 19:56:46,718] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 19:56:46,734] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 19:56:46,749] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 19:56:46,757] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 19:57:22,567] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6810
+[2026-04-13 19:57:22,706] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10938
+[2026-04-13 19:57:22,799] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 20:03:48,180] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6864
+[2026-04-13 20:03:48,264] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 11069
+[2026-04-13 20:03:48,271] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 20:03:48,287] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 20:03:48,329] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 20:03:48,331] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 20:03:48,352] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 20:03:48,355] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 20:03:57,314] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6864
+[2026-04-13 20:03:57,362] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 11069
+[2026-04-13 20:03:57,433] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 20:03:57,435] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 20:03:57,450] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 20:03:57,464] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 20:03:57,480] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 4516
+[2026-04-13 20:03:57,483] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-13 20:04:22,496] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-13 20:05:15,129] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9851
+[2026-04-13 20:05:15,726] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 11069
+[2026-04-13 20:05:51,760] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6864
+[2026-04-13 20:05:51,900] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-13 20:08:33,143] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9851
+[2026-04-13 20:08:33,235] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-13 20:09:29,045] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6864
+[2026-04-13 20:09:29,109] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-13 20:10:10,489] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9851
+[2026-04-13 20:11:40,532] INFO django.server "GET /auth/login/ HTTP/1.1" 200 6864
+[2026-04-13 20:11:40,596] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-13 20:11:40,614] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-13 20:12:45,754] INFO django.server "GET /auth/register/ HTTP/1.1" 200 9851
+[2026-04-13 20:12:45,846] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-13 20:12:45,867] INFO django.server "GET /static/images/register_illustration.png HTTP/1.1" 304 0

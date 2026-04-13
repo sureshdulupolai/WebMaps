@@ -1,0 +1,504 @@
+ROLE:
+Act as a Senior Django Architect and Security Engineer.
+
+Build a production-ready modular Django web application named "WebMaps" using best practices in system design, security, performance, and maintainability.
+
+IMPORTANT RULES:
+
+1. The Django project is already created.
+   Project name: WebMaps
+
+Existing commands already executed:
+
+django-admin startproject WebMaps
+env\scripts\activate
+cd WebMaps
+
+2. Do NOT run commands automatically except creating Django apps.
+3. At the end, provide a list of commands that I will run manually.
+4. Do NOT run tests automatically.
+5. Do NOT store JWT tokens in local storage.
+6. Use HTTPOnly cookies for authentication tokens.
+7. Use production-level security practices.
+
+-----------------------------------------------------
+
+PROJECT PURPOSE:
+
+Create a platform where users can discover websites based on geographic location using maps.
+
+Hosts can register their websites and services.
+
+Admins approve listings before they become public.
+
+System must be secure, scalable, modular, and optimized for low server load.
+
+-----------------------------------------------------
+
+USER ROLES:
+
+1. CUSTOMER (Normal User)
+
+Can:
+
+- Search websites by location
+- Search by route (From → To)
+- Filter listings
+- View website
+- View details
+- Open map route
+
+System must track:
+
+- Number of clicks
+- Unique visitors
+- Time spent
+- Map usage time
+
+Tracking rules:
+
+- Track locally first
+- Send data to server every 5 minutes
+- Also send on browser close
+
+-----------------------------------------------------
+
+2. HOST
+
+Can:
+
+Register website listing.
+
+Must provide:
+
+- Website URL
+- Company Name
+- Short Description (300 characters)
+- Service details file
+- Coordinates (required)
+- Location name (optional)
+
+Upload service file example:
+
+Car Wash = 200rs
+Car PPF = 90000rs
+Car PPF and Wash = 91000rs
+
+System must:
+
+- Parse file
+- Ignore invalid lines
+- Auto format into table
+
+Table format:
+
+Category | Price
+
+Car Wash | 200rs
+Car PPF | 90000rs
+Car PPF and Wash | 91000rs
+
+Rules:
+
+- First letter must be capitalized automatically
+- Host can edit services
+- Host can add new services
+- Data saved to database
+
+Host Dashboard must show:
+
+- Click count
+- View count
+- Map usage count
+- Remaining subscription days
+- Update count
+
+Update limit:
+
+Maximum 2 updates allowed.
+
+-----------------------------------------------------
+
+3. DEVELOPER ADMIN
+
+Can:
+
+- View all users
+- View all listings
+- Approve listings
+- Reject listings
+- View analytics
+- View logs
+- View errors
+
+Admin must have custom dashboard UI.
+
+-----------------------------------------------------
+
+APP STRUCTURE:
+
+Create Django apps:
+
+auth_app
+users
+hosts
+adminpanel
+maps
+payments
+analytics
+middleware
+errors
+notifications
+utils
+
+Each app must include:
+
+models.py
+views.py
+urls.py
+services.py
+validators.py
+permissions.py
+signals.py
+admin.py
+
+-----------------------------------------------------
+
+DATABASE RULES:
+
+Use:
+
+UUID as primary key
+
+Add to every model:
+
+created_at
+updated_at
+deleted_at
+
+Do NOT use integer auto increment IDs.
+
+-----------------------------------------------------
+
+AUTHENTICATION SECURITY:
+
+Implement JWT authentication.
+
+Access token expiry:
+
+15 minutes
+
+Refresh token expiry:
+
+6 months
+
+Store tokens in:
+
+HTTPOnly cookies
+
+NOT:
+
+localStorage
+
+Enable:
+
+- Password hashing (Argon2 or bcrypt)
+- Email verification
+- OTP verification
+- Password reset token expiration
+
+Login rate limit:
+
+5 attempts per minute
+
+-----------------------------------------------------
+
+SECURITY PROTECTION:
+
+Protect against:
+
+XSS
+CSRF
+SQL Injection
+Command Injection
+File Upload Attacks
+Session Hijacking
+Brute Force
+Bot Attacks
+Scraping
+
+-----------------------------------------------------
+
+ABUSE PROTECTION:
+
+Add rate limiting for:
+
+Login
+Register
+API endpoints
+Account creation
+
+Use middleware.
+
+-----------------------------------------------------
+
+INPUT VALIDATION:
+
+Validate all:
+
+Forms
+APIs
+File uploads
+Query parameters
+
+Reject:
+
+Invalid file types
+Scripts
+SQL commands
+Dangerous input
+
+-----------------------------------------------------
+
+FILE UPLOAD RULES:
+
+Allowed:
+
+txt
+csv
+pdf
+
+Maximum size:
+
+5MB
+
+Validate file content.
+
+-----------------------------------------------------
+
+LOCATION RULES:
+
+Coordinates:
+
+Required
+
+Location name:
+
+Optional
+
+Rule:
+
+Two listings cannot share same coordinates.
+
+-----------------------------------------------------
+
+MAP INTEGRATION:
+
+Use:
+
+Google Maps API
+
+Features:
+
+Route generation
+Distance calculation
+Location markers
+
+-----------------------------------------------------
+
+SEARCH FEATURE:
+
+User can type:
+
+"Sakinaka to Andheri"
+
+System must:
+
+Detect start location
+Detect end location
+
+Show listings along route.
+
+-----------------------------------------------------
+
+LOCAL STORAGE TRACKING:
+
+Track:
+
+Map usage time
+Clicks
+Session duration
+
+Store locally.
+
+Send data to server:
+
+Every 5 minutes
+
+OR
+
+On browser close.
+
+-----------------------------------------------------
+
+PAYMENT SYSTEM:
+
+Create payments module.
+
+Integrate:
+
+Razorpay (test mode only)
+
+Subscription options:
+
+1 month
+3 months
+6 months
+1 year
+3 years
+
+Pricing rule:
+
+Server cost + 50 rupees platform fee.
+
+-----------------------------------------------------
+
+APPROVAL SYSTEM:
+
+Workflow:
+
+Host submits listing.
+
+Admin reviews.
+
+Admin approves.
+
+Then:
+
+Listing becomes visible.
+
+-----------------------------------------------------
+
+FREE TRIAL:
+
+3 days free.
+
+Trial starts only after admin approval.
+
+-----------------------------------------------------
+
+NOTIFICATION SYSTEM:
+
+Notify host:
+
+3 days before subscription expiry.
+
+Trigger notification:
+
+On login.
+
+-----------------------------------------------------
+
+CUSTOM ERROR SYSTEM:
+
+Create Error model.
+
+Store:
+
+Error message
+URL path
+Timestamp
+
+Rule:
+
+If same error occurs again,
+do NOT store duplicate.
+
+Only show custom error page.
+
+-----------------------------------------------------
+
+MIDDLEWARE:
+
+Create custom middleware:
+
+SecurityMiddleware
+RateLimitMiddleware
+BotProtectionMiddleware
+ErrorCaptureMiddleware
+ActivityTrackingMiddleware
+
+-----------------------------------------------------
+
+ANALYTICS:
+
+Track:
+
+Clicks
+Views
+Unique visitors
+Map usage
+Time spent
+
+-----------------------------------------------------
+
+DASHBOARD:
+
+Host dashboard must show:
+
+Total clicks
+Total views
+Subscription status
+Remaining days
+Update count
+
+-----------------------------------------------------
+
+UNIQUE ID SYSTEM:
+
+Generate custom ID using:
+
+Company name
+Title
+Random number
+
+Example:
+
+carwash-mumbai-48392
+
+-----------------------------------------------------
+
+UI DESIGN:
+
+Use:
+
+Glassmorphism style
+
+Requirements:
+
+Blur background
+Transparent cards
+Rounded corners
+Soft shadows
+Responsive design
+
+Do NOT use browser default alerts.
+
+Use custom modal alerts.
+
+-----------------------------------------------------
+
+FILES TO GENERATE:
+
+README.md
+SECURITY.md
+DEPLOYMENT.md
+ARCHITECTURE.md
+
+-----------------------------------------------------
+
+FINAL TASK:
+
+At the end, provide only the commands that I must run manually.
+
+Do NOT execute them automatically.

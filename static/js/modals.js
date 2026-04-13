@@ -1,0 +1,191 @@
+/**
+ * WebMaps — Custom Modal System
+ * Replaces browser's window.alert(), window.confirm(), window.prompt()
+ */
+
+class WebMapsModal {
+  constructor() {
+    this._overlay = null;
+    this._resolveCallback = null;
+    this._init();
+  }
+
+  _init() {
+    const div = document.createElement('div');
+    div.id = 'wm-modal-overlay';
+    div.className = 'modal-overlay';
+    div.innerHTML = `
+      <div class="modal-box" role="dialog" aria-modal="true">
+        <div class="modal-icon" id="wm-modal-icon"></div>
+        <div class="modal-title" id="wm-modal-title"></div>
+        <div class="modal-message" id="wm-modal-message"></div>
+        <div class="modal-actions" id="wm-modal-actions"></div>
+      </div>
+    `;
+    document.body.appendChild(div);
+    this._overlay = div;
+
+    // Close on overlay click
+    div.addEventListener('click', (e) => {
+      if (e.target === div) this._close(null);
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this._overlay.classList.contains('active')) {
+        this._close(null);
+      }
+    });
+  }
+
+  _open(type, title, message, buttons) {
+    return new Promise((resolve) => {
+      this._resolveCallback = resolve;
+
+      const iconMap = {
+        success: { ico: '✓', cls: 'success' },
+        error:   { ico: '✗', cls: 'error' },
+        warning: { ico: '⚠', cls: 'warning' },
+        info:    { ico: 'ℹ', cls: 'info' },
+        confirm: { ico: '?', cls: 'warning' },
+      };
+
+      const { ico, cls } = iconMap[type] || iconMap.info;
+
+      document.getElementById('wm-modal-icon').innerHTML = ico;
+      document.getElementById('wm-modal-icon').className = `modal-icon ${cls}`;
+      document.getElementById('wm-modal-title').textContent = title;
+      document.getElementById('wm-modal-message').textContent = message;
+
+      const actionsEl = document.getElementById('wm-modal-actions');
+      actionsEl.innerHTML = '';
+
+      buttons.forEach(({ label, value, variant }) => {
+        const btn = document.createElement('button');
+        btn.className = `btn btn-${variant || 'outline'}`;
+        btn.textContent = label;
+        btn.addEventListener('click', () => this._close(value));
+        actionsEl.appendChild(btn);
+      });
+
+      this._overlay.classList.add('active');
+    });
+  }
+
+  _close(value) {
+    this._overlay.classList.remove('active');
+    if (this._resolveCallback) {
+      this._resolveCallback(value);
+      this._resolveCallback = null;
+    }
+  }
+
+  alert(message, title = 'Notice', type = 'info') {
+    return this._open(type, title, message, [
+      { label: 'OK', value: true, variant: 'primary' }
+    ]);
+  }
+
+  success(message, title = 'Success') {
+    return this._open('success', title, message, [
+      { label: 'Continue', value: true, variant: 'success' }
+    ]);
+  }
+
+  error(message, title = 'Error') {
+    return this._open('error', title, message, [
+      { label: 'OK', value: false, variant: 'danger' }
+    ]);
+  }
+
+  warning(message, title = 'Warning') {
+    return this._open('warning', title, message, [
+      { label: 'OK', value: true, variant: 'primary' }
+    ]);
+  }
+
+  confirm(message, title = 'Are you sure?') {
+    return this._open('confirm', title, message, [
+      { label: 'Cancel', value: false, variant: 'outline' },
+      { label: 'Confirm', value: true, variant: 'danger' }
+    ]);
+  }
+}
+
+// Global instance
+const Modal = new WebMapsModal();
+window.Modal = Modal;
+
+// ─── NOTIFICATIONS DROPDOWN ───────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  const bell = document.getElementById('notif-bell');
+  const dropdown = document.getElementById('notif-dropdown');
+  const badge = document.getElementById('notif-badge');
+
+  if (!bell || !dropdown) return;
+
+  bell.addEventListener('click', async (e) => {
+    e.stopPropagation();
+    dropdown.classList.toggle('open');
+    if (dropdown.classList.contains('open')) {
+      await loadNotifications();
+    }
+  });
+
+  document.addEventListener('click', () => {
+    if (dropdown) dropdown.classList.remove('open');
+  });
+
+  async function loadNotifications() {
+    try {
+      const res = await fetch('/notifications/', {
+        headers: { 'X-CSRFToken': getCsrf() }
+      });
+      if (!res.ok) return;
+      const data = await res.json();
+      const notifs = data.notifications || [];
+      const unread = notifs.filter(n => !n.is_read);
+
+      // Update badge
+      if (badge) {
+        badge.textContent = unread.length;
+        badge.style.display = unread.length > 0 ? 'grid' : 'none';
+      }
+
+      // Render list
+      const list = document.getElementById('notif-list');
+      if (!list) return;
+
+      if (notifs.length === 0) {
+        list.innerHTML = '<div class="notif-empty">No notifications</div>';
+        return;
+      }
+
+      list.innerHTML = notifs.map(n => `
+        <div class="notif-item ${n.is_read ? '' : 'unread'}">
+          <div>${n.message}</div>
+          <div class="notif-time">${new Date(n.created_at).toLocaleString()}</div>
+        </div>
+      `).join('');
+
+      // Mark as read
+      if (unread.length > 0) {
+        await fetch('/notifications/mark-read/', {
+          method: 'POST',
+          headers: { 'X-CSRFToken': getCsrf() }
+        });
+        if (badge) badge.style.display = 'none';
+      }
+    } catch (e) {
+      console.error('Notification load error:', e);
+    }
+  }
+});
+
+// ─── CSRF HELPER ─────────────────────────────────────
+function getCsrf() {
+  const match = document.cookie.match(/csrftoken=([^;]+)/);
+  return match ? match[1] : '';
+}
+
+window.getCsrf = getCsrf;

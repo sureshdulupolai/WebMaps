@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block title %}My Profile — WebMaps{% endblock %}
+
+{% block content %}
+<div class="main-content container mt-10 mb-10">
+  <div class="card" style="max-width: 800px; margin: 0 auto;">
+    <div class="page-header mb-8">
+      <h1 class="page-title">Personal Profile</h1>
+      <p class="page-subtitle">Manage your account details and platform preferences.</p>
+    </div>
+
+    <!-- Edit Profile Form -->
+    <form method="post" action="{% url 'users:edit_profile' %}" class="mb-10">
+      {% csrf_token %}
+      <div class="grid grid-2 gap-6 mb-6">
+        <div class="form-group">
+          <label class="form-label">Username</label>
+          <input type="text" class="form-control" value="{{ user.username }}" disabled style="opacity: 0.6; cursor: not-allowed;">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-control" value="{{ user.email }}" disabled style="opacity: 0.6; cursor: not-allowed;">
+        </div>
+      </div>
+      <div class="grid grid-2 gap-6 mb-6">
+        <div class="form-group">
+          <label class="form-label">First Name</label>
+          <input type="text" name="first_name" class="form-control" placeholder="Your first name" value="{{ user.first_name }}">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Last Name</label>
+          <input type="text" name="last_name" class="form-control" placeholder="Your last name" value="{{ user.last_name }}">
+        </div>
+      </div>
+      <div class="form-group mb-8">
+        <label class="form-label">Contact Phone</label>
+        <input type="tel" name="phone" class="form-control" placeholder="Line for notifications" value="{{ user.phone }}">
+      </div>
+      <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+
+    <div style="height: 1px; background: var(--border); margin-bottom: var(--space-10);"></div>
+
+    <!-- Recent Reviews Summary -->
+    <div class="mb-10">
+      <div class="d-flex justify-between align-center mb-6">
+        <h2 class="font-weight-bold text-lg">Your Feedback</h2>
+        <a href="{% url 'users:my_reviews' %}" class="btn-text text-sm">View All History</a>
+      </div>
+      {% if recent_reviews %}
+        <div class="grid grid-2 gap-4">
+          {% for rev in recent_reviews %}
+            <div class="p-4" style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md);">
+              <div class="d-flex justify-between mb-2">
+                <span class="font-weight-bold text-sm">{{ rev.listing.company_name }}</span>
+                <span class="badge badge-trial">{{ rev.rating }}.0</span>
+              </div>
+              <p class="text-xs text-secondary line-clamp-2">{{ rev.comment }}</p>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="text-center py-8 bg-surface border-dashed border rounded-xl">
+          <p class="text-secondary text-sm">You haven't shared any feedback yet.</p>
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- Danger Zone -->
+    <div class="p-6" style="background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: var(--radius-md);">
+      <h3 class="font-weight-bold text-danger mb-2">Danger Zone</h3>
+      <p class="text-sm text-secondary mb-4">Once you delete your account, there is no going back. All listing interactions and reviews will be permanently removed.</p>
+      <form method="post" action="{% url 'users:delete_account' %}" onsubmit="return confirm('Permanently delete your account? This action cannot be undone.');">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline btn-sm" style="color: var(--danger); border-color: var(--danger);">Delete My Account</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

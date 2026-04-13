@@ -1,0 +1,225 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Too Many Requests — WebMaps{% endblock %}
+
+{% block content %}
+<div class="error-page-wrapper">
+  <div class="error-page-card">
+
+    <!-- Illustration -->
+    <div class="error-illustration-wrap error-429-glow">
+      <img src="{% static 'images/429_illustration.png' %}" alt="Too Many Requests Illustration">
+    </div>
+
+    <!-- Badge -->
+    <span class="error-badge error-badge--amber">429 · Too Many Requests</span>
+
+    <!-- Heading -->
+    <h1>Slow Down a Little</h1>
+
+    <!-- Description -->
+    <p>You're sending requests faster than our servers can handle. Take a short break before trying again.</p>
+
+    <!-- Countdown Ring -->
+    <div class="countdown-ring">
+      <svg viewBox="0 0 120 120">
+        <circle class="countdown-track" cx="60" cy="60" r="50"/>
+        <circle class="countdown-progress" id="countdown-progress" cx="60" cy="60" r="50"
+                stroke-dasharray="314" stroke-dashoffset="0"/>
+      </svg>
+      <div class="countdown-inner">
+        <span id="wait-timer">60</span>
+        <small>seconds</small>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="error-actions">
+      <button onclick="location.reload()" class="btn btn-primary btn-lg" style="width: 100%; height: 50px; font-weight: 700;">
+        Try Again
+      </button>
+      <a href="{% url 'maps:home' %}" class="btn btn-outline btn-lg" style="width: 100%; height: 50px; font-weight: 600;">
+        Back to Home
+      </a>
+    </div>
+
+    <!-- Status Footer -->
+    <p class="error-footer-code">HTTP 429 · Rate Limit Exceeded</p>
+
+  </div>
+</div>
+
+<style>
+  .error-page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(245, 158, 11, 0.08), transparent 60%), var(--bg-color);
+  }
+
+  .error-page-card {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .error-illustration-wrap {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .error-429-glow {
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.12), transparent 70%);
+  }
+
+  .error-illustration-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 24px rgba(245, 158, 11, 0.35));
+    animation: floatImg 4s ease-in-out infinite;
+  }
+
+  @keyframes floatImg {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .error-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .error-badge--amber {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.25);
+  }
+
+  .error-page-card h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #fff;
+    margin: 0;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+
+  .error-page-card > p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin: 0;
+    max-width: 340px;
+  }
+
+  /* Countdown Ring */
+  .countdown-ring {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    flex-shrink: 0;
+    margin: 8px 0;
+  }
+
+  .countdown-ring svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+
+  .countdown-track {
+    fill: none;
+    stroke: rgba(245, 158, 11, 0.12);
+    stroke-width: 8;
+  }
+
+  .countdown-progress {
+    fill: none;
+    stroke: #f59e0b;
+    stroke-width: 8;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1s linear;
+  }
+
+  .countdown-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .countdown-inner span {
+    font-size: 28px;
+    font-weight: 800;
+    color: #f59e0b;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .countdown-inner small {
+    font-size: 11px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-top: 2px;
+  }
+
+  /* Actions */
+  .error-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-top: 4px;
+  }
+
+  /* Footer code */
+  .error-footer-code {
+    margin: 0;
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    opacity: 0.5;
+    letter-spacing: 0.05em;
+  }
+</style>
+
+<script>
+  let total = 60;
+  let remaining = total;
+  const timerEl = document.getElementById('wait-timer');
+  const progressEl = document.getElementById('countdown-progress');
+  const circumference = 314; /* 2 * PI * 50 */
+
+  const tick = () => {
+    remaining--;
+    if (timerEl) timerEl.innerText = remaining;
+    if (progressEl) {
+      const offset = circumference * (1 - remaining / total);
+      progressEl.style.strokeDashoffset = offset;
+    }
+    if (remaining <= 0) clearInterval(interval);
+  };
+
+  const interval = setInterval(tick, 1000);
+</script>
+{% endblock %}

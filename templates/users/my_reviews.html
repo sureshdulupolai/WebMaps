@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}My Reviews — WebMaps{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+  <div class="page-header mb-4 d-flex justify-between align-center">
+    <div>
+      <h1 class="page-title">📝 My Reviews</h1>
+      <p class="page-subtitle">Manage all the reviews you've written.</p>
+    </div>
+    <a href="{% url 'users:profile' %}" class="btn btn-outline btn-sm">← Back to Profile</a>
+  </div>
+
+  <div class="card">
+    {% if reviews %}
+      <div class="grid grid-2">
+        {% for rev in reviews %}
+          <div class="p-4" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); border-radius:var(--radius-sm)">
+            <div class="d-flex justify-between mb-2">
+              <a href="{{ rev.listing.get_absolute_url }}" style="color:var(--text); text-decoration:none; font-weight:600; font-family:'Outfit',sans-serif; font-size:1.1rem;">
+                {{ rev.listing.company_name }}
+              </a>
+              <span class="badge badge-purple">★ {{ rev.rating }}.0</span>
+            </div>
+            <p class="text-sm text-muted mb-3">{{ rev.comment }}</p>
+            
+            <!-- Actions -->
+            <div class="d-flex justify-between align-center border-t pt-3" style="border-top:1px solid rgba(255,255,255,0.05)">
+              <span class="text-xs text-muted">{{ rev.created_at|date:"M d, Y" }}</span>
+              <div class="d-flex gap-2">
+                <a href="{{ rev.listing.get_absolute_url }}" class="btn btn-xs btn-outline" style="padding:4px 8px; font-size:0.75rem;">Edit</a>
+                <form method="post" action="{% url 'maps:delete_review' rev.id %}" onsubmit="return confirm('Delete this review?');" style="margin:0;">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-xs btn-danger" style="padding:4px 8px; font-size:0.75rem;">Delete</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="text-center p-5">
+        <div style="font-size:3rem; margin-bottom:10px;">📄</div>
+        <p class="text-muted">You haven't written any reviews yet.</p>
+        <a href="{% url 'maps:home' %}" class="btn btn-primary mt-3">Explore Map</a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

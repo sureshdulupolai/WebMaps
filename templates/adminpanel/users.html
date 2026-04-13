@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}Manage Users — WebMaps Admin{% endblock %}
+
+{% block content %}
+<div class="sidebar-layout">
+  <aside class="sidebar">
+    <div class="sidebar-label">Admin Panel</div>
+    <a href="{% url 'adminpanel:dashboard' %}" class="sidebar-link">
+      <span class="icon">📊</span> Overview
+    </a>
+    <a href="{% url 'adminpanel:users' %}" class="sidebar-link active">
+      <span class="icon">👥</span> Users
+    </a>
+    <a href="{% url 'adminpanel:listings' %}" class="sidebar-link">
+      <span class="icon">🏪</span> Listings
+    </a>
+    <a href="{% url 'adminpanel:analytics' %}" class="sidebar-link">
+      <span class="icon">📈</span> Analytics
+    </a>
+    <a href="{% url 'adminpanel:errors' %}" class="sidebar-link">
+      <span class="icon">⚠️</span> Errors
+    </a>
+  </aside>
+
+  <div class="main-content">
+    <div class="page-header">
+      <h1 class="page-title">Users</h1>
+      <p class="page-subtitle">Manage customer and host accounts.</p>
+    </div>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Verified</th>
+              <th>Joined</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for u in users %}
+              <tr>
+                <td class="fw-600">{{ u.username }}</td>
+                <td>{{ u.email }}</td>
+                <td>
+                  <span class="badge {% if u.role == 'host' %}badge-purple{% elif u.role == 'admin' %}badge-approved{% else %}badge-pending{% endif %}">
+                    {{ u.role|upper }}
+                  </span>
+                </td>
+                <td>{% if u.is_verified %}✅{% else %}❌{% endif %}</td>
+                <td>{{ u.created_at|date:"M d, Y" }}</td>
+                <td>
+                  {% if request.user.id != u.id and u.role != 'admin' %}
+                    <form method="post" action="{% url 'adminpanel:user_delete' u.id %}" onsubmit="return confirm('Permanently delete this user and all associated data?');" style="margin:0;">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-xs btn-danger" style="padding:4px 8px;font-size:0.75rem;">Delete</button>
+                    </form>
+                  {% endif %}
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
