@@ -89,6 +89,55 @@
     color: white;
   }
 
+  /* Sample Modal Styles */
+  .sample-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(12px);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-6);
+  }
+
+  .sample-doc-box {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: var(--space-6);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    white-space: pre-wrap;
+    /* Hide scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .sample-doc-box::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .sample-modal-content {
+    background: var(--surface);
+    width: 100%;
+    max-width: 600px;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: var(--space-8);
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+    /* Hide scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .sample-modal-content::-webkit-scrollbar {
+    display: none;
+  }
+
   @media (max-width: 1024px) {
     .listing-dual-layout { grid-template-columns: 1fr; }
     .map-wrapper { height: 400px; position: relative; top: 0; }
@@ -177,7 +226,12 @@
         </div>
 
         <!-- Part 3: Assets -->
-        <h2 class="text-sm uppercase letter-spacing-2 text-primary mb-8 font-weight-bold">03. Professional Documentation</h2>
+        <div class="d-flex align-center justify-between mb-8">
+           <h2 class="text-sm uppercase letter-spacing-2 text-primary m-0 font-weight-bold">03. Professional Documentation</h2>
+           <button type="button" id="view-sample-btn" class="btn btn-outline btn-sm" style="border: none; background: rgba(99, 102, 241, 0.1); color: var(--primary); border-radius: 50%; width: 32px; height: 32px; display: grid; place-items: center; padding: 0;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+           </button>
+        </div>
         <div class="input-line-group mb-12">
             <label class="input-line-label">Service Protocol (File Upload)</label>
             <div id="file-drop-area" class="secondary-card text-center py-10" style="border: 2px dashed var(--border); transition: var(--transition); cursor: pointer;">
@@ -219,6 +273,51 @@
        </div>
     </aside>
   </div>
+</div>
+
+<!-- Sample Protocol Modal -->
+<div id="sample-modal" class="sample-modal-overlay">
+   <div class="sample-modal-content">
+      <div class="d-flex align-center justify-between mb-6">
+         <h3 class="h4 m-0">Protocol Standard Format</h3>
+         <button type="button" id="close-sample-btn" class="btn-text text-secondary">&times; Close</button>
+      </div>
+      <p class="text-xs text-muted mb-6">Uploading your service list in this format ensures 100% processing accuracy for customer discovery.</p>
+      
+      <div class="sample-doc-box">
+[COMPANY_OFFICIAL_PROFILE]
+Reg Name: Apex Global Distribution Ltd.
+Service Category: Industrial Logistics
+Contact Email: verify@apex-global.com
+Operational Zone: London North / West Circular
+
+[01. TRANSPORTATION_TIERS]
+- Priority Express: $45.00 (Fixed/Dropoff)
+  > 99.8% Reliability rating
+  > GPS Tracking enabled
+- Standard Freight: $120.00 (Per Pallet)
+  > 3-5 Business Day Window
+
+[02. WAREHOUSING_PROTOCOLS]
+- Short-term Storage: $15.00 (Daily/Box)
+- Climate Controlled: $85.00 (Weekly/Crate)
+- Security Surcharge: Included in base rate
+
+[03. COMPLIANCE_AND_TERMS]
+1. All rates subject to local VAT.
+2. Invoicing issued bi-weekly on Mondays.
+3. Verification stamp required for service activation.
+4. Support Hotline: +1 (800) APEX-HELP
+
+[AUTHENTICATION_FOOTER]
+Authorized By: S. Polai, System Admin
+Document ID: WM-LST-2026-X01
+      </div>
+
+      <div class="mt-8 text-center">
+         <button type="button" class="btn btn-primary btn-sm" onclick="document.getElementById('sample-modal').style.display='none'">Understood, Back to Listing</button>
+      </div>
+   </div>
 </div>
 {% endblock %}
 
@@ -366,6 +465,24 @@ document.addEventListener('DOMContentLoaded', function() {
   form.addEventListener('submit', () => {
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<span class="loading-spinner" style="margin-right:10px"></span> Initializing...';
+  });
+  // 05. SAMPLE MODAL LOGIC
+  const sampleBtn = document.getElementById('view-sample-btn');
+  const sampleModal = document.getElementById('sample-modal');
+  const closeSample = document.getElementById('close-sample-btn');
+
+  sampleBtn.addEventListener('click', () => {
+    sampleModal.style.display = 'flex';
+  });
+
+  closeSample.addEventListener('click', () => {
+    sampleModal.style.display = 'none';
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === sampleModal) {
+      sampleModal.style.display = 'none';
+    }
   });
 });
 </script>
