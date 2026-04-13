@@ -1723,3 +1723,63 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-04-14 00:23:26,242] INFO django.server "GET /users/profile/ HTTP/1.1" 200 7935
 [2026-04-14 00:25:10,053] INFO django.server "POST /auth/register/ HTTP/1.1" 200 11244
 [2026-04-14 00:25:10,177] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-14 00:26:06,924] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 00:27:51,770] INFO django.server "GET /users/profile/ HTTP/1.1" 302 0
+[2026-04-14 00:27:51,809] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 00:27:51,982] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-04-14 00:27:52,301] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10485
+[2026-04-14 00:28:20,371] INFO django.server "GET /auth/register/ HTTP/1.1" 200 10561
+[2026-04-14 00:28:20,448] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-14 00:29:03,622] ERROR webmaps Captured error: NoReverseMatch: Reverse for 'profile_edit' not found. 'profile_edit' is not a valid view function or pattern name. @ /users/profile/
+[2026-04-14 00:29:03,630] ERROR webmaps Unhandled exception at /users/profile/: NoReverseMatch: Reverse for 'profile_edit' not found. 'profile_edit' is not a valid view function or pattern name.
+[2026-04-14 00:29:03,690] ERROR django.request Internal Server Error: /users/profile/
+[2026-04-14 00:29:03,692] ERROR django.server "GET /users/profile/ HTTP/1.1" 500 7384
+[2026-04-14 00:29:03,789] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10485
+[2026-04-14 00:29:03,825] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-14 00:29:03,873] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-14 00:29:03,874] INFO django.server "GET /static/images/500_illustration.png HTTP/1.1" 200 879255
+[2026-04-14 00:29:04,058] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-14 00:29:04,221] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-14 00:29:23,371] ERROR webmaps Captured error: NoReverseMatch: Reverse for 'profile_edit' not found. 'profile_edit' is not a valid view function or pattern name. @ /users/profile/
+[2026-04-14 00:29:23,382] ERROR webmaps Unhandled exception at /users/profile/: NoReverseMatch: Reverse for 'profile_edit' not found. 'profile_edit' is not a valid view function or pattern name.
+[2026-04-14 00:29:23,388] ERROR django.request Internal Server Error: /users/profile/
+[2026-04-14 00:29:23,390] ERROR django.server "GET /users/profile/ HTTP/1.1" 500 7384
+[2026-04-14 00:29:23,455] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10485
+[2026-04-14 00:29:23,488] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-14 00:29:23,498] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-14 00:29:23,505] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-14 00:29:23,524] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-14 00:29:23,656] INFO django.server "GET /static/images/500_illustration.png HTTP/1.1" 200 879255
+[2026-04-14 00:29:26,274] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 9355
+[2026-04-14 00:29:26,367] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-04-14 00:29:27,292] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
+[2026-04-14 00:32:52,960] INFO django.server "GET /users/profile/ HTTP/1.1" 302 0
+[2026-04-14 00:32:53,007] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 00:32:53,088] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-14 00:32:53,088] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-14 00:32:53,097] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-04-14 00:32:53,102] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 304 0
+[2026-04-14 00:33:12,995] INFO webmaps User logged in: sureshone@gmail.com
+[2026-04-14 00:33:12,998] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 00:33:13,047] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 9355
+[2026-04-14 00:33:13,105] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-04-14 00:33:13,136] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
+[2026-04-14 00:33:15,074] INFO django.server "GET /users/profile/ HTTP/1.1" 200 9433
+[2026-04-14 00:33:24,128] INFO django.server "POST /users/profile/edit/ HTTP/1.1" 302 0
+[2026-04-14 00:33:24,155] INFO django.server "GET /users/profile/ HTTP/1.1" 200 9609
+[2026-04-14 00:37:43,214] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\users\models.py changed, reloading.
+[2026-04-14 00:37:46,286] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 00:38:15,534] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\users\views.py changed, reloading.
+[2026-04-14 00:38:18,552] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 00:39:00,142] INFO django.server "GET /users/profile/ HTTP/1.1" 302 0
+[2026-04-14 00:39:00,192] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 00:39:00,381] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-04-14 00:39:00,758] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10953
+[2026-04-14 00:39:24,378] INFO django.server "GET /auth/register/ HTTP/1.1" 200 10561
+[2026-04-14 00:39:24,474] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-14 00:40:18,435] INFO django.server "GET /users/profile/ HTTP/1.1" 200 10515
+[2026-04-14 00:40:18,591] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10953
+[2026-04-14 00:40:18,708] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-14 00:40:18,745] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-14 00:40:18,948] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-14 00:40:18,999] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724

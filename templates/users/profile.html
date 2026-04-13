@@ -1,80 +1,205 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block title %}My Profile — WebMaps{% endblock %}
 
 {% block content %}
-<div class="main-content container mt-10 mb-10">
-  <div class="card" style="max-width: 800px; margin: 0 auto;">
-    <div class="page-header mb-8">
-      <h1 class="page-title">Personal Profile</h1>
-      <p class="page-subtitle">Manage your account details and platform preferences.</p>
-    </div>
+<div class="container container-lg py-12">
+  <div class="page-header mb-10">
+    <h1 class="page-title">Profile Settings</h1>
+    <p class="text-secondary">Manage your identity and platform preferences.</p>
+  </div>
 
-    <!-- Edit Profile Form -->
-    <form method="post" action="{% url 'users:edit_profile' %}" class="mb-10">
-      {% csrf_token %}
-      <div class="grid grid-2 gap-6 mb-6">
-        <div class="form-group">
-          <label class="form-label">Username</label>
-          <input type="text" class="form-control" value="{{ user.username }}" disabled style="opacity: 0.6; cursor: not-allowed;">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Email Address</label>
-          <input type="email" class="form-control" value="{{ user.email }}" disabled style="opacity: 0.6; cursor: not-allowed;">
-        </div>
+  <div class="profile-grid-layout">
+    <!-- ══ LEFT COLUMN: PERSONAL IDENTITY ════════════════ -->
+    <section class="profile-main-card">
+      <div class="profile-avatar-wrap">
+        {% if user.avatar %}
+          <img src="{{ user.avatar.url }}" alt="{{ user.username }}">
+        {% else %}
+          <span>{{ user.username|first|upper }}</span>
+        {% endif %}
       </div>
-      <div class="grid grid-2 gap-6 mb-6">
-        <div class="form-group">
-          <label class="form-label">First Name</label>
-          <input type="text" name="first_name" class="form-control" placeholder="Your first name" value="{{ user.first_name }}">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Last Name</label>
-          <input type="text" name="last_name" class="form-control" placeholder="Your last name" value="{{ user.last_name }}">
-        </div>
-      </div>
-      <div class="form-group mb-8">
-        <label class="form-label">Contact Phone</label>
-        <input type="tel" name="phone" class="form-control" placeholder="Line for notifications" value="{{ user.phone }}">
-      </div>
-      <button type="submit" class="btn btn-primary">Save Changes</button>
-    </form>
 
-    <div style="height: 1px; background: var(--border); margin-bottom: var(--space-10);"></div>
+      <h2 class="h3 mb-1">Personal Details</h2>
+      <p class="text-xs text-muted mb-4 uppercase letter-spacing-2">Last Login: {{ user.last_login|date:"d M Y, H:i"|default:"Recently" }}</p>
 
-    <!-- Recent Reviews Summary -->
-    <div class="mb-10">
-      <div class="d-flex justify-between align-center mb-6">
-        <h2 class="font-weight-bold text-lg">Your Feedback</h2>
-        <a href="{% url 'users:my_reviews' %}" class="btn-text text-sm">View All History</a>
-      </div>
-      {% if recent_reviews %}
-        <div class="grid grid-2 gap-4">
-          {% for rev in recent_reviews %}
-            <div class="p-4" style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md);">
-              <div class="d-flex justify-between mb-2">
-                <span class="font-weight-bold text-sm">{{ rev.listing.company_name }}</span>
-                <span class="badge badge-trial">{{ rev.rating }}.0</span>
-              </div>
-              <p class="text-xs text-secondary line-clamp-2">{{ rev.comment }}</p>
-            </div>
-          {% endfor %}
-        </div>
-      {% else %}
-        <div class="text-center py-8 bg-surface border-dashed border rounded-xl">
-          <p class="text-secondary text-sm">You haven't shared any feedback yet.</p>
+      {% if cooldown_remaining > 0 %}
+        <div id="cooldown-banner" class="alert alert-warning mb-6 py-3 px-4 rounded-lg d-flex align-center gap-3" style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.2); color: var(--warning);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <div>
+            <div class="text-xs font-weight-bold">COOLDOWN ACTIVE</div>
+            <div class="text-xs opacity-80">Next update available in <span id="cooldown-timer">--:--:--</span></div>
+          </div>
         </div>
       {% endif %}
-    </div>
 
-    <!-- Danger Zone -->
-    <div class="p-6" style="background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: var(--radius-md);">
-      <h3 class="font-weight-bold text-danger mb-2">Danger Zone</h3>
-      <p class="text-sm text-secondary mb-4">Once you delete your account, there is no going back. All listing interactions and reviews will be permanently removed.</p>
-      <form method="post" action="{% url 'users:delete_account' %}" onsubmit="return confirm('Permanently delete your account? This action cannot be undone.');">
+      <form action="{% url 'users:edit_profile' %}" method="post" id="profile-form">
         {% csrf_token %}
-        <button type="submit" class="btn btn-outline btn-sm" style="color: var(--danger); border-color: var(--danger);">Delete My Account</button>
+        
+        <div class="grid grid-2 gap-6">
+          <div class="input-line-group">
+            <label class="input-line-label">First Name</label>
+            <input type="text" name="first_name" class="input-line" value="{{ user.first_name }}" placeholder="Your first name">
+          </div>
+          <div class="input-line-group">
+            <label class="input-line-label">Last Name</label>
+            <input type="text" name="last_name" class="input-line" value="{{ user.last_name }}" placeholder="Your last name">
+          </div>
+        </div>
+
+        <div class="input-line-group">
+          <label class="input-line-label">Email Address</label>
+          <input type="email" class="input-line opacity-50" value="{{ user.email }}" readonly>
+        </div>
+
+        <div class="input-line-group">
+          <label class="input-line-label">Phone Number</label>
+          <input type="text" name="phone" class="input-line" value="{{ user.phone }}" placeholder="+1-000-000-0000">
+        </div>
+
+        <div class="input-line-group mb-12">
+          <label class="input-line-label d-flex align-center justify-between">
+            SMS Alerts Activation
+            <span class="badge badge-approved" style="background: rgba(16, 185, 129, 0.1); color: #10b981; font-size: 10px;">ACTIVE</span>
+          </label>
+          <div class="text-xs text-muted mt-2">Get notified about listing updates via SMS.</div>
+        </div>
+
+        <div class="mt-4">
+          <button type="submit" class="btn-premium-save" id="save-profile-btn" {% if cooldown_remaining > 0 %}disabled style="opacity: 0.5; cursor: not-allowed;"{% endif %}>
+            Save Profile
+          </button>
+        </div>
       </form>
-    </div>
+    </section>
+
+    <!-- ══ RIGHT COLUMN: DYNAMIC CONTEXT ═════════════════ -->
+    <aside class="profile-secondary-panel">
+      
+      <!-- Account Status Card -->
+      <article class="secondary-card">
+        <h3 class="text-sm uppercase letter-spacing-1 mb-6 text-secondary">Account Statistics</h3>
+        
+        <div class="d-flex align-center justify-between mb-4">
+          <div class="text-xs font-weight-bold opacity-70">CURRENT ROLE</div>
+          <div class="badge badge-approved uppercase">{{ user.role }}</div>
+        </div>
+        
+        <div class="d-flex align-center justify-between mb-4">
+          <div class="text-xs font-weight-bold opacity-70">JOINED DATE</div>
+          <div class="text-sm">{{ user.created_at|date:"M Y" }}</div>
+        </div>
+
+        <div class="d-flex align-center justify-between">
+          <div class="text-xs font-weight-bold opacity-70">VERIFICATION</div>
+          <div class="text-sm text-primary">Verified Account</div>
+        </div>
+      </article>
+
+      <!-- Recent Reviews Card -->
+      <article class="secondary-card">
+        <div class="d-flex align-center justify-between mb-6">
+          <h3 class="text-sm uppercase letter-spacing-1 text-secondary m-0">Recent Activity</h3>
+          <a href="{% url 'users:my_reviews' %}" class="text-xs text-primary hover-underline">View All</a>
+        </div>
+
+        <div id="recent-activity-list">
+          {% if recent_reviews %}
+            {% for review in recent_reviews %}
+              <div class="mb-4 pb-4 border-bottom" style="border-color: rgba(255,255,255,0.05);">
+                <div class="text-xs font-weight-bold text-primary mb-1">{{ review.listing.company_name }}</div>
+                <div class="text-sm opacity-80 line-clamp-1 italic">"{{ review.comment }}"</div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <div class="text-sm text-muted text-center py-4">No recent activity detected.</div>
+          {% endif %}
+        </div>
+      </article>
+
+      <!-- Security Note (Replaces Delete Option) -->
+      <article class="secondary-card" style="border: 1px dashed var(--border);">
+         <div class="d-flex gap-4">
+            <div class="text-primary">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m0 0v2m0-2h2m-2 0H10m11 3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+               <h4 class="text-sm font-weight-bold mb-1">Secure Account</h4>
+               <p class="text-xs text-muted m-0">Account deletion is restricted for institutional security. Contact support for identity deactivation.</p>
+            </div>
+         </div>
+      </article>
+
+    </aside>
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('profile-form');
+  const saveBtn = document.getElementById('save-profile-btn');
+  const saveBtnContainer = saveBtn.parentElement;
+  const timerDisplay = document.getElementById('cooldown-timer');
+  const banner = document.getElementById('cooldown-banner');
+  
+  // 1. Cooldown Clock Logic
+  let secondsRemaining = parseInt("{{ cooldown_remaining|default:0 }}");
+  if (secondsRemaining > 0 && timerDisplay) {
+    const updateTimer = () => {
+      if (secondsRemaining <= 0) {
+        if (banner) banner.style.display = 'none';
+        if (saveBtn) {
+          saveBtn.disabled = false;
+          saveBtn.style.opacity = '1';
+          saveBtn.style.cursor = 'pointer';
+        }
+        return;
+      }
+      const h = Math.floor(secondsRemaining / 3600);
+      const m = Math.floor((secondsRemaining % 3600) / 60);
+      const s = secondsRemaining % 60;
+      timerDisplay.textContent = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+      secondsRemaining--;
+      setTimeout(updateTimer, 1000);
+    };
+    updateTimer();
+  }
+
+  // 2. Change Detection Logic
+  const inputs = form.querySelectorAll('input[name]');
+  const initialValues = {};
+  inputs.forEach(input => { initialValues[input.name] = input.value; });
+
+  // Hide button container initially unless there's a cooldown (which already handles it)
+  if (secondsRemaining <= 0) {
+    saveBtnContainer.style.display = 'none';
+  }
+
+  const checkChanges = () => {
+    // If cooldown is active, don't show the button even if changed
+    if (secondsRemaining > 0) return;
+
+    let hasChanged = false;
+    inputs.forEach(input => {
+      if (input.value !== initialValues[input.name]) {
+        hasChanged = true;
+      }
+    });
+
+    saveBtnContainer.style.display = hasChanged ? 'block' : 'none';
+  };
+
+  inputs.forEach(input => {
+    input.addEventListener('input', checkChanges);
+  });
+
+  // 3. Loading State on Submit
+  form.addEventListener('submit', function() {
+    saveBtn.disabled = true;
+    saveBtn.style.opacity = '0.7';
+    saveBtn.innerHTML = '<span class="loading-spinner" style="margin-right: 10px; width: 14px; height: 14px;"></span> Saving Changes...';
+  });
+});
+</script>
 {% endblock %}

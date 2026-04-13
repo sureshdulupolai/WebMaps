@@ -69,6 +69,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     updated_at = models.DateTimeField(auto_now=True)
     deleted_at = models.DateTimeField(null=True, blank=True)
     last_login_ip = models.GenericIPAddressField(null=True, blank=True)
+    profile_last_updated_at = models.DateTimeField(null=True, blank=True)
 
     objects = UserManager()
 
