@@ -1,122 +1,112 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Host Dashboard — WebMaps{% endblock %}
+{% block title %}Host Dash — WebMaps{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/maps.css' %}">
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="sidebar-layout">
-  <!-- Sidebar -->
+  <!-- ══ SIDEBAR ═══════════════════════════════════════ -->
   <aside class="sidebar">
     <div class="sidebar-label">Main Menu</div>
     <a href="{% url 'hosts:dashboard' %}" class="sidebar-link active">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-      Overview
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+      Console Overview
     </a>
     <a href="{% url 'hosts:listing_create' %}" class="sidebar-link">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
-      Add Listing
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      New Listing
     </a>
-    <div class="sidebar-label">Settings</div>
+    
+    <div class="sidebar-label">Analytics & Tools</div>
+    <a href="#" class="sidebar-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+      Insights
+    </a>
+
+    <div class="sidebar-label">Institutional</div>
     <a href="{% url 'users:profile' %}" class="sidebar-link">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-      Profile
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      Account Profile
     </a>
   </aside>
 
-  <!-- Main Area -->
-  <div class="main-content">
-    <div class="page-header d-flex justify-between align-center mb-8">
+  <!-- ══ MAIN CONTENT ═════════════════════════════════ -->
+  <main class="main-content">
+    <div class="page-header d-flex justify-between align-center mb-10">
       <div>
-        <h1 class="page-title">Welcome, {{ user.first_name|default:user.username }}</h1>
-        <p class="page-subtitle">Monitor your business performance and listing reach.</p>
+        <h1 class="page-title">Welcome back, {{ user.first_name|default:user.username }}</h1>
+        <p class="page-subtitle">Track your platform engagement and business growth.</p>
       </div>
-      <a href="{% url 'hosts:listing_create' %}" class="btn btn-primary">
-        New Listing
+      <a href="{% url 'hosts:listing_create' %}" class="btn btn-primary" style="height: 48px; padding: 0 28px; border-radius: 12px; font-weight: 700;">
+        + Create Listing
       </a>
     </div>
 
     {% if listing_data %}
-      <div class="d-flex flex-col gap-6">
-        {% for item in listing_data %}
-                  <div class="stat-box-value">{{ item.stats.views|default:"0" }}</div>
-                  <div class="stat-box-label">Views</div>
-                </div>
-                <div class="stat-box">
-                  <div class="stat-box-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0V12m-3 .5a1.5 1.5 0 003 0M10 12V6a1.5 1.5 0 113 0v11m-3-1a1.5 1.5 0 003 0m0 0V8.5a1.5 1.5 0 113 0V11m-3 5.5a1.5 1.5 0 003 0m0 0V6a1.5 1.5 0 113 0v11m-3-1a1.5 1.5 0 003 0m0 0h-9.5A1.5 1.5 0 014 15.5v-1.5a1.5 1.5 0 011.5-1.5h1.5"/></svg>
-                  </div>
-                  <div class="stat-box-value">{{ item.stats.clicks|default:"0" }}</div>
-                  <div class="stat-box-label">Clicks</div>
-                </div>
-              </div>
+      <div class="host-stats-grid">
+         {% for item in listing_data %}
+         <div class="stat-box">
+            <div class="stat-box-icon">
+               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
             </div>
-            
-            <div class="p-4 bg-glass-dark">
-              {% if item.listing.status == 'rejected' %}
-                <div class="alert alert-error text-xs mb-3">
-                  Reason: {{ item.listing.rejection_reason }}
-                </div>
-              {% endif %}
-              
-              <div class="d-flex gap-3 justify-between align-center">
-                <div class="d-flex gap-2">
-                  <a href="{% url 'hosts:listing_edit' item.listing.slug %}" class="btn btn-sm btn-outline">Edit</a>
-                  <a href="{% url 'hosts:service_list' item.listing.slug %}" class="btn btn-sm btn-outline">Services</a>
-                </div>
-                <form method="post" action="{% url 'hosts:listing_delete' item.listing.slug %}" onsubmit="return confirm('Delete this listing permanently?')" class="m-0">
-                  {% csrf_token %}
-                  <button type="submit" class="btn btn-sm btn-danger px-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
-                  </button>
-                </form>
-              </div>
+            <div class="stat-box-value">{{ item.stats.views|default:"0" }}</div>
+            <div class="stat-box-label">Impressions</div>
+         </div>
+         <div class="stat-box">
+            <div class="stat-box-icon">
+               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"/></svg>
             </div>
-          </div>
-        {% endfor %}
+            <div class="stat-box-value">{{ item.stats.clicks|default:"0" }}</div>
+            <div class="stat-box-label">Social Clicks</div>
+         </div>
+         {% endfor %}
       </div>
+      
+      <!-- List of active properties could go here -->
     {% else %}
       <!-- 💎 PREMIUM SAAS-STYLE ONBOARDING 💎 -->
       <div class="onboarding-premium-card">
         <div class="onboarding-grid">
-          <!-- Left: Visual Column -->
           <div class="onboarding-visual">
             <div class="onboarding-visual-bg"></div>
             <div class="onboarding-visual-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0.8">
+              <svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0.8">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
               </svg>
             </div>
           </div>
 
-          <!-- Right: Content Column -->
           <div class="onboarding-content">
             <h2 class="onboarding-title">Ignite Your Digital Presence</h2>
             <p class="onboarding-desc">
-              Your business is unique. Showcase your store, website, or services on our interactive map and start connecting with thousands of nearby customers.
+              Your business is unique. Showcase your store, website, or services on our interactive map and start connecting with thousands of nearby customers today.
             </p>
             
             <div class="onboarding-actions">
               <a href="{% url 'hosts:listing_create' %}" class="btn-onboarding-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
-                Launch Your First Listing
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Deploy First Listing
               </a>
               <a href="#" class="btn-onboarding-outline">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                Quick Tutorial
+                Explore Features
               </a>
             </div>
 
             <div class="onboarding-hint">
-              Step 1 of 3: Create your first listing
+              Phase 1: Establish your spatial identity
             </div>
           </div>
         </div>
       </div>
     {% endif %}
-  </div>
+  </main>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/dashboard.js' %}"></script>
 {% endblock %}
