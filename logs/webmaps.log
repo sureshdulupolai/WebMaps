@@ -1596,3 +1596,26 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-04-13 20:39:49,295] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 304 0
 [2026-04-13 20:39:49,301] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
 [2026-04-13 20:39:57,228] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-13 20:41:38,815] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-13 23:47:49,310] INFO django.server "GET / HTTP/1.1" 200 12803
+[2026-04-13 23:47:49,929] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 6770
+[2026-04-13 23:47:49,939] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 21157
+[2026-04-13 23:47:49,947] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 12912
+[2026-04-13 23:47:49,980] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 6668
+[2026-04-13 23:47:50,104] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-13 23:47:50,460] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-13 23:47:50,461] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-13 23:47:50,525] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-13 23:47:53,991] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-13 23:47:54,061] INFO django.server "GET /static/css/auth.css HTTP/1.1" 200 6897
+[2026-04-13 23:47:54,074] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-13 23:47:54,083] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 304 0
+[2026-04-13 23:47:55,618] INFO django.server "GET /auth/register/ HTTP/1.1" 200 10561
+[2026-04-13 23:47:55,669] INFO django.server "GET /static/images/register_illustration.png HTTP/1.1" 304 0
+[2026-04-13 23:49:25,985] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-13 23:49:26,040] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-13 23:49:26,055] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-04-13 23:49:39,991] INFO webmaps User logged in: sureshone@gmail.com
+[2026-04-13 23:49:39,997] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-13 23:49:40,071] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 8448
+[2026-04-13 23:49:40,157] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0

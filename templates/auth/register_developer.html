@@ -3,6 +3,10 @@
 
 {% block title %}Developer Registration — WebMaps{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="auth-page">
   <div class="auth-card" style="max-width: 500px; border-color: rgba(34, 197, 94, 0.2); padding: var(--space-8) var(--space-6);">
