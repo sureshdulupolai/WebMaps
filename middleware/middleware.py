@@ -13,6 +13,7 @@ import re
 import time
 import logging
 import hashlib
+import traceback
 from collections import defaultdict, deque
 from threading import Lock
 
@@ -46,7 +47,7 @@ class SecurityHeadersMiddleware:
         response['Permissions-Policy'] = 'geolocation=(self), camera=(), microphone=()'
         response['Content-Security-Policy'] = (
             "default-src 'self'; "
-            "script-src 'self' 'unsafe-inline' https://maps.googleapis.com https://checkout.razorpay.com https://unpkg.com; "
+            "script-src 'self' 'unsafe-inline' https://maps.googleapis.com https://checkout.razorpay.com https://unpkg.com https://cdn.jsdelivr.net; "
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; "
             "font-src 'self' https://fonts.gstatic.com; "
             "img-src 'self' data: https://*.googleapis.com https://*.gstatic.com https://*.google.com https://unpkg.com https://*.tile.openstreetmap.org; "
@@ -240,12 +241,14 @@ class ErrorCaptureMiddleware:
                     'first_seen_at': timezone.now(),
                     'last_seen_at': timezone.now(),
                     'occurrence_count': 1,
+                    'traceback': traceback.format_exc(),
                 }
             )
             if not created:
                 obj.last_seen_at = timezone.now()
                 obj.occurrence_count += 1
-                obj.save(update_fields=['last_seen_at', 'occurrence_count'])
+                obj.traceback = traceback.format_exc()
+                obj.save(update_fields=['last_seen_at', 'occurrence_count', 'traceback'])
 
             logger.error(f"Captured error: {error_message} @ {url_path}")
         except Exception as e:

@@ -18,6 +18,7 @@ class AppError(models.Model):
     first_seen_at = models.DateTimeField(default=timezone.now)
     last_seen_at = models.DateTimeField(default=timezone.now)
     occurrence_count = models.PositiveIntegerField(default=1)
+    traceback = models.TextField(null=True, blank=True)
 
     class Meta:
         db_table = 'app_errors'

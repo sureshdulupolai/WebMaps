@@ -2351,3 +2351,551 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-04-14 14:14:51,641] INFO webmaps New Developer registered: sureshpolai63@gmail.com
 [2026-04-14 14:14:51,950] INFO django.server "POST /auth/register/developer/ HTTP/1.1" 302 0
 [2026-04-14 14:14:52,189] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 12426
+[2026-04-14 14:16:25,515] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 14:18:33,890] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 12426
+[2026-04-14 14:18:34,385] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10890
+[2026-04-14 14:18:34,404] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-14 14:18:34,418] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-14 14:18:34,722] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-14 14:18:34,726] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-14 14:19:47,076] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 16021
+[2026-04-14 14:19:47,112] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 200 10124
+[2026-04-14 14:19:47,113] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-14 14:19:47,114] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10890
+[2026-04-14 14:19:47,115] INFO django.server "GET /static/css/admin.css HTTP/1.1" 200 4121
+[2026-04-14 14:19:47,123] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-14 14:19:47,125] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-14 14:19:47,127] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-14 14:20:19,388] INFO django.server "GET /adminpanel/listings/ HTTP/1.1" 200 10614
+[2026-04-14 14:20:19,417] INFO django.server "GET /static/css/admin.css HTTP/1.1" 304 0
+[2026-04-14 14:20:28,434] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 16021
+[2026-04-14 14:22:01,479] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 10322
+[2026-04-14 14:22:01,502] INFO django.server "GET /static/css/admin.css HTTP/1.1" 304 0
+[2026-04-14 14:22:59,572] INFO django.server "GET /adminpanel/listings/ HTTP/1.1" 200 10614
+[2026-04-14 14:22:59,603] INFO django.server "GET /static/css/admin.css HTTP/1.1" 304 0
+[2026-04-14 14:24:08,283] ERROR webmaps Captured error: TemplateDoesNotExist: adminpanel/listing_detail.html @ /adminpanel/listings/webmaps-durga-mata-mandir-90ft-raod-saki-11393/
+[2026-04-14 14:24:08,284] ERROR webmaps Unhandled exception at /adminpanel/listings/webmaps-durga-mata-mandir-90ft-raod-saki-11393/: TemplateDoesNotExist: adminpanel/listing_detail.html
+[2026-04-14 14:24:08,298] ERROR django.request Internal Server Error: /adminpanel/listings/webmaps-durga-mata-mandir-90ft-raod-saki-11393/
+[2026-04-14 14:24:08,300] ERROR django.server "GET /adminpanel/listings/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 500 7399
+[2026-04-14 14:24:08,402] INFO django.server "GET /static/images/500_illustration.png HTTP/1.1" 200 879255
+[2026-04-14 14:24:51,196] ERROR webmaps Captured error: TemplateDoesNotExist: adminpanel/analytics.html @ /adminpanel/analytics/
+[2026-04-14 14:24:51,196] ERROR webmaps Unhandled exception at /adminpanel/analytics/: TemplateDoesNotExist: adminpanel/analytics.html
+[2026-04-14 14:24:51,200] ERROR django.request Internal Server Error: /adminpanel/analytics/
+[2026-04-14 14:24:51,202] ERROR django.server "GET /adminpanel/analytics/ HTTP/1.1" 500 7307
+[2026-04-14 14:24:52,921] INFO django.server "GET / HTTP/1.1" 200 14228
+[2026-04-14 14:24:52,989] INFO django.server "GET /static/css/maps.css HTTP/1.1" 200 15776
+[2026-04-14 14:24:53,105] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 200 6668
+[2026-04-14 14:24:53,144] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 200 12912
+[2026-04-14 14:25:36,460] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 16023
+[2026-04-14 14:25:36,489] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-04-14 14:25:36,491] INFO django.server "GET /static/css/admin.css HTTP/1.1" 304 0
+[2026-04-14 14:25:38,711] ERROR webmaps Captured error: TemplateDoesNotExist: adminpanel/errors.html @ /adminpanel/errors/
+[2026-04-14 14:25:38,711] ERROR webmaps Unhandled exception at /adminpanel/errors/: TemplateDoesNotExist: adminpanel/errors.html
+[2026-04-14 14:25:38,716] ERROR django.request Internal Server Error: /adminpanel/errors/
+[2026-04-14 14:25:38,717] ERROR django.server "GET /adminpanel/errors/ HTTP/1.1" 500 7301
+[2026-04-14 14:25:53,641] INFO django.server "GET / HTTP/1.1" 200 14228
+[2026-04-14 14:25:55,718] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 15955
+[2026-04-14 14:26:00,794] ERROR webmaps Captured error: TemplateDoesNotExist: adminpanel/analytics.html @ /adminpanel/analytics/
+[2026-04-14 14:26:00,794] ERROR webmaps Unhandled exception at /adminpanel/analytics/: TemplateDoesNotExist: adminpanel/analytics.html
+[2026-04-14 14:26:00,798] ERROR django.request Internal Server Error: /adminpanel/analytics/
+[2026-04-14 14:26:00,800] ERROR django.server "GET /adminpanel/analytics/ HTTP/1.1" 500 7307
+[2026-04-14 14:26:11,551] INFO django.server "GET / HTTP/1.1" 200 14228
+[2026-04-14 14:26:13,297] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 15957
+[2026-04-14 14:32:17,919] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-04-14 14:32:17,940] ERROR webmaps Captured error: InvalidToken: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} @ /adminpanel/
+[2026-04-14 14:32:17,941] ERROR webmaps Unhandled exception at /adminpanel/: InvalidToken: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-04-14 14:32:17,949] ERROR django.request Internal Server Error: /adminpanel/
+[2026-04-14 14:32:17,950] ERROR django.server "GET /adminpanel/ HTTP/1.1" 500 5859
+[2026-04-14 14:32:17,982] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10822
+[2026-04-14 14:32:17,983] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-14 14:32:17,991] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-14 14:32:17,999] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-14 14:32:18,009] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-14 14:32:18,027] INFO django.server "GET /static/images/500_illustration.png HTTP/1.1" 200 879255
+[2026-04-14 14:32:20,319] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-04-14 14:32:20,328] INFO django.server "GET / HTTP/1.1" 200 12865
+[2026-04-14 14:32:24,016] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-04-14 14:32:24,019] INFO django.server "GET /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 14:32:24,036] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-04-14 14:32:24,044] INFO django.server "GET / HTTP/1.1" 200 12865
+[2026-04-14 14:32:25,472] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-04-14 14:32:25,474] INFO django.server "GET /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 14:32:25,495] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-04-14 14:32:25,499] INFO django.server "GET / HTTP/1.1" 200 12865
+[2026-04-14 14:32:26,247] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-04-14 14:32:26,264] INFO django.server "GET /auth/register/ HTTP/1.1" 200 10561
+[2026-04-14 14:32:26,310] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-14 14:32:26,311] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-04-14 14:32:26,362] INFO django.server "GET /static/images/register_illustration.png HTTP/1.1" 200 649560
+[2026-04-14 14:32:27,469] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-04-14 14:32:27,471] INFO django.server "GET /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 14:32:27,492] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-04-14 14:32:27,496] INFO django.server "GET / HTTP/1.1" 200 12865
+[2026-04-14 14:32:27,979] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-04-14 14:32:28,957] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-04-14 14:32:28,962] INFO django.server "GET / HTTP/1.1" 200 12865
+[2026-04-14 14:32:29,487] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-04-14 14:32:29,858] INFO django.server - Broken pipe from ('127.0.0.1', 54423)
+[2026-04-14 14:32:30,987] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-14 14:32:32,875] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 302 0
+[2026-04-14 14:32:32,923] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 14:32:33,022] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-14 14:32:33,030] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10822
+[2026-04-14 14:32:35,291] INFO webmaps User logged in: sureshone@gmail.com
+[2026-04-14 14:32:35,293] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 14:32:35,363] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-14 14:32:35,425] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-04-14 14:32:35,433] INFO django.server "GET /static/js/dashboard.js HTTP/1.1" 304 0
+[2026-04-14 14:32:39,376] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-04-14 14:32:39,384] INFO django.server "GET / HTTP/1.1" 200 12865
+[2026-04-14 14:32:39,427] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-14 14:32:40,672] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-04-14 14:32:40,673] WARNING webmaps Rate limit hit: login from f528764d...
+[2026-04-14 14:32:40,679] WARNING django.request Too Many Requests: /auth/login/
+[2026-04-14 14:32:40,680] WARNING django.server "GET /auth/login/ HTTP/1.1" 429 8185
+[2026-04-14 14:32:40,733] INFO django.server "GET /static/images/429_illustration.png HTTP/1.1" 200 713899
+[2026-04-14 14:32:54,522] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 18559
+[2026-04-14 14:32:54,576] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-14 14:32:54,577] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 304 0
+[2026-04-14 14:32:54,577] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 304 0
+[2026-04-14 14:32:56,759] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-14 14:32:57,847] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 22726
+[2026-04-14 14:33:06,951] INFO webmaps Saved 35 service items for webmaps-durga-mata-mandir-90ft-raod-saki-11393
+[2026-04-14 14:33:06,953] INFO webmaps Listing updated: webmaps-durga-mata-mandir-90ft-raod-saki-11393 (update #1)
+[2026-04-14 14:33:06,956] INFO django.server "POST /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 302 0
+[2026-04-14 14:33:06,997] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-14 14:34:07,831] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-14 14:34:07,872] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-14 14:34:10,072] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 23234
+[2026-04-14 14:34:17,402] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-14 14:34:18,564] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 23234
+[2026-04-14 14:34:23,595] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-14 14:34:28,538] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 23234
+[2026-04-14 15:06:32,661] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\payments\models.py changed, reloading.
+[2026-04-14 15:06:37,543] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 15:07:18,054] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\payments\models.py changed, reloading.
+[2026-04-14 15:07:21,971] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 15:07:26,002] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\payments\models.py changed, reloading.
+[2026-04-14 15:07:29,460] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 15:08:06,911] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\hosts\views.py changed, reloading.
+[2026-04-14 15:08:09,998] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 15:08:16,940] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\payments\views.py changed, reloading.
+[2026-04-14 15:08:19,515] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 18:01:42,409] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 18:01:51,800] INFO django.server "GET / HTTP/1.1" 200 12865
+[2026-04-14 18:01:51,830] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-14 18:01:51,834] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-14 18:01:51,947] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 304 0
+[2026-04-14 18:01:51,950] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-14 18:02:01,685] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-14 18:02:08,361] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 18:02:08,434] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-14 18:02:08,446] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 304 0
+[2026-04-14 18:02:09,154] INFO django.server "GET /static/css/auth.css HTTP/1.1" 200 7053
+[2026-04-14 18:02:13,021] INFO webmaps User logged in: sureshone@gmail.com
+[2026-04-14 18:02:13,030] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 18:02:13,164] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-14 18:02:13,229] INFO django.server "GET /static/js/dashboard.js HTTP/1.1" 304 0
+[2026-04-14 18:02:13,229] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-04-14 18:02:18,190] INFO django.server "GET / HTTP/1.1" 200 12865
+[2026-04-14 18:02:18,237] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-14 18:02:18,261] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-14 18:02:19,966] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 18:02:20,004] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-14 18:02:20,010] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-04-14 18:02:20,061] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-14 18:02:27,408] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-04-14 18:02:27,410] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 18:02:27,566] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 17273
+[2026-04-14 18:02:27,622] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-04-14 18:02:27,628] INFO django.server "GET /static/css/admin.css HTTP/1.1" 200 4754
+[2026-04-14 18:02:42,703] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 11949
+[2026-04-14 18:02:45,575] INFO django.server "GET /adminpanel/listings/ HTTP/1.1" 200 10645
+[2026-04-14 18:02:50,650] INFO django.server "GET /adminpanel/listings/?status=pending HTTP/1.1" 200 10683
+[2026-04-14 18:02:52,764] INFO django.server "GET /adminpanel/listings/?status=approved HTTP/1.1" 200 8638
+[2026-04-14 18:02:54,715] INFO django.server "GET /adminpanel/listings/?status=rejected HTTP/1.1" 200 8638
+[2026-04-14 18:02:56,595] INFO django.server "GET /adminpanel/listings/?status= HTTP/1.1" 200 10661
+[2026-04-14 18:02:58,681] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 25373
+[2026-04-14 18:04:00,503] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 17273
+[2026-04-14 18:04:08,102] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 11949
+[2026-04-14 18:04:13,861] INFO django.server "GET /adminpanel/listings/ HTTP/1.1" 200 10645
+[2026-04-14 18:04:19,083] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 9219
+[2026-04-14 18:07:32,415] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 18:07:45,492] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\errors\models.py changed, reloading.
+[2026-04-14 18:07:45,583] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\errors\models.py changed, reloading.
+[2026-04-14 18:07:49,795] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 18:07:50,578] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 18:08:30,254] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\adminpanel\views.py changed, reloading.
+[2026-04-14 18:08:30,691] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\adminpanel\views.py changed, reloading.
+[2026-04-14 18:08:34,975] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 18:08:35,091] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 18:11:15,802] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 12983
+[2026-04-14 18:11:16,312] INFO django.server "GET /static/css/admin.css HTTP/1.1" 200 5857
+[2026-04-14 18:11:16,322] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10822
+[2026-04-14 18:11:16,758] WARNING django.request Not Found: /favicon.ico
+[2026-04-14 18:11:16,759] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4732
+[2026-04-14 18:11:18,955] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 23973
+[2026-04-14 18:11:28,591] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 12983
+[2026-04-14 18:11:28,645] INFO django.server "GET /static/css/admin.css HTTP/1.1" 304 0
+[2026-04-14 18:11:30,837] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 18999
+[2026-04-14 18:11:37,465] INFO django.server "GET /adminpanel/listings/ HTTP/1.1" 200 15635
+[2026-04-14 18:11:39,667] ERROR webmaps Captured error: NoReverseMatch: Reverse for 'error_clear_all' not found. 'error_clear_all' is not a valid view function or pattern name. @ /adminpanel/errors/
+[2026-04-14 18:11:39,669] ERROR webmaps Unhandled exception at /adminpanel/errors/: NoReverseMatch: Reverse for 'error_clear_all' not found. 'error_clear_all' is not a valid view function or pattern name.
+[2026-04-14 18:11:39,683] ERROR django.request Internal Server Error: /adminpanel/errors/
+[2026-04-14 18:11:39,685] ERROR django.server "GET /adminpanel/errors/ HTTP/1.1" 500 7301
+[2026-04-14 18:11:39,727] INFO django.server "GET /static/images/500_illustration.png HTTP/1.1" 304 0
+[2026-04-14 18:11:41,641] INFO django.server "GET / HTTP/1.1" 200 14293
+[2026-04-14 18:11:41,691] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 304 0
+[2026-04-14 18:11:43,763] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 23920
+[2026-04-14 18:11:43,798] INFO django.server "GET /static/css/admin.css HTTP/1.1" 304 0
+[2026-04-14 18:11:49,010] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\middleware\middleware.py changed, reloading.
+[2026-04-14 18:11:49,738] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\middleware\middleware.py changed, reloading.
+[2026-04-14 18:11:53,787] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 18:11:54,785] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 18:12:44,125] INFO django.server "GET /adminpanel/ HTTP/1.1" 302 0
+[2026-04-14 18:12:44,347] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 18:12:44,782] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-04-14 18:12:44,795] INFO django.server "GET /static/js/main.js HTTP/1.1" 304 0
+[2026-04-14 18:12:44,805] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 304 0
+[2026-04-14 18:12:44,843] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-14 18:12:45,998] INFO django.server "GET /static/css/auth.css HTTP/1.1" 200 7053
+[2026-04-14 18:12:46,005] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10822
+[2026-04-14 18:14:27,821] INFO webmaps User logged in: sureshone@gmail.com
+[2026-04-14 18:14:27,848] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 18:14:28,453] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-14 18:14:28,684] INFO django.server "GET /static/js/dashboard.js HTTP/1.1" 200 2000
+[2026-04-14 18:14:28,687] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 200 10124
+[2026-04-14 18:14:35,121] INFO django.server "GET /adminpanel/ HTTP/1.1" 302 0
+[2026-04-14 18:14:35,292] INFO django.server "GET / HTTP/1.1" 200 14384
+[2026-04-14 18:14:35,554] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-14 18:14:35,554] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 304 0
+[2026-04-14 18:14:35,563] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-14 18:15:05,373] INFO django.server "GET /adminpanel/ HTTP/1.1" 302 0
+[2026-04-14 18:15:05,531] INFO django.server "GET / HTTP/1.1" 200 14384
+[2026-04-14 18:15:36,146] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-14 18:15:38,500] INFO django.server "GET /adminpanel/ HTTP/1.1" 302 0
+[2026-04-14 18:15:38,639] INFO django.server "GET / HTTP/1.1" 200 14384
+[2026-04-14 18:23:00,275] INFO django.server "GET /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 18:23:00,383] INFO django.server "GET / HTTP/1.1" 200 14384
+[2026-04-14 18:23:24,443] INFO webmaps User logged out
+[2026-04-14 18:23:24,485] INFO django.server "POST /auth/logout/ HTTP/1.1" 302 0
+[2026-04-14 18:23:24,660] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 18:24:49,331] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-04-14 18:24:49,373] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 18:24:50,409] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 23908
+[2026-04-14 18:24:50,673] INFO django.server "GET /static/css/admin.css HTTP/1.1" 200 5857
+[2026-04-14 18:24:51,336] WARNING django.request Not Found: /favicon.ico
+[2026-04-14 18:24:51,338] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4732
+[2026-04-14 18:25:10,913] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 12983
+[2026-04-14 18:25:13,480] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 18999
+[2026-04-14 18:25:16,786] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 42952
+[2026-04-14 18:30:53,615] INFO django.server "GET /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 18:30:53,657] INFO django.server "GET / HTTP/1.1" 200 14293
+[2026-04-14 18:31:13,099] INFO webmaps User logged out
+[2026-04-14 18:31:13,123] INFO django.server "POST /auth/logout/ HTTP/1.1" 302 0
+[2026-04-14 18:31:13,250] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 18:31:28,292] INFO django.server "GET / HTTP/1.1" 200 12865
+[2026-04-14 18:31:31,605] INFO django.server "GET /adminpanel/ HTTP/1.1" 302 0
+[2026-04-14 18:31:31,967] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 18:31:32,116] INFO django.server "GET /static/css/auth.css HTTP/1.1" 200 7053
+[2026-04-14 18:31:32,221] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-14 18:31:32,256] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10822
+[2026-04-14 18:31:32,431] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-14 18:31:32,530] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-14 18:31:32,642] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-14 18:31:32,806] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 6874
+[2026-04-14 18:31:32,832] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-14 18:31:36,952] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-04-14 18:31:37,005] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 18:31:38,790] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 18:31:40,407] ERROR webmaps Captured error: TemplateSyntaxError: Unclosed tag on line 7: 'block'. Looking for one of: endblock. @ /adminpanel/
+[2026-04-14 18:31:40,427] ERROR webmaps Unhandled exception at /adminpanel/: TemplateSyntaxError: Unclosed tag on line 7: 'block'. Looking for one of: endblock.
+[2026-04-14 18:31:40,506] ERROR django.request Internal Server Error: /adminpanel/
+[2026-04-14 18:31:40,529] ERROR django.server "GET /adminpanel/ HTTP/1.1" 500 7287
+[2026-04-14 18:32:05,868] INFO webmaps User logged in: sureshone@gmail.com
+[2026-04-14 18:32:05,919] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 18:32:06,486] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-14 18:32:08,495] INFO webmaps User logged out
+[2026-04-14 18:32:08,607] INFO django.server "POST /auth/logout/ HTTP/1.1" 302 0
+[2026-04-14 18:32:08,675] WARNING webmaps Rate limit hit: login from f528764d...
+[2026-04-14 18:32:08,778] WARNING django.request Too Many Requests: /auth/login/
+[2026-04-14 18:32:08,794] WARNING django.server "GET /auth/login/ HTTP/1.1" 429 8185
+[2026-04-14 18:32:08,947] INFO django.server "GET /static/images/429_illustration.png HTTP/1.1" 200 713899
+[2026-04-14 18:33:31,734] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 18:35:19,266] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-04-14 18:35:19,371] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 18:35:21,483] ERROR webmaps Captured error: TemplateSyntaxError: Unclosed tag on line 7: 'block'. Looking for one of: endblock. @ /adminpanel/
+[2026-04-14 18:35:21,524] ERROR webmaps Unhandled exception at /adminpanel/: TemplateSyntaxError: Unclosed tag on line 7: 'block'. Looking for one of: endblock.
+[2026-04-14 18:35:21,826] ERROR django.request Internal Server Error: /adminpanel/
+[2026-04-14 18:35:21,956] ERROR django.server "GET /adminpanel/ HTTP/1.1" 500 7287
+[2026-04-14 18:35:22,245] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-14 18:35:22,289] INFO django.server "GET /static/images/500_illustration.png HTTP/1.1" 304 0
+[2026-04-14 18:35:49,105] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-04-14 18:35:49,114] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7322
+[2026-04-14 18:35:55,450] ERROR webmaps Captured error: TemplateSyntaxError: Unclosed tag on line 7: 'block'. Looking for one of: endblock. @ /adminpanel/
+[2026-04-14 18:35:55,452] ERROR webmaps Unhandled exception at /adminpanel/: TemplateSyntaxError: Unclosed tag on line 7: 'block'. Looking for one of: endblock.
+[2026-04-14 18:35:55,463] ERROR django.request Internal Server Error: /adminpanel/
+[2026-04-14 18:35:55,473] ERROR django.server "GET /adminpanel/ HTTP/1.1" 500 7287
+[2026-04-14 18:35:55,965] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-04-14 18:35:55,989] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7322
+[2026-04-14 18:36:50,244] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 50195
+[2026-04-14 18:36:50,464] INFO django.server "GET /static/css/admin.css HTTP/1.1" 200 7661
+[2026-04-14 18:36:50,819] WARNING django.request Not Found: /favicon.ico
+[2026-04-14 18:36:50,827] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4732
+[2026-04-14 18:39:22,284] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 25555
+[2026-04-14 18:39:22,414] INFO django.server "GET /static/css/admin.css HTTP/1.1" 200 7661
+[2026-04-14 18:39:23,728] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-04-14 18:39:23,782] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7322
+[2026-04-14 18:39:23,868] WARNING django.request Not Found: /favicon.ico
+[2026-04-14 18:39:23,936] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4732
+[2026-04-14 18:39:31,766] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 12918
+[2026-04-14 18:39:33,650] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 17957
+[2026-04-14 18:39:37,020] INFO django.server "GET /adminpanel/listings/ HTTP/1.1" 200 15688
+[2026-04-14 18:39:39,294] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 50194
+[2026-04-14 18:39:41,932] INFO django.server "POST /adminpanel/errors/05dd6cf1-759b-4dff-b277-1e96bb2ed76b/delete/ HTTP/1.1" 302 0
+[2026-04-14 18:39:42,020] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 44093
+[2026-04-14 18:39:43,812] INFO django.server "POST /adminpanel/errors/3b0c995d-dae6-4161-9d20-d1232025df55/delete/ HTTP/1.1" 302 0
+[2026-04-14 18:39:43,957] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 42083
+[2026-04-14 18:39:46,048] INFO django.server "POST /adminpanel/errors/fc25113d-cb7e-4c3b-b0ee-5dc01cff3177/delete/ HTTP/1.1" 302 0
+[2026-04-14 18:39:46,109] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 39636
+[2026-04-14 18:39:47,343] INFO django.server "POST /adminpanel/errors/4497aa9f-6f11-46cb-ba59-26db0ea5a52b/delete/ HTTP/1.1" 302 0
+[2026-04-14 18:39:47,413] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 37706
+[2026-04-14 18:39:50,489] INFO django.server "POST /adminpanel/errors/clear-all/ HTTP/1.1" 302 0
+[2026-04-14 18:39:50,619] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 13361
+[2026-04-14 18:39:52,669] INFO django.server "GET /adminpanel/listings/ HTTP/1.1" 200 15688
+[2026-04-14 18:39:55,175] INFO django.server "GET /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 18:39:55,265] INFO django.server "GET / HTTP/1.1" 200 14293
+[2026-04-14 18:39:55,635] INFO django.server "GET /adminpanel/listings/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 16948
+[2026-04-14 18:40:11,700] INFO webmaps User logged out
+[2026-04-14 18:40:11,771] INFO django.server "POST /auth/logout/ HTTP/1.1" 302 0
+[2026-04-14 18:40:12,472] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 18:40:12,690] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-04-14 18:41:06,888] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 17957
+[2026-04-14 18:41:06,945] INFO django.server "GET /static/css/admin.css HTTP/1.1" 304 0
+[2026-04-14 18:42:33,079] INFO django.server "GET /adminpanel/listings/ HTTP/1.1" 200 15688
+[2026-04-14 18:42:33,129] INFO django.server "GET /static/css/admin.css HTTP/1.1" 304 0
+[2026-04-14 18:42:36,356] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 13361
+[2026-04-14 18:42:39,095] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 12918
+[2026-04-14 18:42:42,296] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 22044
+[2026-04-14 18:42:53,453] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-04-14 18:42:53,494] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7322
+[2026-04-14 18:43:21,732] INFO django.server "POST /auth/login/ HTTP/1.1" 200 8525
+[2026-04-14 18:43:51,473] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\middleware\middleware.py changed, reloading.
+[2026-04-14 18:43:52,595] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\middleware\middleware.py changed, reloading.
+[2026-04-14 18:43:57,120] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 18:43:57,215] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 18:45:30,653] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 18:45:57,637] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 22044
+[2026-04-14 18:45:58,502] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10822
+[2026-04-14 18:45:58,672] INFO django.server "GET /static/css/admin.css HTTP/1.1" 200 8397
+[2026-04-14 18:45:59,381] WARNING django.request Not Found: /favicon.ico
+[2026-04-14 18:45:59,386] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4732
+[2026-04-14 18:46:13,567] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 12918
+[2026-04-14 18:46:13,626] INFO django.server "GET /static/css/admin.css HTTP/1.1" 304 0
+[2026-04-14 18:46:15,239] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 17728
+[2026-04-14 18:46:19,817] INFO django.server "GET /adminpanel/listings/ HTTP/1.1" 200 15688
+[2026-04-14 18:46:22,218] INFO django.server "GET /adminpanel/listings/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 19351
+[2026-04-14 18:46:43,244] ERROR webmaps Captured error: ValueError: Couldn't load 'Argon2PasswordHasher' algorithm library: No module named 'argon2' @ /auth/login/
+[2026-04-14 18:46:43,247] ERROR webmaps Unhandled exception at /auth/login/: ValueError: Couldn't load 'Argon2PasswordHasher' algorithm library: No module named 'argon2'
+[2026-04-14 18:46:43,274] ERROR django.request Internal Server Error: /auth/login/
+[2026-04-14 18:46:43,276] ERROR django.server "POST /auth/login/ HTTP/1.1" 500 5859
+[2026-04-14 18:47:13,341] INFO django.server "GET /adminpanel/ HTTP/1.1" 302 0
+[2026-04-14 18:47:13,486] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 18:48:22,691] ERROR webmaps Captured error: ValueError: Couldn't load 'Argon2PasswordHasher' algorithm library: No module named 'argon2' @ /auth/login/
+[2026-04-14 18:48:22,697] ERROR webmaps Unhandled exception at /auth/login/: ValueError: Couldn't load 'Argon2PasswordHasher' algorithm library: No module named 'argon2'
+[2026-04-14 18:48:22,732] ERROR django.request Internal Server Error: /auth/login/
+[2026-04-14 18:48:22,746] ERROR django.server "POST /auth/login/ HTTP/1.1" 500 5859
+[2026-04-14 18:48:35,187] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 302 0
+[2026-04-14 18:48:35,271] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 18:49:01,321] INFO django.server "GET / HTTP/1.1" 200 12865
+[2026-04-14 18:49:12,429] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 302 0
+[2026-04-14 18:49:12,507] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 18:49:54,945] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 302 0
+[2026-04-14 18:49:55,011] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 18:49:55,603] INFO django.server "GET /adminpanel/listings/ HTTP/1.1" 302 0
+[2026-04-14 18:49:55,700] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 19:06:47,387] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 302 0
+[2026-04-14 19:06:47,419] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 19:06:47,469] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-14 19:06:47,472] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-04-14 19:06:47,482] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-14 19:06:48,750] ERROR webmaps Captured error: ValueError: Couldn't load 'Argon2PasswordHasher' algorithm library: No module named 'argon2' @ /auth/login/
+[2026-04-14 19:06:48,751] ERROR webmaps Unhandled exception at /auth/login/: ValueError: Couldn't load 'Argon2PasswordHasher' algorithm library: No module named 'argon2'
+[2026-04-14 19:06:48,756] ERROR django.request Internal Server Error: /auth/login/
+[2026-04-14 19:06:48,758] ERROR django.server "POST /auth/login/ HTTP/1.1" 500 5859
+[2026-04-14 19:06:48,818] INFO django.server "GET /static/images/500_illustration.png HTTP/1.1" 304 0
+[2026-04-14 19:06:56,712] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-04-14 19:06:56,722] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5894
+[2026-04-14 19:07:07,228] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 302 0
+[2026-04-14 19:07:07,252] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 19:07:07,275] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-04-14 19:07:08,791] ERROR webmaps Captured error: ValueError: Couldn't load 'Argon2PasswordHasher' algorithm library: No module named 'argon2' @ /auth/login/
+[2026-04-14 19:07:08,792] ERROR webmaps Unhandled exception at /auth/login/: ValueError: Couldn't load 'Argon2PasswordHasher' algorithm library: No module named 'argon2'
+[2026-04-14 19:07:08,795] ERROR django.request Internal Server Error: /auth/login/
+[2026-04-14 19:07:08,797] ERROR django.server "POST /auth/login/ HTTP/1.1" 500 5859
+[2026-04-14 19:08:20,583] WARNING webmaps Bot blocked: python-requests/2.31.0
+[2026-04-14 19:08:20,638] WARNING django.request Forbidden: /auth/login/
+[2026-04-14 19:08:20,640] WARNING django.server "POST /auth/login/ HTTP/1.1" 403 5873
+[2026-04-14 19:08:32,557] WARNING django.security.csrf Forbidden (CSRF cookie not set.): /auth/login/
+[2026-04-14 19:08:32,586] WARNING django.request Forbidden: /auth/login/
+[2026-04-14 19:08:32,589] WARNING django.server "POST /auth/login/ HTTP/1.1" 403 5873
+[2026-04-14 19:12:30,723] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\WebMaps\settings.py changed, reloading.
+[2026-04-14 19:12:31,005] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\WebMaps\settings.py changed, reloading.
+[2026-04-14 19:12:34,941] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 19:12:35,435] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 19:13:50,497] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 19:13:50,537] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-14 19:13:50,542] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-14 19:13:52,087] ERROR webmaps Captured error: ValueError: Couldn't load 'Argon2PasswordHasher' algorithm library: No module named 'argon2' @ /auth/login/
+[2026-04-14 19:13:52,087] ERROR webmaps Unhandled exception at /auth/login/: ValueError: Couldn't load 'Argon2PasswordHasher' algorithm library: No module named 'argon2'
+[2026-04-14 19:13:52,092] ERROR django.request Internal Server Error: /auth/login/
+[2026-04-14 19:13:52,095] ERROR django.server "POST /auth/login/ HTTP/1.1" 500 5859
+[2026-04-14 19:14:11,916] INFO django.server "GET / HTTP/1.1" 200 12865
+[2026-04-14 19:14:12,064] INFO django.server "GET /static/js/main.js HTTP/1.1" 304 0
+[2026-04-14 19:14:12,067] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-04-14 19:14:13,725] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 19:14:15,613] ERROR webmaps Captured error: ValueError: Couldn't load 'Argon2PasswordHasher' algorithm library: No module named 'argon2' @ /auth/login/
+[2026-04-14 19:14:15,615] ERROR webmaps Unhandled exception at /auth/login/: ValueError: Couldn't load 'Argon2PasswordHasher' algorithm library: No module named 'argon2'
+[2026-04-14 19:14:15,621] ERROR django.request Internal Server Error: /auth/login/
+[2026-04-14 19:14:15,623] ERROR django.server "POST /auth/login/ HTTP/1.1" 500 5859
+[2026-04-14 19:15:00,936] INFO django.server "GET / HTTP/1.1" 200 12865
+[2026-04-14 19:15:00,987] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-14 19:15:02,831] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 19:15:04,252] ERROR webmaps Captured error: ValueError: Couldn't load 'Argon2PasswordHasher' algorithm library: No module named 'argon2' @ /auth/login/
+[2026-04-14 19:15:04,252] ERROR webmaps Unhandled exception at /auth/login/: ValueError: Couldn't load 'Argon2PasswordHasher' algorithm library: No module named 'argon2'
+[2026-04-14 19:15:04,256] ERROR django.request Internal Server Error: /auth/login/
+[2026-04-14 19:15:04,258] ERROR django.server "POST /auth/login/ HTTP/1.1" 500 5859
+[2026-04-14 19:15:39,665] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 19:15:39,744] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-14 19:15:39,755] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-04-14 19:15:39,812] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-14 19:16:11,554] ERROR webmaps Captured error: ValueError: Couldn't load 'Argon2PasswordHasher' algorithm library: No module named 'argon2' @ /auth/login/
+[2026-04-14 19:16:11,555] ERROR webmaps Unhandled exception at /auth/login/: ValueError: Couldn't load 'Argon2PasswordHasher' algorithm library: No module named 'argon2'
+[2026-04-14 19:16:11,567] ERROR django.request Internal Server Error: /auth/login/
+[2026-04-14 19:16:11,572] ERROR django.server "POST /auth/login/ HTTP/1.1" 500 5859
+[2026-04-14 19:16:44,844] INFO django.server "GET /adminpanel/ HTTP/1.1" 302 0
+[2026-04-14 19:16:44,962] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 19:19:39,879] ERROR webmaps Captured error: ValueError: Couldn't load 'Argon2PasswordHasher' algorithm library: No module named 'argon2' @ /auth/login/
+[2026-04-14 19:19:39,882] ERROR webmaps Unhandled exception at /auth/login/: ValueError: Couldn't load 'Argon2PasswordHasher' algorithm library: No module named 'argon2'
+[2026-04-14 19:19:39,891] ERROR django.request Internal Server Error: /auth/login/
+[2026-04-14 19:19:39,895] ERROR django.server "POST /auth/login/ HTTP/1.1" 500 5859
+[2026-04-14 19:19:49,628] INFO django.server "GET /adminpanel/ HTTP/1.1" 302 0
+[2026-04-14 19:19:49,686] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 19:23:10,236] ERROR webmaps Captured error: ValueError: Couldn't load 'Argon2PasswordHasher' algorithm library: No module named 'argon2' @ /auth/login/
+[2026-04-14 19:23:10,237] ERROR webmaps Unhandled exception at /auth/login/: ValueError: Couldn't load 'Argon2PasswordHasher' algorithm library: No module named 'argon2'
+[2026-04-14 19:23:10,250] ERROR django.request Internal Server Error: /auth/login/
+[2026-04-14 19:23:10,253] ERROR django.server "POST /auth/login/ HTTP/1.1" 500 5859
+[2026-04-14 19:23:25,502] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 302 0
+[2026-04-14 19:23:25,716] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 19:24:08,210] INFO django.server "GET / HTTP/1.1" 200 12865
+[2026-04-14 19:24:09,886] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 19:24:45,390] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\WebMaps\settings.py changed, reloading.
+[2026-04-14 19:24:45,477] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\WebMaps\settings.py changed, reloading.
+[2026-04-14 19:24:49,166] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 19:24:49,731] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 19:25:07,152] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 19:25:08,587] INFO django.server "POST /auth/login/ HTTP/1.1" 200 8525
+[2026-04-14 19:25:16,152] INFO django.server "GET / HTTP/1.1" 200 12865
+[2026-04-14 19:25:18,435] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 19:25:19,710] INFO django.server "POST /auth/login/ HTTP/1.1" 200 8521
+[2026-04-14 19:28:37,817] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 19:28:39,996] INFO django.server "POST /auth/login/ HTTP/1.1" 200 8521
+[2026-04-14 19:28:57,730] INFO django.server "POST /auth/login/ HTTP/1.1" 200 8521
+[2026-04-14 19:30:39,698] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\auth_app\views.py changed, reloading.
+[2026-04-14 19:30:39,835] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\auth_app\views.py changed, reloading.
+[2026-04-14 19:30:43,768] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 19:30:44,113] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 19:31:39,981] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\auth_app\views.py changed, reloading.
+[2026-04-14 19:31:40,073] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\auth_app\views.py changed, reloading.
+[2026-04-14 19:31:43,437] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 19:31:43,692] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 19:33:50,971] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\auth_app\views.py changed, reloading.
+[2026-04-14 19:33:51,128] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\auth_app\views.py changed, reloading.
+[2026-04-14 19:33:54,153] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 19:33:54,665] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 19:40:49,683] INFO webmaps Login attempt: User found for sureshone@gmail.com
+[2026-04-14 19:40:52,781] INFO webmaps User logged in: sureshone@gmail.com
+[2026-04-14 19:40:52,791] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 19:40:52,982] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-14 19:40:53,066] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-14 19:40:53,068] INFO django.server "GET /static/js/dashboard.js HTTP/1.1" 304 0
+[2026-04-14 19:40:53,073] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-04-14 19:40:57,141] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-04-14 19:40:58,657] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-04-14 19:40:58,659] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 19:40:58,745] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 24094
+[2026-04-14 19:40:58,792] INFO django.server "GET /static/css/admin.css HTTP/1.1" 304 0
+[2026-04-14 19:41:06,666] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 13260
+[2026-04-14 19:41:08,108] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 18786
+[2026-04-14 19:41:09,355] INFO django.server "GET /adminpanel/listings/ HTTP/1.1" 200 16824
+[2026-04-14 19:41:10,865] ERROR webmaps Captured error: TemplateSyntaxError: Invalid block tag on line 99: 'endblock'. Did you forget to register or load this tag? @ /adminpanel/errors/
+[2026-04-14 19:41:10,867] ERROR webmaps Unhandled exception at /adminpanel/errors/: TemplateSyntaxError: Invalid block tag on line 99: 'endblock'. Did you forget to register or load this tag?
+[2026-04-14 19:41:10,882] ERROR django.request Internal Server Error: /adminpanel/errors/
+[2026-04-14 19:41:10,884] ERROR django.server "GET /adminpanel/errors/ HTTP/1.1" 500 7301
+[2026-04-14 19:41:15,487] INFO django.server "GET / HTTP/1.1" 200 14293
+[2026-04-14 19:41:17,576] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 25069
+[2026-04-14 19:41:24,277] ERROR webmaps Captured error: TemplateSyntaxError: Invalid block tag on line 99: 'endblock'. Did you forget to register or load this tag? @ /adminpanel/errors/
+[2026-04-14 19:41:24,277] ERROR webmaps Unhandled exception at /adminpanel/errors/: TemplateSyntaxError: Invalid block tag on line 99: 'endblock'. Did you forget to register or load this tag?
+[2026-04-14 19:41:24,284] ERROR django.request Internal Server Error: /adminpanel/errors/
+[2026-04-14 19:41:24,287] ERROR django.server "GET /adminpanel/errors/ HTTP/1.1" 500 7301
+[2026-04-14 19:41:26,277] INFO django.server "GET / HTTP/1.1" 200 14293
+[2026-04-14 19:41:28,667] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 25069
+[2026-04-14 19:44:31,744] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 13367
+[2026-04-14 19:44:31,774] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-14 19:44:39,570] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 26442
+[2026-04-14 19:47:11,680] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 29370
+[2026-04-14 19:47:12,145] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10822
+[2026-04-14 19:47:12,207] INFO django.server "GET /static/css/admin.css HTTP/1.1" 200 8397
+[2026-04-14 19:47:12,454] WARNING django.request Not Found: /favicon.ico
+[2026-04-14 19:47:12,456] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4732
+[2026-04-14 19:48:34,947] ERROR webmaps Captured error: TemplateSyntaxError: Invalid block tag on line 258: 'endblock'. Did you forget to register or load this tag? @ /adminpanel/errors/
+[2026-04-14 19:48:34,948] ERROR webmaps Unhandled exception at /adminpanel/errors/: TemplateSyntaxError: Invalid block tag on line 258: 'endblock'. Did you forget to register or load this tag?
+[2026-04-14 19:48:34,975] ERROR django.request Internal Server Error: /adminpanel/errors/
+[2026-04-14 19:48:34,985] ERROR django.server "GET /adminpanel/errors/ HTTP/1.1" 500 7301
+[2026-04-14 19:48:35,047] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-14 19:48:35,049] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10822
+[2026-04-14 19:48:35,068] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-14 19:48:35,094] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-14 19:48:35,119] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-14 19:48:35,131] INFO django.server "GET /static/images/500_illustration.png HTTP/1.1" 200 879255
+[2026-04-14 19:48:39,375] INFO django.server "GET / HTTP/1.1" 200 14293
+[2026-04-14 19:48:41,386] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 26045
+[2026-04-14 19:48:41,659] WARNING django.request Not Found: /favicon.ico
+[2026-04-14 19:48:41,661] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4732
+[2026-04-14 19:49:39,474] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 26044
+[2026-04-14 19:49:39,513] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10822
+[2026-04-14 19:49:39,514] INFO django.server "GET /static/css/admin.css HTTP/1.1" 200 8397
+[2026-04-14 19:49:39,811] WARNING django.request Not Found: /favicon.ico
+[2026-04-14 19:49:39,812] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4732
+[2026-04-14 19:49:41,944] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 37453
+[2026-04-14 19:49:50,927] INFO webmaps User logged out
+[2026-04-14 19:49:50,929] INFO django.server "POST /auth/logout/ HTTP/1.1" 302 0
+[2026-04-14 19:49:50,962] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 19:49:51,022] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-04-14 19:49:51,027] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 6775
+[2026-04-14 19:49:59,627] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-04-14 19:50:01,610] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-04-14 19:50:01,613] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 19:50:01,723] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 26044
+[2026-04-14 19:50:01,812] INFO django.server "GET /static/css/admin.css HTTP/1.1" 200 8397
+[2026-04-14 19:50:02,531] WARNING django.request Not Found: /favicon.ico
+[2026-04-14 19:50:02,539] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4732
+[2026-04-14 19:50:17,291] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 37453
+[2026-04-14 19:55:35,378] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 36574
+[2026-04-14 19:55:35,451] INFO django.server "GET /static/css/admin.css HTTP/1.1" 200 8397
+[2026-04-14 19:55:35,455] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10822
+[2026-04-14 19:55:35,907] WARNING django.request Not Found: /favicon.ico
+[2026-04-14 19:55:35,911] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4732
+[2026-04-14 19:57:33,408] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 37757
+[2026-04-14 19:57:33,475] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10822
+[2026-04-14 19:57:33,476] INFO django.server "GET /static/css/admin.css HTTP/1.1" 200 8397
+[2026-04-14 19:57:33,823] WARNING django.request Not Found: /favicon.ico
+[2026-04-14 19:57:33,826] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4732
+[2026-04-14 19:57:44,460] INFO django.server "POST /adminpanel/errors/dbf72453-1659-42d2-86f2-93d9e09d261a/delete/ HTTP/1.1" 302 0
+[2026-04-14 19:57:44,528] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 30177
+[2026-04-14 19:57:45,987] INFO django.server "POST /adminpanel/errors/14b9bfff-d65d-4e69-8383-ccb1cc825a48/delete/ HTTP/1.1" 302 0
+[2026-04-14 19:57:46,092] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 24282
+[2026-04-14 19:57:48,448] INFO django.server "POST /adminpanel/errors/d80bd8ec-803d-4a66-84da-aa7bbb208ef2/delete/ HTTP/1.1" 302 0
+[2026-04-14 19:57:48,504] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 17134
+[2026-04-14 19:57:51,871] INFO django.server "POST /adminpanel/errors/clear-all/ HTTP/1.1" 302 0
+[2026-04-14 19:57:51,916] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 17134

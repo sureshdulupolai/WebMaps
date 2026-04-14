@@ -1,0 +1,120 @@
+{% extends 'adminpanel/admin_base.html' %}
+{% load static %}
+
+{% block title %}Strategic Intelligence — WebMaps Admin{% endblock %}
+{% block breadcrumb %}Analytics{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in">
+    <div class="glass-header d-flex justify-between align-center mb-8">
+        <div>
+            <h1 class="page-title text-primary">Strategic Intelligence</h1>
+            <p class="page-subtitle">Deep analytics regarding entity engagement and traffic horizons.</p>
+        </div>
+        <div class="glass-card py-2 px-4 d-flex align-center gap-2" style="background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.2);">
+            <div class="chip-avatar" style="width: 24px; height: 24px; font-size: 10px; background: var(--secondary); color: white;">{{ listing_stats|length }}</div>
+            <span class="text-[10px] font-black uppercase letter-spacing-1 text-white opacity-60">Monitored Entities</span>
+        </div>
+    </div>
+
+    <!-- Analytics Insights Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {% for item in listing_stats %}
+        <div class="glass-card p-0 overflow-hidden border-white-5">
+            <div class="p-4 border-bottom border-white-5 d-flex justify-between align-center bg-white-5">
+                <div class="d-flex align-center gap-3">
+                    <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.03); border: 1px solid var(--admin-border); display:grid; place-items:center;">
+                         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-sm font-bold m-0 text-white">{{ item.listing.company_name }}</h2>
+                        <div class="text-[9px] opacity-20 font-mono uppercase">{{ item.listing.slug|truncatechars:30 }}</div>
+                    </div>
+                </div>
+                <a href="{% url 'adminpanel:listing_detail' item.listing.slug %}" class="action-icon-btn" style="width: 28px; height: 28px;">
+                    <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+
+            <div class="p-5">
+                <div class="grid grid-cols-3 gap-4 mb-6">
+                    <div class="p-3 rounded-xl bg-white-5 border border-white-5 text-center">
+                        <div class="text-base font-black text-white leading-none mb-1">{{ item.stats.page_views|default:0 }}</div>
+                        <div class="text-[8px] opacity-20 uppercase font-black letter-spacing-1">Views</div>
+                    </div>
+                    <div class="p-3 rounded-xl bg-white-5 border border-white-5 text-center">
+                        <div class="text-base font-black text-white leading-none mb-1">{{ item.stats.contact_clicks|default:0 }}</div>
+                        <div class="text-[8px] opacity-20 uppercase font-black letter-spacing-1">Clicks</div>
+                    </div>
+                    <div class="p-3 rounded-xl bg-white-5 border border-white-5 text-center">
+                        <div class="text-base font-black text-white leading-none mb-1">{{ item.stats.direction_clicks|default:0 }}</div>
+                        <div class="text-[8px] opacity-20 uppercase font-black letter-spacing-1">Navs</div>
+                    </div>
+                </div>
+                
+                <div class="chart-container" style="height: 120px; filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.05));">
+                    <canvas id="chart-{{ forloop.counter }}"></canvas>
+                </div>
+            </div>
+            
+            <div class="p-3 px-5 border-top border-white-5 d-flex justify-between align-center bg-white-5">
+                <div class="d-flex align-center gap-2">
+                    <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 8px var(--primary);"></div>
+                    <span class="text-[9px] opacity-30 font-black uppercase letter-spacing-2">Live Signal Strength</span>
+                </div>
+                <span class="text-[10px] font-black text-primary font-mono">INT_SCORE: 0.92</span>
+            </div>
+        </div>
+        {% empty %}
+        <div class="glass-card text-center py-32 opacity-15 lg:col-span-2">
+            <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1" class="mx-auto mb-6"><path d="M7 12l3-3 3 3 4-4M8 21h8a2 2 0 002-2v-9a2 2 0 00-2-2H8a2 2 0 00-2 2v9a2 2 0 002 2z"/></svg>
+            <p class="font-mono text-[10px] letter-spacing-2 uppercase">Intelligence horizon is dark. No signals detected.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+    .grid-cols-3 { display: grid; grid-template-columns: repeat(3, 1fr); }
+    @media (min-width: 1024px) {
+        .lg\:grid-cols-2 { grid-template-columns: 1fr 1fr; }
+    }
+    .bg-white-5 { background: rgba(255, 255, 255, 0.015); }
+    .border-white-5 { border-color: rgba(255, 255, 255, 0.04); }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    {% for item in listing_stats %}
+    (function() {
+        const ctx = document.getElementById('chart-{{ forloop.counter }}').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['V', 'C', 'N'],
+                datasets: [{
+                    data: [{{ item.stats.page_views|default:0 }}, {{ item.stats.contact_clicks|default:0 }}, {{ item.stats.direction_clicks|default:0 }}],
+                    backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                    borderColor: '#6366f1',
+                    borderWidth: 2,
+                    pointRadius: 3,
+                    pointBackgroundColor: '#6366f1',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true, display: false, grid: { display: false } },
+                    x: { grid: { display: false }, ticks: { color: 'rgba(255,255,255,0.1)', font: { size: 8, weight: 'bold' } } }
+                }
+            }
+        });
+    })();
+    {% endfor %}
+</script>
+{% endblock %}

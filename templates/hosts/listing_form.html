@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container container-lg py-12" data-rzp-key="{{ razorpay_key }}">
+<div class="container container-lg py-12" data-rzp-key="{{ razorpay_key }}" data-needs-payment="{{ needs_payment|yesno:'true,false' }}">
   <div class="page-header mb-10 mt-6">
     <div class="d-flex align-center justify-between">
       <div>
@@ -290,27 +290,8 @@
     }{% if not forloop.last %},{% endif %}
     {% endfor %}
   ],
-  "operating_hours": {% if listing.operating_hours %}{{ listing.operating_hours|json_script:"ignored" }}{% else %}{}{% endif %}
+  "operating_hours": {{ listing.operating_hours|default:"{}"|safe }}
 }
-</script>
-<script>
-  // Self-correcting for the json_script tag quirk
-  (function() {
-    const el = document.getElementById('listing-initial-data');
-    if (el) {
-      let text = el.textContent;
-      // If we used json_script inside, we need to extract the actual JSON
-      if (text.includes('<script')) {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(text, 'text/html');
-        const nested = doc.getElementById('ignored');
-        if (nested) {
-          const hours = nested.textContent;
-          el.textContent = text.replace(/<script.*script>/, hours);
-        }
-      }
-    }
-  })();
 </script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>

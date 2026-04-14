@@ -194,16 +194,19 @@ def login_view(request):
     if request.method == 'GET':
         return render(request, 'auth/login.html')
 
-    email = sanitize_input(request.POST.get('email', '').strip().lower())
+    email = request.POST.get('email', '').strip().lower()
     password = request.POST.get('password', '')
 
     try:
         user = User.objects.get(email=email)
+        logger.info(f"Login attempt: User found for {email}")
     except User.DoesNotExist:
-        return render(request, 'auth/login.html', {'error': 'Invalid email or password.'})
+        logger.warning(f"Login attempt: User NOT found for {email}")
+        return render(request, 'auth/login.html', {'error': '[AUTH_DETECTION_ERROR] Invalid email or password.'})
 
     if not user.check_password(password):
-        return render(request, 'auth/login.html', {'error': 'Invalid email or password.'})
+        logger.warning(f"Login attempt: Password mismatch for {email}")
+        return render(request, 'auth/login.html', {'error': '[AUTH_VERIFICATION_ERROR] Invalid email or password.'})
 
     if not user.is_active:
         return render(request, 'auth/login.html', {'error': 'This account has been deactivated.'})

@@ -188,8 +188,16 @@ def listing_create_view(request):
 @require_http_methods(['GET', 'POST'])
 def listing_edit_view(request, slug):
     listing = get_object_or_404(Listing, slug=slug, host=request.user, deleted_at__isnull=True)
+    from payments.models import Subscription, SubscriptionPlan
 
-    if not listing.can_update:
+    # Check for active subscription
+    try:
+        sub = Subscription.objects.get(listing=listing)
+        needs_payment = not sub.is_active or sub.is_expired
+    except Subscription.DoesNotExist:
+        needs_payment = True
+
+    if not listing.can_update and not needs_payment:
         plans = SubscriptionPlan.objects.all()
         return render(request, 'hosts/listing_form.html', {
             'listing': listing,
@@ -197,9 +205,11 @@ def listing_edit_view(request, slug):
             'action': 'edit',
             'razorpay_key': settings.RAZORPAY_KEY_ID,
             'plans': plans,
+            'needs_payment': False,
             'form_data': {
-                'company_name': '', 'website_url': '', 'short_description': '',
-                'latitude': '', 'longitude': '', 'location_name': ''
+                'company_name': listing.company_name, 'website_url': listing.website_url,
+                'short_description': listing.short_description, 'latitude': listing.latitude,
+                'longitude': listing.longitude, 'location_name': listing.location_name
             },
         })
 
@@ -210,9 +220,11 @@ def listing_edit_view(request, slug):
             'action': 'edit',
             'razorpay_key': settings.RAZORPAY_KEY_ID,
             'plans': plans,
+            'needs_payment': needs_payment,
             'form_data': {
-                'company_name': '', 'website_url': '', 'short_description': '',
-                'latitude': '', 'longitude': '', 'location_name': ''
+                'company_name': listing.company_name, 'website_url': listing.website_url,
+                'short_description': listing.short_description, 'latitude': listing.latitude,
+                'longitude': listing.longitude, 'location_name': listing.location_name
             },
         })
     
@@ -247,6 +259,9 @@ def listing_edit_view(request, slug):
     success, error = update_listing(listing, data, file_obj, parsed_services)
 
     if not success:
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            return JsonResponse({'errors': {'update': error}}, status=400)
+        
         plans = SubscriptionPlan.objects.all()
         return render(request, 'hosts/listing_form.html', {
             'listing': listing, 
@@ -254,8 +269,12 @@ def listing_edit_view(request, slug):
             'action': 'edit',
             'razorpay_key': settings.RAZORPAY_KEY_ID,
             'plans': plans,
+            'needs_payment': needs_payment,
             'form_data': data,
         })
+
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        return JsonResponse({'status': 'success', 'slug': listing.slug})
 
     return redirect('hosts:dashboard')
 

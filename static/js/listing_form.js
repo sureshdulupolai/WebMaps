@@ -24,13 +24,23 @@ document.addEventListener('DOMContentLoaded', function () {
     const fileInput = document.getElementById('id_service_file');
 
     // 02. STATE & CONSTANTS
-    let currentStep = 1;
+    const container = document.querySelector('.container');
+    const needsPayment = container && container.dataset.needsPayment === 'true';
+    let currentStep = needsPayment ? 4 : 1;
     let parsedServices = [];
     let marker;
     
     // Calculate listing-specific STORAGE_KEY
     const initialDataEl = document.getElementById('listing-initial-data');
-    const initialData = initialDataEl ? JSON.parse(initialDataEl.textContent) : null;
+    let initialData = null;
+    if (initialDataEl) {
+        try {
+            initialData = JSON.parse(initialDataEl.textContent);
+        } catch (e) {
+            console.error("Critical: Initial data block is malformed.", e);
+        }
+    }
+
     const STORAGE_KEY = initialData && initialData.slug 
         ? `webmaps_edit_${initialData.slug}` 
         : 'webmaps_new_listing';
@@ -49,11 +59,23 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         if (progressLine) progressLine.style.width = `${(currentStep - 1) * 33.33}%`;
-        if (prevBtn) prevBtn.style.visibility = currentStep === 1 ? 'hidden' : 'visible';
+        
+        // Disable 'Back' if we are forcing payment
+        if (prevBtn) {
+            if (needsPayment && currentStep === 4) {
+                prevBtn.style.visibility = 'hidden';
+            } else {
+                prevBtn.style.visibility = currentStep === 1 ? 'hidden' : 'visible';
+            }
+        }
 
         if (currentStep === 4) {
             nextBtn.style.display = 'none';
             renderSummary();
+            if (needsPayment) {
+                const sumContent = document.getElementById('summary-content');
+                if (sumContent) sumContent.innerHTML = `<div class="alert alert-warning mb-6">Subscription Required: Please complete the payment to re-activate this listing and save your changes.</div>` + sumContent.innerHTML;
+            }
         } else {
             nextBtn.style.display = 'block';
             nextBtn.textContent = currentStep === 3 ? 'Review & Finish' : 'Continue to Next Step';
@@ -61,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Special: Invalidate map size if moving to step 1
         if (currentStep === 1 && typeof map !== 'undefined') {
-            setTimeout(() => map.invalidateSize(), 100);
+            setTimeout(() => map.invalidateSize(), 150);
         }
 
         saveToLocal();

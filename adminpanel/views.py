@@ -154,3 +154,20 @@ def review_delete_view(request, review_id):
     review.delete()
     return redirect('adminpanel:listing_detail', slug=listing_slug)
 
+
+@jwt_login_required
+@role_required('admin')
+@require_POST
+def error_delete_view(request, error_id):
+    error = get_object_or_404(AppError, id=error_id)
+    error.delete()
+    return redirect('adminpanel:errors')
+
+
+@jwt_login_required
+@role_required('admin')
+@require_POST
+def error_clear_all_view(request):
+    AppError.objects.all().delete()
+    return redirect('adminpanel:errors')
+

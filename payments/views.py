@@ -90,6 +90,19 @@ def verify_payment_view(request):
             'payment_id': payment_id,
             'signature': signature,
         })
+
+        # 📄 LOG TRANSACTION
+        from .models import PaymentLog
+        PaymentLog.objects.create(
+            user=listing.host,
+            listing=listing,
+            plan=plan,
+            amount=plan.total_cost,
+            razorpay_order_id=order_id,
+            razorpay_payment_id=payment_id,
+            status='success'
+        )
+
         return JsonResponse({'status': 'success', 'redirect': f'/hosts/dashboard/'})
     except Exception as e:
         logger.error(f"Subscription activation error: {e}")

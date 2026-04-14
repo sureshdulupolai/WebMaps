@@ -1,72 +1,89 @@
-{% extends 'base.html' %}
-{% block title %}Manage Users — WebMaps Admin{% endblock %}
+{% extends 'adminpanel/admin_base.html' %}
+{% load static %}
+
+{% block title %}Identity Control — WebMaps Admin{% endblock %}
+{% block breadcrumb %}User Control{% endblock %}
 
 {% block content %}
-<div class="sidebar-layout">
-  <aside class="sidebar">
-    <div class="sidebar-label">Admin Panel</div>
-    <a href="{% url 'adminpanel:dashboard' %}" class="sidebar-link">
-      <span class="icon">📊</span> Overview
-    </a>
-    <a href="{% url 'adminpanel:users' %}" class="sidebar-link active">
-      <span class="icon">👥</span> Users
-    </a>
-    <a href="{% url 'adminpanel:listings' %}" class="sidebar-link">
-      <span class="icon">🏪</span> Listings
-    </a>
-    <a href="{% url 'adminpanel:analytics' %}" class="sidebar-link">
-      <span class="icon">📈</span> Analytics
-    </a>
-    <a href="{% url 'adminpanel:errors' %}" class="sidebar-link">
-      <span class="icon">⚠️</span> Errors
-    </a>
-  </aside>
-
-  <div class="main-content">
-    <div class="page-header">
-      <h1 class="page-title">Users</h1>
-      <p class="page-subtitle">Manage customer and host accounts.</p>
+<div class="animate-fade-in">
+    <div class="glass-header d-flex justify-between align-center">
+        <div>
+            <h1 class="page-title">Identity Control</h1>
+            <p class="page-subtitle">Security management for platform identities and authentication states.</p>
+        </div>
+        <div class="glass-card py-2 px-5 d-flex align-center gap-3">
+            <div class="stat-icon" style="margin: 0; width: 32px; height: 32px; background: rgba(99, 102, 241, 0.1); color: var(--secondary);">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+            </div>
+            <div>
+                <div class="text-[10px] opacity-40 uppercase font-black mb-0.5">Total Identities</div>
+                <div class="text-lg font-black text-white leading-none">{{ users|length }}</div>
+            </div>
+        </div>
     </div>
 
-    <div class="card">
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Username</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Verified</th>
-              <th>Joined</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for u in users %}
-              <tr>
-                <td class="fw-600">{{ u.username }}</td>
-                <td>{{ u.email }}</td>
-                <td>
-                  <span class="badge {% if u.role == 'host' %}badge-purple{% elif u.role == 'admin' %}badge-approved{% else %}badge-pending{% endif %}">
-                    {{ u.role|upper }}
-                  </span>
-                </td>
-                <td>{% if u.is_verified %}✅{% else %}❌{% endif %}</td>
-                <td>{{ u.created_at|date:"M d, Y" }}</td>
-                <td>
-                  {% if request.user.id != u.id and u.role != 'admin' %}
-                    <form method="post" action="{% url 'adminpanel:user_delete' u.id %}" onsubmit="return confirm('Permanently delete this user and all associated data?');" style="margin:0;">
-                      {% csrf_token %}
-                      <button type="submit" class="btn btn-xs btn-danger" style="padding:4px 8px;font-size:0.75rem;">Delete</button>
-                    </form>
-                  {% endif %}
-                </td>
-              </tr>
-            {% endfor %}
-          </tbody>
+    <div class="table-container mt-6">
+        <table class="premium-table">
+            <thead>
+                <tr>
+                    <th style="padding-left: 24px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Identity Signature</th>
+                    <th style="font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Email Horizon</th>
+                    <th style="font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Access Role</th>
+                    <th style="font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Join Sequence</th>
+                    <th class="text-right" style="padding-right: 24px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Operations</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr class="hover:bg-white-5 transition-all">
+                    <td style="padding-left: 24px;">
+                        <div class="d-flex align-center gap-3">
+                            <div class="chip-avatar" style="width: 32px; height: 32px; font-size: 11px; background: rgba(255,255,255,0.03); border: 1px solid var(--admin-border); color: var(--admin-accent);">
+                                {{ user.username|first|upper }}
+                            </div>
+                            <div>
+                                <div class="font-bold text-white text-sm">{{ user.username }}</div>
+                                <div class="text-[9px] opacity-30 font-mono">{{ user.id|truncatechars:18 }}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-xs font-medium text-white/80">{{ user.email }}</div>
+                    </td>
+                    <td>
+                        <span class="status-badge {% if user.role == 'admin' %}badge-danger{% elif user.role == 'host' %}badge-info{% else %}badge-outline{% endif %}" style="font-size: 8px; font-weight: 800; border-radius: 4px;">
+                            {{ user.role|upper }}
+                        </span>
+                    </td>
+                    <td>
+                        <div class="text-xs text-white/60">{{ user.created_at|date:"M d, Y" }}</div>
+                        <div class="text-[9px] opacity-20 uppercase font-bold">{{ user.created_at|timesince }} ago</div>
+                    </td>
+                    <td style="padding-right: 24px;">
+                        <div class="d-flex gap-2 justify-end">
+                            <form action="{% url 'adminpanel:user_delete' user.id %}" method="POST" class="m-0" onsubmit="return confirm('Terminate this system identity? This action is non-reversible.');">
+                                {% csrf_token %}
+                                <button type="submit" class="action-icon-btn" style="color: var(--danger); width: 28px; height: 28px; border: 1px solid rgba(239, 68, 68, 0.1);" title="Terminate">
+                                    <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1-1v3M4 7h16"/></svg>
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center py-20 opacity-20">
+                        <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" class="mx-auto block mb-4"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                        <p class="font-mono text-xs letter-spacing-1">REGISTRY EMPTY: NO SIGNATURES DETECTED</p>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
         </table>
-      </div>
     </div>
-  </div>
 </div>
+
+<style>
+    .badge-outline { border: 1px solid var(--border); color: var(--text-muted); padding: 2px 8px; font-size: 8px; font-weight: 800; border-radius: 6px; }
+</style>
 {% endblock %}

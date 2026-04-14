@@ -4,6 +4,7 @@ payments/models.py — Subscription plans and user subscriptions.
 import uuid
 from django.db import models
 from django.utils import timezone
+from django.conf import settings
 
 
 class SubscriptionPlan(models.Model):
@@ -78,3 +79,37 @@ class Subscription(models.Model):
             return 0
         delta = self.expires_at - timezone.now()
         return max(0, delta.days)
+
+
+class PaymentLog(models.Model):
+    """Historical record of all transactions for accounting and debugging."""
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='payment_logs'
+    )
+    listing = models.ForeignKey(
+        'hosts.Listing',
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='payment_logs'
+    )
+    plan = models.ForeignKey(
+        SubscriptionPlan,
+        on_delete=models.SET_NULL,
+        null=True
+    )
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    razorpay_order_id = models.CharField(max_length=100, blank=True)
+    razorpay_payment_id = models.CharField(max_length=100, blank=True)
+    status = models.CharField(max_length=20, default='success')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = 'payment_logs'
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"{self.user.username} — {self.listing.company_name} — ₹{self.amount}"

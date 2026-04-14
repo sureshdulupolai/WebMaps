@@ -101,17 +101,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     loginForm.addEventListener('submit', async function(e) {
-      if(!loginSubmitBtn.disabled) {
-        // Save or clear credentials based on checkbox
-        if (rememberCheckbox && rememberCheckbox.checked) {
-          await saveCredentials(emailInput.value, passwordInput.value);
-        } else {
-          await clearCredentials();
-        }
-
-        loginSubmitBtn.disabled = true;
-        loginSubmitBtn.innerHTML = '<span class="loading-spinner mr-2"></span> Authenticating...';
+      // Save or clear credentials based on checkbox
+      if (rememberCheckbox && rememberCheckbox.checked) {
+        await saveCredentials(emailInput.value, passwordInput.value);
+      } else {
+        await clearCredentials();
       }
+
+      loginSubmitBtn.innerHTML = '<span class="loading-spinner mr-2"></span> Authenticating...';
     });
   }
 
