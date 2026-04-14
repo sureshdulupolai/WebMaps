@@ -220,8 +220,9 @@ def login_view(request):
         pass
 
     access_token, refresh_token = get_tokens_for_user(user)
+    remember = request.POST.get('remember') == 'on'
     response = redirect(_get_redirect_after_login(user))
-    set_auth_cookies(response, access_token, refresh_token)
+    set_auth_cookies(response, access_token, refresh_token, remember=remember)
     logger.info(f"User logged in: {email}")
     return response
 

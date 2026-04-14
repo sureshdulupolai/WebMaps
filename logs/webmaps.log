@@ -1909,3 +1909,45 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-04-14 11:54:26,310] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
 [2026-04-14 11:54:26,317] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 304 0
 [2026-04-14 11:54:26,320] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-14 11:56:10,701] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 11:58:18,240] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\auth_app\cookies.py changed, reloading.
+[2026-04-14 11:58:21,708] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 11:58:36,699] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\auth_app\views.py changed, reloading.
+[2026-04-14 11:58:43,366] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 11:59:22,852] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 11:59:23,610] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-14 11:59:23,668] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10890
+[2026-04-14 11:59:23,683] INFO django.server "GET /static/css/auth.css HTTP/1.1" 200 6897
+[2026-04-14 11:59:23,793] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 6874
+[2026-04-14 11:59:23,795] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-14 11:59:23,805] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-14 11:59:24,070] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-14 11:59:24,102] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-14 11:59:40,245] INFO django.server "POST /auth/login/ HTTP/1.1" 200 8521
+[2026-04-14 11:59:40,301] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-14 11:59:50,568] INFO webmaps User logged in: sureshone@gmail.com
+[2026-04-14 11:59:50,572] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 11:59:50,687] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 9355
+[2026-04-14 11:59:50,765] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-04-14 11:59:51,228] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
+[2026-04-14 11:59:56,634] INFO webmaps User logged out
+[2026-04-14 11:59:56,643] INFO django.server "POST /auth/logout/ HTTP/1.1" 302 0
+[2026-04-14 11:59:56,706] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 11:59:56,796] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-04-14 11:59:59,992] INFO django.server "GET / HTTP/1.1" 200 12800
+[2026-04-14 12:00:01,155] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 12:00:03,518] WARNING webmaps Rate limit hit: login from f528764d...
+[2026-04-14 12:00:03,642] WARNING django.request Too Many Requests: /auth/login/
+[2026-04-14 12:00:03,644] WARNING django.server "POST /auth/login/ HTTP/1.1" 429 8185
+[2026-04-14 12:00:03,700] INFO django.server "GET /static/images/429_illustration.png HTTP/1.1" 304 0
+[2026-04-14 12:01:29,596] INFO webmaps User logged in: sureshone@gmail.com
+[2026-04-14 12:01:29,598] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 12:01:29,640] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 9355
+[2026-04-14 12:01:29,729] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
+[2026-04-14 12:01:41,947] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 23717
+[2026-04-14 12:01:48,004] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 9355
+[2026-04-14 12:01:48,104] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
+[2026-04-14 12:01:50,457] INFO django.server "GET /users/profile/ HTTP/1.1" 200 11746
+[2026-04-14 12:01:55,981] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 9355
+[2026-04-14 12:01:56,061] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
+[2026-04-14 12:02:04,433] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 23717

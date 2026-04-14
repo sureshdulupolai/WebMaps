@@ -11,21 +11,27 @@ def get_tokens_for_user(user):
     return str(refresh.access_token), str(refresh)
 
 
-def set_auth_cookies(response, access_token: str, refresh_token: str):
+def set_auth_cookies(response, access_token: str, refresh_token: str, remember: bool = False):
     """
     Set JWT tokens as HTTPOnly, Secure cookies on the response.
     Never visible to JavaScript.
+    If remember is False, the cookies will expire when the browser is closed (Session cookies).
     """
     jwt_settings = settings.SIMPLE_JWT
     secure = jwt_settings.get('AUTH_COOKIE_SECURE', False)
     http_only = jwt_settings.get('AUTH_COOKIE_HTTP_ONLY', True)
     samesite = jwt_settings.get('AUTH_COOKIE_SAMESITE', 'Lax')
 
+    # Expiry logic
+    # If remember is False, set max_age to None for session-only cookies
+    access_max_age = int(settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME'].total_seconds()) if remember else None
+    refresh_max_age = int(settings.SIMPLE_JWT['REFRESH_TOKEN_LIFETIME'].total_seconds()) if remember else None
+
     # Access token cookie
     response.set_cookie(
         key=settings.JWT_ACCESS_COOKIE,
         value=access_token,
-        max_age=int(settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME'].total_seconds()),
+        max_age=access_max_age,
         secure=secure,
         httponly=http_only,
         samesite=samesite,
@@ -36,7 +42,7 @@ def set_auth_cookies(response, access_token: str, refresh_token: str):
     response.set_cookie(
         key=settings.JWT_REFRESH_COOKIE,
         value=refresh_token,
-        max_age=int(settings.SIMPLE_JWT['REFRESH_TOKEN_LIFETIME'].total_seconds()),
+        max_age=refresh_max_age,
         secure=secure,
         httponly=http_only,
         samesite=samesite,

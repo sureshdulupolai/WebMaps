@@ -28,19 +28,87 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // --- IndexedDB Management for "Remember Session" ---
+  const dbName = "WebMapsAuthDB";
+  const storeName = "credentials";
+  
+  function initDB() {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open(dbName, 1);
+      request.onupgradeneeded = (event) => {
+        const db = event.target.result;
+        if (!db.objectStoreNames.contains(storeName)) {
+          db.createObjectStore(storeName, { keyPath: "id" });
+        }
+      };
+      request.onsuccess = (event) => resolve(event.target.result);
+      request.onerror = (event) => reject("IndexedDB error: " + event.target.errorCode);
+    });
+  }
+
+  async function saveCredentials(email, password) {
+    try {
+      const db = await initDB();
+      const transaction = db.transaction(storeName, "readwrite");
+      const store = transaction.objectStore(storeName);
+      store.put({ id: "user_login", email, password });
+    } catch (err) { console.error(err); }
+  }
+
+  async function getCredentials() {
+    try {
+      const db = await initDB();
+      return new Promise((resolve) => {
+        const transaction = db.transaction(storeName, "readonly");
+        const store = transaction.objectStore(storeName);
+        const request = store.get("user_login");
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => resolve(null);
+      });
+    } catch (err) { return null; }
+  }
+
+  async function clearCredentials() {
+    try {
+      const db = await initDB();
+      const transaction = db.transaction(storeName, "readwrite");
+      const store = transaction.objectStore(storeName);
+      store.delete("user_login");
+    } catch (err) { console.error(err); }
+  }
+
   // --- Dynamic Form Validation (Login) ---
   const loginForm = document.getElementById('login-form');
   const loginSubmitBtn = document.getElementById('login-submit-btn');
 
   if (loginForm && loginSubmitBtn) {
-    loginForm.addEventListener('input', () => {
-      const e = document.getElementById('login-email').value;
-      const p = document.getElementById('login-password').value;
-      loginSubmitBtn.disabled = !(e && p.length > 0);
+    const emailInput = document.getElementById('login-email');
+    const passwordInput = document.getElementById('login-password');
+    const rememberCheckbox = loginForm.querySelector('input[name="remember"]');
+
+    // Auto-fill from IndexedDB
+    getCredentials().then(data => {
+      if (data) {
+        emailInput.value = data.email;
+        passwordInput.value = data.password;
+        if (rememberCheckbox) rememberCheckbox.checked = true;
+        loginSubmitBtn.disabled = false;
+      }
     });
 
-    loginForm.addEventListener('submit', function() {
+    loginForm.addEventListener('input', () => {
+      loginSubmitBtn.disabled = !(emailInput.value && passwordInput.value.length > 0);
+    });
+
+    loginForm.addEventListener('submit', async function(e) {
       if(!loginSubmitBtn.disabled) {
+        // Save or clear credentials based on checkbox
+        if (rememberCheckbox && rememberCheckbox.checked) {
+          await saveCredentials(emailInput.value, passwordInput.value);
+        } else {
+          await clearCredentials();
+        }
+
         loginSubmitBtn.disabled = true;
         loginSubmitBtn.innerHTML = '<span class="loading-spinner mr-2"></span> Authenticating...';
       }
