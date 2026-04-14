@@ -2096,3 +2096,44 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-04-14 13:15:52,759] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
 [2026-04-14 13:15:52,762] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
 [2026-04-14 13:15:52,774] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 200 16903
+[2026-04-14 13:20:51,823] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 13:20:55,370] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 17869
+[2026-04-14 13:20:56,627] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-14 13:20:56,637] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 200 16903
+[2026-04-14 13:20:56,694] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-14 13:20:56,704] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-14 13:20:56,744] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 200 6250
+[2026-04-14 13:20:56,744] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-14 13:20:56,745] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10890
+[2026-04-14 13:24:20,765] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 302 0
+[2026-04-14 13:24:20,849] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 13:24:20,892] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10890
+[2026-04-14 13:24:20,925] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-14 13:24:20,927] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-14 13:24:20,933] INFO django.server "GET /static/css/auth.css HTTP/1.1" 200 6897
+[2026-04-14 13:24:20,954] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-14 13:24:20,971] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-14 13:24:20,981] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-14 13:24:21,069] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 6874
+[2026-04-14 13:24:24,927] INFO webmaps User logged in: sureshone@gmail.com
+[2026-04-14 13:24:24,929] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 13:24:24,992] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 9355
+[2026-04-14 13:24:25,044] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-04-14 13:24:25,532] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
+[2026-04-14 13:24:26,849] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 17587
+[2026-04-14 13:24:26,920] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 304 0
+[2026-04-14 13:24:26,923] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 200 7441
+[2026-04-14 13:25:46,613] INFO webmaps New listing submitted: webmaps-durga-mata-mandir-90ft-raod-saki-11393
+[2026-04-14 13:25:46,671] INFO webmaps Saved 35 service items for webmaps-durga-mata-mandir-90ft-raod-saki-11393
+[2026-04-14 13:25:46,671] INFO webmaps Listing created: webmaps-durga-mata-mandir-90ft-raod-saki-11393 by sureshone@gmail.com
+[2026-04-14 13:25:46,674] INFO django.server "POST /hosts/listing/create/ HTTP/1.1" 302 0
+[2026-04-14 13:25:46,726] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 8879
+[2026-04-14 13:25:46,778] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
+[2026-04-14 13:25:49,605] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 17587
+[2026-04-14 13:25:49,639] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 304 0
+[2026-04-14 13:25:49,645] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 304 0
+[2026-04-14 13:25:52,459] INFO django.server "GET / HTTP/1.1" 200 14319
+[2026-04-14 13:25:52,496] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-14 13:25:54,201] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 17587
+[2026-04-14 13:25:55,008] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 8879
+[2026-04-14 13:25:55,071] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905

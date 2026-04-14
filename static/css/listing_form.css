@@ -351,3 +351,56 @@
   margin-top: 4px;
   font-weight: 600;
 }
+
+/* Protocol Table Refinement */
+#parsed-services-container table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+#parsed-services-container thead th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  padding: 14px 16px;
+  border-bottom: 2px solid var(--border);
+  text-align: left;
+}
+
+#parsed-services-container tbody td {
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  vertical-align: middle;
+}
+
+#parsed-services-container tbody tr:hover {
+  background: rgba(99, 102, 241, 0.03);
+}
+
+#add-service-row-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#add-service-row-btn:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
