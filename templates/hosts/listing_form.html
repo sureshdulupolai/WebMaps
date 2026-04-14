@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container container-lg py-12">
+<div class="container container-lg py-12" data-rzp-key="{{ razorpay_key }}">
   <div class="page-header mb-10 mt-6">
     <div class="d-flex align-center justify-between">
       <div>
@@ -60,17 +60,19 @@
           <h2 class="text-sm uppercase letter-spacing-2 text-primary mb-8 font-weight-bold">01. Identity & Presence</h2>
           <div class="input-line-group">
             <label class="input-line-label">Official Company Name</label>
-            <input type="text" name="company_name" class="input-line" placeholder="e.g. Apex Global Logistics" required>
+            <input type="text" name="company_name" class="input-line" placeholder="e.g. Apex Global Logistics" 
+              value="{{ listing.company_name|default:form_data.company_name|default:'' }}" required>
           </div>
           <div class="input-line-group">
             <label class="input-line-label">Corporate Website URL</label>
-            <input type="url" name="website_url" class="input-line" placeholder="https://yourbusiness.com" required>
+            <input type="url" name="website_url" class="input-line" placeholder="https://yourbusiness.com" 
+              value="{{ listing.website_url|default:form_data.website_url|default:'' }}" required>
           </div>
           <div class="input-line-group mb-12">
             <label class="input-line-label">Executive Summmary</label>
             <textarea name="short_description" id="summary-textarea" class="input-line" rows="3"
               placeholder="Provide a high-density overview..." style="resize: none;" maxlength="300"
-              required></textarea>
+              required>{{ listing.short_description|default:form_data.short_description|default:'' }}</textarea>
             <div class="char-counter"><span id="char-count">0</span> / 300 char</div>
           </div>
 
@@ -79,17 +81,20 @@
           <div class="grid grid-2 gap-6 mb-8">
             <div class="input-line-group">
               <label class="input-line-label">Latitude</label>
-              <input type="text" id="id_latitude" name="latitude" class="input-line font-mono" readonly>
+              <input type="text" id="id_latitude" name="latitude" class="input-line font-mono" 
+                value="{{ listing.latitude|default:form_data.latitude|default:'' }}" readonly>
             </div>
             <div class="input-line-group">
               <label class="input-line-label">Longitude</label>
-              <input type="text" id="id_longitude" name="longitude" class="input-line font-mono" readonly>
+              <input type="text" id="id_longitude" name="longitude" class="input-line font-mono" 
+                value="{{ listing.longitude|default:form_data.longitude|default:'' }}" readonly>
             </div>
           </div>
           <div class="input-line-group mb-12">
             <label class="input-line-label">Physical Mailing Address</label>
             <input type="text" name="location_name" class="input-line"
-              placeholder="Suite 400, Innovation Tower, London">
+              placeholder="Suite 400, Innovation Tower, London" 
+              value="{{ listing.location_name|default:form_data.location_name|default:'' }}">
           </div>
         </div>
 
@@ -167,29 +172,34 @@
 
         <!-- STEP 4: FINALIZE & FINISH -->
         <div class="wizard-step" id="step-4">
-          <h2 class="text-sm uppercase letter-spacing-2 text-primary mb-8 font-weight-bold">05. Verify & Initialize</h2>
+          <h2 class="text-sm uppercase letter-spacing-2 text-primary mb-8 font-weight-bold">05. Select Plan & Initialize</h2>
+          <p class="text-xs text-secondary mb-8">Choose a subscription tier to activate your listing. Your listing will go live immediately after verification.</p>
+          
+          <div class="plans-grid mb-10">
+            {% for plan in plans %}
+            <label class="plan-card {% if forloop.first %}active{% endif %}" data-plan-id="{{ plan.id }}" data-amount="{{ plan.total_cost }}">
+              <input type="radio" name="plan_id" value="{{ plan.id }}" class="plan-radio" {% if forloop.first %}checked{% endif %}>
+              <div class="plan-name">{{ plan.name }}</div>
+              <div class="plan-price">₹{{ plan.total_cost }}<small>/cycle</small></div>
+              <div class="text-xs text-muted mt-2">{{ plan.duration_days }} Days</div>
+            </label>
+            {% endfor %}
+          </div>
+
           <div class="secondary-card mb-8">
             <div id="summary-content" class="text-sm text-secondary" style="line-height:1.8">
               <!-- JS Summary Inject -->
             </div>
           </div>
 
-          <div class="p-6 rounded-2xl bg-primary-muted border-primary mb-8">
-            <div class="d-flex align-center gap-4">
-              <div class="text-primary">
-                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <div class="text-xs">
-                Once initialized, your listing will undergo a brief <strong>Admin Verification</strong> before going
-                live on the customer map.
-              </div>
-            </div>
-          </div>
+          <p class="text-xs text-secondary opacity-50 mb-8">By proceeding, you agree to our terms of service. Payments are secured via Razorpay.</p>
 
-          <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit-listing-btn">
-            Initialize & Procceed to Verification
+          <input type="hidden" name="razorpay_payment_id" id="razorpay_payment_id">
+          <input type="hidden" name="razorpay_order_id" id="razorpay_order_id">
+          <input type="hidden" name="razorpay_signature" id="razorpay_signature">
+
+          <button type="button" class="btn btn-primary btn-lg btn-block" id="submit-listing-btn">
+            Pay & Initialize Listing
           </button>
         </div>
 
@@ -267,6 +277,41 @@
 {% endblock %}
 
 {% block extra_js %}
+<!-- Injection of Existing Listing Data for Hydration -->
+<script id="listing-initial-data" type="application/json">
+{
+  "slug": "{{ listing.slug|default:'' }}",
+  "services": [
+    {% for service in listing.services.all %}
+    {
+      "name": "{{ service.service_name|escapejs }}",
+      "price": "{{ service.price|escapejs }}",
+      "category": "{{ service.category|escapejs }}"
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ],
+  "operating_hours": {% if listing.operating_hours %}{{ listing.operating_hours|json_script:"ignored" }}{% else %}{}{% endif %}
+}
+</script>
+<script>
+  // Self-correcting for the json_script tag quirk
+  (function() {
+    const el = document.getElementById('listing-initial-data');
+    if (el) {
+      let text = el.textContent;
+      // If we used json_script inside, we need to extract the actual JSON
+      if (text.includes('<script')) {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(text, 'text/html');
+        const nested = doc.getElementById('ignored');
+        if (nested) {
+          const hours = nested.textContent;
+          el.textContent = text.replace(/<script.*script>/, hours);
+        }
+      }
+    }
+  })();
+</script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="{% static 'js/listing_form.js' %}"></script>

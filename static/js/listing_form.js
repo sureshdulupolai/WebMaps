@@ -27,7 +27,13 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentStep = 1;
     let parsedServices = [];
     let marker;
-    const STORAGE_KEY = 'webmaps_pending_listing';
+    
+    // Calculate listing-specific STORAGE_KEY
+    const initialDataEl = document.getElementById('listing-initial-data');
+    const initialData = initialDataEl ? JSON.parse(initialDataEl.textContent) : null;
+    const STORAGE_KEY = initialData && initialData.slug 
+        ? `webmaps_edit_${initialData.slug}` 
+        : 'webmaps_new_listing';
 
     // 03. WIZARD NAVIGATION & STATE
     function updateWizard() {
@@ -129,8 +135,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function loadFromLocal() {
         const saved = localStorage.getItem(STORAGE_KEY);
-        if (!saved) return;
-        const data = JSON.parse(saved);
+        let data = saved ? JSON.parse(saved) : null;
+
+        // If no saved data but we have initial database data, HYDRATE first time
+        if (!data && initialData) {
+            console.log("Hydrating wizard state from database...");
+            
+            // Group services back for the UI
+            const grouped = {};
+            initialData.services.forEach(item => {
+                const key = `${item.name}|${item.price}`;
+                if (!grouped[key]) {
+                    grouped[key] = { name: item.name, price: item.price, categories: [] };
+                }
+                grouped[key].categories.push(item.category);
+            });
+
+            data = {
+                currentStep: 1,
+                parsedServices: Object.values(grouped),
+                operatingHours: initialData.operating_hours || null
+            };
+            // Seed localStorage with database state
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        }
+
+        if (!data) return;
 
         Object.keys(data).forEach(key => {
             const input = form.querySelector(`[name="${key}"]`);
@@ -141,11 +171,16 @@ document.addEventListener('DOMContentLoaded', function () {
             parsedServices = data.parsedServices;
             renderReviewTable();
             const revSection = document.getElementById('protocol-review-section');
-            if (revSection) revSection.classList.remove('d-none');
+            if (revSection) {
+                revSection.classList.remove('d-none');
+                updateHiddenInput();
+            }
         }
 
         if (data.operatingHours && typeof restoreSchedule === 'function') {
             restoreSchedule(data.operatingHours);
+            const hoursInput = document.getElementById('id_operating_hours');
+            if (hoursInput) hoursInput.value = JSON.stringify(data.operatingHours);
         }
 
         currentStep = data.currentStep || 1;
@@ -381,17 +416,117 @@ document.addEventListener('DOMContentLoaded', function () {
         `;
     }
 
-    if (form) {
-        form.addEventListener('submit', () => {
-            localStorage.removeItem(STORAGE_KEY);
-            if (submitBtn) {
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = '<span class="loading-spinner"></span> Initializing...';
+    // 10. PLAN SELECTION LOGIC
+    const planCards = document.querySelectorAll('.plan-card');
+    planCards.forEach(card => {
+        card.addEventListener('click', () => {
+            planCards.forEach(c => c.classList.remove('active'));
+            card.classList.add('active');
+            card.querySelector('input').checked = true;
+            saveToLocal();
+        });
+    });
+
+    // 11. RAZORPAY & SUBMISSION
+    if (submitBtn) {
+        submitBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            if (!validateCurrentStep()) return;
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="loading-spinner"></span> Saving Listing...';
+
+            try {
+                // 1. Save listing via AJAX first
+                const formData = new FormData(form);
+                const response = await fetch(window.location.href, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                });
+
+                const result = await response.json();
+                if (!response.ok) {
+                    alert(Object.values(result.errors || {e: "Error saving listing"}).join('\n'));
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Pay & Initialize Listing';
+                    return;
+                }
+
+                const slug = result.slug;
+                const planId = form.querySelector('[name="plan_id"]:checked').value;
+
+                // 2. Initiate Payment
+                submitBtn.innerHTML = '<span class="loading-spinner"></span> Creating Order...';
+                const payInitResp = await fetch(`/payments/initiate/${slug}/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                    },
+                    body: `plan_id=${planId}`
+                });
+
+                const payInfo = await payInitResp.json();
+                if (!payInitResp.ok) throw new Error(payInfo.error || "Order creation failed");
+
+                // 3. Open Razorpay
+                const options = {
+                    key: document.querySelector('.container').dataset.rzpKey || "{{ razorpay_key }}",
+                    amount: payInfo.amount,
+                    currency: payInfo.currency,
+                    name: "WebMaps",
+                    description: `Subscription for ${payInfo.listing_name}`,
+                    order_id: payInfo.order_id,
+                    handler: async function (response) {
+                        submitBtn.innerHTML = '<span class="loading-spinner"></span> Verifying...';
+                        const verifyResp = await fetch('/payments/verify/', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                razorpay_order_id: response.razorpay_order_id,
+                                razorpay_payment_id: response.razorpay_payment_id,
+                                razorpay_signature: response.razorpay_signature,
+                                listing_slug: slug,
+                                plan_id: planId
+                            })
+                        });
+
+                        const verifyResult = await verifyResp.json();
+                        if (verifyResult.status === 'success') {
+                            localStorage.removeItem(STORAGE_KEY);
+                            window.location.href = verifyResult.redirect || '/hosts/dashboard/';
+                        } else {
+                            alert("Payment verification failed. Please contact support.");
+                            submitBtn.disabled = false;
+                        }
+                    },
+                    prefill: {
+                        name: "{{ user.get_full_name }}",
+                        email: "{{ user.email }}"
+                    },
+                    theme: { color: "#6366f1" },
+                    modal: {
+                        ondismiss: function() {
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = 'Pay & Initialize Listing';
+                        }
+                    }
+                };
+
+                const rzp = new Razorpay(options);
+                rzp.open();
+
+            } catch (err) {
+                console.error(err);
+                alert("An error occurred: " + err.message);
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Pay & Initialize Listing';
             }
         });
     }
 
-    // 09. CHAR COUNTER
+    // 12. CHAR COUNTER
     function updateCharCount() {
         if (!summaryTextarea || !charDisplay) return;
         const len = summaryTextarea.value.length;
@@ -406,7 +541,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // 10. PROTOCOL MODAL
+    // 13. PROTOCOL MODAL
     const viewSampleBtn = document.getElementById('view-sample-btn');
     const closeSampleBtn = document.getElementById('close-sample-btn');
     const sampleModal = document.getElementById('sample-modal');
@@ -422,7 +557,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // 11. INITIALIZE
+    // 14. INITIALIZE
     initSchedule();
     loadFromLocal();
     updateCharCount();

@@ -48,25 +48,57 @@
 
     {% if listing_data %}
       <div class="host-stats-grid">
-         {% for item in listing_data %}
          <div class="stat-box">
-            <div class="stat-box-icon">
-               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-            </div>
-            <div class="stat-box-value">{{ item.stats.views|default:"0" }}</div>
-            <div class="stat-box-label">Impressions</div>
+            <div class="stat-box-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg></div>
+            <div class="stat-box-value">{{ listing_data|length }}</div>
+            <div class="stat-box-label">Total Listings</div>
          </div>
-         <div class="stat-box">
-            <div class="stat-box-icon">
-               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"/></svg>
-            </div>
-            <div class="stat-box-value">{{ item.stats.clicks|default:"0" }}</div>
-            <div class="stat-box-label">Social Clicks</div>
-         </div>
-         {% endfor %}
       </div>
-      
-      <!-- List of active properties could go here -->
+
+      <div class="listing-management-grid">
+        {% for item in listing_data %}
+        <div class="listing-card">
+          <div class="listing-avatar">
+            {{ item.listing.company_name|slice:":1" }}
+          </div>
+          <div class="listing-info">
+            <div class="d-flex align-center gap-4 mb-2">
+              <h3 class="m-0">{{ item.listing.company_name }}</h3>
+              <span class="status-badge status-{{ item.listing.status }}">
+                {{ item.listing.get_status_display }}
+              </span>
+            </div>
+            <p>{{ item.listing.short_description|truncatechars:120 }}</p>
+            <div class="d-flex gap-6">
+              <div class="text-xs text-secondary">
+                <strong>{{ item.stats.views|default:"0" }}</strong> Impressions
+              </div>
+              <div class="text-xs text-secondary">
+                <strong>{{ item.stats.clicks|default:"0" }}</strong> Clicks
+              </div>
+              <div class="text-xs text-secondary">
+                <strong>{{ item.remaining_days }}</strong> Days Left
+              </div>
+            </div>
+          </div>
+          <div class="listing-actions">
+            <a href="{% url 'hosts:listing_insights' item.listing.slug %}" class="btn-card btn-insights">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+              Insights
+            </a>
+            <div class="btn-group-horizontal">
+              <a href="{% url 'hosts:listing_edit' item.listing.slug %}" class="btn-card btn-edit">Edit</a>
+              <button type="button" class="btn-card btn-delete trigger-archive" 
+                data-slug="{{ item.listing.slug }}" 
+                data-name="{{ item.listing.company_name }}"
+                data-status="{{ item.listing.get_status_display }}">
+                Archive
+              </button>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
     {% else %}
       <!-- 💎 PREMIUM SAAS-STYLE ONBOARDING 💎 -->
       <div class="onboarding-premium-card">
@@ -104,6 +136,52 @@
       </div>
     {% endif %}
   </main>
+</div>
+
+<!-- High-Security Archive Modal -->
+<div id="archive-modal" class="archive-modal-overlay">
+  <div class="archive-modal-content">
+    <div class="d-flex align-center justify-between mb-8">
+      <h2 class="h4 m-0">Archive Business Listing</h2>
+      <button type="button" class="btn-close-archive btn-text text-secondary" style="font-size: 24px;">&times;</button>
+    </div>
+
+    <div class="archive-warning-box">
+      <div class="d-flex gap-4">
+        <div class="text-danger" style="margin-top: 2px;">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+        </div>
+        <div>
+          <div class="text-sm font-weight-bold text-danger mb-1">Permanent Action Warning</div>
+          <p class="text-xs text-secondary mb-0" style="opacity: 0.8;">
+            Are you sure you want to archive this business permanently? <strong>You can't undo this action and No Refunds will be issued.</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="secondary-card mb-8">
+      <ul class="text-xs text-secondary mb-0" style="padding-left: 16px; line-height: 1.8;">
+        <li>Listing: <strong id="archive-target-name">...</strong></li>
+        <li>Status: <span id="archive-target-status" class="font-weight-bold">...</span></li>
+      </ul>
+    </div>
+
+    <div class="input-line-group mb-12">
+      <label class="input-line-label" style="font-size: 13px;">To confirm, enter the phrase <strong class="text-primary">delete</strong>.</label>
+      <input type="text" id="archive-confirm-input" class="archive-input" placeholder="type 'delete' here..." autocomplete="off">
+    </div>
+
+    <form id="archive-form" method="post" action="">
+      {% csrf_token %}
+      <div class="d-flex gap-4">
+        <button type="button" class="btn btn-outline btn-close-archive flex-1">Cancel</button>
+        <button type="submit" id="btn-confirm-archive" class="btn btn-confirm-delete flex-1" disabled>Archive Permanently</button>
+      </div>
+    </form>
+  </div>
 </div>
 {% endblock %}
 

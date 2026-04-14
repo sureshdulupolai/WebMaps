@@ -2137,3 +2137,204 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-04-14 13:25:54,201] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 17587
 [2026-04-14 13:25:55,008] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 8879
 [2026-04-14 13:25:55,071] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
+[2026-04-14 13:28:24,580] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 13:32:48,662] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\hosts\urls.py changed, reloading.
+[2026-04-14 13:32:51,663] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 13:32:59,523] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\hosts\views.py changed, reloading.
+[2026-04-14 13:33:01,647] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 13:33:05,453] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 8879
+[2026-04-14 13:33:05,543] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
+[2026-04-14 13:34:10,743] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\hosts\views.py changed, reloading.
+[2026-04-14 13:34:13,217] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 13:34:30,762] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\hosts\views.py changed, reloading.
+[2026-04-14 13:34:33,171] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 13:35:15,925] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 10378
+[2026-04-14 13:35:17,157] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-14 13:35:17,179] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-14 13:35:17,211] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
+[2026-04-14 13:35:17,273] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 200 8556
+[2026-04-14 13:35:17,276] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-14 13:35:17,311] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-14 13:35:17,313] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10890
+[2026-04-14 13:35:20,050] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 8800
+[2026-04-14 13:35:22,660] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 10378
+[2026-04-14 13:35:22,724] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
+[2026-04-14 13:35:26,033] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 8800
+[2026-04-14 13:35:29,557] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 17654
+[2026-04-14 13:35:29,606] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 304 0
+[2026-04-14 13:35:29,607] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 304 0
+[2026-04-14 13:35:35,378] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 10378
+[2026-04-14 13:35:35,426] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-04-14 13:35:35,448] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
+[2026-04-14 13:35:37,576] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 8800
+[2026-04-14 13:35:39,361] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 17654
+[2026-04-14 13:35:42,323] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\hosts\views.py changed, reloading.
+[2026-04-14 13:35:45,093] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 13:36:45,171] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 10378
+[2026-04-14 13:36:45,222] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-04-14 13:36:45,261] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
+[2026-04-14 13:36:54,655] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 8800
+[2026-04-14 13:37:02,380] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 17693
+[2026-04-14 13:37:02,425] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 304 0
+[2026-04-14 13:37:05,284] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 10378
+[2026-04-14 13:37:05,344] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
+[2026-04-14 13:37:09,843] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 8800
+[2026-04-14 13:37:09,884] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-04-14 13:37:17,045] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 17693
+[2026-04-14 13:37:23,919] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 10378
+[2026-04-14 13:37:23,981] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
+[2026-04-14 13:37:27,369] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 17607
+[2026-04-14 13:37:29,972] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 10378
+[2026-04-14 13:37:30,029] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
+[2026-04-14 13:37:33,490] ERROR webmaps Captured error: Http404: No Listing matches the given query. @ /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/
+[2026-04-14 13:37:33,491] ERROR webmaps Unhandled exception at /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/: Http404: No Listing matches the given query.
+[2026-04-14 13:37:33,543] ERROR django.request Internal Server Error: /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/
+[2026-04-14 13:37:33,545] ERROR django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 500 7466
+[2026-04-14 13:37:33,659] INFO django.server "GET /static/images/500_illustration.png HTTP/1.1" 304 0
+[2026-04-14 13:37:45,667] ERROR webmaps Captured error: Http404: No Listing matches the given query. @ /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/
+[2026-04-14 13:37:45,670] ERROR webmaps Unhandled exception at /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/: Http404: No Listing matches the given query.
+[2026-04-14 13:37:45,676] ERROR django.request Internal Server Error: /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/
+[2026-04-14 13:37:45,678] ERROR django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 500 7466
+[2026-04-14 13:43:26,687] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 302 0
+[2026-04-14 13:43:26,717] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 13:43:27,122] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10890
+[2026-04-14 13:43:27,152] INFO django.server "GET /static/css/auth.css HTTP/1.1" 200 6897
+[2026-04-14 13:43:27,342] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-14 13:43:27,359] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-14 13:43:27,360] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 6874
+[2026-04-14 13:43:27,360] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-14 13:43:27,585] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-14 13:43:27,615] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-14 13:43:29,463] INFO webmaps User logged in: sureshone@gmail.com
+[2026-04-14 13:43:29,466] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 13:43:29,520] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 10378
+[2026-04-14 13:43:29,568] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-04-14 13:43:29,594] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
+[2026-04-14 13:43:37,984] ERROR webmaps Captured error: VariableDoesNotExist: Failed lookup for key [form_data] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'action': 'create', 'razorpay_key': 'rzp_test_Sbt3ZXTie3MIIv', 'plans': <QuerySet []>}] @ /hosts/listing/create/
+[2026-04-14 13:43:37,990] ERROR webmaps Unhandled exception at /hosts/listing/create/: VariableDoesNotExist: Failed lookup for key [form_data] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'action': 'create', 'razorpay_key': 'rzp_test_Sbt3ZXTie3MIIv', 'plans': <QuerySet []>}]
+[2026-04-14 13:43:38,008] ERROR django.request Internal Server Error: /hosts/listing/create/
+[2026-04-14 13:43:38,010] ERROR django.server "GET /hosts/listing/create/ HTTP/1.1" 500 7398
+[2026-04-14 13:43:39,988] INFO django.server "GET / HTTP/1.1" 200 14319
+[2026-04-14 13:43:42,349] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 10378
+[2026-04-14 13:43:42,409] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
+[2026-04-14 13:43:44,075] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 8800
+[2026-04-14 13:43:45,967] ERROR webmaps Captured error: VariableDoesNotExist: Failed lookup for key [form_data] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'listing': <Listing: WebMaps (pending)>, 'action': 'edit', 'razorpay_key': 'rzp_test_Sbt3ZXTie3MIIv', 'plans': <QuerySet []>}] @ /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/
+[2026-04-14 13:43:45,970] ERROR webmaps Unhandled exception at /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/: VariableDoesNotExist: Failed lookup for key [form_data] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'listing': <Listing: WebMaps (pending)>, 'action': 'edit', 'razorpay_key': 'rzp_test_Sbt3ZXTie3MIIv', 'plans': <QuerySet []>}]
+[2026-04-14 13:43:45,975] ERROR django.request Internal Server Error: /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/
+[2026-04-14 13:43:45,976] ERROR django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 500 7488
+[2026-04-14 13:43:47,125] INFO django.server "GET / HTTP/1.1" 200 14319
+[2026-04-14 13:43:49,358] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 10378
+[2026-04-14 13:43:49,424] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
+[2026-04-14 13:43:50,278] INFO django.server "GET /api/maps/search/?q=Asalpha%2C+Mumbai&category=&rating=&distance=10&price= HTTP/1.1" 200 187
+[2026-04-14 13:43:58,486] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-14 13:43:58,527] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10890
+[2026-04-14 13:43:58,531] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 200 10124
+[2026-04-14 13:43:58,542] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-14 13:43:58,542] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-14 13:43:58,549] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-14 13:43:58,549] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-14 13:43:58,567] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
+[2026-04-14 13:44:08,874] ERROR webmaps Captured error: VariableDoesNotExist: Failed lookup for key [form_data] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'listing': <Listing: WebMaps (pending)>, 'action': 'edit', 'razorpay_key': 'rzp_test_Sbt3ZXTie3MIIv', 'plans': <QuerySet []>}] @ /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/
+[2026-04-14 13:44:08,876] ERROR webmaps Unhandled exception at /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/: VariableDoesNotExist: Failed lookup for key [form_data] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'listing': <Listing: WebMaps (pending)>, 'action': 'edit', 'razorpay_key': 'rzp_test_Sbt3ZXTie3MIIv', 'plans': <QuerySet []>}]
+[2026-04-14 13:44:08,890] ERROR django.request Internal Server Error: /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/
+[2026-04-14 13:44:08,896] ERROR django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 500 7488
+[2026-04-14 13:44:10,032] INFO django.server "GET / HTTP/1.1" 200 14319
+[2026-04-14 13:44:11,952] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-14 13:44:11,994] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-04-14 13:44:12,003] INFO django.server "GET /static/js/dashboard.js HTTP/1.1" 200 2000
+[2026-04-14 13:44:34,759] ERROR webmaps Captured error: VariableDoesNotExist: Failed lookup for key [form_data] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'listing': <Listing: WebMaps (pending)>, 'action': 'edit', 'razorpay_key': 'rzp_test_Sbt3ZXTie3MIIv', 'plans': <QuerySet []>}] @ /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/
+[2026-04-14 13:44:34,760] ERROR webmaps Unhandled exception at /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/: VariableDoesNotExist: Failed lookup for key [form_data] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'listing': <Listing: WebMaps (pending)>, 'action': 'edit', 'razorpay_key': 'rzp_test_Sbt3ZXTie3MIIv', 'plans': <QuerySet []>}]
+[2026-04-14 13:44:34,765] ERROR django.request Internal Server Error: /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/
+[2026-04-14 13:44:34,768] ERROR django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 500 7488
+[2026-04-14 13:44:35,820] INFO django.server "GET / HTTP/1.1" 200 14319
+[2026-04-14 13:44:47,182] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-14 13:44:47,224] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-04-14 13:44:47,228] INFO django.server "GET /static/js/dashboard.js HTTP/1.1" 304 0
+[2026-04-14 13:44:48,057] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 8800
+[2026-04-14 13:44:51,390] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-14 13:44:51,426] INFO django.server "GET /static/js/dashboard.js HTTP/1.1" 304 0
+[2026-04-14 13:48:22,663] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\hosts\views.py changed, reloading.
+[2026-04-14 13:48:25,801] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 13:49:24,480] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\hosts\views.py changed, reloading.
+[2026-04-14 13:49:27,415] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 13:50:33,808] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\hosts\views.py changed, reloading.
+[2026-04-14 13:50:37,045] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 13:50:51,690] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\hosts\views.py changed, reloading.
+[2026-04-14 13:50:54,789] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 13:51:29,054] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\hosts\views.py changed, reloading.
+[2026-04-14 13:51:32,118] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 14:05:14,206] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 302 0
+[2026-04-14 14:05:14,351] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 14:05:14,926] INFO django.server "GET /static/css/auth.css HTTP/1.1" 200 6897
+[2026-04-14 14:05:14,932] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10890
+[2026-04-14 14:05:14,933] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-14 14:05:15,106] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-14 14:05:15,137] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 6874
+[2026-04-14 14:05:15,149] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-14 14:05:15,696] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-14 14:05:15,764] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-14 14:05:17,691] INFO webmaps User logged in: sureshone@gmail.com
+[2026-04-14 14:05:17,693] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 14:05:17,792] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-14 14:05:17,842] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-04-14 14:05:17,842] INFO django.server "GET /static/js/dashboard.js HTTP/1.1" 304 0
+[2026-04-14 14:05:19,524] ERROR webmaps Captured error: VariableDoesNotExist: Failed lookup for key [form_data] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'listing': <Listing: WebMaps (pending)>, 'action': 'edit', 'razorpay_key': 'rzp_test_Sbt3ZXTie3MIIv', 'plans': <QuerySet []>}] @ /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/
+[2026-04-14 14:05:19,527] ERROR webmaps Unhandled exception at /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/: VariableDoesNotExist: Failed lookup for key [form_data] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'listing': <Listing: WebMaps (pending)>, 'action': 'edit', 'razorpay_key': 'rzp_test_Sbt3ZXTie3MIIv', 'plans': <QuerySet []>}]
+[2026-04-14 14:05:19,556] ERROR django.request Internal Server Error: /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/
+[2026-04-14 14:05:19,558] ERROR django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 500 7488
+[2026-04-14 14:07:25,218] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\hosts\views.py changed, reloading.
+[2026-04-14 14:07:28,693] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 14:07:47,419] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\hosts\views.py changed, reloading.
+[2026-04-14 14:07:50,260] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 14:07:57,860] ERROR webmaps Captured error: VariableDoesNotExist: Failed lookup for key [company_name] in {} @ /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/
+[2026-04-14 14:07:57,860] ERROR webmaps Unhandled exception at /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/: VariableDoesNotExist: Failed lookup for key [company_name] in {}
+[2026-04-14 14:07:57,872] ERROR django.request Internal Server Error: /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/
+[2026-04-14 14:07:57,875] ERROR django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 500 7488
+[2026-04-14 14:08:00,599] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-14 14:08:00,662] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-04-14 14:08:00,662] INFO django.server "GET /static/js/dashboard.js HTTP/1.1" 304 0
+[2026-04-14 14:08:02,593] ERROR webmaps Captured error: VariableDoesNotExist: Failed lookup for key [company_name] in {} @ /hosts/listing/create/
+[2026-04-14 14:08:02,593] ERROR webmaps Unhandled exception at /hosts/listing/create/: VariableDoesNotExist: Failed lookup for key [company_name] in {}
+[2026-04-14 14:08:02,597] ERROR django.request Internal Server Error: /hosts/listing/create/
+[2026-04-14 14:08:02,598] ERROR django.server "GET /hosts/listing/create/ HTTP/1.1" 500 7398
+[2026-04-14 14:08:04,262] INFO django.server "GET / HTTP/1.1" 200 14319
+[2026-04-14 14:08:06,609] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-14 14:08:12,906] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-14 14:08:13,488] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-14 14:08:13,493] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 200 10124
+[2026-04-14 14:08:13,494] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10890
+[2026-04-14 14:08:13,544] INFO django.server "GET /static/js/dashboard.js HTTP/1.1" 200 2000
+[2026-04-14 14:08:13,894] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-14 14:08:13,915] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-14 14:08:13,925] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-14 14:08:15,509] ERROR webmaps Captured error: VariableDoesNotExist: Failed lookup for key [company_name] in {} @ /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/
+[2026-04-14 14:08:15,510] ERROR webmaps Unhandled exception at /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/: VariableDoesNotExist: Failed lookup for key [company_name] in {}
+[2026-04-14 14:08:15,514] ERROR django.request Internal Server Error: /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/
+[2026-04-14 14:08:15,515] ERROR django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 500 7488
+[2026-04-14 14:08:18,114] INFO django.server "GET / HTTP/1.1" 200 14319
+[2026-04-14 14:09:37,763] WARNING django.request Not Found: /register/developer/
+[2026-04-14 14:09:37,764] WARNING django.server "GET /register/developer/ HTTP/1.1" 404 5836
+[2026-04-14 14:09:37,795] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-04-14 14:09:37,797] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10890
+[2026-04-14 14:09:37,811] INFO django.server "GET /static/js/modals.js HTTP/1.1" 304 0
+[2026-04-14 14:09:37,823] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 304 0
+[2026-04-14 14:09:37,831] INFO django.server "GET /static/images/404_illustration.png HTTP/1.1" 200 750533
+[2026-04-14 14:09:38,697] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\hosts\views.py changed, reloading.
+[2026-04-14 14:09:43,110] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 14:10:00,894] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\hosts\views.py changed, reloading.
+[2026-04-14 14:10:04,780] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 14:10:08,570] INFO django.server "GET /auth/register/developer/ HTTP/1.1" 200 5652
+[2026-04-14 14:10:09,094] INFO django.server "GET /static/css/auth.css HTTP/1.1" 200 6897
+[2026-04-14 14:10:09,095] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 6874
+[2026-04-14 14:11:01,097] INFO django.server "POST /auth/register/developer/ HTTP/1.1" 200 6070
+[2026-04-14 14:11:16,357] INFO django.server "POST /auth/register/developer/ HTTP/1.1" 200 6070
+[2026-04-14 14:11:25,760] INFO django.server "POST /auth/register/developer/ HTTP/1.1" 200 9465
+[2026-04-14 14:12:15,268] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-14 14:12:15,309] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-04-14 14:12:15,319] INFO django.server "GET /static/js/dashboard.js HTTP/1.1" 304 0
+[2026-04-14 14:12:16,261] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 22726
+[2026-04-14 14:12:16,303] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 304 0
+[2026-04-14 14:12:16,382] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 200 22923
+[2026-04-14 14:12:25,896] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-14 14:12:27,109] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 18559
+[2026-04-14 14:12:38,243] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675

@@ -9,8 +9,10 @@ from django.http import JsonResponse
 from django.utils import timezone
 from django.views.decorators.http import require_http_methods, require_POST
 
+from django.conf import settings
 from auth_app.decorators import jwt_login_required, role_required
 from utils.helpers import sanitize_input
+from payments.models import SubscriptionPlan
 from .models import Listing, ServiceItem
 from .services import create_listing, update_listing
 from .validators import (
@@ -67,6 +69,20 @@ def dashboard_view(request):
     })
 
 
+@jwt_login_required
+@role_required('host')
+def listing_insights_view(request, slug):
+    listing = get_object_or_404(Listing, slug=slug, host=request.user)
+    
+    from analytics.services import aggregate_listing_stats
+    stats = aggregate_listing_stats(listing.id)
+    
+    return render(request, 'hosts/insights.html', {
+        'listing': listing,
+        'stats': stats,
+    })
+
+
 # ─────────────────────────────────────────────
 #  CREATE LISTING
 # ─────────────────────────────────────────────
@@ -75,7 +91,16 @@ def dashboard_view(request):
 @require_http_methods(['GET', 'POST'])
 def listing_create_view(request):
     if request.method == 'GET':
-        return render(request, 'hosts/listing_form.html', {'action': 'create'})
+        plans = SubscriptionPlan.objects.all()
+        return render(request, 'hosts/listing_form.html', {
+            'action': 'create',
+            'razorpay_key': settings.RAZORPAY_KEY_ID,
+            'plans': plans,
+            'form_data': {
+                'company_name': '', 'website_url': '', 'short_description': '',
+                'latitude': '', 'longitude': '', 'location_name': ''
+            },
+        })
 
     errors = {}
     data = {
@@ -85,6 +110,7 @@ def listing_create_view(request):
         'latitude': request.POST.get('latitude', '').strip(),
         'longitude': request.POST.get('longitude', '').strip(),
         'location_name': sanitize_input(request.POST.get('location_name', '').strip()),
+        'operating_hours': request.POST.get('operating_hours'),
     }
 
     # Validate
@@ -113,7 +139,9 @@ def listing_create_view(request):
 
     if errors:
         return render(request, 'hosts/listing_form.html', {
-            'errors': errors, 'form_data': data, 'action': 'create'
+            'errors': errors, 'form_data': data, 'action': 'create',
+            'razorpay_key': settings.RAZORPAY_KEY_ID,
+            'plans': SubscriptionPlan.objects.all(),
         })
 
     # Handle parsed services JSON
@@ -125,14 +153,29 @@ def listing_create_view(request):
         except Exception:
             pass
 
-    file_obj = request.FILES.get('service_file')
+    # Process operating_hours string to dict if needed
+    hours_raw = data.get('operating_hours')
+    if hours_raw:
+        try:
+            data['operating_hours'] = json.loads(hours_raw)
+        except Exception:
+            data['operating_hours'] = {}
+
     listing, service_errors = create_listing(request.user, data, file_obj, parsed_services)
 
     if service_errors:
+        plans = SubscriptionPlan.objects.all()
         errors.update(service_errors)
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            return JsonResponse({'errors': errors}, status=400)
         return render(request, 'hosts/listing_form.html', {
-            'errors': errors, 'form_data': data, 'action': 'create'
+            'errors': errors, 'form_data': data, 'action': 'create',
+            'razorpay_key': settings.RAZORPAY_KEY_ID,
+            'plans': plans
         })
+
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        return JsonResponse({'status': 'success', 'slug': listing.slug})
 
     return redirect('hosts:dashboard')
 
@@ -147,17 +190,32 @@ def listing_edit_view(request, slug):
     listing = get_object_or_404(Listing, slug=slug, host=request.user, deleted_at__isnull=True)
 
     if not listing.can_update:
+        plans = SubscriptionPlan.objects.all()
         return render(request, 'hosts/listing_form.html', {
             'listing': listing,
             'error': 'You have reached the maximum number of updates (2) for this listing.',
             'action': 'edit',
+            'razorpay_key': settings.RAZORPAY_KEY_ID,
+            'plans': plans,
+            'form_data': {
+                'company_name': '', 'website_url': '', 'short_description': '',
+                'latitude': '', 'longitude': '', 'location_name': ''
+            },
         })
 
     if request.method == 'GET':
+        plans = SubscriptionPlan.objects.all()
         return render(request, 'hosts/listing_form.html', {
-            'listing': listing, 'action': 'edit'
+            'listing': listing,
+            'action': 'edit',
+            'razorpay_key': settings.RAZORPAY_KEY_ID,
+            'plans': plans,
+            'form_data': {
+                'company_name': '', 'website_url': '', 'short_description': '',
+                'latitude': '', 'longitude': '', 'location_name': ''
+            },
         })
-
+    
     data = {
         'website_url': sanitize_input(request.POST.get('website_url', '').strip()),
         'company_name': sanitize_input(request.POST.get('company_name', '').strip()),
@@ -165,6 +223,7 @@ def listing_edit_view(request, slug):
         'latitude': request.POST.get('latitude', str(listing.latitude)).strip(),
         'longitude': request.POST.get('longitude', str(listing.longitude)).strip(),
         'location_name': sanitize_input(request.POST.get('location_name', '').strip()),
+        'operating_hours': request.POST.get('operating_hours'),
     }
 
     # Handle parsed services JSON
@@ -177,11 +236,25 @@ def listing_edit_view(request, slug):
             pass
 
     file_obj = request.FILES.get('service_file')
+    # Process operating_hours string to dict if needed
+    hours_raw = data.get('operating_hours')
+    if hours_raw:
+        try:
+            data['operating_hours'] = json.loads(hours_raw)
+        except Exception:
+            data['operating_hours'] = {}
+
     success, error = update_listing(listing, data, file_obj, parsed_services)
 
     if not success:
+        plans = SubscriptionPlan.objects.all()
         return render(request, 'hosts/listing_form.html', {
-            'listing': listing, 'error': error, 'action': 'edit'
+            'listing': listing, 
+            'error': error, 
+            'action': 'edit',
+            'razorpay_key': settings.RAZORPAY_KEY_ID,
+            'plans': plans,
+            'form_data': data,
         })
 
     return redirect('hosts:dashboard')

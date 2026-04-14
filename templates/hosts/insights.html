@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Insights — {{ listing.company_name }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+<style>
+  .insights-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-6);
+    margin-bottom: var(--space-10);
+  }
+
+  .chart-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: var(--space-8);
+    height: 400px;
+  }
+
+  .trend-up { color: #10b981; }
+  .trend-down { color: #ef4444; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="sidebar-layout">
+  <aside class="sidebar">
+    <div class="sidebar-label">Navigation</div>
+    <a href="{% url 'hosts:dashboard' %}" class="sidebar-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+      Dashboard
+    </a>
+    <div class="sidebar-label">Listing Context</div>
+    <div class="px-4 py-2">
+      <div class="text-xs text-muted mb-1">SELECTED PROPERTY</div>
+      <div class="font-weight-bold text-sm">{{ listing.company_name }}</div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="page-header mb-10">
+      <h1 class="page-title">Performance Insights</h1>
+      <p class="page-subtitle">Granular engagement metrics for your digital presence.</p>
+    </div>
+
+    <!-- Key Metrics -->
+    <div class="insights-grid">
+      <div class="stat-box">
+        <div class="stat-box-label">Impressions</div>
+        <div class="stat-box-value">{{ stats.views }}</div>
+        <div class="text-xs text-muted">Total page views</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-label">Social Clicks</div>
+        <div class="stat-box-value">{{ stats.clicks }}</div>
+        <div class="text-xs text-muted">Website redirects</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-label">Unique Visitors</div>
+        <div class="stat-box-value">{{ stats.unique_visitors }}</div>
+        <div class="text-xs text-muted">Based on IP hashes</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-label">Map Interactions</div>
+        <div class="stat-box-value">{{ stats.map_opens }}</div>
+        <div class="text-xs text-muted">Detail popup opens</div>
+      </div>
+    </div>
+
+    <!-- Data Visualization -->
+    <div class="grid grid-1 gap-10">
+      <div class="chart-card">
+        <h3 class="h5 mb-6">Engagement Distribution</h3>
+        <canvas id="engagementChart"></canvas>
+      </div>
+    </div>
+
+    <div class="mt-10">
+      <a href="{% url 'hosts:listing_edit' listing.slug %}" class="btn btn-primary btn-sm">Adjust Presence Strategy (Edit)</a>
+    </div>
+  </main>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('engagementChart').getContext('2d');
+    
+    // Data from Django context
+    const stats = {
+      views: {{ stats.views|default:0 }},
+      clicks: {{ stats.clicks|default:0 }},
+      map_opens: {{ stats.map_opens|default:0 }}
+    };
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Impressions', 'Clicks', 'Map Interactions'],
+        datasets: [{
+          label: 'Engagement Events',
+          data: [stats.views, stats.clicks, stats.map_opens],
+          backgroundColor: [
+            'rgba(99, 102, 241, 0.4)',
+            'rgba(16, 185, 129, 0.4)',
+            'rgba(245, 158, 11, 0.4)'
+          ],
+          borderColor: [
+            '#6366f1',
+            '#10b981',
+            '#f59e0b'
+          ],
+          borderWidth: 2,
+          borderRadius: 8
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: { color: 'rgba(255,255,255,0.05)' },
+            ticks: { color: 'rgba(255,255,255,0.5)' }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { color: 'rgba(255,255,255,0.5)' }
+          }
+        }
+      }
+    });
+  });
+</script>
+{% endblock %}
