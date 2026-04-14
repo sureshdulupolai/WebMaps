@@ -2338,3 +2338,16 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-04-14 14:12:25,896] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
 [2026-04-14 14:12:27,109] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 18559
 [2026-04-14 14:12:38,243] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-14 14:13:42,351] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 14:14:05,861] INFO django.server "POST /auth/register/developer/ HTTP/1.1" 200 9465
+[2026-04-14 14:14:06,288] INFO django.server "GET /static/css/auth.css HTTP/1.1" 200 7053
+[2026-04-14 14:14:06,294] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 6874
+[2026-04-14 14:14:06,303] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10890
+[2026-04-14 14:14:06,518] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-14 14:14:06,821] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-14 14:14:06,829] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-14 14:14:06,839] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-14 14:14:51,549] INFO webmaps New user registered: sureshpolai63@gmail.com (role=admin)
+[2026-04-14 14:14:51,641] INFO webmaps New Developer registered: sureshpolai63@gmail.com
+[2026-04-14 14:14:51,950] INFO django.server "POST /auth/register/developer/ HTTP/1.1" 302 0
+[2026-04-14 14:14:52,189] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 12426

@@ -1,6 +1,15 @@
-/* ─── WebMaps — Authentication & User Onboarding ─── */
-
 /* ─── AUTH PAGE (PROFESSIONAL ZERO-SCROLL) ─── */
+.auth-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-10) var(--space-4);
+  min-height: calc(100vh - 72px);
+  width: 100%;
+  background: var(--bg-color);
+  position: relative;
+}
+
 .auth-split-container {
   display: flex;
   height: calc(100vh - 72px); 
