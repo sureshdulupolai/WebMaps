@@ -54,6 +54,9 @@ class Listing(models.Model):
     # Update tracking (max 2)
     update_count = models.PositiveSmallIntegerField(default=0)
 
+    # Schedule
+    operating_hours = models.JSONField(null=True, blank=True)
+
     # Audit
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -106,6 +109,7 @@ class ServiceItem(models.Model):
         on_delete=models.CASCADE,
         related_name='services',
     )
+    service_name = models.CharField(max_length=255, default='')
     category = models.CharField(max_length=200)
     price = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -113,14 +117,16 @@ class ServiceItem(models.Model):
 
     class Meta:
         db_table = 'host_service_items'
-        ordering = ['category']
+        ordering = ['category', 'service_name']
         verbose_name = 'Service Item'
 
     def __str__(self):
-        return f"{self.category} — {self.price}"
+        return f"{self.category}: {self.service_name} — {self.price}"
 
     def save(self, *args, **kwargs):
         # Auto-capitalize first letter
+        if self.service_name:
+            self.service_name = self.service_name[0].upper() + self.service_name[1:]
         if self.category:
             self.category = self.category[0].upper() + self.category[1:]
         if self.price:

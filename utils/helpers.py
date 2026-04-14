@@ -159,31 +159,48 @@ def validate_upload_file(file_obj):
 # ─────────────────────────────────────────────
 def parse_service_file(file_obj) -> list:
     """
-    Parse service file in format: 'Service Name = Price'
-    Returns list of dicts: [{'category': '...', 'price': '...'}]
-    Skips invalid lines silently.
-    Auto-capitalizes first letter of category.
+    Parse service file in format: 'Service Name = Price (Cat1, Cat2)'
+    Returns list of dicts: [{'name': '...', 'price': '...', 'categories': ['...']}]
+    Skips invalid lines.
     """
     services = []
     try:
         content = file_obj.read().decode('utf-8', errors='ignore')
         file_obj.seek(0)
         lines = content.splitlines()
+        
+        # Regex to match: Name = Price (Categories)
+        # Supports: Car PPF = 90000 (PPF)
+        # Supports: Car Wash = 200 ₹ (Wash)
+        # Supports: Car PPF and Wash = 91000 (PPF, Wash)
+        pattern = re.compile(r'^([^=]+)\s*=\s*([^(\n]+?)(?:\s*\(([^)]+)\))?\s*$', re.MULTILINE)
+
         for line in lines:
             line = line.strip()
-            if not line or '=' not in line:
+            if not line:
                 continue
-            parts = line.split('=', 1)
-            if len(parts) != 2:
+            
+            match = pattern.match(line)
+            if not match:
                 continue
-            category = parts[0].strip()
-            price = parts[1].strip()
-            if not category or not price:
+                
+            name = match.group(1).strip()
+            price = match.group(2).strip()
+            categories_str = match.group(3) or "General"
+            
+            # Split categories and clean
+            categories = [c.strip() for c in categories_str.split(',')]
+            
+            # Clean name and price
+            if not name or not price:
                 continue
-            # Auto-capitalize first letter
-            category = category[0].upper() + category[1:]
-            price = price[0].upper() + price[1:]
-            services.append({'category': category, 'price': price})
+
+            services.append({
+                'name': name,
+                'price': price,
+                'categories': categories
+            })
+            
     except Exception as e:
         logger.warning(f"Service file parse error: {e}")
     return services

@@ -2,6 +2,7 @@
 hosts/views.py — Host dashboard, listing management, service editing.
 """
 import logging
+import json
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.http import JsonResponse
@@ -115,8 +116,17 @@ def listing_create_view(request):
             'errors': errors, 'form_data': data, 'action': 'create'
         })
 
+    # Handle parsed services JSON
+    parsed_services = None
+    services_json = request.POST.get('parsed_services_json')
+    if services_json:
+        try:
+            parsed_services = json.loads(services_json)
+        except Exception:
+            pass
+
     file_obj = request.FILES.get('service_file')
-    listing, service_errors = create_listing(request.user, data, file_obj)
+    listing, service_errors = create_listing(request.user, data, file_obj, parsed_services)
 
     if service_errors:
         errors.update(service_errors)
@@ -157,8 +167,17 @@ def listing_edit_view(request, slug):
         'location_name': sanitize_input(request.POST.get('location_name', '').strip()),
     }
 
+    # Handle parsed services JSON
+    parsed_services = None
+    services_json = request.POST.get('parsed_services_json')
+    if services_json:
+        try:
+            parsed_services = json.loads(services_json)
+        except Exception:
+            pass
+
     file_obj = request.FILES.get('service_file')
-    success, error = update_listing(listing, data, file_obj)
+    success, error = update_listing(listing, data, file_obj, parsed_services)
 
     if not success:
         return render(request, 'hosts/listing_form.html', {

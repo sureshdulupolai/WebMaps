@@ -1951,3 +1951,148 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-04-14 12:01:55,981] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 9355
 [2026-04-14 12:01:56,061] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
 [2026-04-14 12:02:04,433] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 23717
+[2026-04-14 12:12:11,785] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 12:15:29,445] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\hosts\models.py changed, reloading.
+[2026-04-14 12:15:37,014] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 12:16:49,417] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\utils\helpers.py changed, reloading.
+[2026-04-14 12:16:56,006] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 12:18:30,669] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\hosts\services.py changed, reloading.
+[2026-04-14 12:18:35,468] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 12:18:42,332] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\hosts\services.py changed, reloading.
+[2026-04-14 12:18:45,733] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 12:18:53,510] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\hosts\views.py changed, reloading.
+[2026-04-14 12:18:56,533] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 12:27:20,371] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 302 0
+[2026-04-14 12:27:21,187] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 12:27:22,852] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-14 12:27:22,972] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-14 12:27:23,052] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-14 12:27:23,121] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-14 12:27:23,203] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 6874
+[2026-04-14 12:27:26,028] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-14 12:27:26,096] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10890
+[2026-04-14 12:27:26,165] INFO django.server "GET /static/css/auth.css HTTP/1.1" 200 6897
+[2026-04-14 12:27:31,522] INFO webmaps User logged in: sureshone@gmail.com
+[2026-04-14 12:27:31,533] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 12:27:31,661] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 9355
+[2026-04-14 12:27:33,801] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
+[2026-04-14 12:27:34,514] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 31994
+[2026-04-14 12:32:39,160] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\hosts\models.py changed, reloading.
+[2026-04-14 12:32:42,641] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 12:34:59,091] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\hosts\services.py changed, reloading.
+[2026-04-14 12:35:09,836] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 12:35:30,504] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\hosts\services.py changed, reloading.
+[2026-04-14 12:35:36,414] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-14 12:37:56,763] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 36350
+[2026-04-14 12:37:57,176] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10890
+[2026-04-14 12:38:05,451] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 36350
+[2026-04-14 12:38:08,317] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 36350
+[2026-04-14 12:38:46,524] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-04-14 12:38:46,526] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7413
+[2026-04-14 12:38:49,460] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 36350
+[2026-04-14 12:38:49,762] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-04-14 12:38:49,767] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7413
+[2026-04-14 12:38:55,379] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-04-14 12:38:55,382] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7413
+[2026-04-14 12:39:02,450] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-04-14 12:39:02,453] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7413
+[2026-04-14 12:39:05,032] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 36350
+[2026-04-14 12:39:05,361] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-04-14 12:39:05,363] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7413
+[2026-04-14 12:40:13,343] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 302 0
+[2026-04-14 12:40:13,409] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 12:40:13,647] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10890
+[2026-04-14 12:40:13,648] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-04-14 12:40:13,648] INFO django.server "GET /static/js/main.js HTTP/1.1" 304 0
+[2026-04-14 12:40:13,671] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-04-14 12:40:13,671] INFO django.server "GET /static/js/modals.js HTTP/1.1" 304 0
+[2026-04-14 12:40:13,671] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 304 0
+[2026-04-14 12:40:13,696] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 304 0
+[2026-04-14 12:40:13,782] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 6874
+[2026-04-14 12:40:33,896] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 302 0
+[2026-04-14 12:40:33,928] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 12:44:02,161] INFO webmaps User logged in: sureshone@gmail.com
+[2026-04-14 12:44:02,181] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 12:44:02,523] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 9355
+[2026-04-14 12:44:02,693] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 200 5961
+[2026-04-14 12:44:02,763] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
+[2026-04-14 12:44:16,936] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 36350
+[2026-04-14 12:45:04,801] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 36350
+[2026-04-14 12:45:56,225] INFO django.server "GET / HTTP/1.1" 200 14319
+[2026-04-14 12:45:56,309] INFO django.server "GET /static/css/maps.css HTTP/1.1" 304 0
+[2026-04-14 12:45:56,332] INFO django.server "GET /static/js/maps.js?v=2.1 HTTP/1.1" 304 0
+[2026-04-14 12:45:56,334] INFO django.server "GET /static/js/maps_home.js HTTP/1.1" 304 0
+[2026-04-14 12:46:17,872] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 36350
+[2026-04-14 12:46:33,442] INFO django.server "GET / HTTP/1.1" 200 14319
+[2026-04-14 12:50:23,625] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 36350
+[2026-04-14 12:50:23,823] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-14 12:51:43,688] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 36358
+[2026-04-14 12:52:58,393] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 302 0
+[2026-04-14 12:52:58,441] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 12:52:58,498] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10890
+[2026-04-14 12:52:58,532] INFO django.server "GET /static/css/auth.css HTTP/1.1" 200 6897
+[2026-04-14 12:52:58,559] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-14 12:52:58,570] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-14 12:52:58,677] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-14 12:52:58,696] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 6874
+[2026-04-14 12:52:58,717] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-14 12:52:58,727] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-14 12:53:00,630] INFO webmaps User logged in: sureshone@gmail.com
+[2026-04-14 12:53:00,648] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 12:53:00,706] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 9355
+[2026-04-14 12:53:00,829] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
+[2026-04-14 12:53:03,189] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 36358
+[2026-04-14 12:55:17,467] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 36363
+[2026-04-14 12:55:17,520] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10890
+[2026-04-14 12:55:17,535] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-14 12:55:17,540] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-14 12:55:17,545] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-14 12:55:17,551] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-14 12:58:47,260] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 37041
+[2026-04-14 12:58:47,321] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-14 12:58:47,322] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10890
+[2026-04-14 12:58:47,335] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-14 12:58:47,336] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-14 12:58:47,344] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-14 13:01:52,301] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 38108
+[2026-04-14 13:01:52,358] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10890
+[2026-04-14 13:01:52,383] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-14 13:01:52,383] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-14 13:01:52,393] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-14 13:01:52,393] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-14 13:03:03,870] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-04-14 13:03:03,922] ERROR webmaps Captured error: InvalidToken: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]} @ /hosts/listing/create/
+[2026-04-14 13:03:03,928] ERROR webmaps Unhandled exception at /hosts/listing/create/: InvalidToken: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-04-14 13:03:03,984] ERROR django.request Internal Server Error: /hosts/listing/create/
+[2026-04-14 13:03:03,985] ERROR django.server "GET /hosts/listing/create/ HTTP/1.1" 500 5879
+[2026-04-14 13:03:04,103] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-14 13:03:04,194] INFO django.server "GET /static/images/500_illustration.png HTTP/1.1" 200 879255
+[2026-04-14 13:03:22,997] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-04-14 13:03:23,026] INFO django.server "GET /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 13:03:23,192] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-04-14 13:03:23,503] INFO django.server "GET / HTTP/1.1" 200 12800
+[2026-04-14 13:08:43,945] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 302 0
+[2026-04-14 13:08:44,013] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-14 13:08:44,095] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10890
+[2026-04-14 13:08:44,113] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-14 13:08:44,119] INFO django.server "GET /static/css/auth.css HTTP/1.1" 200 6897
+[2026-04-14 13:08:44,136] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-14 13:08:44,164] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-14 13:08:44,202] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-14 13:08:44,218] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 6874
+[2026-04-14 13:08:44,286] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-14 13:08:46,691] INFO webmaps User logged in: sureshone@gmail.com
+[2026-04-14 13:08:46,694] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-14 13:08:46,790] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 9355
+[2026-04-14 13:08:46,876] WARNING django.server "GET /static/js/dashboard.js HTTP/1.1" 404 1905
+[2026-04-14 13:08:49,251] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 39272
+[2026-04-14 13:10:18,517] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-04-14 13:10:18,520] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7413
+[2026-04-14 13:15:52,653] INFO django.server "GET /hosts/listing/create/ HTTP/1.1" 200 17869
+[2026-04-14 13:15:52,714] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10890
+[2026-04-14 13:15:52,739] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 200 6250
+[2026-04-14 13:15:52,743] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-14 13:15:52,747] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-14 13:15:52,759] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-14 13:15:52,762] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-14 13:15:52,774] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 200 16903

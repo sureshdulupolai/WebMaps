@@ -9,7 +9,7 @@ from .models import Listing, ServiceItem, ListingDocument, ListingStatus
 logger = logging.getLogger('webmaps')
 
 
-def create_listing(host, data: dict, file_obj=None) -> tuple:
+def create_listing(host, data: dict, file_obj=None, parsed_services: list = None) -> tuple:
     """
     Create a new listing for a host.
     Returns (listing, errors_dict)
@@ -39,10 +39,13 @@ def create_listing(host, data: dict, file_obj=None) -> tuple:
         latitude=lat,
         longitude=lng,
         location_name=data.get('location_name', ''),
+        operating_hours=data.get('operating_hours'),
         status=ListingStatus.PENDING,
     )
 
-    if file_obj:
+    if parsed_services:
+        _save_parsed_services(listing, parsed_services)
+    elif file_obj:
         _process_service_file(listing, file_obj)
 
     logger.info(f"Listing created: {listing.slug} by {host.email}")
@@ -60,10 +63,20 @@ def _process_service_file(listing, file_obj):
     if services:
         # Clear old services and replace
         listing.services.all().delete()
-        ServiceItem.objects.bulk_create([
-            ServiceItem(listing=listing, category=s['category'], price=s['price'])
-            for s in services
-        ])
+        
+        items_to_create = []
+        for s in services:
+            for cat in s['categories']:
+                items_to_create.append(
+                    ServiceItem(
+                        listing=listing,
+                        service_name=s['name'],
+                        category=cat,
+                        price=s['price']
+                    )
+                )
+        
+        ServiceItem.objects.bulk_create(items_to_create)
 
         # Store the document
         ListingDocument.objects.create(
@@ -74,7 +87,33 @@ def _process_service_file(listing, file_obj):
         logger.info(f"Parsed {len(services)} services for listing {listing.slug}")
 
 
-def update_listing(listing, data: dict, file_obj=None) -> tuple:
+def _save_parsed_services(listing, services: list):
+    """Save a list of pre-parsed service dictionaries."""
+    if not services:
+        return
+        
+    listing.services.all().delete()
+    items_to_create = []
+    for s in services:
+        name = s.get('name') or s.get('category')  # fallback for old format
+        price = s.get('price')
+        categories = s.get('categories') or ["General"]
+        
+        for cat in categories:
+            items_to_create.append(
+                ServiceItem(
+                    listing=listing,
+                    service_name=name,
+                    category=cat,
+                    price=price
+                )
+            )
+    
+    ServiceItem.objects.bulk_create(items_to_create)
+    logger.info(f"Saved {len(items_to_create)} service items for {listing.slug}")
+
+
+def update_listing(listing, data: dict, file_obj=None, parsed_services: list = None) -> tuple:
     """
     Update a listing (max 2 times enforced).
     Returns (success: bool, error: str)
@@ -97,10 +136,13 @@ def update_listing(listing, data: dict, file_obj=None) -> tuple:
     listing.latitude = lat
     listing.longitude = lng
     listing.location_name = data.get('location_name', listing.location_name)
+    listing.operating_hours = data.get('operating_hours', listing.operating_hours)
     listing.update_count += 1
     listing.save()
 
-    if file_obj:
+    if parsed_services:
+        _save_parsed_services(listing, parsed_services)
+    elif file_obj:
         _process_service_file(listing, file_obj)
 
     logger.info(f"Listing updated: {listing.slug} (update #{listing.update_count})")
