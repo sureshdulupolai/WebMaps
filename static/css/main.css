@@ -100,7 +100,6 @@ a:hover { color: var(--primary-hover); }
   z-index: 1000;
   display: flex;
   align-items: center;
-  margin-bottom: var(--space-6); /* Add margin below navbar */
 }
 
 .nav-inner {
