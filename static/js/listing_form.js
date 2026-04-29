@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const nextBtn = document.getElementById('next-btn');
     const prevBtn = document.getElementById('prev-btn');
     const submitBtn = document.getElementById('submit-listing-btn');
+    const saveDraftBtn = document.getElementById('save-draft-btn');
     const progressLine = document.getElementById('progress-line');
     const steps = document.querySelectorAll('.wizard-step');
     const categories = document.querySelectorAll('.step-node');
@@ -22,6 +23,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const hiddenJson = document.getElementById('hidden-services-json');
     const textInput = document.getElementById('protocol-text-input');
     const fileInput = document.getElementById('id_service_file');
+    const fileDropArea = document.getElementById('file-drop-area');
+    const fileStatus = document.getElementById('file-status');
 
     // 02. STATE & CONSTANTS
     const container = document.querySelector('.container');
@@ -122,17 +125,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (currentStep === 1) {
             if (!latInput.value || !lngInput.value) {
-                alert("Please select your business location on the map.");
+                showDialog("Location Needed", "Please select your business location on the map.");
                 valid = false;
             }
             if (summaryTextarea && summaryTextarea.value.length > 300) {
-                alert("Executive Summary cannot exceed 300 characters.");
+                showDialog("Text Too Long", "Executive Summary cannot exceed 300 characters.");
                 valid = false;
             }
         }
 
         if (currentStep === 2 && parsedServices.length === 0) {
-            alert("Please parse your service protocol first.");
+            showDialog("Information Required", "Please parse your service protocol first.");
             valid = false;
         }
 
@@ -286,6 +289,58 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // --- File Dropzone Logic ---
+    if (fileDropArea) {
+        fileDropArea.addEventListener('click', () => fileInput.click());
+
+        fileDropArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            fileDropArea.classList.add('dragover');
+        });
+
+        fileDropArea.addEventListener('dragleave', () => {
+            fileDropArea.classList.remove('dragover');
+        });
+
+        fileDropArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            fileDropArea.classList.remove('dragover');
+            if (e.dataTransfer.files.length > 0) {
+                fileInput.files = e.dataTransfer.files;
+                handleFileSelection(e.dataTransfer.files[0]);
+            }
+        });
+    }
+
+    if (fileInput) {
+        fileInput.addEventListener('change', (e) => {
+            if (fileInput.files.length > 0) {
+                handleFileSelection(fileInput.files[0]);
+            }
+        });
+    }
+
+    async function handleFileSelection(file) {
+        if (!file) return;
+        fileStatus.innerHTML = `⌛ Parsing <strong>${file.name}</strong>...`;
+        fileDropArea.classList.add('active');
+
+        try {
+            // Read file content
+            const content = await file.text();
+            parseData(content);
+            fileStatus.innerHTML = `✅ <strong>${file.name}</strong> parsed successfully.`;
+        } catch (err) {
+            console.error(err);
+            fileStatus.innerHTML = `❌ Error parsing <strong>${file.name}</strong>.`;
+            alert("Could not read file. Please ensure it's a valid text-based file.");
+        } finally {
+            setTimeout(() => {
+                fileDropArea.classList.remove('active');
+            }, 2000);
+        }
+    }
+
     if (processBtn) {
         processBtn.addEventListener('click', async () => {
             let content = "";
@@ -424,9 +479,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // 08. SUMMARY & SUBMIT (Step 4)
-    function renderSummary() {
+    function renderSummary(isDraft = false) {
         const sumContent = document.getElementById('summary-content');
-        if (!sumContent) return;
+        const pricingContainer = document.getElementById('pricing-breakdown-container');
+        if (!sumContent || !pricingContainer) return;
+
         const companyName = form.querySelector('[name="company_name"]').value;
         const servicesCount = parsedServices.length;
 
@@ -434,8 +491,146 @@ document.addEventListener('DOMContentLoaded', function () {
           <div class="mb-4"><strong class="text-primary">Company:</strong> ${companyName}</div>
           <div class="mb-4"><strong class="text-primary">Services:</strong> ${servicesCount} items parsed and reviewed.</div>
           <div class="mb-4"><strong class="text-primary">Location:</strong> Locked at [${latInput.value}, ${lngInput.value}]</div>
-          <div class="text-xs text-muted">Please double-check your service prices and categories before submission. You can go back to any step by clicking "Back".</div>
         `;
+
+        // Calculate Pricing
+        const selectedPlan = form.querySelector('.plan-card.active');
+        if (selectedPlan) {
+            pricingContainer.classList.remove('d-none');
+            const baseCost = parseInt(selectedPlan.dataset.amount);
+            const platformFee = 2; 
+            
+            let updateFee = 0;
+            const isEdit = initialData && initialData.slug;
+            const updateCountInput = document.getElementById('id_update_count');
+            const currentUpdateCount = updateCountInput ? parseInt(updateCountInput.value) : 0;
+            
+            // Surcharge only if not a draft and limit reached
+            if (isEdit && currentUpdateCount >= 2 && !isDraft) {
+                updateFee = 20;
+            }
+
+            const taxableAmount = baseCost + updateFee;
+            const cgst = taxableAmount * 0.09;
+            const sgst = taxableAmount * 0.09;
+            const total = taxableAmount + cgst + sgst + platformFee;
+
+            pricingContainer.innerHTML = `
+                <div class="pricing-breakdown">
+                    <div class="breakdown-row"><span>Base Plan Cost</span><span>₹${baseCost}</span></div>
+                    ${updateFee > 0 ? `<div class="breakdown-row"><span>Update Surcharge</span><span>₹${updateFee}</span></div>` : ''}
+                    <div class="breakdown-row"><span>Platform Fee</span><span>₹${platformFee}</span></div>
+                    <div class="breakdown-row"><span>CGST (9%)</span><span>₹${cgst.toFixed(2)}</span></div>
+                    <div class="breakdown-row"><span>SGST (9%)</span><span>₹${sgst.toFixed(2)}</span></div>
+                    <div class="breakdown-row total"><span>Amount Payable</span><span>₹${total.toFixed(2)}</span></div>
+                </div>
+            `;
+        } else {
+            pricingContainer.classList.add('d-none');
+        }
+    }
+
+    // --- Save Draft Logic ---
+    if (saveDraftBtn) {
+        saveDraftBtn.addEventListener('click', async () => {
+            if (!validateCurrentStep()) return;
+            
+            const updateCountInput = document.getElementById('id_update_count');
+            const currentUpdateCount = updateCountInput ? parseInt(updateCountInput.value) : 0;
+            
+            if (currentUpdateCount >= 2) {
+                const totalUpdateFee = (20 * 1.18 + 2).toFixed(2);
+                showDialog(
+                    "Limit Reached", 
+                    `You have already used your 2 free updates. To save these changes, you can proceed with a single update payment of ₹${totalUpdateFee} or select a subscription plan.`,
+                    'warning',
+                    null,
+                    {
+                        label: `Pay ₹${totalUpdateFee} & Update`,
+                        callback: () => {
+                            const planRadio = form.querySelector('[name="plan_id"]');
+                            if (planRadio) {
+                                submitBtn.click();
+                            } else {
+                                // Scroll to plans
+                                window.scrollTo({ top: document.querySelector('.plans-grid').offsetTop - 100, behavior: 'smooth' });
+                                showDialog("Select Plan", "Please select a plan to proceed with the paid update.");
+                            }
+                        }
+                    }
+                );
+                return;
+            }
+
+            saveDraftBtn.disabled = true;
+            saveDraftBtn.innerHTML = '<span class="loading-spinner"></span> Saving...';
+
+            try {
+                const formData = new FormData(form);
+                const response = await fetch(window.location.href, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    const remaining = 2 - (currentUpdateCount + 1);
+                    const msg = remaining > 0 
+                        ? `Draft saved! You have ${remaining} free update${remaining > 1 ? 's' : ''} remaining.`
+                        : "Draft saved! This was your last free update. Future changes will require a small fee.";
+                    
+                    showDialog("Success", msg, 'success', () => {
+                        window.location.href = '/hosts/dashboard/';
+                    });
+                } else {
+                    showDialog("Error", result.errors ? Object.values(result.errors).join('\n') : "Failed to save draft.");
+                }
+            } catch (err) {
+                showDialog("Error", "Network error while saving draft.");
+            } finally {
+                saveDraftBtn.disabled = false;
+                saveDraftBtn.innerHTML = 'Save Draft';
+            }
+        });
+    }
+
+    // --- Custom Dialog ---
+    function showDialog(title, message, type = 'error', onConfirm = null, secondaryAction = null) {
+        const overlay = document.createElement('div');
+        overlay.className = 'custom-dialog-overlay';
+        
+        const icon = type === 'success' ? '✅' : (type === 'info' ? 'ℹ️' : '⚠️');
+        
+        overlay.innerHTML = `
+            <div class="custom-dialog">
+                <button class="dialog-close">&times;</button>
+                <div class="dialog-icon" style="font-size: 2rem;">${icon}</div>
+                <h3 class="h4 mb-2">${title}</h3>
+                <p class="text-sm text-secondary mb-6">${message}</p>
+                <div class="d-flex gap-3">
+                    <button class="btn btn-outline btn-sm w-full cancel-btn">Cancel</button>
+                    <button class="btn btn-primary btn-sm w-full confirm-btn">${secondaryAction ? secondaryAction.label : 'OK'}</button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(overlay);
+        
+        const close = () => {
+            overlay.remove();
+        };
+        
+        overlay.querySelector('.dialog-close').onclick = close;
+        overlay.querySelector('.cancel-btn').onclick = close;
+        overlay.querySelector('.confirm-btn').onclick = () => {
+            overlay.remove();
+            if (secondaryAction && secondaryAction.callback) {
+                secondaryAction.callback();
+            } else if (onConfirm) {
+                onConfirm();
+            }
+        };
     }
 
     // 10. PLAN SELECTION LOGIC
@@ -446,6 +641,7 @@ document.addEventListener('DOMContentLoaded', function () {
             card.classList.add('active');
             card.querySelector('input').checked = true;
             saveToLocal();
+            renderSummary(); // Re-calculate pricing
         });
     });
 
@@ -459,7 +655,17 @@ document.addEventListener('DOMContentLoaded', function () {
             submitBtn.innerHTML = '<span class="loading-spinner"></span> Saving Listing...';
 
             try {
-                // 1. Save listing via AJAX first
+                // 1. Check plan selection FIRST (so backend knows this is a paid update)
+                const selectedPlan = form.querySelector('[name="plan_id"]:checked');
+                if (!selectedPlan) {
+                    showDialog("Plan Required", "Please select a subscription plan to continue.");
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Pay & Initialize Listing';
+                    return;
+                }
+                const planId = selectedPlan.value;
+
+                // 2. Save listing via AJAX
                 const formData = new FormData(form);
                 const response = await fetch(window.location.href, {
                     method: 'POST',
@@ -469,18 +675,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const result = await response.json();
                 if (!response.ok) {
-                    alert(Object.values(result.errors || {e: "Error saving listing"}).join('\n'));
+                    showDialog("Update Blocked", Object.values(result.errors || {e: "Error saving listing"}).join('\n'));
                     submitBtn.disabled = false;
                     submitBtn.textContent = 'Pay & Initialize Listing';
                     return;
                 }
 
-                const slug = result.slug;
-                const planId = form.querySelector('[name="plan_id"]:checked').value;
+                const activeSlug = result.slug || slug;
 
-                // 2. Initiate Payment
+                // 3. Initiate Payment
                 submitBtn.innerHTML = '<span class="loading-spinner"></span> Creating Order...';
-                const payInitResp = await fetch(`/payments/initiate/${slug}/`, {
+                const payInitResp = await fetch(`/payments/initiate/${activeSlug}/`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
@@ -494,7 +699,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // 3. Open Razorpay
                 const options = {
-                    key: document.querySelector('.container').dataset.rzpKey || "{{ razorpay_key }}",
+                    key: document.querySelector('[data-rzp-key]').dataset.rzpKey,
                     amount: payInfo.amount,
                     currency: payInfo.currency,
                     name: "WebMaps",
@@ -509,7 +714,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 razorpay_order_id: response.razorpay_order_id,
                                 razorpay_payment_id: response.razorpay_payment_id,
                                 razorpay_signature: response.razorpay_signature,
-                                listing_slug: slug,
+                                listing_slug: activeSlug,
                                 plan_id: planId
                             })
                         });
@@ -519,13 +724,13 @@ document.addEventListener('DOMContentLoaded', function () {
                             localStorage.removeItem(STORAGE_KEY);
                             window.location.href = verifyResult.redirect || '/hosts/dashboard/';
                         } else {
-                            alert("Payment verification failed. Please contact support.");
+                            showDialog("Payment Error", "Payment verification failed. Please contact support.");
                             submitBtn.disabled = false;
                         }
                     },
                     prefill: {
-                        name: "{{ user.get_full_name }}",
-                        email: "{{ user.email }}"
+                        name: "",
+                        email: ""
                     },
                     theme: { color: "#6366f1" },
                     modal: {
@@ -541,7 +746,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             } catch (err) {
                 console.error(err);
-                alert("An error occurred: " + err.message);
+                showDialog("Execution Error", err.message);
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Pay & Initialize Listing';
             }

@@ -157,9 +157,10 @@
   color: white;
   border: none;
   border-radius: var(--radius-md);
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 800;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   transition: var(--transition);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -611,7 +612,6 @@
 }
 
 /* ─── PREMIUM MAP POPUPS ─── */
-}
 
 .onboarding-hint::before {
     content: '';
@@ -708,4 +708,68 @@
 }
 .popup-link:hover {
   background: var(--primary-hover);
+}
+
+/* View Toggle */
+.view-toggle-group {
+  display: flex;
+  gap: 8px;
+  background: rgba(0,0,0,0.2);
+  padding: 4px;
+  border-radius: var(--radius-md);
+}
+.view-toggle-btn {
+  flex: 1;
+  background: transparent;
+  color: var(--text-secondary);
+  border: none;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.view-toggle-btn:hover {
+  color: var(--text-primary);
+}
+.view-toggle-btn.active {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+}
+
+/* Product View Overlay */
+.product-view-absolute {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: var(--bg-color);
+  overflow-y: auto;
+  padding: var(--space-6);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+.product-view-absolute.active {
+  opacity: 1;
+  visibility: visible;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.empty-state-container {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Marker Pulse Effect (Optional but looks pro) */
+.leaflet-marker-icon[src*="svg"] {
+  filter: drop-shadow(0 0 5px rgba(0, 212, 255, 0.5));
+  transition: transform 0.2s;
+}
+.leaflet-marker-icon[src*="svg"]:hover {
+  transform: scale(1.2) !important;
+  z-index: 1000 !important;
 }

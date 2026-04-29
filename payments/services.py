@@ -86,16 +86,14 @@ def seed_subscription_plans():
     Call from management command or migration.
     """
     plans = [
-        {'name': '1 Month', 'duration_days': 30, 'base_cost': 199},
-        {'name': '3 Months', 'duration_days': 90, 'base_cost': 499},
-        {'name': '6 Months', 'duration_days': 180, 'base_cost': 849},
-        {'name': '1 Year', 'duration_days': 365, 'base_cost': 1499},
-        {'name': '3 Years', 'duration_days': 1095, 'base_cost': 3499},
+        {'name': '1 Month', 'duration_days': 30, 'base_cost': 181},
+        {'name': '3 Months', 'duration_days': 90, 'base_cost': 402},
+        {'name': '1 Year', 'duration_days': 365, 'base_cost': 1502},
     ]
     for p in plans:
-        SubscriptionPlan.objects.get_or_create(name=p['name'], defaults={
+        SubscriptionPlan.objects.update_or_create(name=p['name'], defaults={
             'duration_days': p['duration_days'],
             'base_cost': p['base_cost'],
-            'platform_fee': 50,
+            'platform_fee': 2,
         })
     logger.info("Subscription plans seeded.")

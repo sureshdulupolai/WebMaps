@@ -56,14 +56,14 @@ function revealMap() {
 // ─── SEARCH HANDLERS ─────────────────────────────────
 
 // Location Search Handler
-async function handleSearchLocation(e) {
-  e.preventDefault();
+async function handleSearchLocation(e, lat = null, lng = null) {
+  if (e) e.preventDefault();
   const query = document.getElementById('loc-search-input').value.trim();
-  if (!query) return;
+  if (!query && !lat) return;
 
-  const category = document.getElementById('loc-filter-category') ? document.getElementById('loc-filter-category').value : '';
+  const category = document.getElementById('loc-filter-category') ? document.getElementById('loc-filter-category').value : 'All';
   const rating = document.getElementById('loc-filter-rating') ? document.getElementById('loc-filter-rating').value : '';
-  const distance = document.getElementById('loc-filter-distance') ? document.getElementById('loc-filter-distance').value : '';
+  const distance = document.getElementById('loc-filter-distance') ? document.getElementById('loc-filter-distance').value : '10';
   const price = document.getElementById('loc-filter-price') ? document.getElementById('loc-filter-price').value : '';
 
   hideMapNotice();
@@ -71,9 +71,12 @@ async function handleSearchLocation(e) {
   clearMarkers();
 
   try {
-    const qs = new URLSearchParams({
-      q: query, category, rating, distance, price
-    }).toString();
+    const params = { q: query, category, rating, distance, price };
+    if (lat && lng) {
+      params.lat = lat;
+      params.lng = lng;
+    }
+    const qs = new URLSearchParams(params).toString();
 
     const res = await fetch(`/api/maps/search/?${qs}`);
     const data = await res.json();
@@ -86,6 +89,18 @@ async function handleSearchLocation(e) {
 
     if (data.start) {
       map.setView([data.start.lat, data.start.lng], 13);
+      const redIcon = L.icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+      });
+      const searchMarker = L.marker([data.start.lat, data.start.lng], {
+        icon: redIcon
+      }).addTo(map).bindPopup('Searched Location');
+      markers.push(searchMarker);
       revealMap();
     }
 
@@ -182,13 +197,13 @@ function addMarker(lat, lng, titleOrListing) {
   const isListing = typeof titleOrListing === 'object';
   const title = isListing ? titleOrListing.company_name : titleOrListing;
 
-  const iconUrl = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2300d4ff" width="24px" stroke="%23ffffff" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>';
+  const iconUrl = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2300d4ff" width="28px" stroke="%23ffffff" stroke-width="2"><circle cx="12" cy="12" r="10" filter="drop-shadow(0 0 2px rgba(0,212,255,0.5))"/></svg>';
   
   const customIcon = L.icon({
     iconUrl: iconUrl,
-    iconSize: [24, 24],
-    iconAnchor: [12, 12],
-    popupAnchor: [0, -12]
+    iconSize: [28, 28],
+    iconAnchor: [14, 14],
+    popupAnchor: [0, -14]
   });
 
   const marker = L.marker([lat, lng], { title: title, icon: customIcon }).addTo(map);
@@ -220,20 +235,47 @@ function setResultsPanel(listings) {
   const panel = document.getElementById('results-panel');
   if (!panel) return;
 
-  if (listings.length === 0) {
-    panel.innerHTML = ''; // Keep sidebar clean
+  if (!listings || listings.length === 0) {
+    panel.innerHTML = `
+      <div class="empty-state-container" style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: rgba(255,255,255,0.02); border-radius: 24px; border: 2px dashed rgba(255,255,255,0.05);">
+        <div style="font-size: 3rem; margin-bottom: 20px; opacity: 0.5;">🔍</div>
+        <h3 style="color: white; margin-bottom: 10px; font-size: 1.5rem;">No Results in this Area</h3>
+        <p style="color: var(--text-muted); max-width: 300px; margin: 0 auto 20px;">Try expanding your search distance or choosing a different category.</p>
+        <button class="btn btn-outline btn-sm" onclick="resetFilters()">Reset All Filters</button>
+      </div>
+    `;
     showMapNotice('No Results Found', "We couldn't find any listings matching your search. Try adjusting your filters or area.");
     return;
   }
 
   hideMapNotice();
   panel.innerHTML = listings.map(l => `
-    <a href="${l.detail_url}" class="listing-card" style="display:block;text-decoration:none;margin-bottom:12px;background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.05)">
-      <h3 style="margin:0 0 6px 0;color:var(--text);font-size:1.1rem">${l.company_name}</h3>
-      <p style="margin:0 0 8px 0;color:var(--text-muted);font-size:0.85rem">${l.short_description}</p>
-      <div style="font-size:0.75rem;color:#00d4ff">📍 ${l.distance_km} km</div>
+    <a href="${l.detail_url}" class="listing-card" style="display:flex; flex-direction:column; text-decoration:none; background:rgba(255,255,255,0.03); padding:16px; border-radius:12px; border:1px solid rgba(255,255,255,0.05); transition:all 0.3s ease;">
+      <h3 style="margin:0 0 8px 0; color:var(--text); font-size:1.15rem; font-weight:700;">${l.company_name}</h3>
+      <p style="margin:0 0 12px 0; color:var(--text-muted); font-size:0.9rem; line-height:1.4; flex-grow:1;">${l.short_description}</p>
+      <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.05); padding-top:12px;">
+        <span style="font-size:0.8rem; color:#00d4ff; font-weight:600;">📍 ${l.distance_km} km</span>
+        <span style="font-size:0.8rem; background:rgba(255,255,255,0.1); padding:4px 8px; border-radius:4px; color:white;">View Details</span>
+      </div>
     </a>
   `).join('');
+}
+
+function resetFilters() {
+  const cat = document.getElementById('loc-filter-category');
+  const dist = document.getElementById('loc-filter-distance');
+  const rat = document.getElementById('loc-filter-rating');
+  const price = document.getElementById('loc-filter-price');
+  
+  if (cat) cat.value = 'All';
+  if (dist) dist.value = '20';
+  if (rat) rat.value = '';
+  if (price) price.value = '';
+  
+  // Refresh custom selects if they exist
+  document.querySelectorAll('.custom-option[data-value="All"]').forEach(el => el.click());
+  
+  handleSearchLocation(null);
 }
 
 function showMapNotice(title, message) {
@@ -265,8 +307,7 @@ function setLoading(btnId, state) {
   if (!btn) return;
   
   if (state) {
-    btn.dataset.original = btn.innerHTML;
-    btn.innerHTML = 'Wait...';
+    btn.style.display = 'none';
     btn.disabled = true;
     
     if (resultsPanel) {
@@ -274,10 +315,13 @@ function setLoading(btnId, state) {
         <div class="skeleton-card"><div class="skeleton-line title"></div><div class="skeleton-line text"></div><div class="skeleton-line short"></div></div>
         <div class="skeleton-card"><div class="skeleton-line title"></div><div class="skeleton-line text"></div><div class="skeleton-line short"></div></div>
         <div class="skeleton-card"><div class="skeleton-line title"></div><div class="skeleton-line text"></div><div class="skeleton-line short"></div></div>
+        <div class="skeleton-card"><div class="skeleton-line title"></div><div class="skeleton-line text"></div><div class="skeleton-line short"></div></div>
+        <div class="skeleton-card"><div class="skeleton-line title"></div><div class="skeleton-line text"></div><div class="skeleton-line short"></div></div>
+        <div class="skeleton-card"><div class="skeleton-line title"></div><div class="skeleton-line text"></div><div class="skeleton-line short"></div></div>
       `;
     }
   } else {
-    btn.innerHTML = btn.dataset.original || 'Search';
+    btn.style.display = '';
     btn.disabled = false;
   }
 }

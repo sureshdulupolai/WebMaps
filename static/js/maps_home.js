@@ -29,9 +29,33 @@ function toggleTab(tab) {
   }
 }
 
+function switchView(view) {
+  const mapBtn = document.getElementById('view-map-btn');
+  const productBtn = document.getElementById('view-product-btn');
+  const productView = document.getElementById('product-view');
+  const mapEl = document.getElementById('map');
+  
+  if (view === 'map') {
+    if(mapBtn) mapBtn.classList.add('active');
+    if(productBtn) productBtn.classList.remove('active');
+    if(productView) productView.classList.remove('active');
+    if(mapEl) mapEl.style.opacity = '1';
+  } else {
+    if(mapBtn) mapBtn.classList.remove('active');
+    if(productBtn) productBtn.classList.add('active');
+    if(productView) productView.classList.add('active');
+    if(mapEl) mapEl.style.opacity = '0';
+  }
+}
+
 // Geolocation & Auto-fill Logic
 const NOMINATIM_URL = 'https://nominatim.openstreetmap.org/reverse?format=json&lat={lat}&lon={lon}&zoom=18&addressdetails=1';
 const LOCATION_OVERLAY_KEY = 'webmaps_location_granted';
+
+function enableInput() {
+  const input = document.getElementById('loc-search-input');
+  if (input) input.disabled = false;
+}
 
 function closeLocationOverlay() {
   const overlay = document.getElementById('location-overlay');
@@ -40,6 +64,7 @@ function closeLocationOverlay() {
     // User explicitly said "Maybe Later", so we don't store the granted flag.
     // However, they can still search manually.
   }
+  enableInput();
 }
 
 async function handleLocationEnable() {
@@ -76,12 +101,8 @@ async function handleLocationEnable() {
           const input = document.getElementById('loc-search-input');
           if (input) {
             input.value = displayAddress;
-            // TRIGGER SEARCH AUTOMATICALLY
-            const searchEvent = new Event('submit', { cancelable: true });
-            const searchForm = document.getElementById('search-form-location');
-            if (searchForm) {
-              handleSearchLocation(searchEvent);
-            }
+            // TRIGGER SEARCH AUTOMATICALLY WITH COORDS FOR SPEED
+            handleSearchLocation(null, latitude, longitude);
           }
           // Set persistent flag
           localStorage.setItem(LOCATION_OVERLAY_KEY, 'true');
@@ -91,6 +112,7 @@ async function handleLocationEnable() {
       } finally {
         const overlay = document.getElementById('location-overlay');
         if (overlay) overlay.classList.add('hidden');
+        enableInput();
       }
     },
     (error) => {
@@ -115,6 +137,7 @@ async function checkLocationPermission() {
         return;
       } else if (result.state === 'denied') {
         // If denied, we don't show the overlay as it would be useless
+        enableInput();
         return;
       }
     } catch (e) {}
@@ -124,6 +147,8 @@ async function checkLocationPermission() {
   if (!localStorage.getItem(LOCATION_OVERLAY_KEY)) {
     const overlay = document.getElementById('location-overlay');
     if (overlay) overlay.classList.remove('hidden');
+  } else {
+    enableInput();
   }
 }
 
@@ -159,21 +184,44 @@ async function handleLocationSilent() {
          const input = document.getElementById('loc-search-input');
          if (input) {
            input.value = displayAddress;
-           // Trigger automatic search
-           const searchEvent = new Event('submit', { cancelable: true });
-           handleSearchLocation(searchEvent);
+           // Trigger automatic search with coords
+           handleSearchLocation(null, latitude, longitude);
          }
       }
     } catch(e) {
       console.error("Silent location update failed", e);
+    } finally {
+      enableInput();
     }
   }, (err) => {
     console.warn("Silent geolocation failed", err);
+    enableInput();
   }, { enableHighAccuracy: true, timeout: 10000 });
 }
 
 // Ensure initMap is completely executed upon load
 document.addEventListener('DOMContentLoaded', () => {
+    const locInput = document.getElementById('loc-search-input');
+    const locBtn = document.getElementById('loc-search-btn');
+    if (locInput) locInput.disabled = true;
+    if (locBtn) locBtn.style.display = 'none';
+
     if (typeof initMap === 'function') initMap();
     checkLocationPermission();
+
+    // Debounce logic for search input
+    let typingTimer;
+    const doneTypingInterval = 2000;
+    
+    if (locInput) {
+      locInput.addEventListener('input', () => {
+        if (locBtn) locBtn.style.display = 'none';
+        clearTimeout(typingTimer);
+        if (locInput.value) {
+          typingTimer = setTimeout(() => {
+            if (locBtn) locBtn.style.display = 'flex';
+          }, doneTypingInterval);
+        }
+      });
+    }
 });

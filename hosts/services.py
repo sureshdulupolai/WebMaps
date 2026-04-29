@@ -113,12 +113,12 @@ def _save_parsed_services(listing, services: list):
     logger.info(f"Saved {len(items_to_create)} service items for {listing.slug}")
 
 
-def update_listing(listing, data: dict, file_obj=None, parsed_services: list = None) -> tuple:
+def update_listing(listing, data: dict, file_obj=None, parsed_services: list = None, ignore_limit=False) -> tuple:
     """
-    Update a listing (max 2 times enforced).
+    Update a listing (max 2 times enforced for free).
     Returns (success: bool, error: str)
     """
-    if not listing.can_update:
+    if not listing.can_update and not ignore_limit:
         return False, 'Maximum update limit (2) reached. No further edits allowed.'
 
     # Check coordinates if changed

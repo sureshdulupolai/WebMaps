@@ -129,6 +129,9 @@
             <div id="protocol-paste-container" class="d-none">
               <textarea id="protocol-text-input" class="input-line" rows="8"
                 placeholder="Service Name = Price (Category1, Category2)"></textarea>
+              <div class="format-preview">
+                Service Name = Price (Category1, Category2)
+              </div>
             </div>
 
             <button type="button" id="process-protocol-btn" class="btn btn-outline btn-sm w-full py-3 mt-4"
@@ -190,6 +193,10 @@
             <div id="summary-content" class="text-sm text-secondary" style="line-height:1.8">
               <!-- JS Summary Inject -->
             </div>
+            
+            <div id="pricing-breakdown-container" class="d-none">
+              <!-- JS Pricing Inject -->
+            </div>
           </div>
 
           <p class="text-xs text-secondary opacity-50 mb-8">By proceeding, you agree to our terms of service. Payments are secured via Razorpay.</p>
@@ -197,10 +204,16 @@
           <input type="hidden" name="razorpay_payment_id" id="razorpay_payment_id">
           <input type="hidden" name="razorpay_order_id" id="razorpay_order_id">
           <input type="hidden" name="razorpay_signature" id="razorpay_signature">
+          <input type="hidden" id="id_update_count" value="{{ listing.update_count|default:0 }}">
 
-          <button type="button" class="btn btn-primary btn-lg btn-block" id="submit-listing-btn">
-            Pay & Initialize Listing
-          </button>
+          <div class="dual-actions">
+            <button type="button" class="btn btn-save-draft" id="save-draft-btn">
+              Save Draft
+            </button>
+            <button type="button" class="btn btn-primary" id="submit-listing-btn">
+              Pay & Initialize Listing
+            </button>
+          </div>
         </div>
 
         <!-- Global Navigation -->
@@ -281,19 +294,12 @@
 <script id="listing-initial-data" type="application/json">
 {
   "slug": "{{ listing.slug|default:'' }}",
-  "services": [
-    {% for service in listing.services.all %}
-    {
-      "name": "{{ service.service_name|escapejs }}",
-      "price": "{{ service.price|escapejs }}",
-      "category": "{{ service.category|escapejs }}"
-    }{% if not forloop.last %},{% endif %}
-    {% endfor %}
-  ],
-  "operating_hours": {{ listing.operating_hours|default:"{}"|safe }}
+  "services": {{ initial_services_json|default:"[]"|safe }},
+  "operating_hours": {{ initial_hours_json|default:"{}"|safe }}
 }
 </script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script src="{% static 'js/listing_form.js' %}"></script>
 {% endblock %}

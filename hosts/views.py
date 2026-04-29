@@ -161,6 +161,7 @@ def listing_create_view(request):
         except Exception:
             data['operating_hours'] = {}
 
+    file_obj = request.FILES.get('service_file')
     listing, service_errors = create_listing(request.user, data, file_obj, parsed_services)
 
     if service_errors:
@@ -215,12 +216,24 @@ def listing_edit_view(request, slug):
 
     if request.method == 'GET':
         plans = SubscriptionPlan.objects.all()
+        # Pre-serialize data for the script tag to avoid single-quote JSON errors
+        from hosts.models import ServiceItem
+        services_list = []
+        for s in listing.services.all():
+            services_list.append({
+                'name': s.service_name,
+                'price': s.price,
+                'category': s.category
+            })
+        
         return render(request, 'hosts/listing_form.html', {
             'listing': listing,
             'action': 'edit',
             'razorpay_key': settings.RAZORPAY_KEY_ID,
             'plans': plans,
             'needs_payment': needs_payment,
+            'initial_services_json': json.dumps(services_list),
+            'initial_hours_json': json.dumps(listing.operating_hours or {}),
             'form_data': {
                 'company_name': listing.company_name, 'website_url': listing.website_url,
                 'short_description': listing.short_description, 'latitude': listing.latitude,
@@ -256,7 +269,8 @@ def listing_edit_view(request, slug):
         except Exception:
             data['operating_hours'] = {}
 
-    success, error = update_listing(listing, data, file_obj, parsed_services)
+    plan_id = request.POST.get('plan_id')
+    success, error = update_listing(listing, data, file_obj, parsed_services, ignore_limit=bool(plan_id))
 
     if not success:
         if request.headers.get('x-requested-with') == 'XMLHttpRequest':

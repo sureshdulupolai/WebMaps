@@ -119,12 +119,15 @@ def get_listings_along_route(start_coords: dict, end_coords: dict, radius_km: fl
 # ─────────────────────────────────────────────
 #  SIMPLE LOCATION SEARCH
 # ─────────────────────────────────────────────
-def get_listings_near_location(lat: float, lng: float, radius_km: float = 10) -> list:
+def get_listings_near_location(lat: float, lng: float, radius_km: float = 10, category: str = None) -> list:
     """Return approved listings within radius_km of a single point."""
     listings = Listing.objects.filter(
         status='approved',
         deleted_at__isnull=True,
     ).prefetch_related('services')
+
+    if category:
+        listings = listings.filter(category__iexact=category)
 
     results = []
     for listing in listings:

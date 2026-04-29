@@ -47,12 +47,12 @@ class SecurityHeadersMiddleware:
         response['Permissions-Policy'] = 'geolocation=(self), camera=(), microphone=()'
         response['Content-Security-Policy'] = (
             "default-src 'self'; "
-            "script-src 'self' 'unsafe-inline' https://maps.googleapis.com https://checkout.razorpay.com https://unpkg.com https://cdn.jsdelivr.net; "
+            "script-src 'self' 'unsafe-inline' https://maps.googleapis.com https://checkout.razorpay.com https://cdn.razorpay.com https://unpkg.com https://cdn.jsdelivr.net; "
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; "
             "font-src 'self' https://fonts.gstatic.com; "
             "img-src 'self' data: https://*.googleapis.com https://*.gstatic.com https://*.google.com https://unpkg.com https://*.tile.openstreetmap.org; "
-            "connect-src 'self' https://maps.googleapis.com https://api.razorpay.com https://nominatim.openstreetmap.org; "
-            "frame-src https://checkout.razorpay.com;"
+            "connect-src 'self' https://maps.googleapis.com https://api.razorpay.com https://lumberjack.razorpay.com https://nominatim.openstreetmap.org https://unpkg.com; "
+            "frame-src https://checkout.razorpay.com https://api.razorpay.com;"
         )
         return response
 

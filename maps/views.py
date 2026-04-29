@@ -72,10 +72,17 @@ def serialize_listings(results, rating_filter):
 def search_by_location(request):
     """AJAX endpoint for single location search."""
     query = request.GET.get('q', '').strip()
-    if not query:
+    lat = request.GET.get('lat')
+    lng = request.GET.get('lng')
+    category = request.GET.get('category', '').strip()
+
+    if lat and lng:
+        coords = {'lat': float(lat), 'lng': float(lng), 'formatted_address': query}
+    elif query:
+        coords = geocode_location(query)
+    else:
         return JsonResponse({'listings': [], 'start': None})
 
-    coords = geocode_location(query)
     if not coords:
         return JsonResponse({
             'listings': [],
@@ -86,7 +93,13 @@ def search_by_location(request):
     distance_filter = float(request.GET.get('distance') or 10)
     rating_filter = float(request.GET.get('rating') or 0)
     
-    results = get_listings_near_location(coords['lat'], coords['lng'], radius_km=distance_filter)
+    # If category is "All" or empty, don't filter by category in service layer if possible
+    # For now, we'll filter in serialize_listings if needed or pass it to service
+    results = get_listings_near_location(
+        coords['lat'], coords['lng'], 
+        radius_km=distance_filter,
+        category=category if category != 'All' else None
+    )
     listings_data = serialize_listings(results, rating_filter)
 
     return JsonResponse({
