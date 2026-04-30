@@ -6,6 +6,9 @@
 let map;
 let markers = [];
 let routeLayer;
+let userMarker;
+let userAccuracyCircle;
+
 
 // Initialize Leaflet map
 function initMap() {
@@ -29,13 +32,15 @@ function initMap() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        map.setView([pos.coords.latitude, pos.coords.longitude], 13);
-        // We do NOT call revealMap() here anymore, map stays hidden behind overlay
+        const { latitude, longitude, accuracy } = pos.coords;
+        map.setView([latitude, longitude], 13);
+        updateUserLocation(latitude, longitude, accuracy);
       },
       () => {},
-      { timeout: 5000 }
+      { enableHighAccuracy: true, timeout: 5000 }
     );
   }
+
 }
 
 function revealMap() {
@@ -58,7 +63,16 @@ function revealMap() {
 // Location Search Handler
 async function handleSearchLocation(e, lat = null, lng = null) {
   if (e) e.preventDefault();
-  const query = document.getElementById('loc-search-input').value.trim();
+  const input = document.getElementById('loc-search-input');
+  const query = input.value.trim();
+  
+  // Use coordinates from suggestions if available
+  const suggestLat = input.getAttribute('data-lat');
+  const suggestLng = input.getAttribute('data-lng');
+  
+  if (!lat && suggestLat) lat = suggestLat;
+  if (!lng && suggestLng) lng = suggestLng;
+
   if (!query && !lat) return;
 
   const category = document.getElementById('loc-filter-category') ? document.getElementById('loc-filter-category').value : 'All';
@@ -82,25 +96,34 @@ async function handleSearchLocation(e, lat = null, lng = null) {
     const data = await res.json();
 
     if (data.error) {
-      Modal.error(data.error, 'Search Failed');
+      // Clear data attributes so next search is fresh
+      input.removeAttribute('data-lat');
+      input.removeAttribute('data-lng');
+      
+      if (e) Modal.error(data.error, 'Search Failed');
       setLoading('loc-search-btn', false);
       return;
     }
 
     if (data.start) {
-      map.setView([data.start.lat, data.start.lng], 13);
+      map.setView([data.start.lat, data.start.lng], 16);
+      
+      const redPinSvg = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff4d4d" width="36" height="36"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" stroke="white" stroke-width="1"/></svg>`;
+      
       const redIcon = L.icon({
-        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
-        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowSize: [41, 41]
+        iconUrl: redPinSvg,
+        iconSize: [36, 36],
+        iconAnchor: [18, 36],
+        popupAnchor: [0, -32],
+        shadowUrl: ''
       });
+
       const searchMarker = L.marker([data.start.lat, data.start.lng], {
-        icon: redIcon
-      }).addTo(map).bindPopup('Searched Location');
+        icon: redIcon,
+        zIndexOffset: 500
+      }).addTo(map).bindPopup('<b>Searched Location</b><br>' + query);
       markers.push(searchMarker);
+      
       revealMap();
     }
 
@@ -110,9 +133,10 @@ async function handleSearchLocation(e, lat = null, lng = null) {
   } catch (err) {
     console.error(err);
     setLoading('loc-search-btn', false);
-    Modal.error('Search failed. Please try again.', 'Error');
+    if (e) Modal.error('Search failed. Please try again.', 'Error');
   }
 }
+
 
 // Route Search Handler
 async function handleSearchRoute(e) {
@@ -197,14 +221,18 @@ function addMarker(lat, lng, titleOrListing) {
   const isListing = typeof titleOrListing === 'object';
   const title = isListing ? titleOrListing.company_name : titleOrListing;
 
-  const iconUrl = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2300d4ff" width="28px" stroke="%23ffffff" stroke-width="2"><circle cx="12" cy="12" r="10" filter="drop-shadow(0 0 2px rgba(0,212,255,0.5))"/></svg>';
+  // Professional Blue Pin SVG (Matches Listing Page style but SVG for robustness)
+  const bluePinSvg = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%233b82f6" width="32" height="32"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" stroke="white" stroke-width="1"/></svg>`;
   
   const customIcon = L.icon({
-    iconUrl: iconUrl,
-    iconSize: [28, 28],
-    iconAnchor: [14, 14],
-    popupAnchor: [0, -14]
+    iconUrl: bluePinSvg,
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -28],
+    shadowUrl: ''
   });
+
+
 
   const marker = L.marker([lat, lng], { title: title, icon: customIcon }).addTo(map);
 
@@ -399,3 +427,48 @@ function initDetailMap(lat, lng, companyName) {
 
   L.marker([lat, lng]).addTo(detailMap).bindPopup(`<b>${companyName}</b>`).openPopup();
 }
+
+/**
+ * Updates or creates the user's "Blue Dot" location marker and accuracy circle.
+ * High-accuracy real-time positioning.
+ */
+function updateUserLocation(lat, lng, accuracy) {
+  if (!map) return;
+
+  // Store for global access (e.g. search suggestions)
+  window.currentUserLat = lat;
+  window.currentUserLng = lng;
+
+  const userIcon = L.divIcon({
+    className: 'user-location-marker',
+    html: '<div class="user-location-pulse"></div><div class="user-location-dot"></div>',
+    iconSize: [30, 30],
+    iconAnchor: [15, 15]
+  });
+
+  if (userMarker) {
+    userMarker.setLatLng([lat, lng]);
+  } else {
+    userMarker = L.marker([lat, lng], {
+      icon: userIcon,
+      zIndexOffset: 1000, // Always on top
+      title: 'Your Location'
+    }).addTo(map).bindPopup('You are here');
+  }
+
+  // Update accuracy circle
+  if (userAccuracyCircle) {
+    userAccuracyCircle.setLatLng([lat, lng]);
+    userAccuracyCircle.setRadius(accuracy);
+  } else {
+    userAccuracyCircle = L.circle([lat, lng], {
+      radius: accuracy,
+      color: '#3b82f6',
+      fillColor: '#3b82f6',
+      fillOpacity: 0.1,
+      weight: 1,
+      interactive: false
+    }).addTo(map);
+  }
+}
+

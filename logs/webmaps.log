@@ -3189,3 +3189,280 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-04-29 14:52:58,386] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 304 0
 [2026-04-29 14:52:58,387] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
 [2026-04-29 14:52:58,388] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-04-29 14:53:52,623] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-29 14:55:12,024] INFO django.server "GET / HTTP/1.1" 200 15084
+[2026-04-29 14:55:18,326] INFO django.server "GET /api/maps/search/?q=Ward+10%2C+Bhubaneswar+Municipal+Corporation&category=All&rating=&distance=10&price=&lat=20.2987&lng=85.8571 HTTP/1.1" 200 138
+[2026-04-29 18:28:54,108] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-29 18:35:00,488] INFO django.server "GET / HTTP/1.1" 200 13565
+[2026-04-29 18:35:00,546] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-04-29 18:35:00,642] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 304 0
+[2026-04-29 18:35:00,647] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-04-29 18:35:07,514] INFO django.server "GET /api/maps/search/?q=NH59%2C++Hinjilicut&category=All&rating=&distance=10&price=&lat=19.471844&lng=84.745369 HTTP/1.1" 200 117
+[2026-04-29 18:36:12,203] ERROR webmaps Captured error: TemplateSyntaxError: Unclosed tag on line 5: 'block'. Looking for one of: endblock. @ /
+[2026-04-29 18:36:12,220] ERROR webmaps Unhandled exception at /: TemplateSyntaxError: Unclosed tag on line 5: 'block'. Looking for one of: endblock.
+[2026-04-29 18:36:12,323] ERROR django.request Internal Server Error: /
+[2026-04-29 18:36:12,325] ERROR django.server "GET / HTTP/1.1" 500 5837
+[2026-04-29 18:36:12,410] INFO django.server "GET /static/images/500_illustration.png HTTP/1.1" 304 0
+[2026-04-29 18:36:26,819] ERROR webmaps Captured error: TemplateSyntaxError: Unclosed tag on line 5: 'block'. Looking for one of: endblock. @ /
+[2026-04-29 18:36:26,821] ERROR webmaps Unhandled exception at /: TemplateSyntaxError: Unclosed tag on line 5: 'block'. Looking for one of: endblock.
+[2026-04-29 18:36:26,840] ERROR django.request Internal Server Error: /
+[2026-04-29 18:36:26,842] ERROR django.server "GET / HTTP/1.1" 500 5837
+[2026-04-29 18:36:33,423] ERROR webmaps Captured error: TemplateSyntaxError: Unclosed tag on line 5: 'block'. Looking for one of: endblock. @ /
+[2026-04-29 18:36:33,424] ERROR webmaps Unhandled exception at /: TemplateSyntaxError: Unclosed tag on line 5: 'block'. Looking for one of: endblock.
+[2026-04-29 18:36:33,435] ERROR django.request Internal Server Error: /
+[2026-04-29 18:36:33,438] ERROR django.server "GET / HTTP/1.1" 500 5837
+[2026-04-29 18:36:45,189] ERROR webmaps Captured error: TemplateSyntaxError: Unclosed tag on line 5: 'block'. Looking for one of: endblock. @ /
+[2026-04-29 18:36:45,190] ERROR webmaps Unhandled exception at /: TemplateSyntaxError: Unclosed tag on line 5: 'block'. Looking for one of: endblock.
+[2026-04-29 18:36:45,195] ERROR django.request Internal Server Error: /
+[2026-04-29 18:36:45,197] ERROR django.server "GET / HTTP/1.1" 500 5837
+[2026-04-29 18:36:46,529] ERROR webmaps Captured error: TemplateSyntaxError: Unclosed tag on line 5: 'block'. Looking for one of: endblock. @ /
+[2026-04-29 18:36:46,537] ERROR webmaps Unhandled exception at /: TemplateSyntaxError: Unclosed tag on line 5: 'block'. Looking for one of: endblock.
+[2026-04-29 18:36:46,544] ERROR django.request Internal Server Error: /
+[2026-04-29 18:36:46,560] ERROR django.server "GET / HTTP/1.1" 500 5837
+[2026-04-29 18:37:47,823] ERROR webmaps Captured error: TemplateSyntaxError: Unclosed tag on line 5: 'block'. Looking for one of: endblock. @ /
+[2026-04-29 18:37:47,856] ERROR webmaps Unhandled exception at /: TemplateSyntaxError: Unclosed tag on line 5: 'block'. Looking for one of: endblock.
+[2026-04-29 18:37:47,928] ERROR django.request Internal Server Error: /
+[2026-04-29 18:37:47,944] ERROR django.server "GET / HTTP/1.1" 500 5837
+[2026-04-29 18:37:49,613] ERROR webmaps Captured error: TemplateSyntaxError: Unclosed tag on line 5: 'block'. Looking for one of: endblock. @ /
+[2026-04-29 18:37:49,628] ERROR webmaps Unhandled exception at /: TemplateSyntaxError: Unclosed tag on line 5: 'block'. Looking for one of: endblock.
+[2026-04-29 18:37:49,672] ERROR django.request Internal Server Error: /
+[2026-04-29 18:37:49,679] ERROR django.server "GET / HTTP/1.1" 500 5837
+[2026-04-29 18:37:58,585] ERROR webmaps Captured error: TemplateSyntaxError: Unclosed tag on line 5: 'block'. Looking for one of: endblock. @ /
+[2026-04-29 18:37:58,594] ERROR webmaps Unhandled exception at /: TemplateSyntaxError: Unclosed tag on line 5: 'block'. Looking for one of: endblock.
+[2026-04-29 18:37:58,637] ERROR django.request Internal Server Error: /
+[2026-04-29 18:37:58,648] ERROR django.server "GET / HTTP/1.1" 500 5837
+[2026-04-29 18:38:05,210] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-04-29 18:38:05,240] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5894
+[2026-04-29 18:38:39,315] ERROR webmaps Captured error: TemplateSyntaxError: Unclosed tag on line 5: 'block'. Looking for one of: endblock. @ /
+[2026-04-29 18:38:39,338] ERROR webmaps Unhandled exception at /: TemplateSyntaxError: Unclosed tag on line 5: 'block'. Looking for one of: endblock.
+[2026-04-29 18:38:39,368] ERROR django.request Internal Server Error: /
+[2026-04-29 18:38:39,390] ERROR django.server "GET / HTTP/1.1" 500 5837
+[2026-04-29 18:38:39,640] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-04-29 18:38:39,695] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5894
+[2026-04-29 18:40:45,584] INFO django.server "GET / HTTP/1.1" 200 13821
+[2026-04-29 18:40:45,951] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-04-29 18:40:45,977] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5894
+[2026-04-29 18:40:53,238] INFO django.server "GET /api/maps/search/?q=Cuttack+Sadar%2C++Cuttack&category=All&rating=&distance=10&price=&lat=20.2784&lng=85.9357 HTTP/1.1" 200 119
+[2026-04-29 18:41:13,687] INFO django.server "GET / HTTP/1.1" 200 13826
+[2026-04-29 18:41:20,460] INFO django.server "GET /api/maps/search/?q=NH59%2C++Hinjilicut&category=All&rating=&distance=10&price=&lat=19.471844&lng=84.745369 HTTP/1.1" 200 117
+[2026-04-29 18:41:21,583] INFO django.server "GET / HTTP/1.1" 200 13826
+[2026-04-29 18:41:23,256] INFO django.server "GET / HTTP/1.1" 200 13826
+[2026-04-29 18:41:30,238] INFO django.server "GET /api/maps/search/?q=Cuttack+Sadar%2C++Cuttack&category=All&rating=&distance=10&price=&lat=20.2784&lng=85.9357 HTTP/1.1" 200 119
+[2026-04-29 18:41:40,548] INFO django.server "GET / HTTP/1.1" 200 13848
+[2026-04-29 18:41:46,779] INFO django.server "GET /api/maps/search/?q=Cuttack+Sadar%2C++Cuttack&category=All&rating=&distance=10&price=&lat=20.2784&lng=85.9357 HTTP/1.1" 200 119
+[2026-04-29 18:41:56,961] INFO django.server "GET / HTTP/1.1" 200 13866
+[2026-04-29 18:42:03,419] INFO django.server "GET /api/maps/search/?q=NH59%2C++Hinjilicut&category=All&rating=&distance=10&price=&lat=19.471844&lng=84.745369 HTTP/1.1" 200 117
+[2026-04-29 18:43:07,411] INFO django.server "GET / HTTP/1.1" 200 13910
+[2026-04-29 18:43:13,605] INFO django.server "GET /api/maps/search/?q=Cuttack+Sadar%2C++Cuttack&category=All&rating=&distance=10&price=&lat=20.2784&lng=85.9357 HTTP/1.1" 200 119
+[2026-04-29 18:50:47,476] INFO django.server "GET / HTTP/1.1" 200 13910
+[2026-04-29 18:50:57,241] INFO django.server "GET /api/maps/search/?q=NH59%2C++Hinjilicut&category=All&rating=&distance=10&price=&lat=19.471844&lng=84.745369 HTTP/1.1" 200 117
+[2026-04-29 18:51:20,767] INFO django.server "GET /api/maps/search/?q=NH59%2C++Hinjilicut&category=All&rating=&distance=10&price= HTTP/1.1" 200 158
+[2026-04-29 18:54:17,149] INFO django.server "GET / HTTP/1.1" 200 13910
+[2026-04-29 18:54:22,879] INFO django.server "GET /api/maps/search/?q=NH59%2C++Hinjilicut&category=All&rating=&distance=10&price=&lat=19.471844&lng=84.745369 HTTP/1.1" 200 117
+[2026-04-29 18:54:33,212] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-04-29 18:54:33,215] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5894
+[2026-04-29 18:55:29,315] INFO django.server "GET / HTTP/1.1" 200 13910
+[2026-04-29 18:55:29,690] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-04-29 18:55:29,700] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5894
+[2026-04-29 18:55:35,426] INFO django.server "GET /api/maps/search/?q=NH59%2C++Hinjilicut&category=All&rating=&distance=10&price=&lat=19.471844&lng=84.745369 HTTP/1.1" 200 117
+[2026-04-29 18:55:42,444] INFO django.server "GET / HTTP/1.1" 200 13910
+[2026-04-29 18:55:43,397] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 17679
+[2026-04-29 18:55:43,409] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17308
+[2026-04-29 18:55:43,427] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 8854
+[2026-04-29 18:55:43,457] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10822
+[2026-04-29 18:55:43,713] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-29 18:55:43,746] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-29 18:55:43,804] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-29 18:55:43,865] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-29 18:55:49,458] INFO django.server "GET /api/maps/search/?q=Cuttack+Sadar%2C++Cuttack&category=All&rating=&distance=10&price=&lat=20.2784&lng=85.9357 HTTP/1.1" 200 119
+[2026-04-29 18:55:58,570] INFO django.server "GET /api/maps/search/?q=NH59%2C++Hinjilicut&category=All&rating=&distance=10&price=&lat=19.471844&lng=84.745369 HTTP/1.1" 200 117
+[2026-04-29 18:56:26,290] INFO django.server "GET /api/maps/search/?q=Cuttack+Sadar%2C++Cuttack&category=All&rating=&distance=10&price=&lat=20.2784&lng=85.9357 HTTP/1.1" 200 119
+[2026-04-29 18:57:50,228] INFO django.server "GET /api/maps/search/?q=NH59%2C++Hinjilicut&category=All&rating=&distance=10&price=&lat=19.471844&lng=84.745369 HTTP/1.1" 200 117
+[2026-04-29 19:00:32,147] INFO django.server "GET / HTTP/1.1" 200 13910
+[2026-04-29 19:00:32,226] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10822
+[2026-04-29 19:00:32,307] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 17679
+[2026-04-29 19:00:32,315] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-29 19:00:32,332] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-29 19:00:32,346] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-29 19:00:32,356] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-29 19:00:32,365] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17308
+[2026-04-29 19:00:32,381] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 8522
+[2026-04-29 19:00:36,461] INFO django.server "GET /api/maps/search/?q=Cuttack+Sadar%2C++Cuttack&category=All&rating=&distance=10&price=&lat=20.2784&lng=85.9357 HTTP/1.1" 200 119
+[2026-04-29 19:05:10,130] INFO django.server "GET / HTTP/1.1" 200 13910
+[2026-04-29 19:05:10,198] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-04-29 19:05:10,210] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17421
+[2026-04-29 19:05:10,224] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 8590
+[2026-04-29 19:05:11,947] INFO django.server "GET / HTTP/1.1" 200 13910
+[2026-04-29 19:05:12,052] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10822
+[2026-04-29 19:05:12,053] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 17679
+[2026-04-29 19:05:12,059] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-29 19:05:12,063] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-29 19:05:12,068] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-29 19:05:12,074] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-29 19:05:12,076] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 8590
+[2026-04-29 19:05:12,077] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17421
+[2026-04-29 19:06:26,222] INFO django.server "GET / HTTP/1.1" 200 13910
+[2026-04-29 19:06:26,302] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 304 0
+[2026-04-29 19:06:26,312] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-04-29 19:06:39,705] INFO django.server "GET /api/maps/search/?q=hinjulitcut&category=All&rating=&distance=10&price= HTTP/1.1" 200 72
+[2026-04-29 19:10:03,838] INFO django.server "GET / HTTP/1.1" 200 13910
+[2026-04-29 19:10:03,929] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 17679
+[2026-04-29 19:10:03,930] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-29 19:10:03,932] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10822
+[2026-04-29 19:10:03,944] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-29 19:10:03,950] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-29 19:10:03,951] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-29 19:10:03,958] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 8440
+[2026-04-29 19:10:03,958] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17429
+[2026-04-29 19:13:24,544] INFO django.server "GET / HTTP/1.1" 200 13910
+[2026-04-29 19:13:24,656] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-29 19:13:24,661] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10822
+[2026-04-29 19:13:24,666] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 17679
+[2026-04-29 19:13:24,676] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-29 19:13:24,677] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-29 19:13:24,680] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-29 19:13:24,691] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 7999
+[2026-04-29 19:13:24,692] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17429
+[2026-04-29 19:13:59,531] INFO django.server "GET /api/maps/search/?q=NH59%2C++Hinjilicut&category=All&rating=&distance=10&price=&lat=19.471844&lng=84.745369 HTTP/1.1" 200 117
+[2026-04-29 19:16:27,713] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\maps\services.py changed, reloading.
+[2026-04-29 19:16:32,966] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-29 19:18:16,822] INFO django.server "GET / HTTP/1.1" 200 13910
+[2026-04-29 19:18:17,532] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-29 19:18:17,549] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17429
+[2026-04-29 19:18:17,569] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 8667
+[2026-04-29 19:18:17,806] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-29 19:18:18,396] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 17679
+[2026-04-29 19:18:18,516] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10822
+[2026-04-29 19:18:18,897] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-29 19:18:18,964] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-29 19:18:20,672] INFO django.server "GET /api/maps/search/?q=&category=All&rating=&distance=10&price=&lat=20.2784&lng=85.9357 HTTP/1.1" 200 96
+[2026-04-29 19:20:05,120] INFO django.server "GET / HTTP/1.1" 200 13910
+[2026-04-29 19:20:05,240] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-29 19:20:05,246] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-29 19:20:05,248] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-29 19:20:05,249] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 10822
+[2026-04-29 19:20:05,252] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-29 19:20:05,255] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 17679
+[2026-04-29 19:20:05,283] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17429
+[2026-04-29 19:20:05,289] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 8633
+[2026-04-29 19:20:56,104] INFO django.server "GET /api/maps/search/?q=hinjulicut&category=All&rating=&distance=10&price= HTTP/1.1" 200 72
+[2026-04-29 19:30:00,341] INFO django.server "GET / HTTP/1.1" 200 14040
+[2026-04-29 19:30:00,458] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 13321
+[2026-04-29 19:30:00,459] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 17679
+[2026-04-29 19:30:00,473] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-29 19:30:00,475] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-29 19:30:00,487] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-29 19:30:00,489] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-29 19:30:00,510] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 11783
+[2026-04-29 19:30:00,510] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17695
+[2026-04-29 19:30:33,743] INFO django.server "GET /api/maps/search/?q=hinjulicut&category=All&rating=&distance=10&price= HTTP/1.1" 200 72
+[2026-04-29 19:30:46,675] INFO django.server "GET /api/maps/search/?q=Mumbai%2C+Mumbai+Suburban+District%2C+Maharashtra%2C+400051%2C+India&category=All&rating=&distance=10&price=&lat=19.054999&lng=72.8692035 HTTP/1.1" 200 161
+[2026-04-29 19:30:47,876] INFO django.server "GET /api/maps/search/?q=Mumbai%2C+Mumbai+Suburban+District%2C+Maharashtra%2C+400051%2C+India&category=All&rating=&distance=10&price=&lat=19.054999&lng=72.8692035 HTTP/1.1" 200 161
+[2026-04-29 19:31:08,045] INFO django.server "GET /api/maps/search/?q=Odisha%2C+India&category=All&rating=&distance=10&price=&lat=20.5431241&lng=84.6897321 HTTP/1.1" 200 115
+[2026-04-29 19:31:09,299] INFO django.server "GET /api/maps/search/?q=Odisha%2C+India&category=All&rating=&distance=10&price=&lat=20.5431241&lng=84.6897321 HTTP/1.1" 200 115
+[2026-04-29 22:00:26,722] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-29 22:00:30,483] INFO django.server "GET / HTTP/1.1" 200 14040
+[2026-04-29 22:00:31,392] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 13321
+[2026-04-29 22:00:31,455] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 17679
+[2026-04-29 22:00:31,540] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-29 22:00:31,700] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 11710
+[2026-04-29 22:00:31,701] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17695
+[2026-04-29 22:00:31,967] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-29 22:00:31,973] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-29 22:00:31,989] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-29 22:05:43,192] INFO django.server "GET / HTTP/1.1" 200 14040
+[2026-04-29 22:05:43,279] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 13321
+[2026-04-29 22:05:43,280] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 17679
+[2026-04-29 22:05:43,286] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-29 22:05:43,286] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-29 22:05:43,294] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-29 22:05:43,294] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-29 22:05:43,303] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17695
+[2026-04-29 22:05:43,303] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 13048
+[2026-04-29 22:06:56,086] INFO django.server "GET / HTTP/1.1" 200 14040
+[2026-04-29 22:06:56,167] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 14157
+[2026-04-29 22:06:56,184] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 17679
+[2026-04-29 22:06:56,192] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-29 22:06:56,197] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-29 22:06:56,201] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-29 22:06:56,208] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-29 22:06:56,208] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17695
+[2026-04-29 22:06:56,218] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 13048
+[2026-04-30 07:34:14,255] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-30 07:34:34,975] INFO django.server "GET / HTTP/1.1" 200 14040
+[2026-04-30 07:34:35,068] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-04-30 07:34:35,868] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 14734
+[2026-04-30 07:34:35,885] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 13312
+[2026-04-30 07:34:35,960] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17813
+[2026-04-30 07:39:45,149] INFO django.server "GET /api/maps/search/?q=hinj&category=All&rating=&distance=10&price= HTTP/1.1" 200 72
+[2026-04-30 07:42:57,692] INFO django.server "GET / HTTP/1.1" 200 14040
+[2026-04-30 07:42:57,801] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 14734
+[2026-04-30 07:42:57,810] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 18015
+[2026-04-30 07:42:57,823] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-30 07:42:57,924] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-30 07:42:57,935] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-30 07:42:57,945] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-30 07:42:57,957] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17813
+[2026-04-30 07:42:57,971] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 14741
+[2026-04-30 07:43:24,054] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-30 07:43:27,159] INFO django.server "GET / HTTP/1.1" 200 14040
+[2026-04-30 07:43:27,770] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 14734
+[2026-04-30 07:43:27,778] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 18015
+[2026-04-30 07:43:27,793] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 14741
+[2026-04-30 07:43:27,795] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17813
+[2026-04-30 07:43:27,869] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-30 07:43:28,258] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-30 07:43:28,266] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-30 07:43:28,291] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-30 07:54:36,507] INFO django.server "GET / HTTP/1.1" 200 15575
+[2026-04-30 07:54:36,621] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 15273
+[2026-04-30 07:54:36,628] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 18485
+[2026-04-30 07:54:36,689] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-30 07:54:36,730] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-30 07:54:36,801] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-30 07:54:36,837] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 14929
+[2026-04-30 07:54:36,837] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-30 07:54:36,907] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17813
+[2026-04-30 07:56:54,404] INFO django.server "GET / HTTP/1.1" 200 15575
+[2026-04-30 07:56:54,481] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-30 07:56:54,489] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-04-30 07:56:54,491] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 304 0
+[2026-04-30 07:56:54,499] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-04-30 08:00:16,110] INFO django.server "GET / HTTP/1.1" 200 15673
+[2026-04-30 08:00:16,267] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 15273
+[2026-04-30 08:00:16,268] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 18738
+[2026-04-30 08:00:16,270] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-30 08:00:16,319] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-30 08:00:16,328] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-30 08:00:16,344] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-30 08:00:16,360] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17813
+[2026-04-30 08:00:16,387] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 9730
+[2026-04-30 08:04:36,632] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-30 08:04:47,301] INFO django.server "GET / HTTP/1.1" 200 15673
+[2026-04-30 08:04:51,079] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 15229
+[2026-04-30 08:04:51,192] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 18738
+[2026-04-30 08:04:51,264] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17813
+[2026-04-30 08:04:51,295] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-30 08:04:51,314] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 9745
+[2026-04-30 08:04:51,578] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-30 08:04:51,814] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-30 08:04:52,427] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-30 08:55:35,486] INFO django.server "GET / HTTP/1.1" 200 15673
+[2026-04-30 08:55:35,728] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 18738
+[2026-04-30 08:55:35,729] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-30 08:55:35,845] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-30 08:55:35,869] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 15229
+[2026-04-30 08:55:35,875] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-30 08:55:35,883] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17813
+[2026-04-30 08:55:35,937] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-30 08:55:35,986] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 9745
+[2026-04-30 09:01:25,661] INFO django.server "GET / HTTP/1.1" 200 15673
+[2026-04-30 09:01:25,868] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 18738
+[2026-04-30 09:01:25,870] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 15229
+[2026-04-30 09:01:25,907] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-30 09:01:25,908] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-30 09:01:25,922] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-30 09:01:25,926] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-30 09:01:25,927] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17813
+[2026-04-30 09:01:25,946] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 10349
+[2026-04-30 09:01:57,487] INFO django.server "GET /api/maps/search/?q=NH59%2C+Hinjilicut&category=All&rating=&distance=10&price=&lat=19.471844&lng=84.745369 HTTP/1.1" 200 116

@@ -126,6 +126,11 @@
   transition: var(--transition);
   background: linear-gradient(135deg, var(--bg-color), #0f1117);
 }
+.search-flex-container {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
 .search-box-unified:focus-within {
   border-color: var(--primary);
   box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
@@ -150,7 +155,24 @@
   font-weight: 500;
   outline: none;
 }
-.search-input-premium::placeholder { color: var(--text-muted); opacity: 0.5; }
+.search-input-premium::placeholder { color: var(--text-muted); opacity: 0.5; transition: opacity 0.3s ease; }
+
+.search-input-premium.loading-state {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.search-input-premium.loading-state::placeholder {
+  color: var(--primary);
+  opacity: 0.8;
+  font-weight: 700;
+  animation: textPulse 1.5s infinite;
+}
+
+@keyframes textPulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.4; }
+}
 
 .search-action-btn {
   background: var(--primary);
@@ -164,10 +186,35 @@
   cursor: pointer;
   transition: var(--transition);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
 }
 .search-action-btn:hover {
   background: var(--primary-hover);
   transform: scale(1.02);
+}
+
+.btn-get-location {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(99, 102, 241, 0.05));
+  border: 1px solid var(--border);
+  color: var(--primary);
+  border-radius: var(--radius-lg);
+  width: 54px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: var(--transition);
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.btn-get-location:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+}
+.btn-get-location:active {
+  transform: translateY(1px);
 }
 
 /* Filter Section */
@@ -769,7 +816,36 @@
   filter: drop-shadow(0 0 5px rgba(0, 212, 255, 0.5));
   transition: transform 0.2s;
 }
-.leaflet-marker-icon[src*="svg"]:hover {
-  transform: scale(1.2) !important;
-  z-index: 1000 !important;
+
+/* ─── USER LOCATION PULSE MARKER ─── */
+.user-location-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.user-location-dot {
+  width: 14px;
+  height: 14px;
+  background: #3b82f6;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
+  z-index: 2;
+}
+
+.user-location-pulse {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: rgba(59, 130, 246, 0.4);
+  border-radius: 50%;
+  animation: user-pulse 2s infinite;
+  z-index: 1;
+}
+
+@keyframes user-pulse {
+  0% { transform: scale(0.5); opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+

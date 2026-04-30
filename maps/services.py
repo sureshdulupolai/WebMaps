@@ -121,14 +121,25 @@ def get_listings_along_route(start_coords: dict, end_coords: dict, radius_km: fl
 # ─────────────────────────────────────────────
 def get_listings_near_location(lat: float, lng: float, radius_km: float = 10, category: str = None) -> list:
     """Return approved listings within radius_km of a single point."""
+    
+    # 1. OPTIMIZATION: Bounding Box Filter (Fast indexed query)
+    # 1 degree lat ~ 111km. 1 degree lng ~ 111 * cos(lat).
+    lat_delta = radius_km / 111.0
+    lng_delta = radius_km / (111.0 * math.cos(math.radians(lat)))
+    
     listings = Listing.objects.filter(
         status='approved',
         deleted_at__isnull=True,
+        latitude__gte=lat - lat_delta,
+        latitude__lte=lat + lat_delta,
+        longitude__gte=lng - lng_delta,
+        longitude__lte=lng + lng_delta
     ).prefetch_related('services')
 
     if category:
         listings = listings.filter(category__iexact=category)
 
+    # 2. Precise Haversine calculation on the reduced set
     results = []
     for listing in listings:
         d = haversine_distance(lat, lng, float(listing.latitude), float(listing.longitude))
@@ -137,3 +148,4 @@ def get_listings_near_location(lat: float, lng: float, radius_km: float = 10, ca
 
     results.sort(key=lambda x: x['distance_km'])
     return results
+
