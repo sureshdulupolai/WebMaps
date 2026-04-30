@@ -188,8 +188,21 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!data) return;
 
         Object.keys(data).forEach(key => {
-            const input = form.querySelector(`[name="${key}"]`);
-            if (input) input.value = data[key];
+            if (key === 'plan_id') {
+                const radio = form.querySelector(`input[name="plan_id"][value="${data[key]}"]`);
+                if (radio) {
+                    radio.checked = true;
+                    // Highlight the card
+                    const card = radio.closest('.plan-card');
+                    if (card) {
+                        document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('active'));
+                        card.classList.add('active');
+                    }
+                }
+            } else {
+                const input = form.querySelector(`[name="${key}"]`);
+                if (input) input.value = data[key];
+            }
         });
 
         if (data.parsedServices) {
@@ -210,6 +223,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         currentStep = data.currentStep || 1;
         updateWizard();
+        renderSummary();
     }
 
     // 05. MAP LOGIC (Step 1)
@@ -501,11 +515,11 @@ document.addEventListener('DOMContentLoaded', function () {
             const platformFee = 2; 
             
             let updateFee = 0;
-            const isEdit = initialData && initialData.slug;
+            const isEdit = initialData && initialData.slug && initialData.slug.length > 0;
             const updateCountInput = document.getElementById('id_update_count');
             const currentUpdateCount = updateCountInput ? parseInt(updateCountInput.value) : 0;
             
-            // Surcharge only if not a draft and limit reached
+            // Surcharge only if editing an existing listing and limit reached
             if (isEdit && currentUpdateCount >= 2 && !isDraft) {
                 updateFee = 20;
             }
@@ -639,7 +653,8 @@ document.addEventListener('DOMContentLoaded', function () {
         card.addEventListener('click', () => {
             planCards.forEach(c => c.classList.remove('active'));
             card.classList.add('active');
-            card.querySelector('input').checked = true;
+            const radio = card.querySelector('input');
+            if (radio) radio.checked = true;
             saveToLocal();
             renderSummary(); // Re-calculate pricing
         });
@@ -664,6 +679,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     return;
                 }
                 const planId = selectedPlan.value;
+                console.log("Selected Plan ID:", planId);
 
                 // 2. Save listing via AJAX
                 const formData = new FormData(form);

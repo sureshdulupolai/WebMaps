@@ -3522,3 +3522,250 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-04-30 15:05:06,849] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17813
 [2026-04-30 15:05:53,720] WARNING django.security.SuspiciousSession Session data corrupted
 [2026-04-30 15:05:53,738] INFO django.server "GET /api/maps/search/?q=NH59%2C+Hinjilicut&category=All&rating=&distance=10&price=&lat=19.471844&lng=84.745369 HTTP/1.1" 200 116
+[2026-04-30 15:07:18,266] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-30 15:12:00,214] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:12:00,353] INFO django.server "GET / HTTP/1.1" 200 16217
+[2026-04-30 15:12:00,416] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 304 0
+[2026-04-30 15:12:00,443] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-04-30 15:12:00,982] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 12462
+[2026-04-30 15:12:04,128] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:12:04,135] INFO django.server "GET / HTTP/1.1" 200 16217
+[2026-04-30 15:13:27,705] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:13:27,715] INFO django.server "GET / HTTP/1.1" 200 16217
+[2026-04-30 15:13:27,750] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-04-30 15:13:29,168] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:13:29,175] INFO django.server "GET / HTTP/1.1" 200 16217
+[2026-04-30 15:13:29,223] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16097
+[2026-04-30 15:13:29,245] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 18738
+[2026-04-30 15:13:29,246] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-30 15:13:29,259] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-30 15:13:29,268] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-30 15:13:29,270] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17813
+[2026-04-30 15:13:29,277] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-30 15:13:29,284] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 12462
+[2026-04-30 15:13:36,584] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:13:36,599] INFO django.server "GET / HTTP/1.1" 200 16217
+[2026-04-30 15:13:51,940] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:13:51,962] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-30 15:13:54,042] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:13:54,100] INFO webmaps Login attempt: User found for sureshone@gmail.com
+[2026-04-30 15:13:56,293] INFO webmaps User logged in: sureshone@gmail.com
+[2026-04-30 15:13:56,296] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-30 15:13:56,323] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:13:56,410] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-30 15:13:57,969] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:13:58,074] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 23330
+[2026-04-30 15:13:58,107] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 304 0
+[2026-04-30 15:13:58,110] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 304 0
+[2026-04-30 15:14:00,549] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:14:00,701] INFO webmaps Saved 35 service items for webmaps-durga-mata-mandir-90ft-raod-saki-11393
+[2026-04-30 15:14:00,701] INFO webmaps Listing updated: webmaps-durga-mata-mandir-90ft-raod-saki-11393 (update #8)
+[2026-04-30 15:14:00,704] INFO django.server "POST /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 79
+[2026-04-30 15:14:00,716] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:14:02,905] INFO webmaps Razorpay order created: order_SjevGbYzXw4D4g for listing 559431e9-c62e-499a-b03a-f4a5336888a7
+[2026-04-30 15:14:02,907] INFO django.server "POST /payments/initiate/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 124
+[2026-04-30 15:17:01,266] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:17:01,285] INFO django.server "GET / HTTP/1.1" 200 17736
+[2026-04-30 15:17:01,330] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-30 15:17:01,374] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-04-30 15:17:03,971] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:17:04,050] INFO django.server "GET /users/profile/ HTTP/1.1" 200 11746
+[2026-04-30 15:17:10,270] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:17:10,299] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-30 15:17:11,680] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:17:11,708] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 23330
+[2026-04-30 15:17:13,343] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:17:13,526] INFO webmaps Saved 35 service items for webmaps-durga-mata-mandir-90ft-raod-saki-11393
+[2026-04-30 15:17:13,527] INFO webmaps Listing updated: webmaps-durga-mata-mandir-90ft-raod-saki-11393 (update #9)
+[2026-04-30 15:17:13,529] INFO django.server "POST /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 79
+[2026-04-30 15:17:13,544] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:17:15,533] INFO webmaps Razorpay order created: order_SjeyeqKV0yJSKe for listing 559431e9-c62e-499a-b03a-f4a5336888a7
+[2026-04-30 15:17:15,535] INFO django.server "POST /payments/initiate/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 124
+[2026-04-30 15:17:26,705] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:17:26,762] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 23330
+[2026-04-30 15:17:26,806] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-30 15:17:26,807] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 200 13116
+[2026-04-30 15:17:26,810] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16097
+[2026-04-30 15:17:26,867] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-30 15:17:26,868] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-30 15:17:26,870] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-30 15:17:26,878] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 200 32829
+[2026-04-30 15:17:28,943] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:17:29,039] INFO webmaps Saved 35 service items for webmaps-durga-mata-mandir-90ft-raod-saki-11393
+[2026-04-30 15:17:29,040] INFO webmaps Listing updated: webmaps-durga-mata-mandir-90ft-raod-saki-11393 (update #10)
+[2026-04-30 15:17:29,042] INFO django.server "POST /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 79
+[2026-04-30 15:17:29,057] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:17:30,843] INFO webmaps Razorpay order created: order_SjeyvZqpkWZpM5 for listing 559431e9-c62e-499a-b03a-f4a5336888a7
+[2026-04-30 15:17:30,845] INFO django.server "POST /payments/initiate/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 124
+[2026-04-30 15:17:50,103] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:17:50,231] INFO webmaps Saved 35 service items for webmaps-durga-mata-mandir-90ft-raod-saki-11393
+[2026-04-30 15:17:50,231] INFO webmaps Listing updated: webmaps-durga-mata-mandir-90ft-raod-saki-11393 (update #11)
+[2026-04-30 15:17:50,233] INFO django.server "POST /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 79
+[2026-04-30 15:17:50,245] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:17:51,825] INFO webmaps Razorpay order created: order_SjezIQaZ0PGeGp for listing 559431e9-c62e-499a-b03a-f4a5336888a7
+[2026-04-30 15:17:51,826] INFO django.server "POST /payments/initiate/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 124
+[2026-04-30 15:24:02,401] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\payments\views.py changed, reloading.
+[2026-04-30 15:24:05,149] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-30 15:24:41,032] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\payments\views.py changed, reloading.
+[2026-04-30 15:24:43,861] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-30 15:25:06,931] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:25:07,284] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 23331
+[2026-04-30 15:25:08,040] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 200 13116
+[2026-04-30 15:25:08,051] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16131
+[2026-04-30 15:25:08,060] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 200 32876
+[2026-04-30 15:25:08,120] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-30 15:25:08,508] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-30 15:25:08,608] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-30 15:25:08,609] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-30 15:25:29,161] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:25:29,439] INFO webmaps Saved 35 service items for webmaps-durga-mata-mandir-90ft-raod-saki-11393
+[2026-04-30 15:25:29,440] INFO webmaps Listing updated: webmaps-durga-mata-mandir-90ft-raod-saki-11393 (update #12)
+[2026-04-30 15:25:29,443] INFO django.server "POST /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 79
+[2026-04-30 15:25:29,462] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:25:31,660] INFO webmaps Razorpay order created: order_Sjf7OKQONLsAMu for listing 559431e9-c62e-499a-b03a-f4a5336888a7
+[2026-04-30 15:25:31,663] INFO django.server "POST /payments/initiate/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 124
+[2026-04-30 15:26:07,422] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:26:07,534] INFO webmaps Saved 35 service items for webmaps-durga-mata-mandir-90ft-raod-saki-11393
+[2026-04-30 15:26:07,534] INFO webmaps Listing updated: webmaps-durga-mata-mandir-90ft-raod-saki-11393 (update #13)
+[2026-04-30 15:26:07,537] INFO django.server "POST /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 79
+[2026-04-30 15:26:07,557] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:26:09,549] INFO webmaps Razorpay order created: order_Sjf83iPYr4cH4u for listing 559431e9-c62e-499a-b03a-f4a5336888a7
+[2026-04-30 15:26:09,552] INFO django.server "POST /payments/initiate/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 124
+[2026-04-30 15:28:26,706] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\payments\views.py changed, reloading.
+[2026-04-30 15:28:30,247] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-30 15:29:06,106] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\payments\views.py changed, reloading.
+[2026-04-30 15:29:09,100] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-30 15:52:09,752] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:52:09,803] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 302 0
+[2026-04-30 15:52:09,821] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:52:09,857] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-30 15:52:10,690] INFO django.server "GET /static/css/auth.css HTTP/1.1" 200 7053
+[2026-04-30 15:52:10,704] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16131
+[2026-04-30 15:52:10,733] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-30 15:52:10,964] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-30 15:52:10,973] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-30 15:52:10,998] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 6775
+[2026-04-30 15:52:11,022] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-30 15:52:11,075] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-30 15:52:12,307] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:52:12,316] INFO webmaps Login attempt: User found for sureshone@gmail.com
+[2026-04-30 15:52:14,599] INFO webmaps User logged in: sureshone@gmail.com
+[2026-04-30 15:52:14,602] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-30 15:52:14,625] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:52:14,702] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-30 15:52:17,727] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:52:17,777] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 23331
+[2026-04-30 15:52:17,810] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 200 32920
+[2026-04-30 15:52:21,090] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:52:21,291] INFO webmaps Saved 35 service items for webmaps-durga-mata-mandir-90ft-raod-saki-11393
+[2026-04-30 15:52:21,292] INFO webmaps Listing updated: webmaps-durga-mata-mandir-90ft-raod-saki-11393 (update #14)
+[2026-04-30 15:52:21,294] INFO django.server "POST /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 79
+[2026-04-30 15:52:21,310] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:52:21,324] INFO webmaps Payment Initiation: Listing=webmaps-durga-mata-mandir-90ft-raod-saki-11393, Plan=3 Months, Total=502.32
+[2026-04-30 15:52:23,766] INFO webmaps Razorpay order created: order_SjfZm653tdyW0G for listing 559431e9-c62e-499a-b03a-f4a5336888a7
+[2026-04-30 15:52:23,769] INFO django.server "POST /payments/initiate/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 124
+[2026-04-30 15:56:21,195] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-30 15:56:21,257] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:56:21,482] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-04-30 15:56:21,485] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7413
+[2026-04-30 15:56:31,907] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:56:31,984] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 23331
+[2026-04-30 15:56:32,053] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16131
+[2026-04-30 15:56:32,055] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-30 15:56:32,056] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-30 15:56:32,059] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 200 13116
+[2026-04-30 15:56:32,059] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-30 15:56:32,069] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-30 15:56:32,095] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:56:32,110] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 200 32920
+[2026-04-30 15:56:32,169] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-04-30 15:56:32,171] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7413
+[2026-04-30 15:56:40,977] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:56:41,161] INFO webmaps Saved 35 service items for webmaps-durga-mata-mandir-90ft-raod-saki-11393
+[2026-04-30 15:56:41,163] INFO webmaps Listing updated: webmaps-durga-mata-mandir-90ft-raod-saki-11393 (update #15)
+[2026-04-30 15:56:41,168] INFO django.server "POST /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 79
+[2026-04-30 15:56:41,192] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:56:41,209] INFO webmaps Payment Initiation: Listing=webmaps-durga-mata-mandir-90ft-raod-saki-11393, Plan=3 Months, Total=502.32
+[2026-04-30 15:56:43,150] INFO webmaps Razorpay order created: order_SjfeL8SYO2AmIQ for listing 559431e9-c62e-499a-b03a-f4a5336888a7
+[2026-04-30 15:56:43,153] INFO django.server "POST /payments/initiate/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 124
+[2026-04-30 15:58:02,070] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\payments\services.py changed, reloading.
+[2026-04-30 15:58:04,963] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-30 15:58:33,377] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:58:33,710] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 23331
+[2026-04-30 15:58:34,473] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16131
+[2026-04-30 15:58:34,490] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 200 32920
+[2026-04-30 15:58:34,499] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 200 13116
+[2026-04-30 15:58:34,511] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:58:34,586] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-04-30 15:58:34,589] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-30 15:58:34,590] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7413
+[2026-04-30 15:58:34,885] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-30 15:58:34,901] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-30 15:58:34,950] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-30 15:58:42,150] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:58:42,299] INFO webmaps Saved 35 service items for webmaps-durga-mata-mandir-90ft-raod-saki-11393
+[2026-04-30 15:58:42,299] INFO webmaps Listing updated: webmaps-durga-mata-mandir-90ft-raod-saki-11393 (update #16)
+[2026-04-30 15:58:42,302] INFO django.server "POST /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 79
+[2026-04-30 15:58:42,319] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:58:42,331] INFO webmaps Payment Initiation: Listing=webmaps-durga-mata-mandir-90ft-raod-saki-11393, Plan=3 Months, Total=502.32
+[2026-04-30 15:58:44,835] INFO webmaps Razorpay order created: order_SjfgTyEAnu4um7 for listing 559431e9-c62e-499a-b03a-f4a5336888a7
+[2026-04-30 15:58:44,839] INFO django.server "POST /payments/initiate/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 124
+[2026-04-30 16:12:57,182] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-04-30 16:12:57,268] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 16:12:57,368] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-04-30 16:12:57,395] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5894
+[2026-04-30 16:15:58,235] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 16:15:58,239] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 302 0
+[2026-04-30 16:15:58,270] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 16:15:58,288] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-04-30 16:15:58,345] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16131
+[2026-04-30 16:15:58,367] INFO django.server "GET /static/css/auth.css HTTP/1.1" 200 7053
+[2026-04-30 16:15:58,386] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-30 16:15:58,470] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-04-30 16:15:58,485] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-30 16:15:58,501] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-30 16:15:58,513] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-30 16:15:58,531] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 6775
+[2026-04-30 16:15:58,554] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 16:15:58,635] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-04-30 16:15:58,644] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 5894
+[2026-04-30 16:16:02,079] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 16:16:02,085] INFO webmaps Login attempt: User found for sureshone@gmail.com
+[2026-04-30 16:16:03,805] INFO webmaps User logged in: sureshone@gmail.com
+[2026-04-30 16:16:03,811] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-04-30 16:16:03,832] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 16:16:03,881] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12675
+[2026-04-30 16:16:03,988] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 16:16:04,051] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-04-30 16:16:04,061] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7413
+[2026-04-30 16:16:06,679] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 16:16:06,719] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 23331
+[2026-04-30 16:16:06,799] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 304 0
+[2026-04-30 16:16:06,831] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 16:16:06,892] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-04-30 16:16:06,898] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7413
+[2026-04-30 16:16:09,102] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 16:16:09,323] INFO webmaps Saved 35 service items for webmaps-durga-mata-mandir-90ft-raod-saki-11393
+[2026-04-30 16:16:09,331] INFO webmaps Listing updated: webmaps-durga-mata-mandir-90ft-raod-saki-11393 (update #17)
+[2026-04-30 16:16:09,345] INFO django.server "POST /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 79
+[2026-04-30 16:16:09,368] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 16:16:09,385] INFO webmaps Payment Initiation: Listing=webmaps-durga-mata-mandir-90ft-raod-saki-11393, Plan=3 Months, Total=502.32
+[2026-04-30 16:16:11,729] INFO webmaps Razorpay order created: order_Sjfyuk7HaRf5nt for listing 559431e9-c62e-499a-b03a-f4a5336888a7
+[2026-04-30 16:16:11,731] INFO django.server "POST /payments/initiate/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 124
+[2026-04-30 16:19:02,585] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 16:19:02,632] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 23331
+[2026-04-30 16:19:02,675] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16131
+[2026-04-30 16:19:02,676] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 200 13116
+[2026-04-30 16:19:02,764] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-30 16:19:02,764] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-30 16:19:02,779] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-30 16:19:02,779] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-30 16:19:02,791] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 200 33589
+[2026-04-30 16:19:09,688] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 16:19:09,873] INFO webmaps Saved 35 service items for webmaps-durga-mata-mandir-90ft-raod-saki-11393
+[2026-04-30 16:19:09,874] INFO webmaps Listing updated: webmaps-durga-mata-mandir-90ft-raod-saki-11393 (update #18)
+[2026-04-30 16:19:09,877] INFO django.server "POST /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 79
+[2026-04-30 16:19:09,896] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 16:19:09,911] INFO webmaps Payment Initiation: Listing=webmaps-durga-mata-mandir-90ft-raod-saki-11393, Plan=1 Month, Total=241.54
+[2026-04-30 16:19:11,978] INFO webmaps Razorpay order created: order_Sjg25RhR9KinDZ for listing 559431e9-c62e-499a-b03a-f4a5336888a7
+[2026-04-30 16:19:11,980] INFO django.server "POST /payments/initiate/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 123

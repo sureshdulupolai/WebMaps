@@ -572,10 +572,13 @@ input:-webkit-autofill:active {
 /* ─── FETCHING OVERLAY ─── */
 .fetching-overlay {
   position: fixed;
-  inset: 0;
-  background: rgba(8, 9, 13, 0.7);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(8, 9, 13, 0.9);
   backdrop-filter: blur(20px);
-  z-index: 20000;
+  z-index: 99999;
   display: flex;
   align-items: center;
   justify-content: center;

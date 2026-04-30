@@ -18,14 +18,17 @@ def get_razorpay_client():
     return razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
 
 
-def create_razorpay_order(amount_inr: int, listing_id: str) -> dict:
+def create_razorpay_order(amount_inr, listing_id: str) -> dict:
     """
     Create a Razorpay order for the given amount.
     Returns order dict with id, amount, etc.
     """
     client = get_razorpay_client()
+    # Ensure amount is an integer in paise
+    amount_paise = int(round(float(amount_inr) * 100))
+    
     order = client.order.create({
-        'amount': amount_inr * 100,  # paise
+        'amount': amount_paise,
         'currency': 'INR',
         'receipt': f'receipt_{str(listing_id)[:20]}',
         'notes': {'listing_id': str(listing_id)},

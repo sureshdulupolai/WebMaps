@@ -2,6 +2,7 @@
 payments/views.py — Payment flow: plan selection, Razorpay checkout, verification.
 """
 import logging
+from decimal import Decimal
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from django.conf import settings
@@ -46,10 +47,31 @@ def initiate_payment_view(request, slug):
         return JsonResponse({'error': 'Invalid plan.'}, status=400)
 
     try:
-        order = create_razorpay_order(plan.total_cost, listing.id)
+        # 1. Base amount from plan (Model's total_cost already includes its own platform_fee)
+        base_amount = Decimal(str(plan.total_cost))
+        
+        # 2. Check for update surcharge (matching listing_form.js logic)
+        update_surcharge = Decimal('0')
+        if listing.slug and listing.update_count >= 2:
+            update_surcharge = Decimal('20')
+        
+        # 3. Calculate Taxes (18% total GST)
+        taxable_amount = base_amount + update_surcharge
+        gst_amount = taxable_amount * Decimal('0.18')
+        
+        # 4. Platform Fee (Matching frontend's extra +2)
+        platform_fee_extra = Decimal('2')
+        
+        # 5. Final Total in INR (rounded to 2 decimal places for consistency)
+        final_total_inr = (taxable_amount + gst_amount + platform_fee_extra).quantize(Decimal('0.01'))
+        final_amount_paise = int(final_total_inr * 100)
+
+        logger.info(f"Payment Initiation: Listing={listing.slug}, Plan={plan.name}, Total={final_total_inr}")
+
+        order = create_razorpay_order(float(final_total_inr), listing.id)
         return JsonResponse({
             'order_id': order['id'],
-            'amount': plan.total_cost_paise,
+            'amount': final_amount_paise,
             'currency': 'INR',
             'plan_name': plan.name,
             'listing_name': listing.company_name,
