@@ -69,15 +69,33 @@ function setInputLoading(loading) {
   }
 }
 
+function clearActiveGeolocation() {
+  if (window.activeWatcher) navigator.geolocation.clearWatch(window.activeWatcher);
+  if (window.activeLockTimeout) clearTimeout(window.activeLockTimeout);
+  window.activeWatcher = null;
+  window.activeLockTimeout = null;
+}
+
 async function handleLocationEnable() {
   if (!navigator.geolocation) {
     alert("Geolocation is not supported by your browser.");
     return;
   }
 
-  // Show fetching overlay
+  // Clear any existing attempts
+  clearActiveGeolocation();
+
+  // Reset UI
   const overlay = document.getElementById('fetching-overlay');
   if (overlay) overlay.classList.remove('hidden');
+  
+  const accVal = document.getElementById('accuracy-value');
+  const accProgress = document.getElementById('accuracy-progress-bar');
+  const useBtn = document.getElementById('use-current-btn');
+  
+  if (accVal) accVal.textContent = "Requesting Access...";
+  if (accProgress) accProgress.style.width = "5%";
+  if (useBtn) useBtn.classList.add('hidden');
 
   setInputLoading(true);
 
@@ -85,26 +103,34 @@ async function handleLocationEnable() {
   let bestCoords = null;
 
   // Function to finalize and clean up
-  async function complete(lat, lng) {
+  window.completeLocationFetch = async function(lat, lng) {
     if (detected) return;
     detected = true;
 
-    // Stop all watchers/timeouts
-    if (window.activeWatcher) navigator.geolocation.clearWatch(window.activeWatcher);
-    if (window.activeLockTimeout) clearTimeout(window.activeLockTimeout);
-    
+    // 1. IMMEDIATE UI DISMISSAL
+    clearActiveGeolocation();
     hideFetchingOverlay();
 
     if (!lat || !lng) {
-       setInputLoading(false);
-       return;
+      setInputLoading(false);
+      return;
     }
 
     const input = document.getElementById('loc-search-input');
     const sBtn = document.getElementById('loc-search-btn');
 
+    // 2. OPTIMISTIC UPDATE
+    if (input) {
+      input.value = "Current Location";
+      input.setAttribute('data-lat', lat);
+      input.setAttribute('data-lng', lng);
+    }
+    if (sBtn) {
+      sBtn.style.display = 'flex';
+    }
+
+    // 3. BACKGROUND RESOLUTION
     try {
-      // Resolve address
       const response = await fetch(NOMINATIM_URL.replace('{lat}', lat).replace('{lon}', lng));
       const data = await response.json();
       if (data && data.address) {
@@ -116,68 +142,102 @@ async function handleLocationEnable() {
         if (input) {
           input.value = displayAddress;
           input.setAttribute('data-auto-filled', 'true');
-          input.setAttribute('data-lat', lat);
-          input.setAttribute('data-lng', lng);
-        }
-        if (sBtn) {
-          sBtn.style.display = 'flex';
-          sBtn.style.animation = 'fadeIn 0.3s ease-out';
         }
         localStorage.setItem(LOCATION_OVERLAY_KEY, 'true');
       }
     } catch (err) {
-      console.error("Address resolution failed:", err);
+      console.warn("Address resolution failed (background):", err);
     } finally {
       setInputLoading(false);
     }
+  };
+
+  // UI Update Helper
+  function updateAccuracyUI(accuracy) {
+    if (accVal) accVal.textContent = `${Math.round(accuracy)} meters`;
+    
+    // Progress calculation (1000m -> 0%, 50m -> 100%)
+    if (accProgress) {
+      const p = Math.max(5, Math.min(100, ((1000 - accuracy) / 950) * 100));
+      accProgress.style.width = `${p}%`;
+    }
+
+    // Show "Use Current" button after 3 seconds if we have a coordinate but accuracy is still high
+    if (accuracy > 50 && !window.bypassTimerSet) {
+      window.bypassTimerSet = true;
+      setTimeout(() => {
+        if (useBtn && !detected) useBtn.classList.remove('hidden');
+      }, 3000);
+    }
   }
 
-  // 1. FAST ATTEMPT: Get current position immediately
+  window.bypassTimerSet = false;
+
+  // 1. FAST ATTEMPT
   navigator.geolocation.getCurrentPosition(
     (pos) => {
       const { latitude, longitude, accuracy } = pos.coords;
-      bestCoords = { latitude, longitude, accuracy };
-      // If accuracy is good enough, complete immediately
-      if (accuracy < 150) complete(latitude, longitude);
-    },
-    (err) => console.warn("Initial getCurrentPosition failed", err),
-    { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
-  );
-
-  // 2. REFINEMENT ATTEMPT: Watch for better accuracy
-  window.activeWatcher = navigator.geolocation.watchPosition(
-    (pos) => {
-      const { latitude, longitude, accuracy } = pos.coords;
+      window.bestCoords = { latitude, longitude, accuracy };
+      updateAccuracyUI(accuracy);
       if (typeof updateUserLocation === 'function') {
         updateUserLocation(latitude, longitude, accuracy);
       }
-      if (!bestCoords || accuracy < bestCoords.accuracy) {
-        bestCoords = { latitude, longitude, accuracy };
-      }
-      if (accuracy < 80) complete(latitude, longitude); // Perfect lock
+      // If accuracy is already very good, complete immediately
+      if (accuracy < 60) window.completeLocationFetch(latitude, longitude);
     },
-    (err) => {
-       console.error("WatchPosition error:", err);
-       // Only fail if we don't have ANY bestCoords yet
-       if (!bestCoords) {
-         complete(null, null);
-         const locOverlay = document.getElementById('location-overlay');
-         if (locOverlay) locOverlay.classList.remove('hidden');
-       }
-    },
-    { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+    (err) => console.warn("Initial getCurrentPosition failed", err),
+    { enableHighAccuracy: true, timeout: 6000, maximumAge: 0 }
   );
 
-  // 3. SAFETY TIMEOUT: Always close the overlay after 4 seconds
+  // 2. REFINEMENT ATTEMPT
+  window.activeWatcher = navigator.geolocation.watchPosition(
+    (pos) => {
+      const { latitude, longitude, accuracy } = pos.coords;
+      updateAccuracyUI(accuracy);
+      if (typeof updateUserLocation === 'function') {
+        updateUserLocation(latitude, longitude, accuracy);
+      }
+      if (!window.bestCoords || accuracy < window.bestCoords.accuracy) {
+        window.bestCoords = { latitude, longitude, accuracy };
+      }
+      // CRITICAL: Only auto-dismiss when accuracy is excellent (< 45 meters)
+      if (accuracy < 45) window.completeLocationFetch(latitude, longitude);
+    },
+    (err) => {
+      console.error("WatchPosition error:", err);
+      if (!window.bestCoords) {
+        window.completeLocationFetch(null, null);
+        const locOverlay = document.getElementById('location-overlay');
+        if (locOverlay) locOverlay.classList.remove('hidden');
+      }
+    },
+    { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 }
+  );
+
+  // 3. SAFETY TIMEOUT: Close overlay after 20 seconds max if no perfect lock
   window.activeLockTimeout = setTimeout(() => {
     if (!detected) {
-      if (bestCoords) {
-        complete(bestCoords.latitude, bestCoords.longitude);
+      if (window.bestCoords) {
+        // If we have any coordinates after 20s, use them
+        window.completeLocationFetch(window.bestCoords.latitude, window.bestCoords.longitude);
       } else {
-        complete(null, null); // Hide overlay even if no location found
+        window.completeLocationFetch(null, null);
       }
     }
-  }, 4000);
+  }, 20000);
+}
+
+function useCurrentLocation() {
+  if (window.bestCoords) {
+    // Force completion with current best coordinates
+    window.completeLocationFetch(window.bestCoords.latitude, window.bestCoords.longitude);
+  } else {
+    const input = document.getElementById('loc-search-input');
+    if (input && input.getAttribute('data-lat')) {
+        // We might have coordinates from a previous update
+        window.completeLocationFetch(parseFloat(input.getAttribute('data-lat')), parseFloat(input.getAttribute('data-lng')));
+    }
+  }
 }
 
 function hideFetchingOverlay() {

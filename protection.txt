@@ -1,0 +1,9 @@
+Act as a senior developer and security expert.
+
+Analyze my project and:
+- Find vulnerabilities (SQLi, XSS, CSRF, auth issues)
+- Suggest fixes with code
+- Improve performance (reduce server load)
+- Make it production secure (JWT, HTTPS, headers, rate limit)
+
+Give step-by-step changes only.

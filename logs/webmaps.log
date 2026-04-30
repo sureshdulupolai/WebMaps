@@ -3466,3 +3466,59 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-04-30 09:01:25,927] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17813
 [2026-04-30 09:01:25,946] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 10349
 [2026-04-30 09:01:57,487] INFO django.server "GET /api/maps/search/?q=NH59%2C+Hinjilicut&category=All&rating=&distance=10&price=&lat=19.471844&lng=84.745369 HTTP/1.1" 200 116
+[2026-04-30 14:51:25,898] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-30 14:51:28,861] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 14:51:28,974] INFO django.server "GET / HTTP/1.1" 200 15673
+[2026-04-30 14:51:29,865] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-30 14:51:29,874] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17813
+[2026-04-30 14:51:29,889] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 10349
+[2026-04-30 14:51:29,899] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 18738
+[2026-04-30 14:51:29,958] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 15229
+[2026-04-30 14:51:30,287] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-30 14:51:30,419] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-30 14:51:30,438] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-30 14:56:40,726] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 14:56:40,734] INFO django.server "GET / HTTP/1.1" 200 15673
+[2026-04-30 14:58:16,353] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 14:58:16,358] INFO django.server "GET / HTTP/1.1" 200 15673
+[2026-04-30 14:58:16,432] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 15229
+[2026-04-30 14:58:16,447] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 18738
+[2026-04-30 14:58:16,455] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-30 14:58:16,464] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-30 14:58:16,469] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-30 14:58:16,476] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-30 14:58:16,491] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17813
+[2026-04-30 14:58:16,511] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 10540
+[2026-04-30 14:58:49,276] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-04-30 14:58:56,551] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 14:58:56,664] INFO django.server "GET / HTTP/1.1" 200 15673
+[2026-04-30 14:58:57,355] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 15229
+[2026-04-30 14:58:57,369] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17813
+[2026-04-30 14:58:57,392] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 10540
+[2026-04-30 14:58:57,489] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 18738
+[2026-04-30 14:58:57,524] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-30 14:58:57,967] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-30 14:58:57,987] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-30 14:58:58,002] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-30 15:01:08,758] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:01:08,768] INFO django.server "GET / HTTP/1.1" 200 15673
+[2026-04-30 15:01:08,878] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-30 15:01:08,878] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-30 15:01:08,878] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 18738
+[2026-04-30 15:01:08,881] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-30 15:01:08,883] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 15229
+[2026-04-30 15:01:08,886] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-30 15:01:08,891] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 10569
+[2026-04-30 15:01:08,892] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17813
+[2026-04-30 15:05:06,702] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:05:06,724] INFO django.server "GET / HTTP/1.1" 200 16217
+[2026-04-30 15:05:06,826] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 2633
+[2026-04-30 15:05:06,827] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-04-30 15:05:06,828] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 18738
+[2026-04-30 15:05:06,830] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-04-30 15:05:06,833] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-04-30 15:05:06,836] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16097
+[2026-04-30 15:05:06,849] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 12257
+[2026-04-30 15:05:06,849] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 17813
+[2026-04-30 15:05:53,720] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-04-30 15:05:53,738] INFO django.server "GET /api/maps/search/?q=NH59%2C+Hinjilicut&category=All&rating=&distance=10&price=&lat=19.471844&lng=84.745369 HTTP/1.1" 200 116
