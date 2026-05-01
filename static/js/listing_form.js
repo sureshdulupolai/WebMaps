@@ -561,9 +561,15 @@ document.addEventListener('DOMContentLoaded', function () {
                         <span>Platform Fee</span><span>₹${platformFee.toFixed(2)}</span>
                     </div>
                     
-                    <div style="height:1px; background:rgba(255,255,255,0.05); margin:16px 0; border-style:dashed; border-width:1px 0 0 0;"></div>
-                    
-                    ${appliedDiscount > 0 ? `<div class="breakdown-row" style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:14px; color:#10b981; font-weight:700;"><span>Coupon: ${appliedCoupon}</span><span>-₹${(isFullDiscount ? rawTaxable : appliedDiscount).toFixed(2)}</span></div>` : ''}
+                    ${appliedDiscount > 0 ? `
+                        <div style="height:1px; background:rgba(255,255,255,0.05); margin:16px 0; border-style:dashed; border-width:1px 0 0 0;"></div>
+                        <div class="breakdown-row" style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:14px; font-weight:700; color:rgba(255,255,255,0.6);">
+                            <span>Subtotal</span><span>₹${subtotal.toFixed(2)}</span>
+                        </div>
+                        <div class="breakdown-row" style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:14px; color:#10b981; font-weight:700;">
+                            <span>Coupon: ${appliedCoupon}</span><span>-₹${(isFullDiscount ? rawTaxable : appliedDiscount).toFixed(2)}</span>
+                        </div>
+                    ` : ''}
                     
                     <div class="breakdown-row total" style="display:flex; justify-content:space-between; margin-top:20px; padding-top:20px; border-top:2px solid rgba(255,255,255,0.1); font-size:24px; font-weight:900; color:#fff;">
                         <span>Amount Payable</span><span>₹${total.toFixed(2)}</span>
