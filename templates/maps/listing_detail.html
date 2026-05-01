@@ -142,47 +142,115 @@
   }
 
   /* Services Styling */
+  .category-block {
+    margin-bottom: 48px;
+    padding-bottom: 12px;
+  }
+
+  .category-block:last-child {
+    margin-bottom: 0;
+  }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border-left: 4px solid var(--primary);
+  }
+
+  .category-header h3 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 800;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
   .service-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
   }
 
   .service-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px;
-    background: rgba(255, 255, 255, 0.02);
+    padding: 24px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
     border: 1px solid var(--border);
-    border-radius: 16px;
-    transition: all 0.2s ease;
+    border-radius: 20px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
   }
 
   .service-item:hover {
-    background: rgba(255, 255, 255, 0.05);
-    transform: translateX(4px);
+    transform: translateY(-4px);
     border-color: var(--primary);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  .service-item:hover::after {
+    opacity: 0.05;
+  }
+
+  .service-info {
+    position: relative;
+    z-index: 2;
   }
 
   .service-info h4 {
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
     color: #fff;
+    letter-spacing: -0.01em;
   }
 
   .service-info p {
     font-size: 13px;
     color: var(--text-muted);
     margin: 0;
+    opacity: 0.8;
   }
 
-  .service-price {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 700;
+  .service-price-tag {
+    position: relative;
+    z-index: 2;
+    background: rgba(99, 102, 241, 0.1);
+    padding: 8px 16px;
+    border-radius: 12px;
     color: var(--primary);
-    font-size: 1.1rem;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 1.15rem;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .service-item:hover .service-price-tag {
+    background: var(--primary);
+    color: #fff;
+    transform: scale(1.05);
   }
 
   /* Hours Table */
@@ -329,12 +397,13 @@
         
         {% if services %}
           {% regroup services by category as category_list %}
-          <div class="d-flex flex-col gap-8">
+          <div class="d-flex flex-col">
             {% for cat in category_list %}
             <div class="category-block">
-              <h3 class="text-xs uppercase letter-spacing-1 font-weight-bold text-muted mb-4" style="border-left: 3px solid var(--primary); padding-left: 12px;">
-                {{ cat.grouper }}
-              </h3>
+              <div class="category-header">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14"/></svg>
+                <h3>{{ cat.grouper }}</h3>
+              </div>
               <div class="service-grid">
                 {% for svc in cat.list %}
                 <div class="service-item">
@@ -342,7 +411,7 @@
                     <h4>{{ svc.service_name }}</h4>
                     <p>Standard quality service</p>
                   </div>
-                  <div class="service-price">₹{{ svc.price }}</div>
+                  <div class="service-price-tag">₹{{ svc.price }}</div>
                 </div>
                 {% endfor %}
               </div>
