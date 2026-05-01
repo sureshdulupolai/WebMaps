@@ -811,7 +811,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     return;
                 }
 
-                const activeSlug = result.slug || slug;
+                const activeSlug = result.slug || (initialData ? initialData.slug : '');
 
                 // 3. Initiate Payment
                 submitBtn.innerHTML = '<span class="loading-spinner"></span> Creating Order...';

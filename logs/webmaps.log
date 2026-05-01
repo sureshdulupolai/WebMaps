@@ -4556,3 +4556,128 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-01 17:26:46,016] INFO django.server "POST /coupon/validate/ HTTP/1.1" 200 129
 [2026-05-01 17:26:47,513] WARNING django.security.SuspiciousSession Session data corrupted
 [2026-05-01 17:26:47,605] INFO django.server "POST /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 21399
+[2026-05-01 17:29:25,094] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-01 21:39:55,169] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-01 21:40:06,437] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 21:40:06,599] INFO django.server "GET / HTTP/1.1" 200 16217
+[2026-05-01 21:40:06,732] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-01 21:40:06,850] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-05-01 21:40:06,851] INFO django.server "GET /static/js/main.js HTTP/1.1" 304 0
+[2026-05-01 21:40:06,872] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-01 21:40:06,880] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-01 21:40:56,000] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 21:40:56,099] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-05-01 21:40:57,843] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 21:40:57,880] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-01 21:41:01,365] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-05-01 21:41:01,375] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-01 21:41:01,407] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 21:41:01,758] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 31194
+[2026-05-01 21:41:02,089] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 21:41:03,127] WARNING django.request Not Found: /favicon.ico
+[2026-05-01 21:41:03,133] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4839
+[2026-05-01 21:41:22,333] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 21:41:22,744] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 29435
+[2026-05-01 21:51:07,254] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\adminpanel\views.py changed, reloading.
+[2026-05-01 21:51:11,712] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-01 21:52:34,211] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 21:52:35,220] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 29418
+[2026-05-01 21:54:34,889] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 21:54:34,930] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 34527
+[2026-05-01 21:54:36,716] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 21:54:36,741] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 34527
+[2026-05-01 21:54:45,368] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 21:54:45,447] INFO django.server "POST /adminpanel/errors/clear-all/ HTTP/1.1" 302 0
+[2026-05-01 21:54:45,481] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 21:54:45,522] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 25036
+[2026-05-01 21:54:47,616] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 21:54:47,774] INFO django.server "GET /adminpanel/promotions/ HTTP/1.1" 200 43769
+[2026-05-01 21:54:58,375] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 21:54:58,445] INFO django.server "GET /adminpanel/listings/ HTTP/1.1" 200 25782
+[2026-05-01 21:54:59,875] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 21:54:59,934] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 26391
+[2026-05-01 21:55:01,411] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 21:55:01,481] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 29770
+[2026-05-01 21:59:12,082] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 21:59:12,106] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 302 0
+[2026-05-01 21:59:12,154] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 21:59:12,319] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-05-01 21:59:13,947] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 21:59:13,983] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-01 21:59:17,587] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-05-01 21:59:17,616] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-01 21:59:17,667] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 21:59:17,837] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 30057
+[2026-05-01 21:59:19,819] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 21:59:19,931] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 29871
+[2026-05-01 21:59:27,972] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 21:59:28,057] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 29871
+[2026-05-01 21:59:28,628] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16131
+[2026-05-01 21:59:29,541] INFO django.server "GET /static/css/admin.css HTTP/1.1" 200 9585
+[2026-05-01 21:59:35,975] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 21:59:36,675] WARNING django.request Not Found: /favicon.ico
+[2026-05-01 21:59:36,692] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4839
+[2026-05-01 22:02:41,525] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 22:02:41,881] ERROR webmaps Captured error: TemplateSyntaxError: Invalid block tag on line 159: 'empty', expected 'endblock'. Did you forget to register or load this tag? @ /adminpanel/analytics/
+[2026-05-01 22:02:41,882] ERROR webmaps Unhandled exception at /adminpanel/analytics/: TemplateSyntaxError: Invalid block tag on line 159: 'empty', expected 'endblock'. Did you forget to register or load this tag?
+[2026-05-01 22:02:41,964] ERROR django.request Internal Server Error: /adminpanel/analytics/
+[2026-05-01 22:02:41,975] ERROR django.server "GET /adminpanel/analytics/ HTTP/1.1" 500 7307
+[2026-05-01 22:02:42,141] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 22:02:42,182] INFO django.server "GET /coupon/notifications/ HTTP/1.1" 200 40
+[2026-05-01 22:02:50,901] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 22:02:51,104] ERROR webmaps Captured error: TemplateSyntaxError: Invalid block tag on line 159: 'empty', expected 'endblock'. Did you forget to register or load this tag? @ /adminpanel/analytics/
+[2026-05-01 22:02:51,109] ERROR webmaps Unhandled exception at /adminpanel/analytics/: TemplateSyntaxError: Invalid block tag on line 159: 'empty', expected 'endblock'. Did you forget to register or load this tag?
+[2026-05-01 22:02:51,117] ERROR django.request Internal Server Error: /adminpanel/analytics/
+[2026-05-01 22:02:51,128] ERROR django.server "GET /adminpanel/analytics/ HTTP/1.1" 500 7307
+[2026-05-01 22:02:51,196] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16131
+[2026-05-01 22:02:51,230] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-01 22:02:51,313] INFO django.server "GET /static/images/500_illustration.png HTTP/1.1" 200 879255
+[2026-05-01 22:02:51,319] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 5018
+[2026-05-01 22:02:51,413] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-05-01 22:02:51,424] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-01 22:02:54,865] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 22:02:54,886] INFO django.server "GET /coupon/notifications/ HTTP/1.1" 200 40
+[2026-05-01 22:02:57,121] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 22:02:57,202] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 30683
+[2026-05-01 22:02:57,323] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 22:02:57,377] WARNING django.request Not Found: /favicon.ico
+[2026-05-01 22:02:57,381] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4839
+[2026-05-01 22:02:59,124] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 22:02:59,162] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 32468
+[2026-05-01 22:03:15,834] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 22:03:15,933] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 29077
+[2026-05-01 22:03:21,517] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 22:03:21,637] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 29077
+[2026-05-01 22:03:21,701] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16131
+[2026-05-01 22:03:21,701] INFO django.server "GET /static/css/admin.css HTTP/1.1" 200 9585
+[2026-05-01 22:03:24,668] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 22:03:24,727] WARNING django.request Not Found: /favicon.ico
+[2026-05-01 22:03:24,731] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4839
+[2026-05-01 22:03:38,782] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 22:03:38,916] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 30683
+[2026-05-01 22:03:43,696] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 22:03:43,798] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 29077
+[2026-05-01 22:03:47,873] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 22:03:47,942] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 29077
+[2026-05-01 22:03:47,994] INFO django.server "GET /static/css/admin.css HTTP/1.1" 200 9585
+[2026-05-01 22:03:47,995] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16131
+[2026-05-01 22:03:50,157] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 22:03:50,252] WARNING django.request Not Found: /favicon.ico
+[2026-05-01 22:03:50,259] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4839
+[2026-05-01 22:05:59,178] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 22:05:59,285] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 29140
+[2026-05-01 22:05:59,364] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16131
+[2026-05-01 22:05:59,364] INFO django.server "GET /static/css/admin.css HTTP/1.1" 200 9585
+[2026-05-01 22:06:02,706] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 22:06:02,789] WARNING django.request Not Found: /favicon.ico
+[2026-05-01 22:06:02,802] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 4839
+[2026-05-01 22:06:15,640] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 22:06:15,733] INFO django.server "GET /adminpanel/analytics/?q=sures HTTP/1.1" 200 25649
+[2026-05-01 22:06:19,417] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 22:06:19,499] INFO django.server "GET /adminpanel/analytics/?q=we HTTP/1.1" 200 29297
+[2026-05-01 22:06:21,384] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 22:06:21,467] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 29140
+[2026-05-01 22:06:28,288] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 22:06:28,446] INFO django.server "GET /adminpanel/listings/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 31082
+[2026-05-01 22:07:39,891] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 22:07:39,939] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 29140

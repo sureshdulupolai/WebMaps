@@ -97,14 +97,9 @@
                             <i class="material-icons">phone</i>
                             Primary Signal
                         </div>
-                        <div class="metadata-value d-flex align-center gap-3 w-full">
-                            <form id="mobile-update-form" class="m-0 d-flex align-center gap-2 w-full" onsubmit="handleSignalUpdate(event)">
-                                {% csrf_token %}
-                                <input type="text" name="mobile_number" value="{{ listing.mobile_number|default:'' }}" 
-                                    class="admin-input font-mono text-sm" style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); padding: 8px 12px; width: 200px;" 
-                                    placeholder="+91 XXXXX XXXXX">
-                                <button type="submit" class="admin-btn btn-primary" style="padding: 8px 16px; font-size: 10px;">UPDATE SIGNAL</button>
-                            </form>
+                        <div class="metadata-value d-flex align-center gap-3">
+                            <span class="font-mono text-white text-lg">{{ listing.mobile_number|default:"NO SIGNAL DATA" }}</span>
+                            <div class="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[9px] font-black tracking-widest opacity-40 uppercase">Encrypted</div>
                         </div>
                     </div>
                     <div class="metadata-row">
@@ -179,35 +174,6 @@
 
 {% block extra_js %}
 <script>
-async function handleSignalUpdate(e) {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const confirmed = await systemModal.show({
-        title: 'MODULATE SIGNAL',
-        message: 'Are you sure you want to update the primary contact signal for this entity?',
-        rationale: 'UPDATING THE MOBILE NUMBER WILL CHANGE THE DIRECT TRANSMISSION VECTOR FOR CUSTOMER QUERIES AND SYSTEM NOTIFICATIONS.',
-        confirmText: 'UPDATE TELEMETRY',
-        confirmClass: 'btn-primary'
-    });
-    
-    if (confirmed) {
-        try {
-            const response = await fetch("{% url 'adminpanel:listing_update_signal' listing.slug %}", {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
-                }
-            });
-            if (response.ok) {
-                window.location.reload();
-            }
-        } catch (error) {
-            console.error('Signal modulation failed:', error);
-        }
-    }
-}
-
 async function handleDeleteBusiness(slug) {
     console.log("Delete triggered for:", slug);
     const confirmed = await systemModal.show({

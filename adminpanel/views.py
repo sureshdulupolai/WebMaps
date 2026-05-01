@@ -110,13 +110,30 @@ def reject_listing_view(request, slug):
 def analytics_view(request):
     from analytics.services import aggregate_listing_stats
     from hosts.models import Listing as L
+    from analytics.models import AnalyticsEvent, EventType
+
+    q = request.GET.get('q', '').strip()
     listings = L.objects.filter(status='approved', deleted_at__isnull=True)
+    
+    if q:
+        listings = listings.filter(company_name__icontains=q)
+        
     listing_stats = [
         {'listing': l, 'stats': aggregate_listing_stats(l.id)}
         for l in listings
     ]
+
+    # Calculate aggregate totals
+    total_page_views = AnalyticsEvent.objects.filter(event_type=EventType.VIEW).count()
+    total_contact_clicks = AnalyticsEvent.objects.filter(event_type=EventType.CLICK).count()
+    total_direction_clicks = AnalyticsEvent.objects.filter(event_type=EventType.MAP_OPEN).count()
+
     return render(request, 'adminpanel/analytics.html', {
-        'listing_stats': listing_stats
+        'listing_stats': listing_stats,
+        'q': q,
+        'total_page_views': total_page_views,
+        'total_contact_clicks': total_contact_clicks,
+        'total_direction_clicks': total_direction_clicks,
     })
 
 
