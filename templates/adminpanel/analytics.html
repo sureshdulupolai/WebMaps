@@ -6,60 +6,62 @@
 
 {% block content %}
 <div class="animate-fade-in">
-    <div class="glass-header d-flex justify-between align-center mb-8">
-        <div>
-            <h1 class="page-title text-primary">Strategic Intelligence</h1>
-            <p class="page-subtitle">Deep analytics regarding entity engagement and traffic horizons.</p>
+    <!-- Slim Analytics Header -->
+    <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 20px; background:rgba(20,20,28,0.7); border:1px solid rgba(255,255,255,0.06); border-radius:14px; margin-bottom:20px;">
+        <div style="display:flex; align-items:center; gap:12px;">
+            <h1 style="font-size:15px; font-weight:800; margin:0; color:#a855f7; letter-spacing:-0.3px;">Analytics</h1>
+            <span style="font-size:11px; color:rgba(255,255,255,0.25); font-weight:500;">Entity engagement & traffic intelligence</span>
         </div>
-        <div class="d-flex gap-3">
-            <div class="glass-card py-2 px-5 d-flex align-center gap-3" style="background: rgba(168, 85, 247, 0.05); border: 1px solid rgba(168, 85, 247, 0.1);">
-                <i class="material-icons text-primary" style="font-size: 18px;">insights</i>
-                <div>
-                    <div class="text-[10px] font-black uppercase opacity-40">Intelligence Score</div>
-                    <div class="text-sm font-black text-white">0.94 <span class="text-[8px] text-success ml-1">↑ 2%</span></div>
-                </div>
-            </div>
+        <div style="display:flex; align-items:center; gap:8px; padding:5px 14px; background:rgba(168,85,247,0.08); border:1px solid rgba(168,85,247,0.15); border-radius:10px;">
+            <i class="material-icons" style="font-size:14px; color:#a855f7;">insights</i>
+            <span style="font-size:11px; font-weight:700; color:#fff;">Score: 0.94</span>
+            <span style="font-size:9px; color:#10b981; font-weight:800;">↑ 2%</span>
         </div>
     </div>
 
-    <!-- Aggregate Performance Bar -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
-        <div class="glass-card d-flex align-center gap-3" style="padding: 12px 16px;">
-            <div class="stat-icon m-0" style="background: rgba(99, 102, 241, 0.1); color: var(--secondary); width: 32px; height: 32px; min-width: 32px; display: grid; place-items: center;">
-                <i class="material-icons" style="font-size: 16px;">visibility</i>
+    <!-- Aggregate Stats — 4 compact chips in one row -->
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:20px;">
+
+        <div style="display:flex; align-items:center; gap:12px; padding:12px 16px; background:#14171f; border:1px solid rgba(255,255,255,0.06); border-radius:12px;">
+            <div style="width:34px; height:34px; border-radius:9px; background:rgba(99,102,241,0.12); display:grid; place-items:center; flex-shrink:0;">
+                <i class="material-icons" style="font-size:17px; color:#6366f1;">visibility</i>
             </div>
-            <div class="min-width-0">
-                <div class="text-[9px] opacity-40 uppercase font-black mb-0.5 truncate">Impressions</div>
-                <div class="text-base font-black text-white leading-none">{{ total_page_views|default:"0" }}</div>
-            </div>
-        </div>
-        <div class="glass-card d-flex align-center gap-3" style="padding: 12px 16px;">
-            <div class="stat-icon m-0" style="background: rgba(245, 158, 11, 0.1); color: var(--warning); width: 32px; height: 32px; min-width: 32px; display: grid; place-items: center;">
-                <i class="material-icons" style="font-size: 16px;">touch_app</i>
-            </div>
-            <div class="min-width-0">
-                <div class="text-[9px] opacity-40 uppercase font-black mb-0.5 truncate">Interactions</div>
-                <div class="text-base font-black text-white leading-none">{{ total_contact_clicks|default:"0" }}</div>
+            <div>
+                <div style="font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.35); margin-bottom:2px;">Impressions</div>
+                <div style="font-size:22px; font-weight:900; color:#fff; line-height:1; letter-spacing:-0.5px;">{{ total_page_views|default:"0" }}</div>
             </div>
         </div>
-        <div class="glass-card d-flex align-center gap-3" style="padding: 12px 16px;">
-            <div class="stat-icon m-0" style="background: rgba(16, 185, 129, 0.1); color: var(--success); width: 32px; height: 32px; min-width: 32px; display: grid; place-items: center;">
-                <i class="material-icons" style="font-size: 16px;">near_me</i>
+
+        <div style="display:flex; align-items:center; gap:12px; padding:12px 16px; background:#14171f; border:1px solid rgba(255,255,255,0.06); border-radius:12px;">
+            <div style="width:34px; height:34px; border-radius:9px; background:rgba(245,158,11,0.12); display:grid; place-items:center; flex-shrink:0;">
+                <i class="material-icons" style="font-size:17px; color:#f59e0b;">touch_app</i>
             </div>
-            <div class="min-width-0">
-                <div class="text-[9px] opacity-40 uppercase font-black mb-0.5 truncate">Navigation</div>
-                <div class="text-base font-black text-white leading-none">{{ total_direction_clicks|default:"0" }}</div>
-            </div>
-        </div>
-        <div class="glass-card d-flex align-center gap-3" style="padding: 12px 16px;">
-            <div class="stat-icon m-0" style="background: rgba(168, 85, 247, 0.1); color: var(--primary); width: 32px; height: 32px; min-width: 32px; display: grid; place-items: center;">
-                <i class="material-icons" style="font-size: 16px;">monitor_heart</i>
-            </div>
-            <div class="min-width-0">
-                <div class="text-[9px] opacity-40 uppercase font-black mb-0.5 truncate">Signals</div>
-                <div class="text-base font-black text-white leading-none">{{ listing_stats|length }}</div>
+            <div>
+                <div style="font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.35); margin-bottom:2px;">Interactions</div>
+                <div style="font-size:22px; font-weight:900; color:#fff; line-height:1; letter-spacing:-0.5px;">{{ total_contact_clicks|default:"0" }}</div>
             </div>
         </div>
+
+        <div style="display:flex; align-items:center; gap:12px; padding:12px 16px; background:#14171f; border:1px solid rgba(255,255,255,0.06); border-radius:12px;">
+            <div style="width:34px; height:34px; border-radius:9px; background:rgba(16,185,129,0.12); display:grid; place-items:center; flex-shrink:0;">
+                <i class="material-icons" style="font-size:17px; color:#10b981;">near_me</i>
+            </div>
+            <div>
+                <div style="font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.35); margin-bottom:2px;">Navigation</div>
+                <div style="font-size:22px; font-weight:900; color:#fff; line-height:1; letter-spacing:-0.5px;">{{ total_direction_clicks|default:"0" }}</div>
+            </div>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:12px; padding:12px 16px; background:#14171f; border:1px solid rgba(255,255,255,0.06); border-radius:12px;">
+            <div style="width:34px; height:34px; border-radius:9px; background:rgba(168,85,247,0.12); display:grid; place-items:center; flex-shrink:0;">
+                <i class="material-icons" style="font-size:17px; color:#a855f7;">monitor_heart</i>
+            </div>
+            <div>
+                <div style="font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.35); margin-bottom:2px;">Signals</div>
+                <div style="font-size:22px; font-weight:900; color:#fff; line-height:1; letter-spacing:-0.5px;">{{ listing_stats|length }}</div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Analytics Insights Grid -->

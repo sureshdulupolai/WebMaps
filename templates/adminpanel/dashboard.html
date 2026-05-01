@@ -6,61 +6,58 @@
 
 {% block content %}
 <div class="animate-fade-in">
-    <div class="glass-header d-flex justify-between align-center mb-8">
-        <div>
-            <h1 class="page-title">Executive Overview</h1>
-            <p class="page-subtitle">Real-time engagement and operational intelligence.</p>
+    <!-- Slim Dashboard Header -->
+    <div style="display:flex; justify-content:space-between; align-items:center; padding: 12px 20px; background: rgba(20,20,28,0.7); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; margin-bottom: 20px;">
+        <div style="display:flex; align-items:center; gap:12px;">
+            <h1 style="font-size:15px; font-weight:800; margin:0; color:#fff; letter-spacing:-0.3px;">Admin Dashboard</h1>
+            <span style="font-size:11px; color:rgba(255,255,255,0.25); font-weight:500;">Real-time overview</span>
         </div>
-        <div class="d-flex align-center gap-3">
-             <div class="live-indicator"><span class="pulse-dot"></span> Tracking Signals</div>
-        </div>
+        <div class="live-indicator" style="font-size:10px; padding:4px 12px;"><span class="pulse-dot"></span> Live</div>
     </div>
 
-    <!-- Quick Stats Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        <!-- Identities Card -->
-        <div class="glass-card d-flex align-center gap-4" style="padding: 16px 20px;">
-            <div class="stat-icon m-0" style="background: rgba(168, 85, 247, 0.1); color: var(--primary); width: 40px; height: 40px; display: grid; place-items: center;">
-                <i class="material-icons">people</i>
+    <!-- Quick Stats — 4 compact horizontal chips in one row -->
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:20px;">
+
+        <div style="display:flex; align-items:center; gap:12px; padding:12px 16px; background:#14171f; border:1px solid rgba(255,255,255,0.06); border-radius:12px; transition:all 0.2s;">
+            <div style="width:34px; height:34px; border-radius:9px; background:rgba(168,85,247,0.12); display:grid; place-items:center; flex-shrink:0;">
+                <i class="material-icons" style="font-size:17px; color:#a855f7;">people</i>
             </div>
             <div>
-                <div class="text-[10px] opacity-40 uppercase font-black mb-0.5">Identities</div>
-                <div class="text-lg font-black text-white leading-none">{{ stats.total_users }}</div>
+                <div style="font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.35); margin-bottom:2px;">Total Users</div>
+                <div style="font-size:22px; font-weight:900; color:#fff; line-height:1; letter-spacing:-0.5px;">{{ stats.total_users }}</div>
             </div>
         </div>
 
-        <!-- Entities Card -->
-        <div class="glass-card d-flex align-center gap-4" style="padding: 16px 20px;">
-            <div class="stat-icon m-0" style="background: rgba(99, 102, 241, 0.1); color: var(--secondary); width: 40px; height: 40px; display: grid; place-items: center;">
-                <i class="material-icons">business</i>
+        <div style="display:flex; align-items:center; gap:12px; padding:12px 16px; background:#14171f; border:1px solid rgba(255,255,255,0.06); border-radius:12px; transition:all 0.2s;">
+            <div style="width:34px; height:34px; border-radius:9px; background:rgba(99,102,241,0.12); display:grid; place-items:center; flex-shrink:0;">
+                <i class="material-icons" style="font-size:17px; color:#6366f1;">business</i>
             </div>
             <div>
-                <div class="text-[10px] opacity-40 uppercase font-black mb-0.5">Entities</div>
-                <div class="text-lg font-black text-white leading-none">{{ stats.total_listings }}</div>
+                <div style="font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.35); margin-bottom:2px;">Listings</div>
+                <div style="font-size:22px; font-weight:900; color:#fff; line-height:1; letter-spacing:-0.5px;">{{ stats.total_listings }}</div>
             </div>
         </div>
 
-        <!-- Moderation Card -->
-        <div class="glass-card d-flex align-center gap-4" style="padding: 16px 20px;">
-            <div class="stat-icon m-0" style="background: rgba(245, 158, 11, 0.1); color: var(--warning); width: 40px; height: 40px; display: grid; place-items: center;">
-                <i class="material-icons">history</i>
+        <div style="display:flex; align-items:center; gap:12px; padding:12px 16px; background:#14171f; border:1px solid rgba(255,255,255,0.06); border-radius:12px; transition:all 0.2s;">
+            <div style="width:34px; height:34px; border-radius:9px; background:rgba(245,158,11,0.12); display:grid; place-items:center; flex-shrink:0;">
+                <i class="material-icons" style="font-size:17px; color:#f59e0b;">pending_actions</i>
             </div>
             <div>
-                <div class="text-[10px] opacity-40 uppercase font-black mb-0.5">Moderation</div>
-                <div class="text-lg font-black text-white leading-none">{{ stats.pending_listings }}</div>
+                <div style="font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.35); margin-bottom:2px;">Pending</div>
+                <div style="font-size:22px; font-weight:900; color:#fff; line-height:1; letter-spacing:-0.5px;">{{ stats.pending_listings }}</div>
             </div>
         </div>
 
-        <!-- Credits Card -->
-        <div class="glass-card d-flex align-center gap-4" style="padding: 16px 20px;">
-            <div class="stat-icon m-0" style="background: rgba(16, 185, 129, 0.1); color: var(--success); width: 40px; height: 40px; display: grid; place-items: center;">
-                <i class="material-icons">verified_user</i>
+        <div style="display:flex; align-items:center; gap:12px; padding:12px 16px; background:#14171f; border:1px solid rgba(255,255,255,0.06); border-radius:12px; transition:all 0.2s;">
+            <div style="width:34px; height:34px; border-radius:9px; background:rgba(16,185,129,0.12); display:grid; place-items:center; flex-shrink:0;">
+                <i class="material-icons" style="font-size:17px; color:#10b981;">verified_user</i>
             </div>
             <div>
-                <div class="text-[10px] opacity-40 uppercase font-black mb-0.5">Credits</div>
-                <div class="text-lg font-black text-white leading-none">{{ stats.active_subs }}</div>
+                <div style="font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.35); margin-bottom:2px;">Active Plans</div>
+                <div style="font-size:22px; font-weight:900; color:#fff; line-height:1; letter-spacing:-0.5px;">{{ stats.active_subs }}</div>
             </div>
         </div>
+
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">

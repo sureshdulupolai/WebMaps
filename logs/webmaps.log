@@ -4303,3 +4303,44 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-01 16:07:16,699] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 7322
 [2026-05-01 16:13:22,992] WARNING django.security.SuspiciousSession Session data corrupted
 [2026-05-01 16:13:23,023] INFO django.server "GET /adminpanel/listings/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 31082
+[2026-05-01 16:14:26,862] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-01 16:15:59,086] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:15:59,128] INFO django.server "GET /adminpanel/listings/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 302 0
+[2026-05-01 16:15:59,161] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:15:59,190] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-05-01 16:16:00,857] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:16:00,862] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-01 16:16:02,444] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-05-01 16:16:02,445] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-01 16:16:02,461] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:16:02,529] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 32352
+[2026-05-01 16:19:36,139] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:19:36,190] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 31842
+[2026-05-01 16:19:37,625] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:19:37,670] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 31842
+[2026-05-01 16:20:00,127] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:20:00,169] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 28624
+[2026-05-01 16:20:19,905] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:20:19,950] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 31843
+[2026-05-01 16:21:36,421] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:21:36,484] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33556
+[2026-05-01 16:21:41,960] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:21:42,034] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 26391
+[2026-05-01 16:21:44,407] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:21:44,680] ERROR webmaps Captured error: TemplateSyntaxError: Invalid block tag on line 97: 'empty', expected 'elif', 'else' or 'endif'. Did you forget to register or load this tag? @ /adminpanel/listings/
+[2026-05-01 16:21:44,682] ERROR webmaps Unhandled exception at /adminpanel/listings/: TemplateSyntaxError: Invalid block tag on line 97: 'empty', expected 'elif', 'else' or 'endif'. Did you forget to register or load this tag?
+[2026-05-01 16:21:44,696] ERROR django.request Internal Server Error: /adminpanel/listings/
+[2026-05-01 16:21:44,699] ERROR django.server "GET /adminpanel/listings/ HTTP/1.1" 500 7305
+[2026-05-01 16:21:44,757] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:21:44,774] INFO django.server "GET /coupon/notifications/ HTTP/1.1" 200 40
+[2026-05-01 16:21:47,072] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:21:47,119] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33546
+[2026-05-01 16:21:50,320] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:21:50,368] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 56597
+[2026-05-01 16:22:12,734] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:22:12,812] ERROR webmaps Captured error: TemplateSyntaxError: Invalid block tag on line 97: 'empty', expected 'elif', 'else' or 'endif'. Did you forget to register or load this tag? @ /adminpanel/listings/
+[2026-05-01 16:22:12,816] ERROR webmaps Unhandled exception at /adminpanel/listings/: TemplateSyntaxError: Invalid block tag on line 97: 'empty', expected 'elif', 'else' or 'endif'. Did you forget to register or load this tag?
+[2026-05-01 16:22:12,827] ERROR django.request Internal Server Error: /adminpanel/listings/
+[2026-05-01 16:22:12,830] ERROR django.server "GET /adminpanel/listings/ HTTP/1.1" 500 7305
+[2026-05-01 16:22:12,902] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:22:12,911] INFO django.server "GET /coupon/notifications/ HTTP/1.1" 200 40
