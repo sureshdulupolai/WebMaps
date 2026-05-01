@@ -16,6 +16,7 @@ from .services import (
     get_all_plans, create_razorpay_order,
     verify_razorpay_payment, activate_subscription
 )
+from coupon.models import Coupon, CouponUsage
 
 logger = logging.getLogger('webmaps')
 
@@ -64,7 +65,36 @@ def initiate_payment_view(request, slug):
         
         # 5. Final Total in INR (rounded to 2 decimal places for consistency)
         final_total_inr = (taxable_amount + gst_amount + platform_fee_extra).quantize(Decimal('0.01'))
+
+        # 6. Apply Coupon
+        coupon_code = request.POST.get('coupon_code', '').strip().upper()
+        discount_amount = Decimal('0')
+        if coupon_code:
+            try:
+                coupon = Coupon.objects.get(code=coupon_code)
+                is_valid, msg = coupon.is_valid(user=request.user, amount=final_total_inr)
+                if is_valid:
+                    if coupon.discount_type == 'percentage':
+                        discount_amount = (final_total_inr * coupon.discount_value / Decimal('100')).quantize(Decimal('0.01'))
+                    else:
+                        discount_amount = coupon.discount_value
+                    
+                    final_total_inr = max(Decimal('0'), final_total_inr - discount_amount)
+            except Coupon.DoesNotExist:
+                pass
+
         final_amount_paise = int(final_total_inr * 100)
+
+        # 7. Zero Amount Flow
+        if final_total_inr <= 0:
+            return JsonResponse({
+                'order_id': 'FREE_' + listing.slug,
+                'amount': 0,
+                'is_free': True,
+                'currency': 'INR',
+                'plan_name': plan.name,
+                'listing_name': listing.company_name,
+            })
 
         logger.info(f"Payment Initiation: Listing={listing.slug}, Plan={plan.name}, Total={final_total_inr}")
 
@@ -99,8 +129,11 @@ def verify_payment_view(request):
     signature = body.get('razorpay_signature', '')
     slug = body.get('listing_slug', '')
     plan_id = body.get('plan_id', '')
+    coupon_code = body.get('coupon_code', '').strip().upper()
 
-    if not verify_razorpay_payment(order_id, payment_id, signature):
+    # 1. Handle Free Checkout (Zero Amount)
+    is_free = str(order_id).startswith('FREE_')
+    if not is_free and not verify_razorpay_payment(order_id, payment_id, signature):
         logger.warning(f"Invalid Razorpay signature for order {order_id}")
         return JsonResponse({'error': 'Payment verification failed.'}, status=400)
 
@@ -121,9 +154,34 @@ def verify_payment_view(request):
             plan=plan,
             amount=plan.total_cost,
             razorpay_order_id=order_id,
-            razorpay_payment_id=payment_id,
+            razorpay_payment_id=payment_id or 'FREE',
             status='success'
         )
+
+        # 📄 LOG COUPON USAGE
+        if coupon_code:
+            try:
+                coupon = Coupon.objects.get(code=coupon_code)
+                # Re-calculate discount for log
+                discount_val = Decimal('0')
+                # (Simple calc here for log purpose)
+                subtotal = (Decimal(str(plan.total_cost)) + (Decimal('20') if listing.update_count >= 2 else Decimal('0'))) * Decimal('1.18') + Decimal('2')
+                if coupon.discount_type == 'percentage':
+                    discount_val = (subtotal * coupon.discount_value / Decimal('100')).quantize(Decimal('0.01'))
+                else:
+                    discount_val = coupon.discount_value
+                
+                CouponUsage.objects.create(
+                    coupon=coupon,
+                    user=listing.host,
+                    listing_slug=listing.slug,
+                    discount_applied=discount_val,
+                    final_amount=max(Decimal('0'), subtotal - discount_val)
+                )
+                coupon.usage_count += 1
+                coupon.save()
+            except Coupon.DoesNotExist:
+                pass
 
         return JsonResponse({'status': 'success', 'redirect': f'/hosts/dashboard/'})
     except Exception as e:

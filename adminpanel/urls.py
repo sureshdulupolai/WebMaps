@@ -19,5 +19,12 @@ urlpatterns = [
     path('errors/<uuid:error_id>/delete/', views.error_delete_view, name='error_delete'),
     path('users/<uuid:user_id>/delete/', views.user_delete_view, name='user_delete'),
     path('listings/<slug:slug>/delete/', views.listing_delete_view, name='listing_delete'),
+    path('listings/<slug:slug>/update-signal/', views.listing_update_signal_view, name='listing_update_signal'),
     path('reviews/<uuid:review_id>/delete/', views.review_delete_view, name='review_delete'),
+
+    # Promotions
+    path('promotions/', views.coupon_list_view, name='coupons'),
+    path('promotions/create/', views.coupon_create_view, name='coupon_create'),
+    path('promotions/<int:coupon_id>/toggle/', views.coupon_toggle_view, name='coupon_toggle'),
+    path('promotions/<int:coupon_id>/delete/', views.coupon_delete_view, name='coupon_delete'),
 ]

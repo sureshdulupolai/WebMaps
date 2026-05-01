@@ -14,8 +14,29 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/admin.css' %}">
     
-    <!-- Strategic Visualization Engine -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Material Icons (Whitelisted via fonts.gstatic.com to bypass CSP) -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <style>
+        /* Global Icon Styling for Material Icons */
+        .material-icons {
+            font-family: 'Material Icons' !important;
+            font-weight: normal;
+            font-style: normal;
+            font-size: 20px;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            -moz-osx-font-smoothing: grayscale;
+            font-feature-settings: 'liga';
+        }
+    </style>
     
     {% block extra_css %}{% endblock %}
     
@@ -103,9 +124,10 @@
             margin-bottom: 4px;
         }
 
-        .sidebar-link svg {
-            width: 20px;
-            height: 20px;
+        .sidebar-link i {
+            width: 24px;
+            text-align: center;
+            font-size: 20px;
             transition: transform 0.2s;
         }
 
@@ -120,7 +142,7 @@
             box-shadow: 0 8px 20px -5px rgba(168, 85, 247, 0.4);
         }
 
-        .sidebar-link.active svg {
+        .sidebar-link.active i {
             transform: scale(1.1);
         }
 
@@ -202,11 +224,40 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* ─── SCROLLBAR ─── */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+        /* ─── ACTION BUTTONS GLOBAL ─── */
+        .action-icon-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .action-icon-btn i {
+            font-size: 18px;
+            color: #ccc;
+        }
+
+        .action-icon-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .action-icon-btn:hover i {
+            color: #fff;
+        }
+
+        .btn-danger i {
+            color: #ff4d4d;
+        }
+
+        .btn-danger:hover i {
+            color: #ff1a1a;
+        }
     </style>
 </head>
 <body class="admin-theme">
@@ -217,7 +268,7 @@
     <aside class="admin-sidebar" id="main-sidebar">
         <a href="{% url 'maps:home' %}" class="sidebar-brand">
             <div class="brand-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                <i class="material-icons text-white">explore</i>
             </div>
             <span>WebMaps</span>
         </a>
@@ -225,27 +276,31 @@
         <nav class="sidebar-nav">
             <div class="nav-section-label" style="margin-top: 24px;">Strategic Control</div>
             <a href="{% url 'adminpanel:dashboard' %}" class="sidebar-link {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
-                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                <i class="material-icons">dashboard</i>
                 Overview
             </a>
             <a href="{% url 'adminpanel:analytics' %}" class="sidebar-link {% if request.resolver_match.url_name == 'analytics' %}active{% endif %}">
-                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                <i class="material-icons">insights</i>
                 Analytics
             </a>
 
             <div class="nav-section-label" style="margin-top: 24px;">Registry Management</div>
             <a href="{% url 'adminpanel:users' %}" class="sidebar-link {% if request.resolver_match.url_name == 'users' %}active{% endif %}">
-                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                <i class="material-icons">manage_accounts</i>
                 User Control
             </a>
             <a href="{% url 'adminpanel:listings' %}" class="sidebar-link {% if request.resolver_match.url_name == 'listings' %}active{% endif %}">
-                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                <i class="material-icons">business</i>
                 Business Sites
+            </a>
+            <a href="{% url 'adminpanel:coupons' %}" class="sidebar-link {% if request.resolver_match.url_name == 'coupons' %}active{% endif %}">
+                <i class="material-icons">local_offer</i>
+                Promotions
             </a>
 
             <div class="nav-section-label" style="margin-top: 24px;">Intelligence</div>
             <a href="{% url 'adminpanel:errors' %}" class="sidebar-link {% if request.resolver_match.url_name == 'errors' %}active{% endif %}">
-                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                <i class="material-icons">terminal</i>
                 Kernel Logs
             </a>
         </nav>
@@ -254,7 +309,7 @@
             <form action="{% url 'auth_app:logout' %}" method="POST" class="m-0">
                 {% csrf_token %}
                 <button type="submit" class="sidebar-link w-full border-none cursor-pointer text-sm opacity-70 hover:opacity-100" style="background:none;">
-                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+                    <i class="material-icons">logout</i>
                     Terminate Session
                 </button>
             </form>
@@ -265,7 +320,7 @@
         <header class="admin-header">
             <div class="header-left">
                 <button class="mobile-toggle" id="toggle-sidebar" aria-label="Toggle Sidebar">
-                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    <i class="material-icons text-white">menu</i>
                 </button>
                 <div class="breadcrumbs text-sm opacity-50" style="font-weight: 500;">
                     <span class="opacity-40">Admin</span>
@@ -297,9 +352,10 @@
             {% endfor %}
         </div>
         {% endif %}
-
         <main class="admin-main">
+            <div class="animate-fade-in">
             {% block content %}{% endblock %}
+            </div>
         </main>
     </div>
 
@@ -321,6 +377,177 @@
                 overlay.style.display = 'none';
             });
         }
+    </script>
+    
+    <!-- System Modal rendered as first child of body via JS - bypasses all CSS stacking context issues -->
+    <script>
+    (function() {
+        // Inject modal CSS directly into <head>
+        var style = document.createElement('style');
+        style.textContent = `
+            #wm-confirm-overlay {
+                position: fixed !important;
+                top: 0 !important; left: 0 !important;
+                width: 100vw !important; height: 100vh !important;
+                background: rgba(0,0,0,0.85) !important;
+                z-index: 2147483647 !important;
+                display: none;
+                align-items: center;
+                justify-content: center;
+                font-family: 'Outfit', sans-serif;
+            }
+            #wm-confirm-overlay.active { display: flex !important; }
+            #wm-confirm-box {
+                background: #13141a;
+                border: 1px solid rgba(255,255,255,0.08);
+                border-radius: 20px;
+                width: 90%;
+                max-width: 440px;
+                padding: 36px;
+                box-shadow: 0 32px 64px rgba(0,0,0,0.7);
+                animation: wmPop 0.25s cubic-bezier(0.34,1.56,0.64,1);
+                position: relative;
+            }
+            @keyframes wmPop {
+                from { opacity:0; transform:scale(0.88) translateY(10px); }
+                to   { opacity:1; transform:scale(1)    translateY(0);    }
+            }
+            #wm-confirm-icon-wrap {
+                width: 56px; height: 56px; border-radius: 50%;
+                background: rgba(239,68,68,0.12);
+                display: flex; align-items: center; justify-content: center;
+                margin: 0 auto 16px;
+            }
+            #wm-confirm-icon { color: #ef4444; font-size: 26px; }
+            #wm-confirm-title {
+                text-align: center; font-size: 15px; font-weight: 900;
+                color: #fff; letter-spacing: 1px; text-transform: uppercase;
+                margin: 0 0 12px;
+            }
+            #wm-confirm-msg {
+                text-align: center; font-size: 13px;
+                color: rgba(255,255,255,0.55); line-height: 1.6; margin: 0 0 10px;
+            }
+            #wm-confirm-rationale {
+                background: rgba(255,255,255,0.03); border-radius: 10px;
+                padding: 12px; font-size: 10px; color: rgba(255,255,255,0.25);
+                text-transform: uppercase; line-height: 1.5; margin-bottom: 20px;
+                font-family: 'JetBrains Mono', monospace; display: none;
+            }
+            #wm-verify-block { margin-bottom: 20px; display: none; }
+            #wm-verify-label {
+                font-size: 11px; color: rgba(255,255,255,0.35);
+                text-transform: uppercase; font-weight: 700; letter-spacing: 1px;
+                margin-bottom: 8px; display: block;
+            }
+            #wm-verify-input {
+                width: 100%; background: rgba(0,0,0,0.3);
+                border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;
+                padding: 11px 16px; color: #fff; font-size: 15px;
+                text-align: center; letter-spacing: 3px; font-family: monospace;
+                outline: none; box-sizing: border-box;
+                transition: border-color 0.2s;
+            }
+            #wm-verify-input:focus { border-color: rgba(239,68,68,0.5); }
+            #wm-confirm-footer {
+                display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+            }
+            .wm-btn {
+                padding: 12px 20px; border-radius: 12px; font-weight: 700;
+                font-size: 12px; letter-spacing: 0.5px; cursor: pointer;
+                border: none; text-transform: uppercase; transition: all 0.2s;
+            }
+            #wm-btn-cancel {
+                background: rgba(255,255,255,0.05);
+                border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.6);
+            }
+            #wm-btn-cancel:hover { background: rgba(255,255,255,0.1); color: #fff; }
+            #wm-btn-confirm {
+                background: #ef4444; color: #fff;
+                box-shadow: 0 4px 20px rgba(239,68,68,0.3);
+            }
+            #wm-btn-confirm:hover:not(:disabled) {
+                background: #dc2626; transform: translateY(-1px);
+                box-shadow: 0 6px 24px rgba(239,68,68,0.4);
+            }
+            #wm-btn-confirm:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
+        `;
+        document.head.appendChild(style);
+
+        // Inject modal HTML directly into <body>
+        var overlay = document.createElement('div');
+        overlay.id = 'wm-confirm-overlay';
+        overlay.innerHTML = `
+            <div id="wm-confirm-box">
+                <div id="wm-confirm-icon-wrap">
+                    <span class="material-icons" id="wm-confirm-icon">warning</span>
+                </div>
+                <h3 id="wm-confirm-title">Confirm Action</h3>
+                <p id="wm-confirm-msg"></p>
+                <div id="wm-confirm-rationale"></div>
+                <div id="wm-verify-block">
+                    <span id="wm-verify-label"></span>
+                    <input id="wm-verify-input" type="text" autocomplete="off" spellcheck="false">
+                </div>
+                <div id="wm-confirm-footer">
+                    <button class="wm-btn" id="wm-btn-cancel">Cancel</button>
+                    <button class="wm-btn" id="wm-btn-confirm">Confirm</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+
+        window.systemModal = {
+            show: function(opts) {
+                var ov      = document.getElementById('wm-confirm-overlay');
+                var title   = document.getElementById('wm-confirm-title');
+                var msg     = document.getElementById('wm-confirm-msg');
+                var rat     = document.getElementById('wm-confirm-rationale');
+                var vBlock  = document.getElementById('wm-verify-block');
+                var vLabel  = document.getElementById('wm-verify-label');
+                var vInput  = document.getElementById('wm-verify-input');
+                var btnConf = document.getElementById('wm-btn-confirm');
+                var btnCan  = document.getElementById('wm-btn-cancel');
+
+                title.innerText   = opts.title    || 'Confirm Action';
+                msg.innerText     = opts.message   || 'Are you sure?';
+                rat.innerText     = opts.rationale || '';
+                rat.style.display = opts.rationale ? 'block' : 'none';
+                btnConf.innerText = opts.confirmText || 'CONFIRM';
+
+                if (opts.confirmClass === 'btn-primary') {
+                    btnConf.style.background = '#a855f7';
+                    btnConf.style.boxShadow  = '0 4px 20px rgba(168,85,247,0.3)';
+                } else {
+                    btnConf.style.background = '#ef4444';
+                    btnConf.style.boxShadow  = '0 4px 20px rgba(239,68,68,0.3)';
+                }
+
+                vInput.value = '';
+                if (opts.verifyPhrase) {
+                    vBlock.style.display = 'block';
+                    vLabel.innerText     = 'Type "' + opts.verifyPhrase + '" to confirm';
+                    btnConf.disabled     = true;
+                    vInput.oninput = function() {
+                        btnConf.disabled = vInput.value.toLowerCase() !== opts.verifyPhrase.toLowerCase();
+                    };
+                } else {
+                    vBlock.style.display = 'none';
+                    btnConf.disabled     = false;
+                }
+
+                ov.classList.add('active');
+
+                return new Promise(function(resolve) {
+                    btnConf.onclick = function() { ov.classList.remove('active'); resolve(true);  };
+                    btnCan.onclick  = function() { ov.classList.remove('active'); resolve(false); };
+                    ov.onclick = function(e) {
+                        if (e.target === ov) { ov.classList.remove('active'); resolve(false); }
+                    };
+                });
+            }
+        };
+    })();
     </script>
     
     {% block extra_js %}{% endblock %}

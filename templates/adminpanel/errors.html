@@ -17,7 +17,7 @@
         <form action="{% url 'adminpanel:error_clear_all' %}" method="POST" class="m-0" onsubmit="return confirm('Purge ALL system exception logs? This action is non-reversible.');">
             {% csrf_token %}
             <button type="submit" class="admin-btn btn-danger-glow" style="height: 44px; padding: 0 24px; font-size: 11px;">
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right: 8px;"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1-1v3M4 7h16"/></svg>
+                <i class="material-icons" style="margin-right: 8px;">delete_sweep</i>
                 PURGE ALL SIGNATURES
             </button>
         </form>
@@ -48,9 +48,9 @@
                         <div class="occurrence-chip">x{{ err.occurrence_count }}</div>
                         <form action="{% url 'adminpanel:error_delete' err.id %}" method="POST" class="m-0">
                             {% csrf_token %}
-                            <button type="submit" class="error-delete-btn" title="Purge Signature">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-                            </button>
+                             <button type="submit" class="error-delete-btn" title="Purge Signature">
+                                 <i class="material-icons">delete_outline</i>
+                             </button>
                         </form>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                     
                     <details class="trace-details">
                         <summary class="text-[10px] font-black uppercase tracking-widest opacity-60 cursor-pointer hover:opacity-100 transition-all select-none d-flex align-center gap-2 hover:text-danger">
-                            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                            <i class="material-icons" style="font-size: 18px;">search</i>
                             Deep Spectrum Trace <span class="arrow-up">↑</span>
                         </summary>
                         <div class="trace-pre mt-6 p-6 rounded-xl bg-black/40 border border-white-5 font-mono shadow-inner w-full" style="font-size: 11px; line-height: 1.8; overflow-x: auto;">
@@ -81,7 +81,7 @@
             {% empty %}
             <div class="text-center py-48 opacity-20">
                 <div class="mb-8">
-                    <svg width="60" height="60" fill="none" stroke="currentColor" stroke-width="1"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <i class="material-icons" style="font-size: 60px;">check_circle</i>
                 </div>
                 <p class="font-mono text-xs letter-spacing-4 uppercase">Kernel Status: Nominal. No anomalies detected.</p>
             </div>

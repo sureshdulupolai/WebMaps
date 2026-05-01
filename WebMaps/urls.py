@@ -27,6 +27,7 @@ urlpatterns = [
     path('adminpanel/', include('adminpanel.urls', namespace='adminpanel')),
     path('payments/', include('payments.urls', namespace='payments')),
     path('notifications/', include('notifications.urls', namespace='notifications')),
+    path('coupon/', include('coupon.urls', namespace='coupon')),
 
     # API endpoints
     path('api/analytics/', include('analytics.urls', namespace='analytics')),

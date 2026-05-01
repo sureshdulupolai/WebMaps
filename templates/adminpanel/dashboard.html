@@ -20,8 +20,8 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         <!-- Identities Card -->
         <div class="glass-card d-flex align-center gap-4" style="padding: 16px 20px;">
-            <div class="stat-icon m-0" style="background: rgba(168, 85, 247, 0.1); color: var(--primary); width: 40px; height: 40px;">
-                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2m8-10a4 4 0 110-8 4 4 0 010 8z"/></svg>
+            <div class="stat-icon m-0" style="background: rgba(168, 85, 247, 0.1); color: var(--primary); width: 40px; height: 40px; display: grid; place-items: center;">
+                <i class="material-icons">people</i>
             </div>
             <div>
                 <div class="text-[10px] opacity-40 uppercase font-black mb-0.5">Identities</div>
@@ -31,8 +31,8 @@
 
         <!-- Entities Card -->
         <div class="glass-card d-flex align-center gap-4" style="padding: 16px 20px;">
-            <div class="stat-icon m-0" style="background: rgba(99, 102, 241, 0.1); color: var(--secondary); width: 40px; height: 40px;">
-                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+            <div class="stat-icon m-0" style="background: rgba(99, 102, 241, 0.1); color: var(--secondary); width: 40px; height: 40px; display: grid; place-items: center;">
+                <i class="material-icons">business</i>
             </div>
             <div>
                 <div class="text-[10px] opacity-40 uppercase font-black mb-0.5">Entities</div>
@@ -42,8 +42,8 @@
 
         <!-- Moderation Card -->
         <div class="glass-card d-flex align-center gap-4" style="padding: 16px 20px;">
-            <div class="stat-icon m-0" style="background: rgba(245, 158, 11, 0.1); color: var(--warning); width: 40px; height: 40px;">
-                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <div class="stat-icon m-0" style="background: rgba(245, 158, 11, 0.1); color: var(--warning); width: 40px; height: 40px; display: grid; place-items: center;">
+                <i class="material-icons">history</i>
             </div>
             <div>
                 <div class="text-[10px] opacity-40 uppercase font-black mb-0.5">Moderation</div>
@@ -53,8 +53,8 @@
 
         <!-- Credits Card -->
         <div class="glass-card d-flex align-center gap-4" style="padding: 16px 20px;">
-            <div class="stat-icon m-0" style="background: rgba(16, 185, 129, 0.1); color: var(--success); width: 40px; height: 40px;">
-                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138z"/></svg>
+            <div class="stat-icon m-0" style="background: rgba(16, 185, 129, 0.1); color: var(--success); width: 40px; height: 40px; display: grid; place-items: center;">
+                <i class="material-icons">verified_user</i>
             </div>
             <div>
                 <div class="text-[10px] opacity-40 uppercase font-black mb-0.5">Credits</div>
@@ -68,7 +68,7 @@
         <div class="glass-card p-0 overflow-hidden">
             <div class="p-6 border-bottom border-white-5 d-flex justify-between align-center">
                 <div class="d-flex align-center gap-3">
-                    <div style="color: var(--primary);"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+                    <div style="color: var(--primary);"><i class="material-icons">check_circle</i></div>
                     <h2 class="text-sm font-bold m-0 text-white">Verification Queue</h2>
                 </div>
                 <span class="status-badge badge-info" style="font-size: 8px;">{{ recent_listings|length }} PENDING</span>
@@ -97,10 +97,10 @@
                             <td>
                                 <div class="d-flex gap-2 justify-end">
                                     <form method="post" action="{% url 'adminpanel:approve_listing' listing.slug %}" class="m-0">
-                                        {% csrf_token %}<button type="submit" class="action-icon-btn" style="color: var(--success); width: 28px; height: 28px;" title="Verify"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></button>
+                                        {% csrf_token %}<button type="submit" class="action-icon-btn" style="color: var(--success); width: 28px; height: 28px;" title="Verify"><i class="material-icons">check</i></button>
                                     </form>
                                     <a href="{% url 'adminpanel:listing_detail' listing.slug %}" class="action-icon-btn" style="color: var(--primary); width: 28px; height: 28px;" title="Audit">
-                                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                        <i class="material-icons">visibility</i>
                                     </a>
                                 </div>
                             </td>
@@ -126,7 +126,7 @@
         <div class="glass-card p-0 overflow-hidden">
             <div class="p-6 border-bottom border-white-5 d-flex justify-between align-center">
                 <div class="d-flex align-center gap-3">
-                    <div style="color: var(--danger);"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+                    <div style="color: var(--danger);"><i class="material-icons">report_problem</i></div>
                     <h2 class="text-sm font-bold m-0 text-white">Kernel Anomalies</h2>
                 </div>
                 <a href="{% url 'adminpanel:errors' %}" class="text-[10px] font-bold opacity-40 hover:opacity-100 uppercase letter-spacing-1">Live Logs &rarr;</a>
@@ -141,12 +141,12 @@
                         <div class="text-[10px] opacity-30 font-mono truncate">{{ err.url_path }} — {{ err.last_seen_at|timesince }} ago</div>
                     </div>
                     <a href="{% url 'adminpanel:errors' %}" class="action-icon-btn" style="width: 24px; height: 24px;">
-                        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
+                        <i class="material-icons">chevron_right</i>
                     </a>
                 </div>
                 {% empty %}
                 <div class="text-center py-24 opacity-15">
-                    <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" class="mx-auto block mb-3"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    <i class="material-icons mb-3" style="font-size: 40px; display: block;">offline_bolt</i>
                     <p class="text-[10px] font-mono letter-spacing-1 uppercase">Kernel Status: Nominal</p>
                 </div>
                 {% endfor %}

@@ -4,6 +4,7 @@ adminpanel/views.py — Custom developer admin dashboard (NOT Django's /admin/).
 import logging
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
+from django.db.models import Sum
 from django.views.decorators.http import require_POST
 
 from auth_app.decorators import jwt_login_required, role_required
@@ -14,6 +15,7 @@ from hosts.services import approve_listing, reject_listing
 from errors.models import AppError
 from analytics.models import AnalyticsEvent
 from payments.models import Subscription
+from coupon.models import Coupon, CouponUsage
 
 logger = logging.getLogger('webmaps')
 
@@ -138,6 +140,17 @@ def user_delete_view(request, user_id):
 @jwt_login_required
 @role_required('admin')
 @require_POST
+def listing_update_signal_view(request, slug):
+    listing = get_object_or_404(Listing, slug=slug)
+    mobile = request.POST.get('mobile_number', '').strip()
+    listing.mobile_number = mobile
+    listing.save()
+    return JsonResponse({'status': 'success'})
+
+
+@jwt_login_required
+@role_required('admin')
+@require_POST
 def listing_delete_view(request, slug):
     listing = get_object_or_404(Listing, slug=slug)
     listing.deleted_at = timezone.now()
@@ -170,4 +183,82 @@ def error_delete_view(request, error_id):
 def error_clear_all_view(request):
     AppError.objects.all().delete()
     return redirect('adminpanel:errors')
+
+
+@jwt_login_required
+@role_required('admin')
+def coupon_list_view(request):
+    coupons = Coupon.objects.all().order_by('-created_at')
+    usage_logs = CouponUsage.objects.all().order_by('-used_at')[:20]
+    users = User.objects.filter(is_active=True, role='host')
+    
+    # Calculate Stats
+    stats = {
+        'total_coupons': coupons.count(),
+        'active_coupons': coupons.filter(is_active=True).count(),
+        'total_redemptions': CouponUsage.objects.count(),
+        'total_discount_given': CouponUsage.objects.aggregate(total=Sum('discount_applied'))['total'] or 0
+    }
+    
+    return render(request, 'adminpanel/coupons.html', {
+        'coupons': coupons,
+        'usage_logs': usage_logs,
+        'users': users,
+        'stats': stats
+    })
+
+@jwt_login_required
+@role_required('admin')
+@require_POST
+def coupon_create_view(request):
+    import random
+    import string
+    
+    code = request.POST.get('code', '').strip().upper()
+    discount_type = request.POST.get('discount_type')
+    discount_value = request.POST.get('discount_value')
+    min_purchase = request.POST.get('min_purchase_amount', 0)
+    target = request.POST.get('target')
+    user_id = request.POST.get('user_id')
+    expire_date = request.POST.get('expire_date')
+    
+    user = None
+    if target == 'specific' and user_id:
+        user = get_object_or_404(User, id=user_id)
+
+    if not code:
+        # Generate unique random 12-character code
+        import random, string
+        while True:
+            code = ''.join(random.choices(string.ascii_uppercase + string.digits, k=12))
+            if not Coupon.objects.filter(code=code).exists():
+                break
+
+    Coupon.objects.create(
+        code=code,
+        discount_type=discount_type,
+        discount_value=discount_value,
+        min_purchase_amount=min_purchase,
+        target=target,
+        user=user,
+        expire_date=expire_date
+    )
+    return redirect('adminpanel:coupons')
+
+@jwt_login_required
+@role_required('admin')
+@require_POST
+def coupon_toggle_view(request, coupon_id):
+    coupon = get_object_or_404(Coupon, id=coupon_id)
+    coupon.is_active = not coupon.is_active
+    coupon.save()
+    return redirect('adminpanel:coupons')
+
+@jwt_login_required
+@role_required('admin')
+@require_POST
+def coupon_delete_view(request, coupon_id):
+    coupon = get_object_or_404(Coupon, id=coupon_id)
+    coupon.delete()
+    return redirect('adminpanel:coupons')
 

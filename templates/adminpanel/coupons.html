@@ -1,0 +1,568 @@
+{% extends 'adminpanel/admin_base.html' %}
+{% load static %}
+
+{% block title %}Promotions & Coupons — WebMaps{% endblock %}
+{% block breadcrumb %}Promotions{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* ─── PREMIUM DESIGN SYSTEM 5.0 ─── */
+    :root {
+        --spacing-xs: 8px;
+        --spacing-sm: 16px;
+        --spacing-md: 24px;
+        --spacing-lg: 32px;
+        --spacing-xl: 48px;
+        --card-bg: rgba(255, 255, 255, 0.02);
+
+        /* Card Gradients */
+        --grad-public: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        --grad-private: linear-gradient(135deg, #4c1d95 0%, #1e1b4b 100%);
+        --grad-secret: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
+    }
+
+    .animate-fade-in {
+        max-width: 100%;
+    }
+
+    .dashboard-layout {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: var(--spacing-xl);
+    }
+
+    @media (max-width: 1200px) {
+        .dashboard-layout {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* ─── STATS GRID ─── */
+    .stats-container {
+        display: flex;
+        gap: 24px;
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .premium-stat-card {
+        flex: 1;
+        background: var(--card-bg);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        padding: 24px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .stat-icon-wrapper {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.03);
+    }
+
+    .stat-value {
+        font-size: 22px;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 2px;
+    }
+
+    .stat-label {
+        font-size: 10px;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.3);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* ─── BANK CARD (FIXED UI) ─── */
+    .bank-card {
+        width: 100%;
+        height: 250px;
+        background: var(--grad-public);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 28px;
+        padding: 40px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .card-top {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .card-chip {
+        width: 52px;
+        height: 38px;
+        background: linear-gradient(135deg, #ffd700, #b8860b);
+        border-radius: 8px;
+    }
+
+    .card-number {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 30px;
+        font-weight: 800;
+        color: #fff;
+        letter-spacing: 4px;
+    }
+
+    .card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 100%;
+    }
+
+    .card-info-group {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .card-info-label {
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.4);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .card-info-value {
+        font-size: 15px;
+        font-weight: 700;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    .card-discount-tag {
+        font-size: 20px;
+        font-weight: 900;
+        color: var(--admin-accent);
+        text-shadow: 0 0 20px var(--admin-accent-glow);
+    }
+
+    /* ─── FORM & FIELDS ─── */
+    .form-section {
+        background: var(--card-bg);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 28px;
+        padding: 40px;
+    }
+
+    .form-group-spaced {
+        margin-bottom: 32px;
+    }
+
+    .label-premium {
+        font-size: 11px;
+        font-weight: 900;
+        color: rgba(255, 255, 255, 0.4);
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+    }
+
+    .premium-dropdown {
+        position: relative;
+        width: 100%;
+    }
+
+    .dropdown-trigger {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 14px;
+        padding: 18px 24px;
+        color: #fff;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #14181f;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 14px;
+        z-index: 1000;
+        display: none;
+        margin-top: 10px;
+        overflow: hidden;
+    }
+
+    .dropdown-menu.show {
+        display: block;
+    }
+
+    .dropdown-item {
+        padding: 16px 24px;
+        color: rgba(255, 255, 255, 0.6);
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .dropdown-item:hover {
+        background: var(--admin-accent);
+        color: #fff;
+    }
+
+    .input-hint {
+        margin-top: 14px;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Lucide-style Icon Colors mapping to FA */
+    .fa-primary { color: #a855f7; }
+    .fa-success { color: #10b981; }
+    .fa-warning { color: #f59e0b; }
+    .fa-danger { color: #ef4444; }
+
+    /* Utility for hidden state */
+    .hidden-field {
+        display: none !important;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in">
+    <!-- STATS -->
+        <div class="premium-stat-card">
+            <div class="stat-icon-wrapper">
+                <i class="material-icons fa-primary">inventory_2</i>
+            </div>
+            <div class="stat-info">
+                <div class="stat-value">{{ stats.total_coupons }}</div>
+                <div class="stat-label">Total Coupons</div>
+            </div>
+        </div>
+        <div class="premium-stat-card">
+            <div class="stat-icon-wrapper">
+                <i class="material-icons fa-success">check_circle</i>
+            </div>
+            <div class="stat-info">
+                <div class="stat-value">{{ stats.active_coupons }}</div>
+                <div class="stat-label">Active Now</div>
+            </div>
+        </div>
+        <div class="premium-stat-card">
+            <div class="stat-icon-wrapper">
+                <i class="material-icons fa-warning">currency_rupee</i>
+            </div>
+            <div class="stat-info">
+                <div class="stat-value">₹{{ stats.total_discount_given }}</div>
+                <div class="stat-label">Total Saved</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-layout">
+        <div class="form-section">
+            <div class="d-flex justify-content-between align-items-center mb-10">
+                <h3 class="h6 m-0 font-weight-bold d-flex align-items-center gap-3">
+                    <i class="material-icons" style="color: var(--admin-accent);">add_circle</i>
+                    INITIALIZE COUPON
+                </h3>
+                <span class="status-pill">
+                    <div class="status-dot"></div> V5 SECURE
+                </span>
+            </div>
+
+            <form action="{% url 'adminpanel:coupon_create' %}" method="POST">
+                {% csrf_token %}
+
+                <div class="form-group-spaced">
+                    <label class="label-premium">Coupon Identification Key</label>
+                    <div class="d-flex gap-3">
+                        <input type="text" name="code" id="input-code" class="admin-input flex-grow-1"
+                            placeholder="GENERATE UNIQUE CODE" maxlength="18">
+                        <button type="button" class="btn-magic" id="btn-generate"
+                            style="background: var(--admin-accent); border:none; border-radius:14px; padding:0 24px; color:#fff; cursor:pointer;">
+                            <i class="material-icons">auto_fix_high</i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group-spaced">
+                    <label class="label-premium">Discount Methodology</label>
+                    <div class="premium-dropdown" id="dropdown-type">
+                        <div class="dropdown-trigger">
+                            <span class="selected-text">Percentage (%)</span>
+                            <i class="material-icons" style="font-size: 18px; opacity: 0.5;">expand_more</i>
+                        </div>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-item" data-value="percentage">Percentage (%)</div>
+                            <div class="dropdown-item" data-value="fixed">Fixed Amount (₹)</div>
+                        </div>
+                        <input type="hidden" name="discount_type" value="percentage" id="hidden-type">
+                    </div>
+                </div>
+
+                <div class="form-group-spaced" style="margin-top: 40px;">
+                    <label class="label-premium">Precision Value</label>
+                    <input type="number" name="discount_value" id="input-value" class="admin-input" placeholder="10"
+                        required>
+                </div>
+
+                <!-- CONDITIONAL THRESHOLD -->
+                <div class="form-group-spaced hidden-field" id="threshold-container">
+                    <label class="label-premium">Usage Threshold (Min. Order ₹)</label>
+                    <input type="number" name="min_purchase_amount" class="admin-input" value="0">
+                    <p class="input-hint">Threshold active. Code works only for orders above this value.</p>
+                </div>
+
+                <div class="form-group-spaced">
+                    <label class="label-premium">Distribution Scope</label>
+                    <div class="premium-dropdown" id="dropdown-target">
+                        <div class="dropdown-trigger">
+                            <span class="selected-text">Public (Universal Access)</span>
+                            <i class="material-icons" style="font-size: 18px; opacity: 0.5;">expand_more</i>
+                        </div>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-item" data-value="all">Public (Universal Access)</div>
+                            <div class="dropdown-item" data-value="specific">Private (Target User Only)</div>
+                            <div class="dropdown-item" data-value="hidden">Secret (Hidden/Influencer)</div>
+                        </div>
+                        <input type="hidden" name="target" value="all" id="hidden-target">
+                    </div>
+                </div>
+
+                <!-- CONDITIONAL USER -->
+                <div id="user-selector-container" class="form-group-spaced hidden-field">
+                    <label class="label-premium">Designated Recipient</label>
+                    <div class="premium-dropdown" id="dropdown-user">
+                        <div class="dropdown-trigger">
+                            <span class="selected-text" id="selected-user-name">-- Select User Account --</span>
+                            <i class="material-icons" style="font-size: 18px; opacity: 0.5;">expand_more</i>
+                        </div>
+                        <div class="dropdown-menu">
+                            {% for user in users %}
+                            <div class="dropdown-item user-option" data-value="{{ user.id }}"
+                                data-name="{{ user.username }}">
+                                {{ user.username }} ({{ user.email }})
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <input type="hidden" name="user_id" value="" id="hidden-user">
+                    </div>
+                </div>
+
+                <div class="form-group-spaced">
+                    <label class="label-premium">Termination Date</label>
+                    <input type="datetime-local" name="expire_date" class="admin-input" required>
+                </div>
+
+                <button type="submit" class="admin-btn btn-primary w-full justify-content-center py-4"
+                    style="font-weight: 900; letter-spacing: 2px; border-radius: 16px;">
+                    DEPLOY COUPON ASSET
+                </button>
+            </form>
+        </div>
+
+        <div class="visual-panel">
+            <div class="bank-card" id="preview-bank-card">
+                <div class="card-top">
+                    <div class="card-chip"></div>
+                    <i class="material-icons" style="font-size: 32px; opacity: 0.1;">layers</i>
+                </div>
+                <div class="card-number" id="preview-code-text">WEBMAPS-GLOBAL</div>
+                <div class="card-footer">
+                    <div class="card-info-group">
+                        <div class="card-info-label">Scope Allocation</div>
+                        <div class="card-info-value" id="preview-user-text">PUBLIC ACCESS</div>
+                    </div>
+                    <div class="card-discount-tag" id="preview-value-text">10% OFF</div>
+                </div>
+            </div>
+
+            <div class="glass-card-premium p-0 overflow-hidden" style="margin-top: 64px;">
+                <div class="px-8 py-6 border-bottom d-flex align-items-center justify-content-between"
+                    style="border-color: rgba(255,255,255,0.05); gap: 20px;">
+                    <h3 class="h6 m-0 font-weight-bold">PROMOTION REGISTRY</h3>
+                    <div class="status-pill">
+                        <div class="status-dot"></div> ACTIVE
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="premium-table">
+                        <thead>
+                            <tr>
+                                <th class="px-8">ASSET ID</th>
+                                <th>VALUE</th>
+                                <th>SCOPE</th>
+                                <th class="text-end px-8">CMD</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for coupon in coupons %}
+                            <tr>
+                                <td class="px-8">
+                                    <div class="font-weight-bold text-white text-sm uppercase">{{ coupon.code }}</div>
+                                    <div class="text-xs opacity-20">EXP: {{ coupon.expire_date|date:"M d" }}</div>
+                                </td>
+                                <td>
+                                    <div class="badge-premium">
+                                        {% if coupon.discount_type == 'percentage' %}{{ coupon.discount_value }}%{% else %}₹{{ coupon.discount_value }}{% endif %}
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="text-xs opacity-40 uppercase font-weight-bold">{{ coupon.target }}</span>
+                                </td>
+                                <td class="text-end px-8">
+                                    <div class="d-flex justify-content-end gap-3">
+                                        <form action="{% url 'adminpanel:coupon_toggle' coupon.id %}" method="POST" class="m-0">
+                                            {% csrf_token %}
+                                            <button class="action-icon-btn" title="Toggle Coupon Status">
+                                                <i class="material-icons">power_settings_new</i>
+                                            </button>
+                                        </form>
+                                        <form action="{% url 'adminpanel:coupon_delete' coupon.id %}" method="POST" class="m-0">
+                                            {% csrf_token %}
+                                            <button class="action-icon-btn btn-danger" title="Delete Coupon Forever">
+                                                <i class="material-icons">delete</i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="4" class="text-center py-10 opacity-20">REGISTRY EMPTY</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // ─── DROPDOWN COMPONENT ───
+    function initDropdown(id, hiddenId, onSelect = null) {
+        const container = document.getElementById(id);
+        if (!container) return;
+        const trigger = container.querySelector('.dropdown-trigger');
+        const menu = container.querySelector('.dropdown-menu');
+        const hidden = document.getElementById(hiddenId);
+        const selectedText = container.querySelector('.selected-text');
+
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.querySelectorAll('.dropdown-menu').forEach(m => {
+                if (m !== menu) m.classList.remove('show');
+            });
+            menu.classList.toggle('show');
+        });
+
+        menu.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const val = item.getAttribute('data-value');
+                const name = item.getAttribute('data-name');
+                hidden.value = val;
+                selectedText.textContent = item.textContent.trim();
+                menu.classList.remove('show');
+                if (onSelect) onSelect(val, name);
+                updatePreview();
+            });
+        });
+    }
+
+    window.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('show'));
+    });
+
+    // ─── CONDITIONAL LOGIC ───
+    const grads = {
+        all: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+        specific: 'linear-gradient(135deg, #4c1d95 0%, #1e1b4b 100%)',
+        hidden: 'linear-gradient(135deg, #064e3b 0%, #022c22 100%)'
+    };
+
+    // Toggle Threshold Field
+    function toggleThreshold(val) {
+        const threshold = document.getElementById('threshold-container');
+        if (val === 'fixed') {
+            threshold.classList.remove('hidden-field');
+        } else {
+            threshold.classList.add('hidden-field');
+        }
+    }
+
+    // Toggle User Selector Field
+    function toggleUserSelector(val) {
+        const sel = document.getElementById('user-selector-container');
+        const card = document.getElementById('preview-bank-card');
+        card.style.background = grads[val];
+
+        if (val === 'specific' || val === 'hidden') {
+            sel.classList.remove('hidden-field');
+        } else {
+            sel.classList.add('hidden-field');
+            document.getElementById('hidden-user').value = '';
+            document.getElementById('selected-user-name').textContent = '-- Select User Account --';
+            document.getElementById('preview-user-text').textContent = 'PUBLIC ACCESS';
+        }
+    }
+
+    // Initialize Dropdowns
+    initDropdown('dropdown-type', 'hidden-type', toggleThreshold);
+    initDropdown('dropdown-target', 'hidden-target', toggleUserSelector);
+    initDropdown('dropdown-user', 'hidden-user', (val, name) => {
+        document.getElementById('preview-user-text').textContent = name || 'PUBLIC ACCESS';
+    });
+
+    // RUN ON LOAD to ensure initial state is correct
+    window.addEventListener('DOMContentLoaded', () => {
+        toggleThreshold(document.getElementById('hidden-type').value);
+        toggleUserSelector(document.getElementById('hidden-target').value);
+        updatePreview();
+    });
+
+    // ─── GEN LOGIC ───
+    const btnGenerate = document.getElementById('btn-generate');
+    const inputCode = document.getElementById('input-code');
+
+    btnGenerate.addEventListener('click', () => {
+        const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+        let code = '';
+        for (let i = 0; i < 12; i++) code += chars.charAt(Math.floor(Math.random() * chars.length));
+        inputCode.value = code;
+        updatePreview();
+    });
+
+    // ─── PREVIEW SYNC ───
+    const inputValue = document.getElementById('input-value');
+    const previewCodeText = document.getElementById('preview-code-text');
+    const previewValueText = document.getElementById('preview-value-text');
+
+    function updatePreview() {
+        previewCodeText.textContent = inputCode.value.toUpperCase() || 'WEBMAPS-GLOBAL';
+        const type = document.getElementById('hidden-type').value;
+        const val = inputValue.value || '10';
+        previewValueText.textContent = type === 'percentage' ? `${val}% OFF` : `₹${val} OFF`;
+    }
+
+    [inputCode, inputValue].forEach(el => el.addEventListener('input', updatePreview));
+</script>
+{% endblock %}

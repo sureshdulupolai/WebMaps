@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'notifications',
     'errors',
     'middleware',
+    'coupon',
 ]
 
 # ─────────────────────────────────────────────

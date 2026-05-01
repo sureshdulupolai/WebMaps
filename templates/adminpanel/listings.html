@@ -12,10 +12,14 @@
             <p class="page-subtitle">Moderation and lifecycle control for registered commercial entities.</p>
         </div>
         <div class="d-flex gap-2">
-            <a href="?status=pending" class="admin-btn {% if status_filter == 'pending' %}btn-primary{% else %}btn-outline{% endif %}">Pending</a>
-            <a href="?status=approved" class="admin-btn {% if status_filter == 'approved' %}btn-primary{% else %}btn-outline{% endif %}">Approved</a>
-            <a href="?status=rejected" class="admin-btn {% if status_filter == 'rejected' %}btn-primary{% else %}btn-outline{% endif %}">Rejected</a>
-            <a href="{% url 'adminpanel:listings' %}" class="admin-btn {% if not status_filter %}btn-primary{% else %}btn-outline{% endif %}">All</a>
+            <a href="?status=pending"
+                class="admin-btn {% if status_filter == 'pending' %}btn-primary{% else %}btn-outline{% endif %}">Pending</a>
+            <a href="?status=approved"
+                class="admin-btn {% if status_filter == 'approved' %}btn-primary{% else %}btn-outline{% endif %}">Approved</a>
+            <a href="?status=rejected"
+                class="admin-btn {% if status_filter == 'rejected' %}btn-primary{% else %}btn-outline{% endif %}">Rejected</a>
+            <a href="{% url 'adminpanel:listings' %}"
+                class="admin-btn {% if not status_filter %}btn-primary{% else %}btn-outline{% endif %}">All</a>
         </div>
     </div>
 
@@ -23,11 +27,14 @@
         <table class="premium-table">
             <thead>
                 <tr>
-                    <th style="padding-left: 24px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Commercial Entity</th>
+                    <th style="padding-left: 24px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">
+                        Commercial Entity</th>
                     <th style="font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Authority (Host)</th>
                     <th style="font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Status Phase</th>
                     <th style="font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Creation Horizon</th>
-                    <th class="text-right" style="padding-right: 24px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Operations</th>
+                    <th class="text-right"
+                        style="padding-right: 24px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">
+                        Operations</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,16 +42,17 @@
                 <tr class="hover:bg-white-5 transition-all">
                     <td style="padding-left: 24px;">
                         <div class="d-flex align-center gap-3">
-                            <div class="entity-preview" style="width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--admin-border); overflow: hidden; display:grid; place-items:center;">
+                            <div class="entity-preview"
+                                style="width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--admin-border); overflow: hidden; display:grid; place-items:center;">
                                 {% if listing.images.exists %}
-                                <img src="{{ listing.images.first.image.url }}" alt="" style="width:100%; height:100%; object-fit:cover;">
-                                {% else %}
-                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" class="opacity-10"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                                {% endif %}
+                                <img src="{{ listing.images.first.image.url }}" alt=""
+                                    style="width:100%; height:100%; object-fit:cover;">
+                                <i class="material-icons opacity-10" style="font-size: 20px;">image</i>
                             </div>
                             <div>
                                 <div class="font-bold text-white text-sm">{{ listing.company_name }}</div>
-                                <div class="text-[9px] opacity-30 font-mono uppercase tracking-wider">{{ listing.category.name|default:"General Entity" }}</div>
+                                <div class="text-[9px] opacity-30 font-mono uppercase tracking-wider">{{
+                                    listing.category.name|default:"General Entity" }}</div>
                             </div>
                         </div>
                     </td>
@@ -54,26 +62,33 @@
                     </td>
                     <td>
                         {% if listing.status == 'approved' %}
-                        <span class="status-badge badge-success" style="font-size: 8px; font-weight: 800;">APPROVED</span>
+                        <span class="status-badge badge-success"
+                            style="font-size: 8px; font-weight: 800;">APPROVED</span>
                         {% elif listing.status == 'rejected' %}
-                        <span class="status-badge badge-danger" style="font-size: 8px; font-weight: 800;">REJECTED</span>
+                        <span class="status-badge badge-danger"
+                            style="font-size: 8px; font-weight: 800;">REJECTED</span>
                         {% else %}
-                        <span class="status-badge badge-warning" style="font-size: 8px; font-weight: 800;">AUDIT PENDING</span>
+                        <span class="status-badge badge-warning" style="font-size: 8px; font-weight: 800;">AUDIT
+                            PENDING</span>
                         {% endif %}
                     </td>
                     <td>
                         <div class="text-xs text-white/60">{{ listing.created_at|date:"M d, Y" }}</div>
-                        <div class="text-[9px] opacity-20 uppercase font-bold">{{ listing.created_at|timesince }} ago</div>
+                        <div class="text-[9px] opacity-20 uppercase font-bold">{{ listing.created_at|timesince }} ago
+                        </div>
                     </td>
                     <td style="padding-right: 24px;">
                         <div class="d-flex gap-2 justify-end">
-                            <a href="{% url 'adminpanel:listing_detail' listing.slug %}" class="action-icon-btn" style="width: 28px; height: 28px; border: 1px solid rgba(255,255,255,0.05);" title="Audit Data">
-                                <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                            <a href="{% url 'adminpanel:listing_detail' listing.slug %}" class="action-icon-btn"
+                                style="width: 28px; height: 28px;" title="Audit Data">
+                                <i class="material-icons">visibility</i>
                             </a>
-                            <form action="{% url 'adminpanel:listing_delete' listing.slug %}" method="POST" class="m-0" onsubmit="return confirm('Purge this commercial entity from registry?');">
+                            <form action="{% url 'adminpanel:listing_delete' listing.slug %}" method="POST" class="m-0"
+                                onsubmit="return confirm('Purge this commercial entity from registry?');">
                                 {% csrf_token %}
-                                <button type="submit" class="action-icon-btn" style="color: var(--danger); width: 28px; height: 28px; border: 1px solid rgba(239, 68, 68, 0.1);" title="Purge">
-                                    <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1-1v3M4 7h16"/></svg>
+                                <button type="submit" class="action-icon-btn btn-danger"
+                                    style="width: 28px; height: 28px;" title="Purge">
+                                    <i class="material-icons">delete</i>
                                 </button>
                             </form>
                         </div>
@@ -82,7 +97,8 @@
                 {% empty %}
                 <tr>
                     <td colspan="5" class="text-center py-24 opacity-20">
-                        <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" class="mx-auto block mb-4"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                        <i class="material-icons mb-4"
+                            style="font-size: 40px; display: block;">business_center</i>
                         <p class="font-mono text-xs letter-spacing-1">REGISTRY SEGMENT IS VACANT</p>
                     </td>
                 </tr>

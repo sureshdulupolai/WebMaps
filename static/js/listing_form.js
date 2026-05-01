@@ -31,6 +31,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const needsPayment = container && container.dataset.needsPayment === 'true';
     let currentStep = needsPayment ? 4 : 1;
     let parsedServices = [];
+    let appliedDiscount = 0;
+    let appliedCoupon = null;
     let marker;
     
     // Calculate listing-specific STORAGE_KEY
@@ -519,7 +521,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const updateCountInput = document.getElementById('id_update_count');
             const currentUpdateCount = updateCountInput ? parseInt(updateCountInput.value) : 0;
             
-            // Surcharge only if editing an existing listing and limit reached
             if (isEdit && currentUpdateCount >= 2 && !isDraft) {
                 updateFee = 20;
             }
@@ -527,18 +528,28 @@ document.addEventListener('DOMContentLoaded', function () {
             const taxableAmount = baseCost + updateFee;
             const cgst = taxableAmount * 0.09;
             const sgst = taxableAmount * 0.09;
-            const total = taxableAmount + cgst + sgst + platformFee;
+            const subtotal = taxableAmount + cgst + sgst + platformFee;
+            
+            const total = Math.max(0, subtotal - appliedDiscount);
 
             pricingContainer.innerHTML = `
                 <div class="pricing-breakdown">
-                    <div class="breakdown-row"><span>Base Plan Cost</span><span>₹${baseCost}</span></div>
-                    ${updateFee > 0 ? `<div class="breakdown-row"><span>Update Surcharge</span><span>₹${updateFee}</span></div>` : ''}
-                    <div class="breakdown-row"><span>Platform Fee</span><span>₹${platformFee}</span></div>
-                    <div class="breakdown-row"><span>CGST (9%)</span><span>₹${cgst.toFixed(2)}</span></div>
-                    <div class="breakdown-row"><span>SGST (9%)</span><span>₹${sgst.toFixed(2)}</span></div>
+                    <div class="breakdown-row"><span>Subtotal</span><span>₹${subtotal.toFixed(2)}</span></div>
+                    ${appliedDiscount > 0 ? `<div class="breakdown-row text-success"><span>Discount (${appliedCoupon})</span><span>-₹${appliedDiscount.toFixed(2)}</span></div>` : ''}
                     <div class="breakdown-row total"><span>Amount Payable</span><span>₹${total.toFixed(2)}</span></div>
                 </div>
             `;
+
+            // Update Submit Button if Free
+            if (total <= 0 && appliedDiscount > 0) {
+                submitBtn.textContent = 'Host for Free';
+                submitBtn.classList.remove('btn-primary');
+                submitBtn.classList.add('btn-success');
+            } else {
+                submitBtn.textContent = 'Pay & Initialize Listing';
+                submitBtn.classList.add('btn-primary');
+                submitBtn.classList.remove('btn-success');
+            }
         } else {
             pricingContainer.classList.add('d-none');
         }
@@ -707,11 +718,35 @@ document.addEventListener('DOMContentLoaded', function () {
                         'Content-Type': 'application/x-www-form-urlencoded',
                         'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
                     },
-                    body: `plan_id=${planId}`
+                    body: `plan_id=${planId}&coupon_code=${appliedCoupon || ''}`
                 });
 
                 const payInfo = await payInitResp.json();
                 if (!payInitResp.ok) throw new Error(payInfo.error || "Order creation failed");
+
+                // 3.5 Handle FREE Flow (Skip Razorpay)
+                if (payInfo.is_free) {
+                    submitBtn.innerHTML = '<span class="loading-spinner"></span> Activating...';
+                    const freeVerifyResp = await fetch('/payments/verify/', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            razorpay_order_id: payInfo.order_id,
+                            razorpay_payment_id: null,
+                            razorpay_signature: null,
+                            listing_slug: activeSlug,
+                            plan_id: planId,
+                            coupon_code: appliedCoupon
+                        })
+                    });
+                    const freeResult = await freeVerifyResp.json();
+                    if (freeVerifyResp.ok) {
+                        window.location.href = freeResult.redirect;
+                    } else {
+                        throw new Error(freeResult.error || "Free activation failed");
+                    }
+                    return;
+                }
 
                 // 3. Open Razorpay
                 const options = {
@@ -731,7 +766,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 razorpay_payment_id: response.razorpay_payment_id,
                                 razorpay_signature: response.razorpay_signature,
                                 listing_slug: activeSlug,
-                                plan_id: planId
+                                plan_id: planId,
+                                coupon_code: appliedCoupon
                             })
                         });
 

@@ -28,6 +28,7 @@ class Listing(models.Model):
     # Listing info
     website_url = models.URLField(max_length=500)
     company_name = models.CharField(max_length=200)
+    mobile_number = models.CharField(max_length=20, blank=True, null=True)
     short_description = models.CharField(max_length=300)
     slug = models.SlugField(max_length=80, unique=True, db_index=True)
 

@@ -12,8 +12,8 @@
             <p class="page-subtitle">Security management for platform identities and authentication states.</p>
         </div>
         <div class="glass-card py-2 px-5 d-flex align-center gap-3">
-            <div class="stat-icon" style="margin: 0; width: 32px; height: 32px; background: rgba(99, 102, 241, 0.1); color: var(--secondary);">
-                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+            <div class="stat-icon" style="margin: 0; width: 32px; height: 32px; background: rgba(99, 102, 241, 0.1); color: var(--secondary); display: grid; place-items: center;">
+                <i class="material-icons" style="font-size: 18px;">people</i>
             </div>
             <div>
                 <div class="text-[10px] opacity-40 uppercase font-black mb-0.5">Total Identities</div>
@@ -63,8 +63,8 @@
                         <div class="d-flex gap-2 justify-end">
                             <form action="{% url 'adminpanel:user_delete' user.id %}" method="POST" class="m-0" onsubmit="return confirm('Terminate this system identity? This action is non-reversible.');">
                                 {% csrf_token %}
-                                <button type="submit" class="action-icon-btn" style="color: var(--danger); width: 28px; height: 28px; border: 1px solid rgba(239, 68, 68, 0.1);" title="Terminate">
-                                    <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1-1v3M4 7h16"/></svg>
+                                <button type="submit" class="action-icon-btn btn-danger" style="width: 28px; height: 28px;" title="Terminate">
+                                    <i class="material-icons">delete</i>
                                 </button>
                             </form>
                         </div>
@@ -73,7 +73,7 @@
                 {% empty %}
                 <tr>
                     <td colspan="5" class="text-center py-20 opacity-20">
-                        <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" class="mx-auto block mb-4"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                        <i class="material-icons mb-4" style="font-size: 40px; display: block;">person_off</i>
                         <p class="font-mono text-xs letter-spacing-1">REGISTRY EMPTY: NO SIGNATURES DETECTED</p>
                     </td>
                 </tr>
