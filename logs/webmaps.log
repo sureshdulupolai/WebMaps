@@ -4344,3 +4344,22 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-01 16:22:12,830] ERROR django.server "GET /adminpanel/listings/ HTTP/1.1" 500 7305
 [2026-05-01 16:22:12,902] WARNING django.security.SuspiciousSession Session data corrupted
 [2026-05-01 16:22:12,911] INFO django.server "GET /coupon/notifications/ HTTP/1.1" 200 40
+[2026-05-01 16:23:29,379] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-01 16:25:04,066] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:25:04,374] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 56597
+[2026-05-01 16:25:09,885] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:25:09,922] INFO django.server "POST /adminpanel/errors/clear-all/ HTTP/1.1" 302 0
+[2026-05-01 16:25:09,948] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:25:09,968] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 25036
+[2026-05-01 16:25:12,782] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:25:12,825] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 29435
+[2026-05-01 16:25:14,727] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:25:14,765] INFO django.server "GET /adminpanel/listings/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 31082
+[2026-05-01 16:25:16,552] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:25:16,581] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 26391
+[2026-05-01 16:25:17,903] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:25:17,924] INFO django.server "GET /adminpanel/listings/ HTTP/1.1" 200 25782
+[2026-05-01 16:25:24,370] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:25:24,390] INFO django.server "GET /adminpanel/listings/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 31082
+[2026-05-01 16:25:26,862] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:25:26,969] INFO django.server "GET /adminpanel/promotions/ HTTP/1.1" 200 40882
