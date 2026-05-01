@@ -23,32 +23,6 @@ def home_view(request):
     """Main map page — search by location or route."""
     return render(request, 'maps/home.html')
 
-def geocode_location(place_name: str) -> dict:
-    """Geocode using OpenStreetMap Nominatim API."""
-    if not place_name:
-        return None
-    try:
-        url = 'https://nominatim.openstreetmap.org/search'
-        params = {
-            'q': place_name,
-            'format': 'json',
-            'limit': 1
-        }
-        headers = {
-            'User-Agent': 'WebMapsApp/1.0 (contact@webmaps.local)'
-        }
-        resp = requests.get(url, params=params, headers=headers, timeout=5)
-        if resp.status_code == 200:
-            data = resp.json()
-            if data:
-                return {
-                    'lat': float(data[0]['lat']),
-                    'lng': float(data[0]['lon']),
-                    'formatted_address': data[0]['display_name']
-                }
-    except Exception as e:
-        logger.error(f"Geocoding failed for '{place_name}': {e}")
-    return None
 
 def serialize_listings(results, rating_filter):
     listings_data = []
@@ -90,7 +64,7 @@ def search_by_location(request):
             'start': None
         })
 
-    distance_filter = float(request.GET.get('distance') or 10)
+    distance_filter = float(request.GET.get('distance') or 20)
     rating_filter = float(request.GET.get('rating') or 0)
     
     # If category is "All" or empty, don't filter by category in service layer if possible

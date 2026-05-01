@@ -54,7 +54,14 @@ def initiate_payment_view(request, slug):
         # 2. Check for update surcharge (matching listing_form.js logic)
         update_surcharge = Decimal('0')
         if listing.slug and listing.update_count >= 2:
-            update_surcharge = Decimal('20')
+            # Check if active subscription exists (Unlimited updates)
+            from .models import Subscription
+            try:
+                sub = Subscription.objects.get(listing=listing)
+                if not (sub.is_active and not sub.is_expired):
+                    update_surcharge = Decimal('22.88') # results in ~29 INR total
+            except Subscription.DoesNotExist:
+                update_surcharge = Decimal('22.88')
         
         # 3. Calculate Taxes (18% total GST)
         taxable_amount = base_amount + update_surcharge
@@ -162,10 +169,11 @@ def verify_payment_view(request):
         if coupon_code:
             try:
                 coupon = Coupon.objects.get(code=coupon_code)
-                # Re-calculate discount for log
-                discount_val = Decimal('0')
-                # (Simple calc here for log purpose)
-                subtotal = (Decimal(str(plan.total_cost)) + (Decimal('20') if listing.update_count >= 2 else Decimal('0'))) * Decimal('1.18') + Decimal('2')
+                # (Re-calculate subtotal for log - MUST match initiate_payment_view)
+                base_amt = Decimal(str(plan.total_cost))
+                surcharge = Decimal('22.88') if listing.update_count >= 2 else Decimal('0')
+                subtotal = (base_amt + surcharge) * Decimal('1.18') + Decimal('2')
+                
                 if coupon.discount_type == 'percentage':
                     discount_val = (subtotal * coupon.discount_value / Decimal('100')).quantize(Decimal('0.01'))
                 else:
@@ -185,8 +193,10 @@ def verify_payment_view(request):
 
         return JsonResponse({'status': 'success', 'redirect': f'/hosts/dashboard/'})
     except Exception as e:
-        logger.error(f"Subscription activation error: {e}")
-        return JsonResponse({'error': 'Could not activate subscription.'}, status=500)
+        import traceback
+        error_trace = traceback.format_exc()
+        logger.error(f"Subscription activation error: {e}\n{error_trace}")
+        return JsonResponse({'error': f'Activation failed: {str(e)}'}, status=500)
 
 
 @jwt_login_required

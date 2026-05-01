@@ -139,6 +139,8 @@ def listing_create_view(request):
         errors['coordinates'] = 'Coordinates are required. Please select a location on the map.'
 
     if errors:
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            return JsonResponse({'errors': errors}, status=400)
         return render(request, 'hosts/listing_form.html', {
             'errors': errors, 'form_data': data, 'action': 'create',
             'razorpay_key': settings.RAZORPAY_KEY_ID,
@@ -192,14 +194,16 @@ def listing_edit_view(request, slug):
     listing = get_object_or_404(Listing, slug=slug, host=request.user, deleted_at__isnull=True)
     from payments.models import Subscription, SubscriptionPlan
 
-    # Check for active subscription
+    # Calculate if payment is needed
     try:
         sub = Subscription.objects.get(listing=listing)
         needs_payment = not sub.is_active or sub.is_expired
     except Subscription.DoesNotExist:
         needs_payment = True
 
-    if not listing.can_update and not needs_payment:
+    # Check for update limit ONLY on GET requests. 
+    # POST requests should fall through to the logic that handles plans/coupons.
+    if request.method == 'GET' and not listing.can_update and not needs_payment:
         plans = SubscriptionPlan.objects.all()
         return render(request, 'hosts/listing_form.html', {
             'listing': listing,
@@ -234,6 +238,7 @@ def listing_edit_view(request, slug):
             'razorpay_key': settings.RAZORPAY_KEY_ID,
             'plans': plans,
             'needs_payment': needs_payment,
+            'has_active_sub': not needs_payment, # If no payment needed, it means sub is active or they are in free trial
             'initial_services_json': json.dumps(services_list),
             'initial_hours_json': json.dumps(listing.operating_hours or {}),
             'form_data': {

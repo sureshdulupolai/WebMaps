@@ -46,9 +46,9 @@ class Subscription(models.Model):
         on_delete=models.SET_NULL,
         null=True, blank=True,
     )
-    razorpay_order_id = models.CharField(max_length=100, blank=True)
-    razorpay_payment_id = models.CharField(max_length=100, blank=True)
-    razorpay_signature = models.CharField(max_length=300, blank=True)
+    razorpay_order_id = models.CharField(max_length=100, blank=True, default='')
+    razorpay_payment_id = models.CharField(max_length=100, blank=True, default='')
+    razorpay_signature = models.CharField(max_length=300, blank=True, default='')
 
     is_active = models.BooleanField(default=False)
     is_trial = models.BooleanField(default=False)
@@ -102,8 +102,8 @@ class PaymentLog(models.Model):
         null=True
     )
     amount = models.DecimalField(max_digits=10, decimal_places=2)
-    razorpay_order_id = models.CharField(max_length=100, blank=True)
-    razorpay_payment_id = models.CharField(max_length=100, blank=True)
+    razorpay_order_id = models.CharField(max_length=100, blank=True, default='')
+    razorpay_payment_id = models.CharField(max_length=100, blank=True, default='')
     status = models.CharField(max_length=20, default='success')
     created_at = models.DateTimeField(auto_now_add=True)
 

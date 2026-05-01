@@ -119,8 +119,16 @@ def update_listing(listing, data: dict, file_obj=None, parsed_services: list = N
     Update a listing (max 2 times enforced for free).
     Returns (success: bool, error: str)
     """
-    if not listing.can_update and not ignore_limit:
-        return False, 'Maximum update limit (2) reached. No further edits allowed.'
+    # Check if they have an active subscription (Unlimited updates)
+    has_active_sub = False
+    try:
+        if hasattr(listing, 'subscription') and listing.subscription.is_active and not listing.subscription.is_expired:
+            has_active_sub = True
+    except Exception:
+        pass
+
+    if not has_active_sub and not listing.can_update and not ignore_limit:
+        return False, 'Maximum update limit (2) reached. Please select a plan to continue.'
 
     # Check coordinates if changed
     lat = data.get('latitude', listing.latitude)

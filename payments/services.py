@@ -54,13 +54,20 @@ def activate_subscription(listing, plan: SubscriptionPlan, payment_data: dict):
     sub.plan = plan
     sub.is_trial = False
     sub.is_active = True
-    sub.razorpay_order_id = payment_data.get('order_id', '')
-    sub.razorpay_payment_id = payment_data.get('payment_id', '')
-    sub.razorpay_signature = payment_data.get('signature', '')
+    sub.razorpay_order_id = payment_data.get('order_id') or ''
+    sub.razorpay_payment_id = payment_data.get('payment_id') or ''
+    sub.razorpay_signature = payment_data.get('signature') or ''
     sub.starts_at = timezone.now()
     sub.expires_at = timezone.now() + timedelta(days=plan.duration_days)
     sub.save()
-    logger.info(f"Subscription activated for listing {listing.slug}: {plan.name}")
+    
+    # Auto-approve listing upon payment so it goes live immediately
+    from hosts.models import ListingStatus
+    listing.status = ListingStatus.APPROVED
+    listing.rejection_reason = ''
+    listing.save(update_fields=['status', 'rejection_reason'])
+    
+    logger.info(f"Subscription activated and listing approved: {listing.slug}")
     return sub
 
 

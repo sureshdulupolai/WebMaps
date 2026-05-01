@@ -29,10 +29,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // 02. STATE & CONSTANTS
     const container = document.querySelector('.container');
     const needsPayment = container && container.dataset.needsPayment === 'true';
+    const hasActiveSub = container && container.dataset.hasSubscription === 'true';
     let currentStep = needsPayment ? 4 : 1;
     let parsedServices = [];
     let appliedDiscount = 0;
     let appliedCoupon = null;
+    let appliedDiscountType = null;
+    let appliedDiscountValue = 0;
     let marker;
     
     // Calculate listing-specific STORAGE_KEY
@@ -520,8 +523,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const updateCountInput = document.getElementById('id_update_count');
             const currentUpdateCount = updateCountInput ? parseInt(updateCountInput.value) : 0;
             
-            if (isEdit && currentUpdateCount >= 2 && !isDraft) {
-                updateFee = 20;
+            if (isEdit && currentUpdateCount >= 2 && !isDraft && !hasActiveSub) {
+                updateFee = 22.88; // Results in ~₹29 after GST and Fee
             }
 
             // --- REFINED CALCULATION LOGIC ---
@@ -567,7 +570,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             <span>Subtotal</span><span>₹${subtotal.toFixed(2)}</span>
                         </div>
                         <div class="breakdown-row" style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:14px; color:#10b981; font-weight:700;">
-                            <span>Coupon: ${appliedCoupon}</span><span>-₹${(isFullDiscount ? rawTaxable : appliedDiscount).toFixed(2)}</span>
+                            <span>Coupon: ${appliedCoupon} (${appliedDiscountType === 'percentage' && appliedDiscountValue == 100 ? '100% OFF' : (appliedDiscountType === 'percentage' ? appliedDiscountValue + '%' : '₹' + appliedDiscountValue)})</span>
+                            <span>-₹${(isFullDiscount ? subtotal : appliedDiscount).toFixed(2)}</span>
                         </div>
                     ` : ''}
                     
@@ -630,20 +634,36 @@ document.addEventListener('DOMContentLoaded', function () {
                     })
                 });
 
-                const result = await response.json();
+                const text = await response.text();
+                let result;
+                try {
+                    result = JSON.parse(text);
+                } catch (e) {
+                    throw new Error("System returned an invalid response format (HTML). Please contact admin.");
+                }
+
                 if (result.valid) {
                     appliedDiscount = parseFloat(result.discount_amount);
                     appliedCoupon = code;
-                    showCouponFeedback(`Coupon applied! Saved ₹${appliedDiscount.toFixed(2)}`, "success");
+                    appliedDiscountType = result.discount_type;
+                    appliedDiscountValue = parseFloat(result.discount_value);
+                    
+                    const displayValue = appliedDiscountType === 'percentage' 
+                        ? `${appliedDiscountValue}%` 
+                        : `₹${appliedDiscountValue}`;
+                    
+                    showCouponFeedback(`Coupon applied! ${displayValue} Off (Saved ₹${appliedDiscount.toFixed(2)})`, "success");
                     renderSummary();
                 } else {
                     appliedDiscount = 0;
                     appliedCoupon = null;
+                    appliedDiscountType = null;
+                    appliedDiscountValue = 0;
                     showCouponFeedback(result.message || "Invalid coupon code.", "error");
                     renderSummary();
                 }
             } catch (err) {
-                showCouponFeedback("Failed to validate coupon. Try again.", "error");
+                showCouponFeedback(err.message || "Failed to validate coupon.", "error");
             } finally {
                 applyCouponBtn.disabled = false;
                 applyCouponBtn.textContent = "Apply";
@@ -666,8 +686,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const updateCountInput = document.getElementById('id_update_count');
             const currentUpdateCount = updateCountInput ? parseInt(updateCountInput.value) : 0;
             
-            if (currentUpdateCount >= 2) {
-                const totalUpdateFee = (20 * 1.18 + 2).toFixed(2);
+            // IF Active Subscription, bypass limit.
+            if (currentUpdateCount >= 2 && !hasActiveSub) {
+                const totalUpdateFee = 29; // Fixed per user request
                 showDialog(
                     "Limit Reached", 
                     `You have already used your 2 free updates. To save these changes, you can proceed with a single update payment of ₹${totalUpdateFee} or select a subscription plan.`,
@@ -695,13 +716,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
             try {
                 const formData = new FormData(form);
-                const response = await fetch(window.location.href, {
+                let postUrl = window.location.pathname;
+                if (!postUrl.endsWith('/')) postUrl += '/';
+
+                const response = await fetch(postUrl, {
                     method: 'POST',
                     body: formData,
                     headers: { 'X-Requested-With': 'XMLHttpRequest' }
                 });
 
-                const result = await response.json();
+                const text = await response.text();
+                let result;
+                try {
+                    result = JSON.parse(text);
+                } catch (e) {
+                    throw new Error("System configuration error: Server returned HTML instead of JSON. Please try refreshing the page.");
+                }
+
                 if (response.ok) {
                     const remaining = 2 - (currentUpdateCount + 1);
                     const msg = remaining > 0 
@@ -797,13 +828,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // 2. Save listing via AJAX
                 const formData = new FormData(form);
-                const response = await fetch(window.location.href, {
+                let postUrl = window.location.pathname;
+                if (!postUrl.endsWith('/')) postUrl += '/';
+
+                const response = await fetch(postUrl, {
                     method: 'POST',
                     body: formData,
                     headers: { 'X-Requested-With': 'XMLHttpRequest' }
                 });
 
-                const result = await response.json();
+                const text = await response.text();
+                let result;
+                try {
+                    result = JSON.parse(text);
+                } catch (e) {
+                    throw new Error("Form submission error: Server returned an unexpected HTML response. This usually happens if your session has expired. Please refresh.");
+                }
+
                 if (!response.ok) {
                     showDialog("Update Blocked", Object.values(result.errors || {e: "Error saving listing"}).join('\n'));
                     submitBtn.disabled = false;
@@ -824,7 +865,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     body: `plan_id=${planId}&coupon_code=${appliedCoupon || ''}`
                 });
 
-                const payInfo = await payInitResp.json();
+                const initText = await payInitResp.text();
+                let payInfo;
+                try {
+                    payInfo = JSON.parse(initText);
+                } catch (e) {
+                    throw new Error("Order creation failed (Invalid Response).");
+                }
+                
                 if (!payInitResp.ok) throw new Error(payInfo.error || "Order creation failed");
 
                 // 3.5 Handle FREE Flow (Skip Razorpay)
@@ -842,7 +890,14 @@ document.addEventListener('DOMContentLoaded', function () {
                             coupon_code: appliedCoupon
                         })
                     });
-                    const freeResult = await freeVerifyResp.json();
+                    const freeText = await freeVerifyResp.text();
+                    let freeResult;
+                    try {
+                        freeResult = JSON.parse(freeText);
+                    } catch (e) {
+                        throw new Error("Free activation failed (Invalid Response).");
+                    }
+
                     if (freeVerifyResp.ok) {
                         window.location.href = freeResult.redirect;
                     } else {
@@ -874,7 +929,16 @@ document.addEventListener('DOMContentLoaded', function () {
                             })
                         });
 
-                        const verifyResult = await verifyResp.json();
+                        const verifyText = await verifyResp.text();
+                        let verifyResult;
+                        try {
+                            verifyResult = JSON.parse(verifyText);
+                        } catch (e) {
+                            showDialog("Verification Error", "Server returned an invalid response. Please check your dashboard.");
+                            submitBtn.disabled = false;
+                            return;
+                        }
+
                         if (verifyResult.status === 'success') {
                             localStorage.removeItem(STORAGE_KEY);
                             window.location.href = verifyResult.redirect || '/hosts/dashboard/';

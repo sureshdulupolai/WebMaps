@@ -79,6 +79,8 @@ def validate_coupon(request):
     return JsonResponse({
         'valid': True,
         'discount_amount': str(discount),
+        'discount_type': coupon.discount_type,
+        'discount_value': str(coupon.discount_value),
         'final_amount': str(final_amount),
         'message': f'Coupon "{code}" applied successfully!'
     })
