@@ -4681,3 +4681,10 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-01 22:06:28,446] INFO django.server "GET /adminpanel/listings/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 31082
 [2026-05-01 22:07:39,891] WARNING django.security.SuspiciousSession Session data corrupted
 [2026-05-01 22:07:39,939] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 29140
+[2026-05-01 22:10:29,869] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-01 22:10:40,871] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 22:10:41,639] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 30683
+[2026-05-01 22:12:27,539] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\adminpanel\views.py changed, reloading.
+[2026-05-01 22:12:31,063] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-01 22:12:46,695] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 22:12:47,093] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 30803

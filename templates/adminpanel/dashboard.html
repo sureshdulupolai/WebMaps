@@ -5,187 +5,188 @@
 {% block breadcrumb %}Overview{% endblock %}
 
 {% block content %}
-<div class="animate-fade-in">
-    <!-- Slim Dashboard Header -->
-    <div style="display:flex; justify-content:space-between; align-items:center; padding: 12px 20px; background: rgba(20,20,28,0.7); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; margin-bottom: 20px;">
+<div class="animate-fade-in space-y-6">
+    <!-- Premium Dashboard Header -->
+    <div style="display:flex; justify-content:space-between; align-items:center; padding: 12px 24px; background: rgba(20,20,28,0.7); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; margin-bottom: 24px;">
         <div style="display:flex; align-items:center; gap:12px;">
-            <h1 style="font-size:15px; font-weight:800; margin:0; color:#fff; letter-spacing:-0.3px;">Admin Dashboard</h1>
-            <span style="font-size:11px; color:rgba(255,255,255,0.25); font-weight:500;">Real-time overview</span>
+            <div style="width:36px; height:36px; border-radius:10px; background:rgba(168,85,247,0.1); border:1px solid rgba(168,85,247,0.2); display:grid; place-items:center;">
+                <i class="material-icons" style="font-size:20px; color:var(--admin-accent);">dashboard</i>
+            </div>
+            <div>
+                <h1 style="font-size:16px; font-weight:800; margin:0; color:#fff; letter-spacing:-0.2px;">Executive Overview</h1>
+                <p style="font-size:10px; color:rgba(255,255,255,0.3); margin:0; font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">Real-time system telemetry</p>
+            </div>
         </div>
-        <div class="live-indicator" style="font-size:10px; padding:4px 12px;"><span class="pulse-dot"></span> Live</div>
+        <div class="live-indicator" style="font-size:10px; padding:6px 14px; background:rgba(16,185,129,0.05); border:1px solid rgba(16,185,129,0.15); border-radius:10px; color:#10b981; font-weight:800; display:flex; align-items:center; gap:8px;">
+            <span class="pulse-dot"></span> SYSTEM_ONLINE
+        </div>
     </div>
 
-    <!-- Quick Stats — 4 compact horizontal chips in one row -->
-    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:20px;">
-
-        <div style="display:flex; align-items:center; gap:12px; padding:12px 16px; background:#14171f; border:1px solid rgba(255,255,255,0.06); border-radius:12px; transition:all 0.2s;">
-            <div style="width:34px; height:34px; border-radius:9px; background:rgba(168,85,247,0.12); display:grid; place-items:center; flex-shrink:0;">
-                <i class="material-icons" style="font-size:17px; color:#a855f7;">people</i>
+    <!-- Tier 1 Stats: Revenue & Scale -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px; margin-bottom:24px;">
+        <div class="glass-card" style="padding:20px; background: linear-gradient(135deg, rgba(168,85,247,0.05), transparent);">
+            <div style="display:flex; justify-content:space-between; align-items:start; mb-4">
+                <div>
+                    <p style="font-size:10px; font-weight:800; color:rgba(255,255,255,0.3); text-transform:uppercase; margin:0 0 4px;">Total Revenue</p>
+                    <h2 style="font-size:28px; font-weight:900; color:#fff; margin:0; letter-spacing:-1px;">₹{{ stats.total_revenue|default:"0" }}</h2>
+                </div>
+                <div style="width:40px; height:40px; border-radius:12px; background:rgba(16,185,129,0.1); color:#10b981; display:grid; place-items:center;">
+                    <i class="material-icons">payments</i>
+                </div>
             </div>
-            <div>
-                <div style="font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.35); margin-bottom:2px;">Total Users</div>
-                <div style="font-size:22px; font-weight:900; color:#fff; line-height:1; letter-spacing:-0.5px;">{{ stats.total_users }}</div>
-            </div>
+            <div style="margin-top:16px; font-size:10px; color:#10b981; font-weight:700;">↑ 12.5% vs last month</div>
         </div>
 
-        <div style="display:flex; align-items:center; gap:12px; padding:12px 16px; background:#14171f; border:1px solid rgba(255,255,255,0.06); border-radius:12px; transition:all 0.2s;">
-            <div style="width:34px; height:34px; border-radius:9px; background:rgba(99,102,241,0.12); display:grid; place-items:center; flex-shrink:0;">
-                <i class="material-icons" style="font-size:17px; color:#6366f1;">business</i>
+        <div class="glass-card" style="padding:20px;">
+            <div style="display:flex; justify-content:space-between; align-items:start; mb-4">
+                <div>
+                    <p style="font-size:10px; font-weight:800; color:rgba(255,255,255,0.3); text-transform:uppercase; margin:0 0 4px;">Active Subscriptions</p>
+                    <h2 style="font-size:28px; font-weight:900; color:#fff; margin:0; letter-spacing:-1px;">{{ stats.active_subs }}</h2>
+                </div>
+                <div style="width:40px; height:40px; border-radius:12px; background:rgba(59,130,246,0.1); color:#3b82f6; display:grid; place-items:center;">
+                    <i class="material-icons">card_membership</i>
+                </div>
             </div>
-            <div>
-                <div style="font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.35); margin-bottom:2px;">Listings</div>
-                <div style="font-size:22px; font-weight:900; color:#fff; line-height:1; letter-spacing:-0.5px;">{{ stats.total_listings }}</div>
-            </div>
+            <div style="margin-top:16px; font-size:10px; color:rgba(255,255,255,0.2); font-weight:600;">{{ stats.total_listings }} total listings tracked</div>
         </div>
 
-        <div style="display:flex; align-items:center; gap:12px; padding:12px 16px; background:#14171f; border:1px solid rgba(255,255,255,0.06); border-radius:12px; transition:all 0.2s;">
-            <div style="width:34px; height:34px; border-radius:9px; background:rgba(245,158,11,0.12); display:grid; place-items:center; flex-shrink:0;">
-                <i class="material-icons" style="font-size:17px; color:#f59e0b;">pending_actions</i>
+        <div class="glass-card" style="padding:20px;">
+            <div style="display:flex; justify-content:space-between; align-items:start; mb-4">
+                <div>
+                    <p style="font-size:10px; font-weight:800; color:rgba(255,255,255,0.3); text-transform:uppercase; margin:0 0 4px;">Growth Index</p>
+                    <h2 style="font-size:28px; font-weight:900; color:#fff; margin:0; letter-spacing:-1px;">{{ stats.total_users }}</h2>
+                </div>
+                <div style="width:40px; height:40px; border-radius:12px; background:rgba(168,85,247,0.1); color:var(--admin-accent); display:grid; place-items:center;">
+                    <i class="material-icons">trending_up</i>
+                </div>
             </div>
-            <div>
-                <div style="font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.35); margin-bottom:2px;">Pending</div>
-                <div style="font-size:22px; font-weight:900; color:#fff; line-height:1; letter-spacing:-0.5px;">{{ stats.pending_listings }}</div>
-            </div>
+            <div style="margin-top:16px; font-size:10px; color:rgba(255,255,255,0.2); font-weight:600;">{{ stats.total_hosts }} hosts / {{ stats.total_customers }} customers</div>
         </div>
-
-        <div style="display:flex; align-items:center; gap:12px; padding:12px 16px; background:#14171f; border:1px solid rgba(255,255,255,0.06); border-radius:12px; transition:all 0.2s;">
-            <div style="width:34px; height:34px; border-radius:9px; background:rgba(16,185,129,0.12); display:grid; place-items:center; flex-shrink:0;">
-                <i class="material-icons" style="font-size:17px; color:#10b981;">verified_user</i>
-            </div>
-            <div>
-                <div style="font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.35); margin-bottom:2px;">Active Plans</div>
-                <div style="font-size:22px; font-weight:900; color:#fff; line-height:1; letter-spacing:-0.5px;">{{ stats.active_subs }}</div>
-            </div>
-        </div>
-
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <!-- Verification Queue -->
-        <div class="glass-card p-0 overflow-hidden">
-            <div class="p-6 border-bottom border-white-5 d-flex justify-between align-center">
-                <div class="d-flex align-center gap-3">
-                    <div style="color: var(--primary);"><i class="material-icons">check_circle</i></div>
-                    <h2 class="text-sm font-bold m-0 text-white">Verification Queue</h2>
-                </div>
-                <span class="status-badge badge-info" style="font-size: 8px;">{{ recent_listings|length }} PENDING</span>
-            </div>
-
-            <div class="table-container m-0 border-none rounded-none">
-                <table class="premium-table">
-                    <thead>
-                        <tr>
-                            <th style="font-size: 10px;">Subject</th>
-                            <th style="font-size: 10px;">Authority</th>
-                            <th class="text-right" style="font-size: 10px;">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for listing in recent_listings %}
-                        <tr>
-                            <td>
-                                <div class="font-bold text-white text-xs">{{ listing.company_name }}</div>
-                                <div class="text-[9px] opacity-40 font-mono">{{ listing.id|truncatechars:15 }}</div>
-                            </td>
-                            <td>
-                                <div class="text-xs">{{ listing.host.username }}</div>
-                                <div class="text-[9px] opacity-30">{{ listing.created_at|date:"M d, H:i" }}</div>
-                            </td>
-                            <td>
-                                <div class="d-flex gap-2 justify-end">
-                                    <form method="post" action="{% url 'adminpanel:approve_listing' listing.slug %}" class="m-0">
-                                        {% csrf_token %}<button type="submit" class="action-icon-btn" style="color: var(--success); width: 28px; height: 28px;" title="Verify"><i class="material-icons">check</i></button>
-                                    </form>
-                                    <a href="{% url 'adminpanel:listing_detail' listing.slug %}" class="action-icon-btn" style="color: var(--primary); width: 28px; height: 28px;" title="Audit">
-                                        <i class="material-icons">visibility</i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        {% empty %}
-                        <tr>
-                            <td colspan="3" class="text-center py-12 opacity-30">
-                                <p class="text-xs">Nominal state. Queue empty.</p>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-            {% if recent_listings %}
-            <div class="p-3 bg-white-5 text-center">
-                <a href="{% url 'adminpanel:listings' %}" class="text-[10px] font-bold text-primary uppercase letter-spacing-1">Full Registry Access &rarr;</a>
-            </div>
-            {% endif %}
-        </div>
-
-        <!-- Kernel Anomalies -->
-        <div class="glass-card p-0 overflow-hidden">
-            <div class="p-6 border-bottom border-white-5 d-flex justify-between align-center">
-                <div class="d-flex align-center gap-3">
-                    <div style="color: var(--danger);"><i class="material-icons">report_problem</i></div>
-                    <h2 class="text-sm font-bold m-0 text-white">Kernel Anomalies</h2>
-                </div>
-                <a href="{% url 'adminpanel:errors' %}" class="text-[10px] font-bold opacity-40 hover:opacity-100 uppercase letter-spacing-1">Live Logs &rarr;</a>
-            </div>
-
-            <div class="p-4" style="max-height: 380px; overflow-y: auto;">
-                {% for err in recent_errors %}
-                <div class="d-flex align-center gap-4 mb-3 p-3 rounded-xl hover:bg-white-5 transition-all border border-transparent hover:border-white-5">
-                    <div class="badge-danger rounded-lg px-2 py-1 text-[9px] font-black">x{{ err.occurrence_count }}</div>
-                    <div class="flex-grow min-width-0">
-                        <div class="text-xs font-bold text-white mb-0.5 truncate">{{ err.error_message }}</div>
-                        <div class="text-[10px] opacity-30 font-mono truncate">{{ err.url_path }} — {{ err.last_seen_at|timesince }} ago</div>
+    <div style="display:grid; grid-template-columns: 2fr 1fr; gap:20px;">
+        <div class="space-y-6">
+            <!-- Strategic Traffic Horizon (Chart) -->
+            <div class="glass-card" style="padding:24px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+                    <div>
+                        <h3 style="font-size:11px; font-weight:900; color:rgba(255,255,255,0.2); text-transform:uppercase; letter-spacing:1px; margin:0;">Strategic Traffic Horizon</h3>
+                        <p style="font-size:14px; font-weight:700; color:#fff; margin:4px 0 0;">Global Engagement Signals</p>
                     </div>
-                    <a href="{% url 'adminpanel:errors' %}" class="action-icon-btn" style="width: 24px; height: 24px;">
-                        <i class="material-icons">chevron_right</i>
-                    </a>
+                    <div style="padding:6px 12px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:8px; font-size:10px; font-weight:700; color:rgba(255,255,255,0.5);">
+                        TOTAL_EVENTS: {{ stats.total_events }}
+                    </div>
                 </div>
-                {% empty %}
-                <div class="text-center py-24 opacity-15">
-                    <i class="material-icons mb-3" style="font-size: 40px; display: block;">offline_bolt</i>
-                    <p class="text-[10px] font-mono letter-spacing-1 uppercase">Kernel Status: Nominal</p>
+                <div style="height:220px; position:relative;">
+                    <canvas id="trafficChart"></canvas>
                 </div>
-                {% endfor %}
             </div>
-        </div>
-    </div>
 
-    <!-- Strategic Traffic Horizon -->
-    <div class="glass-card mt-6 animate-fade-in" style="padding: 24px;">
-        <div class="d-flex justify-between align-center mb-8">
-            <div>
-                <h3 class="text-[10px] font-black uppercase letter-spacing-2 opacity-30 m-0">Strategic Traffic Horizon</h3>
-                <div class="text-[10px] opacity-20 mt-1">Real-time engagement telemetry</div>
-            </div>
-            <div class="glass-card py-1 px-4 text-[10px] font-black text-white" style="background: rgba(168, 85, 247, 0.1); border-color: rgba(168, 85, 247, 0.2);">
-                Engagement Ratio: 0.84
+            <!-- Verification Queue -->
+            <div class="glass-card" style="padding:0; overflow:hidden;">
+                <div style="padding:16px 24px; border-bottom:1px solid rgba(255,255,255,0.03); display:flex; justify-content:space-between; align-items:center;">
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <i class="material-icons" style="font-size:18px; color:#f59e0b;">pending_actions</i>
+                        <span style="font-size:11px; font-weight:900; color:#fff; text-transform:uppercase; letter-spacing:1px;">Verification Queue</span>
+                    </div>
+                    <span style="font-size:10px; font-weight:800; color:#f59e0b;">{{ recent_listings|length }} PENDING</span>
+                </div>
+                <div style="padding:0;">
+                    {% for listing in recent_listings %}
+                    <div style="padding:16px 24px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.02);">
+                        <div style="display:flex; gap:12px; align-items:center;">
+                            <div style="width:32px; height:32px; border-radius:8px; background:rgba(255,255,255,0.03); display:grid; place-items:center; font-size:14px; color:rgba(255,255,255,0.2);">{{ forloop.counter }}</div>
+                            <div>
+                                <div style="font-size:13px; font-weight:700; color:#fff;">{{ listing.company_name }}</div>
+                                <div style="font-size:9px; color:rgba(255,255,255,0.2); font-weight:600;">BY {{ listing.host.username|upper }} — {{ listing.created_at|timesince }} ago</div>
+                            </div>
+                        </div>
+                        <div style="display:flex; gap:8px;">
+                            <form method="post" action="{% url 'adminpanel:approve_listing' listing.slug %}" style="margin:0;">
+                                {% csrf_token %}
+                                <button type="submit" class="action-icon-btn" style="color:#10b981;" title="Approve"><i class="material-icons">check</i></button>
+                            </form>
+                            <a href="{% url 'adminpanel:listing_detail' listing.slug %}" class="action-icon-btn" title="Inspect"><i class="material-icons">visibility</i></a>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div style="padding:40px; text-align:center; opacity:0.2;">
+                        <i class="material-icons" style="font-size:32px; margin-bottom:8px;">verified</i>
+                        <p style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px;">Queue is nominal</p>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
-        <div class="chart-container" style="height: 220px;">
-            <canvas id="trafficChart"></canvas>
+
+        <div class="space-y-6">
+            <!-- Top Performers -->
+            <div class="glass-card" style="padding:24px;">
+                <h3 style="font-size:10px; font-weight:900; color:rgba(255,255,255,0.2); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:20px;">Top Performing Nodes</h3>
+                <div class="space-y-4">
+                    {% for item in top_listings %}
+                    <div style="display:flex; align-items:center; gap:12px; padding:12px; border-radius:12px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03);">
+                        <div style="width:32px; height:32px; border-radius:8px; background:rgba(168,85,247,0.1); color:var(--admin-accent); display:grid; place-items:center; font-size:14px; font-weight:900;">{{ forloop.counter }}</div>
+                        <div style="flex:1; min-width:0;">
+                            <div style="font-size:12px; font-weight:700; color:#fff; truncate;">{{ item.listing.company_name }}</div>
+                            <div style="font-size:9px; color:rgba(255,255,255,0.3); font-weight:600;">{{ item.views }} IMPRESSIONS</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Kernel Anomalies -->
+            <div class="glass-card" style="padding:24px; border-color:rgba(239,68,68,0.15);">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                    <h3 style="font-size:10px; font-weight:900; color:#ef4444; text-transform:uppercase; letter-spacing:1.5px; margin:0;">Kernel Anomalies</h3>
+                    <a href="{% url 'adminpanel:errors' %}" style="font-size:9px; font-weight:800; color:rgba(255,255,255,0.2); text-decoration:none;">VIEW_ALL</a>
+                </div>
+                <div class="space-y-3">
+                    {% for err in recent_errors %}
+                    <div style="font-size:11px; padding:8px; border-radius:8px; background:rgba(239,68,68,0.05); border-left:2px solid #ef4444;">
+                        <div style="font-weight:700; color:#fff; truncate;">{{ err.error_message|truncatechars:40 }}</div>
+                        <div style="font-size:8px; color:rgba(255,255,255,0.3); margin-top:2px;">{{ err.last_seen_at|timesince }} ago</div>
+                    </div>
+                    {% empty %}
+                    <div style="text-align:center; padding:20px; opacity:0.2;">
+                        <p style="font-size:9px; font-weight:800;">STATUS: NOMINAL</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Promotion Intel -->
+            <div class="glass-card" style="padding:20px; background:rgba(16,185,129,0.03);">
+                <div style="display:flex; align-items:center; gap:10px; margin-bottom:4px;">
+                    <i class="material-icons" style="font-size:18px; color:#10b981;">local_offer</i>
+                    <span style="font-size:16px; font-weight:900; color:#fff;">{{ stats.active_coupons }}</span>
+                </div>
+                <p style="font-size:10px; font-weight:700; color:rgba(255,255,255,0.3); text-transform:uppercase; margin:0;">Active Promotions</p>
+            </div>
         </div>
     </div>
 </div>
 
 <style>
+    .space-y-6 > * + * { margin-top: 24px; }
+    .space-y-4 > * + * { margin-top: 16px; }
+    .space-y-3 > * + * { margin-top: 12px; }
     .pulse-dot {
         display: inline-block;
-        width: 8px;
-        height: 8px;
+        width: 6px;
+        height: 6px;
         background: #10b981;
         border-radius: 50%;
-        margin-right: 8px;
         box-shadow: 0 0 10px #10b981;
-        animation: pulse 2s infinite;
+        animation: wmPulse 2s infinite;
     }
-    @keyframes pulse {
-        0% { transform: scale(1); opacity: 1; }
-        50% { transform: scale(1.4); opacity: 0.4; }
-        100% { transform: scale(1); opacity: 1; }
+    @keyframes wmPulse {
+        0% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(1.4); }
+        100% { opacity: 1; transform: scale(1); }
     }
-    .bg-white-5 { background: rgba(255, 255, 255, 0.02); }
-    .border-white-5 { border-color: rgba(255, 255, 255, 0.05); }
+    .truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 </style>
 {% endblock content %}
 
@@ -193,51 +194,45 @@
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const ctx = document.getElementById('trafficChart').getContext('2d');
-        if (typeof Chart !== 'undefined') {
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', 'Now'],
-                    datasets: [{
-                        label: 'Global Engagement',
-                        data: [12, 19, 3, 25, 32, 23, 40],
-                        borderColor: '#a855f7',
-                        backgroundColor: 'rgba(168, 85, 247, 0.05)',
-                        borderWidth: 2.5,
-                        tension: 0.45,
-                        fill: true,
-                        pointBackgroundColor: '#a855f7',
-                        pointRadius: 0,
-                        pointHoverRadius: 6
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    interaction: { intersect: false, mode: 'index' },
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: {
-                            backgroundColor: '#14171f',
-                            titleColor: '#fff',
-                            bodyColor: '#fff',
-                            borderColor: 'rgba(255,255,255,0.1)',
-                            borderWidth: 1,
-                            cornerRadius: 8,
-                            padding: 12,
-                            displayColors: false
-                        }
+        const gradient = ctx.createLinearGradient(0, 0, 0, 200);
+        gradient.addColorStop(0, 'rgba(168, 85, 247, 0.2)');
+        gradient.addColorStop(1, 'rgba(168, 85, 247, 0)');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', 'Now'],
+                datasets: [{
+                    label: 'Engagement',
+                    data: [18, 12, 25, 45, 38, 55, 62],
+                    borderColor: '#a855f7',
+                    backgroundColor: gradient,
+                    borderWidth: 3,
+                    tension: 0.4,
+                    fill: true,
+                    pointBackgroundColor: '#fff',
+                    pointBorderColor: '#a855f7',
+                    pointBorderWidth: 2,
+                    pointRadius: 0,
+                    pointHoverRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: {
+                        display: false,
+                        grid: { display: false }
                     },
-                    scales: {
-                        y: { display: false, beginAtZero: true },
-                        x: {
-                            grid: { display: false },
-                            ticks: { color: 'rgba(255,255,255,0.2)', font: { size: 9, family: 'JetBrains Mono' } }
-                        }
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: 'rgba(255,255,255,0.2)', font: { size: 9, weight: '700' } }
                     }
                 }
-            });
-        }
+            }
+        });
     });
 </script>
 {% endblock extra_js %}

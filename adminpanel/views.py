@@ -24,6 +24,12 @@ logger = logging.getLogger('webmaps')
 @role_required('admin')
 def dashboard_view(request):
     """Main admin dashboard with overview stats."""
+    from payments.models import PaymentLog
+    from analytics.models import EventType
+    
+    # Calculate stats
+    total_revenue = PaymentLog.objects.filter(status='success').aggregate(total=Sum('amount'))['total'] or 0
+    
     stats = {
         'total_users': User.objects.filter(deleted_at__isnull=True).count(),
         'total_hosts': User.objects.filter(role='host').count(),
@@ -31,21 +37,33 @@ def dashboard_view(request):
         'total_listings': Listing.objects.filter(deleted_at__isnull=True).count(),
         'pending_listings': Listing.objects.filter(status='pending').count(),
         'approved_listings': Listing.objects.filter(status='approved').count(),
-        'rejected_listings': Listing.objects.filter(status='rejected').count(),
         'total_events': AnalyticsEvent.objects.count(),
         'total_errors': AppError.objects.count(),
         'active_subs': Subscription.objects.filter(is_active=True).count(),
+        'total_revenue': total_revenue,
+        'active_coupons': Coupon.objects.filter(is_active=True).count(),
     }
+    
     recent_listings = Listing.objects.filter(
         status='pending'
-    ).select_related('host').order_by('-created_at')[:10]
+    ).select_related('host').order_by('-created_at')[:5]
 
     recent_errors = AppError.objects.order_by('-last_seen_at')[:5]
+    
+    # Top 5 Listings by Views
+    from analytics.services import aggregate_listing_stats
+    top_listings = []
+    listings = Listing.objects.filter(status='approved', deleted_at__isnull=True)[:10]
+    for l in listings:
+        l_stats = aggregate_listing_stats(l.id)
+        top_listings.append({'listing': l, 'views': l_stats['views']})
+    top_listings = sorted(top_listings, key=lambda x: x['views'], reverse=True)[:5]
 
     return render(request, 'adminpanel/dashboard.html', {
         'stats': stats,
         'recent_listings': recent_listings,
         'recent_errors': recent_errors,
+        'top_listings': top_listings,
     })
 
 
