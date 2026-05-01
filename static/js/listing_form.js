@@ -513,8 +513,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const selectedPlan = form.querySelector('.plan-card.active');
         if (selectedPlan) {
             pricingContainer.classList.remove('d-none');
-            const baseCost = parseInt(selectedPlan.dataset.amount);
-            const platformFee = 2; 
+            const baseCost = parseFloat(selectedPlan.dataset.amount);
             
             let updateFee = 0;
             const isEdit = initialData && initialData.slug && initialData.slug.length > 0;
@@ -525,34 +524,132 @@ document.addEventListener('DOMContentLoaded', function () {
                 updateFee = 20;
             }
 
-            const taxableAmount = baseCost + updateFee;
-            const cgst = taxableAmount * 0.09;
-            const sgst = taxableAmount * 0.09;
-            const subtotal = taxableAmount + cgst + sgst + platformFee;
+            // --- REFINED CALCULATION LOGIC ---
+            // 1. Taxable Subtotal
+            const rawTaxable = baseCost + updateFee;
             
-            const total = Math.max(0, subtotal - appliedDiscount);
+            // 2. Apply Discount to Taxable amount
+            // If it's a 100% coupon (appliedDiscount >= baseCost), we waive the whole thing including updateFee
+            const isFullDiscount = appliedDiscount >= baseCost && appliedDiscount > 0;
+            
+            const remainingTaxable = isFullDiscount ? 0 : Math.max(0, rawTaxable - appliedDiscount);
+            
+            // 3. Calculate Taxes on REMAINING amount
+            const cgst = remainingTaxable * 0.09;
+            const sgst = remainingTaxable * 0.09;
+            
+            // 4. Platform Fee (Only if amount > 0)
+            const platformFee = remainingTaxable > 0 ? 2 : 0;
+            
+            const total = remainingTaxable + cgst + sgst + platformFee;
+            const subtotal = rawTaxable + (rawTaxable * 0.18) + (rawTaxable > 0 ? 2 : 0);
 
             pricingContainer.innerHTML = `
-                <div class="pricing-breakdown">
-                    <div class="breakdown-row"><span>Subtotal</span><span>₹${subtotal.toFixed(2)}</span></div>
-                    ${appliedDiscount > 0 ? `<div class="breakdown-row text-success"><span>Discount (${appliedCoupon})</span><span>-₹${appliedDiscount.toFixed(2)}</span></div>` : ''}
-                    <div class="breakdown-row total"><span>Amount Payable</span><span>₹${total.toFixed(2)}</span></div>
+                <div class="pricing-breakdown" style="padding: 24px; background: rgba(0,0,0,0.2); border-radius: 20px; border: 1px solid rgba(255,255,255,0.05);">
+                    <div class="breakdown-row" style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:13px; color:rgba(255,255,255,0.4);">
+                        <span>Base Subscription</span><span>₹${baseCost.toFixed(2)}</span>
+                    </div>
+                    ${updateFee > 0 ? `<div class="breakdown-row" style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:13px; color:rgba(255,255,255,0.4);"><span>Update Surcharge (Limit Reached)</span><span>₹${updateFee.toFixed(2)}</span></div>` : ''}
+                    
+                    <div class="breakdown-row" style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:13px; color:rgba(255,255,255,0.4);">
+                        <span>CGST (9%)</span><span>₹${cgst.toFixed(2)}</span>
+                    </div>
+                    <div class="breakdown-row" style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:13px; color:rgba(255,255,255,0.4);">
+                        <span>SGST (9%)</span><span>₹${sgst.toFixed(2)}</span>
+                    </div>
+                    <div class="breakdown-row" style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:13px; color:rgba(255,255,255,0.4);">
+                        <span>Platform Fee</span><span>₹${platformFee.toFixed(2)}</span>
+                    </div>
+                    
+                    <div style="height:1px; background:rgba(255,255,255,0.05); margin:16px 0; border-style:dashed; border-width:1px 0 0 0;"></div>
+                    
+                    ${appliedDiscount > 0 ? `<div class="breakdown-row" style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:14px; color:#10b981; font-weight:700;"><span>Coupon: ${appliedCoupon}</span><span>-₹${(isFullDiscount ? rawTaxable : appliedDiscount).toFixed(2)}</span></div>` : ''}
+                    
+                    <div class="breakdown-row total" style="display:flex; justify-content:space-between; margin-top:20px; padding-top:20px; border-top:2px solid rgba(255,255,255,0.1); font-size:24px; font-weight:900; color:#fff;">
+                        <span>Amount Payable</span><span>₹${total.toFixed(2)}</span>
+                    </div>
                 </div>
             `;
 
             // Update Submit Button if Free
-            if (total <= 0 && appliedDiscount > 0) {
+            if (total <= 0) {
                 submitBtn.textContent = 'Host for Free';
                 submitBtn.classList.remove('btn-primary');
                 submitBtn.classList.add('btn-success');
+                submitBtn.style.boxShadow = '0 0 30px rgba(16, 185, 129, 0.2)';
             } else {
                 submitBtn.textContent = 'Pay & Initialize Listing';
                 submitBtn.classList.add('btn-primary');
                 submitBtn.classList.remove('btn-success');
+                submitBtn.style.boxShadow = 'none';
             }
         } else {
             pricingContainer.classList.add('d-none');
         }
+    }
+
+    // --- Coupon Logic ---
+    const applyCouponBtn = document.getElementById('apply-coupon-btn');
+    const couponInput = document.getElementById('coupon-code-input');
+    const couponFeedback = document.getElementById('coupon-feedback');
+
+    if (applyCouponBtn) {
+        applyCouponBtn.addEventListener('click', async () => {
+            const code = couponInput.value.trim().toUpperCase();
+            const selectedPlan = form.querySelector('.plan-card.active');
+
+            if (!code) {
+                showCouponFeedback("Please enter a coupon code.", "error");
+                return;
+            }
+            if (!selectedPlan) {
+                showCouponFeedback("Please select a plan first.", "error");
+                return;
+            }
+
+            applyCouponBtn.disabled = true;
+            applyCouponBtn.textContent = "Checking...";
+
+            try {
+                const response = await fetch('/coupon/validate/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                    },
+                    body: JSON.stringify({
+                        code: code,
+                        amount: parseInt(selectedPlan.dataset.amount),
+                        listing_slug: initialData ? initialData.slug : null
+                    })
+                });
+
+                const result = await response.json();
+                if (result.valid) {
+                    appliedDiscount = parseFloat(result.discount_amount);
+                    appliedCoupon = code;
+                    showCouponFeedback(`Coupon applied! Saved ₹${appliedDiscount.toFixed(2)}`, "success");
+                    renderSummary();
+                } else {
+                    appliedDiscount = 0;
+                    appliedCoupon = null;
+                    showCouponFeedback(result.message || "Invalid coupon code.", "error");
+                    renderSummary();
+                }
+            } catch (err) {
+                showCouponFeedback("Failed to validate coupon. Try again.", "error");
+            } finally {
+                applyCouponBtn.disabled = false;
+                applyCouponBtn.textContent = "Apply";
+            }
+        });
+    }
+
+    function showCouponFeedback(msg, type) {
+        if (!couponFeedback) return;
+        couponFeedback.textContent = msg;
+        couponFeedback.className = `text-xs mt-2 ${type === 'success' ? 'text-success' : 'text-danger'}`;
+        couponFeedback.classList.remove('d-none');
     }
 
     // --- Save Draft Logic ---

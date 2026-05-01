@@ -34,6 +34,7 @@ def create_listing(host, data: dict, file_obj=None, parsed_services: list = None
         host=host,
         website_url=data['website_url'],
         company_name=data['company_name'],
+        mobile_number=data.get('mobile_number', ''),
         short_description=data['short_description'],
         slug=slug,
         latitude=lat,
@@ -132,6 +133,7 @@ def update_listing(listing, data: dict, file_obj=None, parsed_services: list = N
 
     listing.website_url = data.get('website_url', listing.website_url)
     listing.company_name = data.get('company_name', listing.company_name)
+    listing.mobile_number = data.get('mobile_number', listing.mobile_number)
     listing.short_description = data.get('short_description', listing.short_description)
     listing.latitude = lat
     listing.longitude = lng

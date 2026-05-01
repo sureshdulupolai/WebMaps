@@ -97,7 +97,7 @@ def listing_create_view(request):
             'razorpay_key': settings.RAZORPAY_KEY_ID,
             'plans': plans,
             'form_data': {
-                'company_name': '', 'website_url': '', 'short_description': '',
+                'company_name': '', 'website_url': '', 'mobile_number': '', 'short_description': '',
                 'latitude': '', 'longitude': '', 'location_name': ''
             },
         })
@@ -106,6 +106,7 @@ def listing_create_view(request):
     data = {
         'website_url': sanitize_input(request.POST.get('website_url', '').strip()),
         'company_name': sanitize_input(request.POST.get('company_name', '').strip()),
+        'mobile_number': sanitize_input(request.POST.get('mobile_number', '').strip()),
         'short_description': sanitize_input(request.POST.get('short_description', '').strip()),
         'latitude': request.POST.get('latitude', '').strip(),
         'longitude': request.POST.get('longitude', '').strip(),
@@ -209,6 +210,7 @@ def listing_edit_view(request, slug):
             'needs_payment': False,
             'form_data': {
                 'company_name': listing.company_name, 'website_url': listing.website_url,
+                'mobile_number': listing.mobile_number,
                 'short_description': listing.short_description, 'latitude': listing.latitude,
                 'longitude': listing.longitude, 'location_name': listing.location_name
             },
@@ -236,6 +238,7 @@ def listing_edit_view(request, slug):
             'initial_hours_json': json.dumps(listing.operating_hours or {}),
             'form_data': {
                 'company_name': listing.company_name, 'website_url': listing.website_url,
+                'mobile_number': listing.mobile_number,
                 'short_description': listing.short_description, 'latitude': listing.latitude,
                 'longitude': listing.longitude, 'location_name': listing.location_name
             },
@@ -244,6 +247,7 @@ def listing_edit_view(request, slug):
     data = {
         'website_url': sanitize_input(request.POST.get('website_url', '').strip()),
         'company_name': sanitize_input(request.POST.get('company_name', '').strip()),
+        'mobile_number': sanitize_input(request.POST.get('mobile_number', '').strip()),
         'short_description': sanitize_input(request.POST.get('short_description', '').strip()),
         'latitude': request.POST.get('latitude', str(listing.latitude)).strip(),
         'longitude': request.POST.get('longitude', str(listing.longitude)).strip(),

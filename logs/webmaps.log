@@ -4422,3 +4422,121 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-01 16:39:18,354] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 200 35134
 [2026-05-01 16:40:40,448] WARNING django.security.SuspiciousSession Session data corrupted
 [2026-05-01 16:40:40,488] INFO django.server "GET /adminpanel/promotions/ HTTP/1.1" 200 43769
+[2026-05-01 16:41:57,621] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-01 16:42:06,114] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:42:06,680] ERROR webmaps Captured error: VariableDoesNotExist: Failed lookup for key [mobile_number] in {'company_name': 'WebMaps', 'website_url': 'https://github.com/sureshdulupolai/', 'short_description': 'Mehnat aur lagatar seekhne ki aadat insaan ko aage badhati hai. Chhote kadam bhi roz uthaye jaayen to bade sapne sach ho sakte hain. Focus aur consistency rakho, success zaroor milegi.', 'latitude': Decimal('19.100954'), 'longitude': Decimal('72.886968'), 'location_name': 'Durga Mata Mandir, 90ft Raod, Sakinaka'} @ /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/
+[2026-05-01 16:42:06,681] ERROR webmaps Unhandled exception at /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/: VariableDoesNotExist: Failed lookup for key [mobile_number] in {'company_name': 'WebMaps', 'website_url': 'https://github.com/sureshdulupolai/', 'short_description': 'Mehnat aur lagatar seekhne ki aadat insaan ko aage badhati hai. Chhote kadam bhi roz uthaye jaayen to bade sapne sach ho sakte hain. Focus aur consistency rakho, success zaroor milegi.', 'latitude': Decimal('19.100954'), 'longitude': Decimal('72.886968'), 'location_name': 'Durga Mata Mandir, 90ft Raod, Sakinaka'}
+[2026-05-01 16:42:06,698] ERROR django.request Internal Server Error: /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/
+[2026-05-01 16:42:06,702] ERROR django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 500 7488
+[2026-05-01 16:42:06,746] INFO django.server "GET /static/images/500_illustration.png HTTP/1.1" 304 0
+[2026-05-01 16:42:14,613] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:42:14,785] ERROR webmaps Captured error: VariableDoesNotExist: Failed lookup for key [mobile_number] in {'company_name': 'WebMaps', 'website_url': 'https://github.com/sureshdulupolai/', 'short_description': 'Mehnat aur lagatar seekhne ki aadat insaan ko aage badhati hai. Chhote kadam bhi roz uthaye jaayen to bade sapne sach ho sakte hain. Focus aur consistency rakho, success zaroor milegi.', 'latitude': Decimal('19.100954'), 'longitude': Decimal('72.886968'), 'location_name': 'Durga Mata Mandir, 90ft Raod, Sakinaka'} @ /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/
+[2026-05-01 16:42:14,789] ERROR webmaps Unhandled exception at /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/: VariableDoesNotExist: Failed lookup for key [mobile_number] in {'company_name': 'WebMaps', 'website_url': 'https://github.com/sureshdulupolai/', 'short_description': 'Mehnat aur lagatar seekhne ki aadat insaan ko aage badhati hai. Chhote kadam bhi roz uthaye jaayen to bade sapne sach ho sakte hain. Focus aur consistency rakho, success zaroor milegi.', 'latitude': Decimal('19.100954'), 'longitude': Decimal('72.886968'), 'location_name': 'Durga Mata Mandir, 90ft Raod, Sakinaka'}
+[2026-05-01 16:42:14,796] ERROR django.request Internal Server Error: /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/
+[2026-05-01 16:42:14,797] ERROR django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 500 7488
+[2026-05-01 16:42:19,739] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:42:19,795] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 34516
+[2026-05-01 16:42:44,630] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\hosts\views.py changed, reloading.
+[2026-05-01 16:42:49,019] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-01 16:42:57,528] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\hosts\views.py changed, reloading.
+[2026-05-01 16:43:01,126] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-01 16:44:43,189] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:44:43,525] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 21399
+[2026-05-01 16:47:44,058] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:47:44,120] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 21399
+[2026-05-01 16:49:06,544] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:49:06,575] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 21399
+[2026-05-01 16:49:06,912] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16131
+[2026-05-01 16:49:06,920] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-01 16:49:06,923] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 5018
+[2026-05-01 16:49:06,930] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-05-01 16:49:06,931] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-01 16:49:06,934] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 200 35134
+[2026-05-01 16:49:07,055] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 200 15106
+[2026-05-01 16:49:07,243] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:49:07,291] INFO django.server "GET /coupon/notifications/ HTTP/1.1" 200 235
+[2026-05-01 16:52:42,939] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:52:43,040] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 21399
+[2026-05-01 16:52:43,083] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-05-01 16:52:43,083] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-01 16:52:43,084] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 200 15106
+[2026-05-01 16:52:43,085] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16131
+[2026-05-01 16:52:43,087] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 5018
+[2026-05-01 16:52:43,171] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-01 16:52:43,174] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 200 40003
+[2026-05-01 16:52:45,226] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:52:45,245] INFO django.server "GET /coupon/notifications/ HTTP/1.1" 200 235
+[2026-05-01 16:52:55,489] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:52:55,698] WARNING django.request Bad Request: /coupon/validate/
+[2026-05-01 16:52:55,703] WARNING django.server "POST /coupon/validate/ HTTP/1.1" 400 69
+[2026-05-01 16:52:57,643] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:52:57,671] WARNING django.request Bad Request: /coupon/validate/
+[2026-05-01 16:52:57,673] WARNING django.server "POST /coupon/validate/ HTTP/1.1" 400 69
+[2026-05-01 16:53:11,972] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:53:11,975] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 302 0
+[2026-05-01 16:53:12,003] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:53:12,018] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-05-01 16:53:13,440] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:53:13,454] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-01 16:53:15,474] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-05-01 16:53:15,477] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-01 16:53:15,511] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:53:15,589] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 31184
+[2026-05-01 16:53:17,115] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:53:17,276] INFO django.server "GET /adminpanel/promotions/ HTTP/1.1" 200 43769
+[2026-05-01 16:55:08,502] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\coupon\views.py changed, reloading.
+[2026-05-01 16:55:12,194] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-01 17:00:29,800] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 17:00:30,357] INFO django.server "GET /adminpanel/promotions/ HTTP/1.1" 200 43769
+[2026-05-01 17:00:34,421] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 17:00:34,426] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 302 0
+[2026-05-01 17:00:34,455] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 17:00:34,489] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-05-01 17:00:35,231] INFO django.server "GET /static/css/auth.css HTTP/1.1" 200 7053
+[2026-05-01 17:00:35,394] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16131
+[2026-05-01 17:00:35,439] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-01 17:00:36,148] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 5018
+[2026-05-01 17:00:36,160] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 5724
+[2026-05-01 17:00:36,179] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-01 17:00:36,193] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 6775
+[2026-05-01 17:00:36,202] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-05-01 17:00:39,171] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 17:00:39,178] INFO webmaps Login attempt: User found for sureshone@gmail.com
+[2026-05-01 17:00:40,871] INFO webmaps User logged in: sureshone@gmail.com
+[2026-05-01 17:00:40,873] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-01 17:00:40,902] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 17:00:40,965] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12664
+[2026-05-01 17:00:41,093] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 17:00:41,114] INFO django.server "GET /coupon/notifications/ HTTP/1.1" 200 235
+[2026-05-01 17:00:42,326] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 17:00:42,382] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 21399
+[2026-05-01 17:00:42,430] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 304 0
+[2026-05-01 17:00:42,434] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 304 0
+[2026-05-01 17:00:45,050] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 17:00:45,080] INFO django.server "GET /coupon/notifications/ HTTP/1.1" 200 235
+[2026-05-01 17:00:52,538] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 17:00:52,653] INFO django.server "POST /coupon/validate/ HTTP/1.1" 200 129
+[2026-05-01 17:21:19,945] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 17:21:19,948] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 302 0
+[2026-05-01 17:21:20,050] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 17:21:20,065] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-05-01 17:21:21,643] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 17:21:21,648] INFO webmaps Login attempt: User found for sureshone@gmail.com
+[2026-05-01 17:21:23,166] INFO webmaps User logged in: sureshone@gmail.com
+[2026-05-01 17:21:23,167] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-01 17:21:23,191] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 17:21:23,245] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12664
+[2026-05-01 17:21:23,342] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 17:21:23,383] INFO django.server "GET /coupon/notifications/ HTTP/1.1" 200 235
+[2026-05-01 17:21:24,550] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 17:21:24,639] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 21399
+[2026-05-01 17:21:24,745] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 304 0
+[2026-05-01 17:21:24,779] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 200 40515
+[2026-05-01 17:21:25,049] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 17:21:25,564] INFO django.server "GET /coupon/notifications/ HTTP/1.1" 200 235
+[2026-05-01 17:21:35,957] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 17:21:36,115] INFO django.server "POST /coupon/validate/ HTTP/1.1" 200 129
+[2026-05-01 17:21:50,029] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 17:21:50,149] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 21399
+[2026-05-01 17:21:50,478] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 17:21:50,582] INFO django.server "GET /coupon/notifications/ HTTP/1.1" 200 235

@@ -10,8 +10,21 @@ from datetime import timedelta
 @login_required
 @require_POST
 def validate_coupon(request):
-    code = request.POST.get('code', '').strip().upper()
-    amount = Decimal(request.POST.get('amount', '0'))
+    import json
+    
+    # Handle both JSON and Form data
+    if request.content_type == 'application/json':
+        try:
+            data = json.loads(request.body)
+            code = data.get('code', '').strip().upper()
+            amount_str = data.get('amount', '0')
+            amount = Decimal(str(amount_str))
+        except (json.JSONDecodeError, ValueError, TypeError):
+            return JsonResponse({'valid': False, 'message': 'Invalid request data.'}, status=400)
+    else:
+        code = request.POST.get('code', '').strip().upper()
+        amount = Decimal(request.POST.get('amount', '0'))
+
     user = request.user
 
     # 1. Check for block
@@ -21,8 +34,8 @@ def validate_coupon(request):
         hours = int(remaining.total_seconds() // 3600)
         minutes = int((remaining.total_seconds() % 3600) // 60)
         return JsonResponse({
-            'success': False, 
-            'error': f'Too many failed attempts. You are blocked for {hours}h {minutes}m.'
+            'valid': False, 
+            'message': f'Too many failed attempts. You are blocked for {hours}h {minutes}m.'
         }, status=403)
 
     # 2. Find coupon
@@ -36,19 +49,19 @@ def validate_coupon(request):
             attempt.failed_attempts = 0 # Reset count for next cycle
             attempt.save()
             return JsonResponse({
-                'success': False, 
-                'error': 'Too many failed attempts. Blocked for 7 hours.'
+                'valid': False, 
+                'message': 'Too many failed attempts. Blocked for 7 hours.'
             }, status=403)
         attempt.save()
         return JsonResponse({
-            'success': False, 
-            'error': f'Invalid coupon code. ({3 - attempt.failed_attempts} attempts left)'
+            'valid': False, 
+            'message': f'Invalid coupon code. ({3 - attempt.failed_attempts} attempts left)'
         }, status=400)
 
     # 3. Validate logic
     is_valid, msg = coupon.is_valid(user=user, amount=amount)
     if not is_valid:
-        return JsonResponse({'success': False, 'error': msg}, status=400)
+        return JsonResponse({'valid': False, 'message': msg}, status=400)
 
     # Calculate discount
     discount = Decimal('0.00')
@@ -57,16 +70,6 @@ def validate_coupon(request):
     else:
         discount = coupon.discount_value
 
-    # Specific rule: Fixed coupons must leave at least some amount? 
-    # Or as user said "100 rupe jada user se le sake"? 
-    # User said: "coupen 2 type ka rahega ek jo ki price pe lagega jaise 500 rupe ka h toh voh sirf 1500 wale plan mai lagega"
-    # Wait, user said: "jo bhi coupen rahega basss 100 rupe jada user se le sake aise genrate hoga"
-    # This phrasing is a bit confusing. I think they mean fixed coupons should only apply if the total is high enough?
-    # I already have min_purchase_amount in the model.
-    
-    # "lekin jo 100% aur 50% wala coupn code hoga voh kisi mai bhi apply hoga"
-    # I'll handle this by setting min_purchase_amount=0 for % coupons.
-
     final_amount = max(Decimal('0.00'), amount - discount)
 
     # Success! Reset failed attempts
@@ -74,8 +77,8 @@ def validate_coupon(request):
     attempt.save()
 
     return JsonResponse({
-        'success': True,
-        'discount': str(discount),
+        'valid': True,
+        'discount_amount': str(discount),
         'final_amount': str(final_amount),
         'message': f'Coupon "{code}" applied successfully!'
     })

@@ -58,6 +58,13 @@
         <!-- STEP 1: IDENTITY & SPATIAL -->
         <div class="wizard-step active" id="step-1">
           <h2 class="text-sm uppercase letter-spacing-2 text-primary mb-8 font-weight-bold">01. Identity & Presence</h2>
+          
+          <div class="input-line-group">
+            <label class="input-line-label">Contact Mobile Number</label>
+            <input type="text" name="mobile_number" class="input-line" placeholder="e.g. +91 98765 43210" 
+              value="{{ listing.mobile_number|default:form_data.mobile_number|default:'' }}" required>
+            <div class="listing-helper-text">Used for identity verification and direct customer contact.</div>
+          </div>
           <div class="input-line-group">
             <label class="input-line-label">Official Company Name</label>
             <input type="text" name="company_name" class="input-line" placeholder="e.g. Apex Global Logistics" 
@@ -201,9 +208,9 @@
             <!-- Coupon Section -->
             <div class="coupon-section mt-6 pt-6 border-top border-muted border-opacity-10">
               <label class="text-xs font-weight-bold text-primary mb-2 d-block letter-spacing-1">HAVE A COUPON?</label>
-              <div class="coupon-input-group d-flex gap-2">
+              <div class="coupon-input-group d-flex gap-4">
                 <input type="text" id="coupon-code-input" class="form-input flex-grow" placeholder="Enter code (e.g. SAVE50)" style="margin-bottom: 0;">
-                <button type="button" id="apply-coupon-btn" class="btn btn-outline btn-sm" style="height: 48px; min-width: 100px;">Apply</button>
+                <button type="button" id="apply-coupon-btn" class="btn btn-outline btn-sm" style="height: 52px; min-width: 120px;">Apply</button>
               </div>
               <div id="coupon-feedback" class="text-xs mt-2 d-none"></div>
             </div>
