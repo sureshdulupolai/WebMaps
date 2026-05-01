@@ -243,34 +243,50 @@
 
 {% block content %}
 <div class="animate-fade-in">
-    <!-- STATS -->
-        <div class="premium-stat-card">
-            <div class="stat-icon-wrapper">
-                <i class="material-icons fa-primary">inventory_2</i>
+    <!-- Slim Promotions Header -->
+    <div style="display:flex; justify-content:space-between; align-items:center; padding: 12px 20px; background: rgba(20,20,28,0.7); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; margin-bottom: 20px;">
+        <div style="display:flex; align-items:center; gap:12px;">
+            <h1 style="font-size:15px; font-weight:800; margin:0; color:#fff; letter-spacing:-0.3px;">Promotions & Coupons</h1>
+            <span style="font-size:11px; color:rgba(255,255,255,0.25); font-weight:500;">Marketing & revenue intelligence</span>
+        </div>
+        <div style="display:flex; gap:8px;">
+             <div class="live-indicator" style="font-size: 10px; padding: 4px 12px;"><span class="pulse-dot"></span> V5 SECURE</div>
+        </div>
+    </div>
+
+    <!-- Quick Stats — 3 compact horizontal chips in one row -->
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:24px;">
+
+        <div style="display:flex; align-items:center; gap:12px; padding:12px 16px; background:#14171f; border:1px solid rgba(255,255,255,0.06); border-radius:12px;">
+            <div style="width:34px; height:34px; border-radius:9px; background:rgba(168,85,247,0.12); display:grid; place-items:center; flex-shrink:0;">
+                <i class="material-icons" style="font-size:17px; color:#a855f7;">inventory_2</i>
             </div>
-            <div class="stat-info">
-                <div class="stat-value">{{ stats.total_coupons }}</div>
-                <div class="stat-label">Total Coupons</div>
+            <div>
+                <div style="font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.35); margin-bottom:2px;">Total Coupons</div>
+                <div style="font-size:22px; font-weight:900; color:#fff; line-height:1; letter-spacing:-0.5px;">{{ stats.total_coupons }}</div>
             </div>
         </div>
-        <div class="premium-stat-card">
-            <div class="stat-icon-wrapper">
-                <i class="material-icons fa-success">check_circle</i>
+
+        <div style="display:flex; align-items:center; gap:12px; padding:12px 16px; background:#14171f; border:1px solid rgba(255,255,255,0.06); border-radius:12px;">
+            <div style="width:34px; height:34px; border-radius:9px; background:rgba(16,185,129,0.12); display:grid; place-items:center; flex-shrink:0;">
+                <i class="material-icons" style="font-size:17px; color:#10b981;">check_circle</i>
             </div>
-            <div class="stat-info">
-                <div class="stat-value">{{ stats.active_coupons }}</div>
-                <div class="stat-label">Active Now</div>
-            </div>
-        </div>
-        <div class="premium-stat-card">
-            <div class="stat-icon-wrapper">
-                <i class="material-icons fa-warning">currency_rupee</i>
-            </div>
-            <div class="stat-info">
-                <div class="stat-value">₹{{ stats.total_discount_given }}</div>
-                <div class="stat-label">Total Saved</div>
+            <div>
+                <div style="font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.35); margin-bottom:2px;">Active Now</div>
+                <div style="font-size:22px; font-weight:900; color:#fff; line-height:1; letter-spacing:-0.5px;">{{ stats.active_coupons }}</div>
             </div>
         </div>
+
+        <div style="display:flex; align-items:center; gap:12px; padding:12px 16px; background:#14171f; border:1px solid rgba(255,255,255,0.06); border-radius:12px;">
+            <div style="width:34px; height:34px; border-radius:9px; background:rgba(245,158,11,0.12); display:grid; place-items:center; flex-shrink:0;">
+                <i class="material-icons" style="font-size:17px; color:#f59e0b;">currency_rupee</i>
+            </div>
+            <div>
+                <div style="font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.35); margin-bottom:2px;">Total Saved</div>
+                <div style="font-size:22px; font-weight:900; color:#fff; line-height:1; letter-spacing:-0.5px;">₹{{ stats.total_discount_given }}</div>
+            </div>
+        </div>
+
     </div>
 
     <div class="dashboard-layout">

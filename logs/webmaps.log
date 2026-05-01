@@ -4363,3 +4363,21 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-01 16:25:24,390] INFO django.server "GET /adminpanel/listings/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 31082
 [2026-05-01 16:25:26,862] WARNING django.security.SuspiciousSession Session data corrupted
 [2026-05-01 16:25:26,969] INFO django.server "GET /adminpanel/promotions/ HTTP/1.1" 200 40882
+[2026-05-01 16:26:44,079] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-01 16:32:10,257] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:32:10,302] INFO django.server "GET /adminpanel/promotions/ HTTP/1.1" 302 0
+[2026-05-01 16:32:10,322] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:32:10,353] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-05-01 16:32:10,440] INFO django.server "GET /static/js/main.js HTTP/1.1" 304 0
+[2026-05-01 16:32:11,427] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:32:11,435] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-01 16:32:12,873] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-05-01 16:32:12,876] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-01 16:32:12,895] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:32:12,953] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 30057
+[2026-05-01 16:32:15,851] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:32:15,925] INFO django.server "GET /adminpanel/promotions/ HTTP/1.1" 200 43139
+[2026-05-01 16:32:23,611] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:32:23,644] INFO django.server "POST /adminpanel/promotions/1/toggle/ HTTP/1.1" 302 0
+[2026-05-01 16:32:23,660] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:32:23,681] INFO django.server "GET /adminpanel/promotions/ HTTP/1.1" 200 43139
