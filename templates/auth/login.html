@@ -36,6 +36,7 @@
 
       <form method="post" action="{% url 'auth_app:login' %}" id="login-form">
         {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.GET.next }}">
 
         <div class="form-group-premium" style="margin-bottom: var(--space-4);">
           <label class="form-label-premium" for="login-email" style="font-size: 11px; margin-bottom: 6px;">Email Address</label>
