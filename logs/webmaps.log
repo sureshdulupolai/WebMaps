@@ -4381,3 +4381,44 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-01 16:32:23,644] INFO django.server "POST /adminpanel/promotions/1/toggle/ HTTP/1.1" 302 0
 [2026-05-01 16:32:23,660] WARNING django.security.SuspiciousSession Session data corrupted
 [2026-05-01 16:32:23,681] INFO django.server "GET /adminpanel/promotions/ HTTP/1.1" 200 43139
+[2026-05-01 16:34:51,795] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-01 16:34:59,410] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:34:59,691] INFO django.server "GET /adminpanel/promotions/ HTTP/1.1" 200 43139
+[2026-05-01 16:36:02,401] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:36:02,438] INFO django.server "GET /adminpanel/promotions/ HTTP/1.1" 200 43769
+[2026-05-01 16:38:24,821] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:38:24,866] INFO django.server "GET /adminpanel/promotions/ HTTP/1.1" 200 43769
+[2026-05-01 16:38:35,748] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:38:35,847] INFO django.server "POST /adminpanel/promotions/1/toggle/ HTTP/1.1" 302 0
+[2026-05-01 16:38:35,905] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:38:35,943] INFO django.server "GET /adminpanel/promotions/ HTTP/1.1" 200 43774
+[2026-05-01 16:38:37,873] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:38:37,963] INFO django.server "POST /adminpanel/promotions/1/toggle/ HTTP/1.1" 302 0
+[2026-05-01 16:38:37,983] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:38:38,015] INFO django.server "GET /adminpanel/promotions/ HTTP/1.1" 200 43769
+[2026-05-01 16:39:00,591] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:39:00,702] INFO django.server "GET / HTTP/1.1" 200 16217
+[2026-05-01 16:39:00,761] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-01 16:39:00,779] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-01 16:39:00,791] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-01 16:39:00,805] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-05-01 16:39:02,382] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:39:02,390] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7821
+[2026-05-01 16:39:04,095] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:39:04,102] INFO webmaps Login attempt: User found for sureshone@gmail.com
+[2026-05-01 16:39:06,467] INFO webmaps User logged in: sureshone@gmail.com
+[2026-05-01 16:39:06,472] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-01 16:39:06,492] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:39:06,544] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 12664
+[2026-05-01 16:39:06,581] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-01 16:39:06,581] INFO django.server "GET /static/js/dashboard.js HTTP/1.1" 304 0
+[2026-05-01 16:39:09,712] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:39:09,726] INFO django.server "GET /notifications/ HTTP/1.1" 200 459
+[2026-05-01 16:39:09,779] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:39:09,819] INFO django.server "POST /notifications/mark-read/ HTTP/1.1" 200 16
+[2026-05-01 16:39:17,919] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:39:17,960] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 21005
+[2026-05-01 16:39:18,043] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 304 0
+[2026-05-01 16:39:18,354] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 200 35134
+[2026-05-01 16:40:40,448] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-01 16:40:40,488] INFO django.server "GET /adminpanel/promotions/ HTTP/1.1" 200 43769

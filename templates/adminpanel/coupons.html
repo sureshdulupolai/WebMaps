@@ -430,7 +430,14 @@
                             {% for coupon in coupons %}
                             <tr>
                                 <td class="px-8">
-                                    <div class="font-weight-bold text-white text-sm uppercase">{{ coupon.code }}</div>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="font-weight-bold text-white text-sm uppercase">{{ coupon.code }}</div>
+                                        {% if coupon.is_active %}
+                                        <span style="font-size: 8px; padding: 2px 8px; background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 4px; font-weight: 900; letter-spacing: 0.5px;">LIVE</span>
+                                        {% else %}
+                                        <span style="font-size: 8px; padding: 2px 8px; background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 4px; font-weight: 900; letter-spacing: 0.5px;">INACTIVE</span>
+                                        {% endif %}
+                                    </div>
                                     <div class="text-xs opacity-20">EXP: {{ coupon.expire_date|date:"M d" }}</div>
                                 </td>
                                 <td>
@@ -445,7 +452,8 @@
                                     <div class="d-flex justify-content-end gap-3">
                                         <form action="{% url 'adminpanel:coupon_toggle' coupon.id %}" method="POST" class="m-0">
                                             {% csrf_token %}
-                                            <button class="action-icon-btn" title="Toggle Coupon Status">
+                                            <button type="submit" class="action-icon-btn" title="Toggle Coupon Status"
+                                                style="{% if coupon.is_active %}color: #10b981; background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.2);{% else %}color: #64748b; background: rgba(100, 116, 139, 0.05); border-color: rgba(100, 116, 139, 0.1);{% endif %}">
                                                 <i class="material-icons">power_settings_new</i>
                                             </button>
                                         </form>
