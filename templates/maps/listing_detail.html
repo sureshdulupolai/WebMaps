@@ -181,6 +181,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 20px;
     padding: 24px;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
     border: 1px solid var(--border);
@@ -216,6 +217,7 @@
   .service-info {
     position: relative;
     z-index: 2;
+    flex: 1;
   }
 
   .service-info h4 {
@@ -237,14 +239,15 @@
     position: relative;
     z-index: 2;
     background: rgba(99, 102, 241, 0.1);
-    padding: 8px 16px;
-    border-radius: 12px;
+    padding: 6px 14px;
+    border-radius: 10px;
     color: var(--primary);
     font-family: 'Outfit', sans-serif;
     font-weight: 800;
-    font-size: 1.15rem;
+    font-size: 0.95rem;
     border: 1px solid rgba(99, 102, 241, 0.2);
     transition: all 0.3s ease;
+    white-space: nowrap;
   }
 
   .service-item:hover .service-price-tag {
@@ -296,42 +299,116 @@
   }
 
   /* Review Styling */
-  .review-item {
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 16px;
-    margin-bottom: 16px;
+  .review-section {
+    position: relative;
   }
 
-  .review-header {
+  .star-rating {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 12px;
+    flex-direction: row-reverse;
+    gap: 8px;
+    justify-content: flex-end;
   }
 
-  .user-info {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  .star-rating input {
+    display: none;
   }
 
-  .user-avatar {
-    width: 32px;
-    height: 32px;
-    background: var(--primary);
-    border-radius: 8px;
-    display: grid;
-    place-items: center;
-    font-weight: 700;
-    font-size: 14px;
-    color: #fff;
+  .star-rating label {
+    font-size: 28px;
+    color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: color 0.2s ease;
   }
 
-  .rating-stars {
+  .star-rating input:checked ~ label,
+  .star-rating label:hover,
+  .star-rating label:hover ~ label {
     color: #fbbf24;
-    font-size: 14px;
+  }
+
+  .review-filters {
     display: flex;
-    gap: 2px;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    overflow-x: auto;
+  }
+
+  .filter-pill {
+    padding: 6px 14px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+
+  .filter-pill.active {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  }
+
+  .pinned-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--primary);
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .review-item {
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+  }
+
+  .review-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .review-item.pinned {
+    border-color: rgba(99, 102, 241, 0.3);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, transparent 100%);
+  }
+
+  .form-control-premium {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    resize: none;
+    transition: all 0.2s;
+    box-sizing: border-box;
+  }
+
+  .form-control-premium:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
   }
 
   @media (max-width: 1024px) {
@@ -421,9 +498,7 @@
         {% else %}
           <div class="text-center py-8 opacity-50">No services listed yet.</div>
         {% endif %}
-      </div>
-
-      <!-- Reviews Section -->
+      </div>      <!-- Reviews Section -->
       <div class="premium-card">
         <h2 class="section-title">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
@@ -432,16 +507,17 @@
 
         {% if user.is_authenticated %}
           {% if user_review %}
-            <div class="review-item" style="border: 1px solid var(--primary); background: rgba(99, 102, 241, 0.05);">
-              <h4 class="mb-4 text-sm font-weight-bold">Your Review</h4>
+            <div class="review-item pinned">
+              <div class="pinned-badge">Your Review</div>
               <form method="post" action="{% url 'maps:edit_review' user_review.id %}">
                 {% csrf_token %}
-                <div class="d-flex gap-4 mb-4">
-                  <select name="rating" class="form-control-premium" style="width: 140px;">
+                <div class="d-flex justify-between align-center mb-4">
+                   <div class="star-rating">
                     {% for i in "54321"|make_list %}
-                      <option value="{{ i }}" {% if user_review.rating|stringformat:"i" == i %}selected{% endif %}>{{ i }} Stars</option>
+                      <input type="radio" id="edit-star{{ i }}" name="rating" value="{{ i }}" {% if user_review.rating|stringformat:"i" == i %}checked{% endif %}>
+                      <label for="edit-star{{ i }}">★</label>
                     {% endfor %}
-                  </select>
+                  </div>
                 </div>
                 <textarea name="comment" class="form-control-premium mb-4" rows="3">{{ user_review.comment }}</textarea>
                 <div class="d-flex gap-2">
@@ -456,14 +532,14 @@
               <h4 class="mb-4 text-sm font-weight-bold">Leave a Review</h4>
               <form method="post" action="{% url 'maps:add_review' listing.slug %}">
                 {% csrf_token %}
-                <div class="d-flex gap-4 mb-4">
-                  <select name="rating" class="form-control-premium" style="width: 160px;" required>
-                    <option value="5">★★★★★ Excellent</option>
-                    <option value="4">★★★★ Good</option>
-                    <option value="3">★★★ Average</option>
-                    <option value="2">★★ Poor</option>
-                    <option value="1">★ Terrible</option>
-                  </select>
+                <div class="mb-6">
+                  <div class="star-rating">
+                    <input type="radio" id="star5" name="rating" value="5" checked><label for="star5">★</label>
+                    <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+                    <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+                    <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+                    <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+                  </div>
                 </div>
                 <textarea name="comment" class="form-control-premium mb-4" rows="3" placeholder="Tell others about your experience..." required></textarea>
                 <button type="submit" class="btn btn-primary btn-block">Submit Feedback</button>
@@ -477,27 +553,51 @@
           </div>
         {% endif %}
 
-        <div class="reviews-list mt-8">
+        <!-- Filter Bar -->
+        <div class="review-filters mt-8">
+          <button class="filter-pill active" data-filter="all">All Reviews</button>
+          <button class="filter-pill" data-filter="5">5 ★</button>
+          <button class="filter-pill" data-filter="4">4 ★</button>
+          <button class="filter-pill" data-filter="3">3 ★</button>
+          <button class="filter-pill" data-filter="2">2 ★</button>
+          <button class="filter-pill" data-filter="1">1 ★</button>
+        </div>
+
+        <div class="reviews-list mt-4" id="reviews-container">
           {% for rev in reviews %}
-            <div class="review-item">
-              <div class="review-header">
-                <div class="user-info">
-                  <div class="user-avatar">{{ rev.user.username|slice:":1"|upper }}</div>
-                  <div>
-                    <div class="font-weight-bold text-sm">{{ rev.user.username }}</div>
-                    <div class="text-xs text-muted">{{ rev.created_at|date:"M d, Y" }}</div>
+            {% if rev.user != user %}
+              <div class="review-item" data-rating="{{ rev.rating }}">
+                <div class="review-header d-flex justify-between mb-4">
+                  <div class="user-info d-flex align-center gap-3">
+                    <div class="user-avatar" style="width: 40px; height: 40px; background: var(--primary); border-radius: 12px; display: grid; place-items: center; color: white; font-weight: 800;">
+                      {{ rev.user.username|slice:":1"|upper }}
+                    </div>
+                    <div>
+                      <div class="font-weight-bold text-sm">{{ rev.user.username }}</div>
+                      <div class="text-xs text-muted">{{ rev.created_at|date:"M d, Y" }}</div>
+                    </div>
+                  </div>
+                  <div class="rating-stars" style="color: #fbbf24; font-size: 14px;">
+                    {% for i in "12345"|make_list %}
+                      {% if forloop.counter <= rev.rating %}★{% else %}☆{% endif %}
+                    {% endfor %}
                   </div>
                 </div>
-                <div class="rating-stars">
-                  {% for i in "12345"|make_list %}
-                    {% if forloop.counter <= rev.rating %}★{% else %}☆{% endif %}
-                  {% endfor %}
-                </div>
+                <p class="text-sm text-secondary" style="line-height: 1.6; margin: 0;">{{ rev.comment }}</p>
+                
+                {% if user.role == 'admin' %}
+                  <div class="mt-4 pt-4 border-top" style="border-color: rgba(255,255,255,0.05);">
+                    <form method="post" action="{% url 'adminpanel:review_delete' rev.id %}" class="m-0">
+                      {% csrf_token %}<button type="submit" class="btn-text text-danger text-xs">Admin Remove</button>
+                    </form>
+                  </div>
+                {% endif %}
               </div>
-              <p class="text-sm text-secondary" style="line-height: 1.6;">{{ rev.comment }}</p>
-            </div>
+            {% endif %}
           {% empty %}
-            <div class="text-center py-8 opacity-30">No reviews yet. Be the first!</div>
+            {% if not user_review %}
+              <div class="text-center py-8 opacity-30">No reviews yet. Be the first!</div>
+            {% endif %}
           {% endfor %}
         </div>
       </div>
@@ -548,6 +648,7 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    // Map Init
     const lat = {{ listing.latitude }};
     const lng = {{ listing.longitude }};
     const name = "{{ listing.company_name|escapejs }}";
@@ -565,6 +666,32 @@
     });
 
     L.marker([lat, lng], { icon: blueIcon }).addTo(map).bindPopup(`<b>${name}</b>`).openPopup();
+
+    // Review Filtering Logic
+    const filterPills = document.querySelectorAll('.filter-pill');
+    const reviewItems = document.querySelectorAll('#reviews-container .review-item');
+
+    filterPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        filterPills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+
+        const filterValue = pill.getAttribute('data-filter');
+
+        reviewItems.forEach(item => {
+          if (filterValue === 'all') {
+            item.style.display = 'block';
+          } else {
+            const rating = item.getAttribute('data-rating');
+            if (rating === filterValue) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          }
+        });
+      });
+    });
   });
 
   function copyAddress() {

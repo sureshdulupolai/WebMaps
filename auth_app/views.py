@@ -224,7 +224,14 @@ def login_view(request):
 
     access_token, refresh_token = get_tokens_for_user(user)
     remember = request.POST.get('remember') == 'on'
-    response = redirect(_get_redirect_after_login(user))
+    
+    # Handle 'next' redirect parameter
+    next_url = request.POST.get('next') or request.GET.get('next')
+    if next_url and next_url.startswith('/'):
+        response = redirect(next_url)
+    else:
+        response = redirect(_get_redirect_after_login(user))
+        
     set_auth_cookies(response, access_token, refresh_token, remember=remember)
     logger.info(f"User logged in: {email}")
     return response
