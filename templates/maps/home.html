@@ -40,27 +40,69 @@
 
 <!-- Professional Fetching Location Overlay -->
 <div id="fetching-overlay" class="fetching-overlay hidden">
-  <div class="fetching-card text-center">
-    <div class="fetching-icon-wrap">
+  <div class="fetching-card text-center" id="fetching-card-content">
+    <div id="fetching-state">
+      <div class="fetching-icon-wrap">
+         <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+           <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+           <circle cx="12" cy="10" r="3"></circle>
+         </svg>
+      </div>
+      <h2 class="mb-2">Refining Your Location</h2>
+      <p class="text-secondary text-sm mb-4">Capturing precise GPS coordinates to find the best spots near you.</p>
+      
+      <div class="accuracy-indicator mb-8">
+        <div class="accuracy-label">Current Accuracy</div>
+        <div class="accuracy-value" id="accuracy-value">Waiting...</div>
+        <div class="accuracy-progress">
+          <div id="accuracy-progress-bar" class="accuracy-progress-bar" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <div class="d-flex flex-column gap-3">
+        <button type="button" class="btn btn-outline btn-lg w-full" onclick="cancelLocationFetch()">Cancel</button>
+      </div>
+    </div>
+
+    <!-- Error State (Hidden by default) -->
+    <div id="error-state" class="hidden">
+      <div class="fetching-icon-wrap" style="background: linear-gradient(135deg, #ef4444, #f87171); box-shadow: 0 20px 40px rgba(239, 68, 68, 0.4);">
+         <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+           <circle cx="12" cy="12" r="10"></circle>
+           <line x1="15" y1="9" x2="9" y2="15"></line>
+           <line x1="9" y1="9" x2="15" y2="15"></line>
+         </svg>
+      </div>
+      <h2 class="mb-2">Location Failed</h2>
+      <p id="location-error-msg" class="text-secondary text-sm mb-8">GPS Signal is weak. Please try again or search manually.</p>
+      <div class="d-flex flex-column gap-3">
+        <button type="button" class="btn btn-primary btn-lg w-full" onclick="handleLocationEnable()">Try Again</button>
+        <button type="button" class="btn btn-outline btn-lg w-full" onclick="cancelLocationFetch()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Map Click Confirmation Overlay -->
+<div id="confirm-map-click-overlay" class="location-overlay hidden">
+  <div class="fetching-card text-center" style="max-width: 440px;">
+    <div class="fetching-icon-wrap" style="background: linear-gradient(135deg, var(--primary), #818cf8); margin-bottom: 32px;">
        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
          <circle cx="12" cy="10" r="3"></circle>
        </svg>
     </div>
-    <h2 class="mb-2">Refining Your Location</h2>
-    <p class="text-secondary text-sm mb-4">Capturing precise GPS coordinates to find the best spots near you.</p>
-    
-    <div class="accuracy-indicator mb-8">
-      <div class="accuracy-label">Current Accuracy</div>
-      <div class="accuracy-value" id="accuracy-value">Waiting...</div>
-      <div class="accuracy-progress">
-        <div id="accuracy-progress-bar" class="accuracy-progress-bar" style="width: 0%"></div>
-      </div>
+    <h2 class="mb-3" style="font-family: 'Outfit', sans-serif; font-size: 2.2rem; font-weight: 800;">Use this location?</h2>
+    <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 32px;">
+      <p id="map-click-address" class="text-secondary" style="font-size: 1.1rem; line-height: 1.5; margin-bottom: 0; font-weight: 500;">Fetching address...</p>
     </div>
-
-    <div class="d-flex flex-column gap-3">
-      <button type="button" class="btn btn-primary btn-lg w-full hidden" id="use-current-btn" onclick="useCurrentLocation()">Use Current Location</button>
-      <button type="button" class="btn btn-outline btn-lg w-full" onclick="cancelLocationFetch()">Cancel</button>
+    <div class="d-flex align-center gap-4">
+      <button type="button" class="btn btn-primary btn-lg flex-1" id="confirm-map-btn" style="height: 56px; border-radius: 16px; font-weight: 700;">
+        Confirm Location
+      </button>
+      <button type="button" class="btn btn-outline btn-lg flex-1" onclick="closeMapClickOverlay()" style="height: 56px; border-radius: 16px; font-weight: 600;">
+        Cancel
+      </button>
     </div>
   </div>
 </div>
@@ -234,7 +276,7 @@
     </div>
 
     <!-- Empty State for Map Area -->
-    <div id="map-empty-state" class="map-empty-state-overlay">
+    <div id="map-empty-state" class="map-empty-state-overlay hidden">
       <div class="stat-icon mb-4">
         <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none"
           viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">

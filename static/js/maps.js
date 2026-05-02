@@ -15,10 +15,10 @@ function initMap() {
   const mapEl = document.getElementById('map');
   if (!mapEl) return;
 
-  // Default: Mumbai
+  // Default: Focused on India for a professional starting view
   map = L.map('map', {
-    zoomControl: false // we can add it custom if needed
-  }).setView([19.076, 72.877], 12);
+    zoomControl: false 
+  }).setView([20.5937, 78.9629], 5);
 
   L.control.zoom({ position: 'bottomright' }).addTo(map);
 
@@ -28,18 +28,19 @@ function initMap() {
     attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   }).addTo(map);
 
-  // Try geolocation
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        const { latitude, longitude, accuracy } = pos.coords;
-        map.setView([latitude, longitude], 13);
-        updateUserLocation(latitude, longitude, accuracy);
-      },
-      () => {},
-      { enableHighAccuracy: true, timeout: 5000 }
-    );
-  }
+  // Reveal map immediately
+  revealMap();
+
+  // Load all available listings on start for a professional experience
+  loadInitialListings();
+
+  // Handle map clicks for location selection
+  map.on('click', (e) => {
+    const { lat, lng } = e.latlng;
+    if (typeof window.handleMapClick === 'function') {
+      window.handleMapClick(lat, lng);
+    }
+  });
 
 }
 
@@ -469,6 +470,18 @@ function updateUserLocation(lat, lng, accuracy) {
       weight: 1,
       interactive: false
     }).addTo(map);
+  }
+}
+
+async function loadInitialListings() {
+  try {
+    const res = await fetch('/api/maps/all/');
+    const data = await res.json();
+    if (data.listings) {
+      data.listings.forEach(listing => addMarker(listing.lat, listing.lng, listing));
+    }
+  } catch (err) {
+    console.warn("Could not load initial listings:", err);
   }
 }
 

@@ -117,6 +117,23 @@ def route_search(request):
     })
 
 
+def all_listings_api(request):
+    """AJAX endpoint to return all approved listings."""
+    listings = Listing.objects.filter(status='approved', deleted_at__isnull=True)
+    listings_data = []
+    for l in listings:
+        listings_data.append({
+            'slug': l.slug,
+            'company_name': l.company_name,
+            'short_description': l.short_description,
+            'lat': float(l.latitude),
+            'lng': float(l.longitude),
+            'detail_url': l.get_absolute_url(),
+            'distance_km': 0, # Not applicable for global view
+        })
+    return JsonResponse({'listings': listings_data})
+
+
 def listing_detail_view(request, slug):
     """
     Listing detail page with embedded map and services table.
