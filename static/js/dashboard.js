@@ -18,14 +18,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
             targetName.textContent = name;
             targetStatus.textContent = status;
-            archiveForm.action = `/hosts/delete/${slug}/`;
+            archiveForm.action = `/hosts/listing/${slug}/delete/`;
             
             // Reset input and button
             confirmInput.value = '';
             confirmBtn.disabled = true;
-            confirmBtn.classList.remove('ready');
 
-            modal.style.display = 'flex';
+            modal.classList.add('active');
             confirmInput.focus();
         });
     });
@@ -33,13 +32,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // 02. CLOSE MODAL
     closeBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            modal.style.display = 'none';
+            modal.classList.remove('active');
         });
     });
 
     // Close on outside click
     window.addEventListener('click', (e) => {
-        if (e.target === modal) modal.style.display = 'none';
+        if (e.target === modal) modal.classList.remove('active');
     });
 
     // 03. VERIFICATION LOGIC

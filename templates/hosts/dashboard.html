@@ -16,7 +16,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
       Console Overview
     </a>
-    <a href="{% url 'hosts:listing_create' %}" class="sidebar-link">
+    <a href="{% url 'hosts:listing_create' %}?new=true" class="sidebar-link">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
       New Listing
     </a>
@@ -26,12 +26,18 @@
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
       Insights
     </a>
-
-    <div class="sidebar-label">Institutional</div>
-    <a href="{% url 'users:profile' %}" class="sidebar-link">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-      Account Profile
+    <a href="#" class="sidebar-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+      Global Billing
     </a>
+
+    <div class="sidebar-context-card">
+      <div class="context-label">Host Profile</div>
+      <div class="context-value">
+        <span class="context-dot" style="background: var(--pro-primary); box-shadow: 0 0 8px var(--pro-primary);"></span>
+        {{ user.username }}
+      </div>
+    </div>
   </aside>
 
   <!-- ══ MAIN CONTENT ═════════════════════════════════ -->
@@ -41,54 +47,115 @@
         <h1 class="page-title">Welcome back, {{ user.first_name|default:user.username }}</h1>
         <p class="page-subtitle">Track your platform engagement and business growth.</p>
       </div>
-      <a href="{% url 'hosts:listing_create' %}" class="btn btn-primary" style="height: 48px; padding: 0 28px; border-radius: 12px; font-weight: 700;">
-        + Create Listing
+      <a href="{% url 'hosts:listing_create' %}?new=true" class="btn btn-primary" style="height: 48px; padding: 0 28px; border-radius: 12px; font-weight: 700;">
+        + Create New Listing
       </a>
     </div>
 
     {% if listing_data %}
       <div class="host-stats-grid">
-         <div class="stat-box">
-            <div class="stat-box-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg></div>
-            <div class="stat-box-value">{{ listing_data|length }}</div>
-            <div class="stat-box-label">Total Listings</div>
-         </div>
+          <div class="stat-box">
+             <div class="stat-box-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--pro-success);">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+             </div>
+             <div class="stat-box-value">{{ listing_data|length }}</div>
+             <div class="stat-box-label">Live Business Profiles</div>
+          </div>
+          <div class="stat-box">
+             <div class="stat-box-icon" style="background: rgba(99, 102, 241, 0.1); color: var(--pro-primary);">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+             </div>
+             <div class="stat-box-value">{{ drafts|length }}</div>
+             <div class="stat-box-label">In-Progress Drafts</div>
+          </div>
+      </div>
+
+      {% if drafts %}
+      <div class="section-header mb-6 mt-12">
+        <h2 class="h4 m-0">In-Progress Drafts</h2>
+        <p class="text-xs text-secondary">Listings you haven't published yet.</p>
+      </div>
+      <div class="listing-management-grid mb-12">
+        {% for draft in drafts %}
+        <div class="pro-listing-card" style="border-style: dashed; border-color: var(--pro-primary); opacity: 0.8;">
+          <div class="pro-card-main">
+            <div class="pro-avatar" style="background: var(--pro-surface-light); color: var(--pro-primary); border: 1px dashed var(--pro-primary);">
+              {{ draft.company_name|slice:":1"|default:"?" }}
+            </div>
+            <div class="pro-details">
+              <div class="pro-title-row">
+                <h3 class="pro-company-name">{{ draft.company_name|default:"Unnamed Draft" }}</h3>
+                <span class="pro-status-pill status-draft">DRAFT</span>
+              </div>
+              <p class="pro-description">{{ draft.short_description|truncatechars:120|default:"Complete your listing to publish it on the map." }}</p>
+            </div>
+          </div>
+          <div class="pro-card-actions">
+            <a href="{% url 'hosts:listing_edit' draft.slug %}" class="pro-btn pro-btn-primary">Resume Setup Flow</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <div class="section-header mb-6 mt-12">
+        <h2 class="h4 m-0">Published Listings</h2>
+        <p class="text-xs text-secondary">Manage your active business presences.</p>
       </div>
 
       <div class="listing-management-grid">
         {% for item in listing_data %}
-        <div class="listing-card">
-          <div class="listing-avatar">
-            {{ item.listing.company_name|slice:":1" }}
-          </div>
-          <div class="listing-info">
-            <div class="d-flex align-center gap-4 mb-2">
-              <h3 class="m-0">{{ item.listing.company_name }}</h3>
-              <span class="status-badge status-{{ item.listing.status }}">
-                {{ item.listing.get_status_display }}
-              </span>
+        <div class="pro-listing-card">
+          <div class="pro-card-main">
+            <div class="pro-avatar-wrapper">
+              <div class="pro-avatar">
+                {{ item.listing.company_name|slice:":1" }}
+              </div>
+              {% if item.subscription %}
+              <div class="pro-days-left {% if item.remaining_days < 5 %}urgent{% endif %}">
+                {{ item.remaining_days }}d
+              </div>
+              {% endif %}
             </div>
-            <p>{{ item.listing.short_description|truncatechars:120 }}</p>
-            <div class="d-flex gap-6">
-              <div class="text-xs text-secondary">
-                <strong>{{ item.stats.views|default:"0" }}</strong> Impressions
+            
+            <div class="pro-details">
+              <div class="pro-title-row">
+                <h3 class="pro-company-name">{{ item.listing.company_name }}</h3>
+                <span class="pro-status-pill status-{{ item.listing.status }}">
+                  {{ item.listing.get_status_display }}
+                </span>
               </div>
-              <div class="text-xs text-secondary">
-                <strong>{{ item.stats.clicks|default:"0" }}</strong> Clicks
-              </div>
-              <div class="text-xs text-secondary">
-                <strong>{{ item.remaining_days }}</strong> Days Left
+              <p class="pro-description">{{ item.listing.short_description|truncatechars:120 }}</p>
+              
+              <div class="pro-stats-row">
+                <div class="pro-stat-item">
+                  <div class="pro-stat-label">IMPRESSIONS</div>
+                  <div class="pro-stat-value">{{ item.stats.views|default:"0" }}</div>
+                </div>
+                <div class="pro-stat-divider"></div>
+                <div class="pro-stat-item">
+                  <div class="pro-stat-label">SOCIAL CLICKS</div>
+                  <div class="pro-stat-value">{{ item.stats.clicks|default:"0" }}</div>
+                </div>
+                {% if item.subscription %}
+                <div class="pro-stat-divider"></div>
+                <div class="pro-stat-item">
+                  <div class="pro-stat-label">EXPIRES ON</div>
+                  <div class="pro-stat-value text-xs">{{ item.subscription.expires_at|date:"M d, Y" }}</div>
+                </div>
+                {% endif %}
               </div>
             </div>
           </div>
-          <div class="listing-actions">
-            <a href="{% url 'hosts:listing_insights' item.listing.slug %}" class="btn-card btn-insights">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-              Insights
+
+          <div class="pro-card-actions">
+            <a href="{% url 'hosts:listing_insights' item.listing.slug %}" class="pro-btn pro-btn-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+              Detailed Insights
             </a>
-            <div class="btn-group-horizontal">
-              <a href="{% url 'hosts:listing_edit' item.listing.slug %}" class="btn-card btn-edit">Edit</a>
-              <button type="button" class="btn-card btn-delete trigger-archive" 
+            <div class="pro-btn-group">
+              <a href="{% url 'hosts:listing_edit' item.listing.slug %}" class="pro-btn pro-btn-secondary">Edit Details</a>
+              <button type="button" class="pro-btn pro-btn-danger trigger-archive" 
                 data-slug="{{ item.listing.slug }}" 
                 data-name="{{ item.listing.company_name }}"
                 data-status="{{ item.listing.get_status_display }}">

@@ -53,6 +53,13 @@ document.addEventListener('DOMContentLoaded', function () {
         ? `webmaps_edit_${initialData.slug}` 
         : 'webmaps_new_listing';
 
+    // Check for ?new=true to clear state for new listings
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('new') === 'true' && !initialData.slug) {
+        localStorage.removeItem(STORAGE_KEY);
+        console.log("New listing requested: local state cleared.");
+    }
+
     // 03. WIZARD NAVIGATION & STATE
     function updateWizard() {
         steps.forEach(s => s.classList.remove('active'));
@@ -129,6 +136,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         if (currentStep === 1) {
+            const categorySelect = activeStep.querySelector('[name="category"]');
+            if (categorySelect && !categorySelect.value) {
+                showDialog("Category Required", "Please select a business category.");
+                valid = false;
+            }
             if (!latInput.value || !lngInput.value) {
                 showDialog("Location Needed", "Please select your business location on the map.");
                 valid = false;
@@ -716,6 +728,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             try {
                 const formData = new FormData(form);
+                formData.append('save_draft', 'true');
                 let postUrl = window.location.pathname;
                 if (!postUrl.endsWith('/')) postUrl += '/';
 
@@ -751,6 +764,37 @@ document.addEventListener('DOMContentLoaded', function () {
                 saveDraftBtn.disabled = false;
                 saveDraftBtn.innerHTML = 'Save Draft';
             }
+        });
+    }
+
+    // --- Stop Listing Logic ---
+    const stopListingBtn = document.getElementById('stop-listing-btn');
+    if (stopListingBtn && initialData && initialData.slug) {
+        stopListingBtn.addEventListener('click', () => {
+            showDialog(
+                "Archive Listing",
+                "Are you sure you want to stop and archive this listing? This will hide it from the map permanently.",
+                'warning',
+                null,
+                {
+                    label: "Archive Permanently",
+                    callback: async () => {
+                        try {
+                            const response = await fetch(`/hosts/listing/${initialData.slug}/delete/`, {
+                                method: 'POST',
+                                headers: { 'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value }
+                            });
+                            if (response.ok) {
+                                window.location.href = '/hosts/dashboard/';
+                            } else {
+                                showDialog("Error", "Failed to archive listing.");
+                            }
+                        } catch (err) {
+                            showDialog("Error", "Network error while archiving.");
+                        }
+                    }
+                }
+            );
         });
     }
 

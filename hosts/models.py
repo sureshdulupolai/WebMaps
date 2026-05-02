@@ -8,9 +8,28 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class ListingStatus(models.TextChoices):
+    DRAFT = 'draft', 'Draft'
     PENDING = 'pending', 'Pending Review'
     APPROVED = 'approved', 'Approved'
     REJECTED = 'rejected', 'Rejected'
+
+
+class Category(models.Model):
+    """
+    Global category for listings (e.g., Restaurant, Cafe).
+    """
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=120, unique=True)
+    icon_svg = models.TextField(blank=True, help_text="SVG path or icon class name")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural = "Categories"
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
 
 
 class Listing(models.Model):
@@ -26,6 +45,13 @@ class Listing(models.Model):
     )
 
     # Listing info
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='listings'
+    )
     website_url = models.URLField(max_length=500)
     company_name = models.CharField(max_length=200)
     mobile_number = models.CharField(max_length=20, blank=True, null=True)

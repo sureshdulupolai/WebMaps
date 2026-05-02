@@ -16,4 +16,5 @@ urlpatterns = [
     path('listing/<slug:slug>/services/add/', views.service_add_view, name='service_add'),
     path('listing/<slug:slug>/services/<uuid:service_id>/update/', views.service_update_view, name='service_update'),
     path('listing/<slug:slug>/services/<uuid:service_id>/delete/', views.service_delete_view, name='service_delete'),
+    path('listing/<slug:slug>/billing/', views.listing_billing_view, name='listing_billing'),
 ]

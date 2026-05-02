@@ -28,6 +28,28 @@
     </div>
   </div>
 
+  {% if latest_draft and action == 'create' and not request.GET.new %}
+  <div class="card bg-primary bg-opacity-10 border-primary border-opacity-20 mb-8 p-6">
+    <div class="d-flex align-center justify-between">
+      <div class="d-flex align-center gap-4">
+        <div class="stat-icon" style="width: 48px; height: 48px; font-size: 20px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <div>
+          <h3 class="h5 m-0">Continue where you left off?</h3>
+          <p class="text-xs text-secondary m-0">We found a draft for "{{ latest_draft.company_name|default:'Unnamed Business' }}".</p>
+        </div>
+      </div>
+      <div class="d-flex gap-3">
+        <a href="{% url 'hosts:listing_edit' latest_draft.slug %}" class="btn btn-primary btn-sm">Resume Draft</a>
+        <button type="button" class="btn btn-outline btn-sm" onclick="localStorage.removeItem('webmaps_new_listing'); this.parentElement.parentElement.parentElement.remove(); location.reload();">Start Fresh</button>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
   <div class="listing-dual-layout">
     <!-- ══ LEFT COLUMN: DATA ENTRY ═════════════════════ -->
     <main class="listing-main-card">
@@ -59,6 +81,17 @@
         <div class="wizard-step active" id="step-1">
           <h2 class="text-sm uppercase letter-spacing-2 text-primary mb-8 font-weight-bold">01. Identity & Presence</h2>
           
+          <div class="input-line-group">
+            <label class="input-line-label">Business Category</label>
+            <select name="category" class="input-line" required>
+              <option value="">Select a Category</option>
+              {% for cat in categories %}
+              <option value="{{ cat.id }}" {% if cat.id|stringformat:"s" == form_data.category_id|stringformat:"s" %}selected{% endif %}>{{ cat.name }}</option>
+              {% endfor %}
+            </select>
+            <div class="listing-helper-text">Helps customers find you in specific searches.</div>
+          </div>
+
           <div class="input-line-group">
             <label class="input-line-label">Contact Mobile Number</label>
             <input type="text" name="mobile_number" class="input-line" placeholder="e.g. +91 98765 43210" 
@@ -182,9 +215,31 @@
 
         <!-- STEP 4: FINALIZE & FINISH -->
         <div class="wizard-step" id="step-4">
-          <h2 class="text-sm uppercase letter-spacing-2 text-primary mb-8 font-weight-bold">05. Select Plan & Initialize</h2>
-          <p class="text-xs text-secondary mb-8">Choose a subscription tier to activate your listing. Your listing will go live immediately after verification.</p>
+          <h2 class="text-sm uppercase letter-spacing-2 text-primary mb-8 font-weight-bold">05. Finalize & Publish</h2>
           
+          {% if not needs_payment %}
+          <div class="alert alert-success mb-8">
+            <div class="d-flex align-center gap-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div>
+                <h4 class="m-0 text-sm">Membership Active</h4>
+                <p class="m-0 text-xs opacity-80">You have an active subscription. Changes can be saved instantly.</p>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+
+          <p class="text-xs text-secondary mb-8">
+            {% if needs_payment %}
+            Choose a subscription tier to activate your listing. Your listing will go live immediately after verification.
+            {% else %}
+            Review your changes below before saving them to your live listing.
+            {% endif %}
+          </p>
+
+          {% if needs_payment %}
           <div class="plans-grid mb-10">
             {% for plan in plans %}
             <label class="plan-card {% if forloop.first %}active{% endif %}" data-plan-id="{{ plan.id }}" data-amount="{{ plan.total_cost }}">
@@ -195,6 +250,7 @@
             </label>
             {% endfor %}
           </div>
+          {% endif %}
 
           <div class="secondary-card mb-8">
             <div id="summary-content" class="text-sm text-secondary" style="line-height:1.8">
@@ -205,6 +261,7 @@
               <!-- JS Pricing Inject -->
             </div>
 
+            {% if needs_payment %}
             <!-- Coupon Section -->
             <div class="coupon-section mt-6 pt-6 border-top border-muted border-opacity-10">
               <label class="text-xs font-weight-bold text-primary mb-2 d-block letter-spacing-1">HAVE A COUPON?</label>
@@ -214,6 +271,7 @@
               </div>
               <div id="coupon-feedback" class="text-xs mt-2 d-none"></div>
             </div>
+            {% endif %}
           </div>
 
           <p class="text-xs text-secondary opacity-50 mb-8">By proceeding, you agree to our terms of service. Payments are secured via Razorpay.</p>
@@ -224,12 +282,21 @@
           <input type="hidden" id="id_update_count" value="{{ listing.update_count|default:0 }}">
 
           <div class="dual-actions">
+            {% if needs_payment %}
             <button type="button" class="btn btn-save-draft" id="save-draft-btn">
               Save Draft
             </button>
             <button type="button" class="btn btn-primary" id="submit-listing-btn">
               Pay & Initialize Listing
             </button>
+            {% else %}
+            <button type="button" class="btn btn-outline" id="stop-listing-btn" style="border-color: var(--danger); color: var(--danger);">
+              Stop/Archive Listing
+            </button>
+            <button type="button" class="btn btn-primary" id="submit-listing-btn">
+              Save Changes
+            </button>
+            {% endif %}
           </div>
         </div>
 

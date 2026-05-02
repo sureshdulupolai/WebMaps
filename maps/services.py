@@ -137,7 +137,7 @@ def get_listings_near_location(lat: float, lng: float, radius_km: float = 10, ca
     ).prefetch_related('services')
 
     if category:
-        listings = listings.filter(category__iexact=category)
+        listings = listings.filter(category__name__iexact=category)
 
     # 2. Precise Haversine calculation on the reduced set
     results = []

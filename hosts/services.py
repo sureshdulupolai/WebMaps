@@ -9,7 +9,7 @@ from .models import Listing, ServiceItem, ListingDocument, ListingStatus
 logger = logging.getLogger('webmaps')
 
 
-def create_listing(host, data: dict, file_obj=None, parsed_services: list = None) -> tuple:
+def create_listing(host, data: dict, file_obj=None, parsed_services: list = None, is_draft: bool = False) -> tuple:
     """
     Create a new listing for a host.
     Returns (listing, errors_dict)
@@ -32,6 +32,7 @@ def create_listing(host, data: dict, file_obj=None, parsed_services: list = None
 
     listing = Listing.objects.create(
         host=host,
+        category_id=data.get('category_id'),
         website_url=data['website_url'],
         company_name=data['company_name'],
         mobile_number=data.get('mobile_number', ''),
@@ -41,7 +42,7 @@ def create_listing(host, data: dict, file_obj=None, parsed_services: list = None
         longitude=lng,
         location_name=data.get('location_name', ''),
         operating_hours=data.get('operating_hours'),
-        status=ListingStatus.PENDING,
+        status=ListingStatus.DRAFT if is_draft else ListingStatus.PENDING,
     )
 
     if parsed_services:
@@ -139,6 +140,7 @@ def update_listing(listing, data: dict, file_obj=None, parsed_services: list = N
         if Listing.objects.filter(latitude=lat, longitude=lng).exclude(id=listing.id).exists():
             return False, 'A listing already exists at these exact coordinates.'
 
+    listing.category_id = data.get('category_id', listing.category_id)
     listing.website_url = data.get('website_url', listing.website_url)
     listing.company_name = data.get('company_name', listing.company_name)
     listing.mobile_number = data.get('mobile_number', listing.mobile_number)

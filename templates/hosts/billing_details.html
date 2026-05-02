@@ -1,0 +1,225 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Billing — {{ listing.company_name }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+<style>
+  .billing-card {
+    background: var(--pro-surface);
+    border: 1px solid var(--pro-border);
+    border-radius: 24px;
+    padding: var(--space-8);
+    margin-bottom: var(--space-10);
+  }
+
+  .billing-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--space-6);
+  }
+
+  .billing-table th {
+    text-align: left;
+    padding: var(--space-4);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--pro-text-secondary);
+    border-bottom: 1px solid var(--pro-border);
+  }
+
+  .billing-table td {
+    padding: var(--space-4);
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="sidebar-layout">
+  <aside class="sidebar">
+    <div class="sidebar-label">Navigation</div>
+    <a href="{% url 'hosts:dashboard' %}" class="sidebar-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"
+        stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+      Dashboard
+    </a>
+    <a href="{% url 'hosts:listing_insights' listing.slug %}" class="sidebar-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"
+        stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+      </svg>
+      Insights
+    </a>
+    <a href="{% url 'hosts:listing_billing' listing.slug %}" class="sidebar-link active">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"
+        stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+      </svg>
+      Billing & Plans
+    </a>
+
+    <div class="sidebar-label">Listing Context</div>
+    <div class="px-4 py-2">
+      <div class="text-xs text-muted mb-1">SELECTED PROPERTY</div>
+      <div class="font-weight-bold text-sm">{{ listing.company_name }}</div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="page-header mb-10">
+      <h1 class="page-title">Billing & Subscriptions</h1>
+      <p class="page-subtitle">Manage your payment history and active plans.</p>
+    </div>
+
+    <!-- Active Subscription Card -->
+    <div class="billing-card pro-listing-card" style="display: block; padding: 2.5rem;">
+      <div class="d-flex justify-between align-center mb-10">
+        <div class="d-flex align-center gap-4">
+          <div class="pro-avatar" style="width: 64px; height: 64px; font-size: 24px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <div>
+            <h2 class="h4 m-0">Current Subscription</h2>
+            <p class="text-xs text-secondary m-0">Review your active plan details and cycle dates.</p>
+          </div>
+        </div>
+        {% if subscription and subscription.is_active and not subscription.is_expired %}
+        <span class="pro-status-pill status-approved" style="font-size: 14px; padding: 8px 20px;">ACTIVE</span>
+        {% else %}
+        <span class="pro-status-pill status-expired" style="font-size: 14px; padding: 8px 20px;">INACTIVE /
+          EXPIRED</span>
+        {% endif %}
+      </div>
+
+      {% if subscription %}
+      <div class="pro-stats-row"
+        style="background: rgba(255,255,255,0.02); padding: 2rem; border-radius: 20px; border: 1px solid var(--pro-border);">
+        <div class="pro-stat-item">
+          <div class="pro-stat-label">PLAN TYPE</div>
+          <div class="pro-stat-value" style="color: var(--pro-primary);">{{ subscription.plan.name }}</div>
+        </div>
+        <div class="pro-stat-divider"></div>
+        <div class="pro-stat-item">
+          <div class="pro-stat-label">CYCLE DATES</div>
+          <div class="pro-stat-value">{{ subscription.starts_at|date:"M d, Y" }} — {{ subscription.expires_at|date:"M d,
+            Y" }}</div>
+        </div>
+        <div class="pro-stat-divider"></div>
+        <div class="pro-stat-item">
+          <div class="pro-stat-label">TIME REMAINING</div>
+          <div class="pro-stat-value">
+            {% if subscription.is_expired %}
+            <span class="text-danger">0 Days (Expired)</span>
+            {% else %}
+            <span class="text-success">{{ subscription.expires_at.date|timeuntil:today }}</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% else %}
+      <div class="text-center py-10 opacity-40">
+        <p class="text-sm m-0">No active subscription found for this listing.</p>
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- Payment History -->
+    <div class="billing-card">
+      <div class="d-flex align-center gap-4 mb-6">
+        <div class="pro-avatar"
+          style="width: 44px; height: 44px; font-size: 18px; background: rgba(255,255,255,0.05); border: 1px solid var(--pro-border);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01m-.01 4h.01" />
+          </svg>
+        </div>
+        <h2 class="h5 m-0">Payment History</h2>
+      </div>
+      {% if payments %}
+      <table class="billing-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Method</th>
+            <th>Reference ID</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for pay in payments %}
+          <tr>
+            <td>{{ pay.created_at|date:"M d, Y H:i" }}</td>
+            <td class="font-weight-bold">₹{{ pay.amount }}</td>
+            <td>{{ pay.provider|default:"Platform Checkout"|upper }}</td>
+            <td class="text-xs opacity-60">{{ pay.razorpay_payment_id|default:"Zero Checkout" }}</td>
+            <td>
+              <span
+                class="text-xs font-weight-bold {% if pay.status == 'success' %}text-success{% else %}text-danger{% endif %}">
+                {{ pay.status|upper }}
+              </span>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <div class="text-center py-10 opacity-40">
+        <p class="text-sm m-0">No payment records found.</p>
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- Coupons Used -->
+    {% if coupons %}
+    <div class="billing-card">
+      <div class="d-flex align-center gap-4 mb-6">
+        <div class="pro-avatar"
+          style="width: 44px; height: 44px; font-size: 18px; background: rgba(16, 185, 129, 0.1); color: var(--pro-success); border: 1px solid rgba(16, 185, 129, 0.2);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+          </svg>
+        </div>
+        <h2 class="h5 m-0">Promotions Applied</h2>
+      </div>
+      <table class="billing-table">
+        <thead>
+          <tr>
+            <th>Coupon Code</th>
+            <th>Discount Value</th>
+            <th>Final Paid</th>
+            <th>Applied On</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for usage in coupons %}
+          <tr>
+            <td class="text-primary font-weight-bold">{{ usage.coupon.code }}</td>
+            <td class="text-success">-₹{{ usage.discount_applied }}</td>
+            <td class="font-weight-bold">₹{{ usage.final_amount }}</td>
+            <td class="text-sm opacity-60">{{ usage.used_at|date:"M d, Y" }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+
+  </main>
+</div>
+{% endblock %}

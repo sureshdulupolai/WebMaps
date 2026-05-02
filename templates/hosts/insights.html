@@ -14,8 +14,8 @@
   }
 
   .chart-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
+    background: var(--pro-surface);
+    border: 1px solid var(--pro-border);
     border-radius: 24px;
     padding: var(--space-8);
     height: 400px;
@@ -34,10 +34,20 @@
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
       Dashboard
     </a>
-    <div class="sidebar-label">Listing Context</div>
-    <div class="px-4 py-2">
-      <div class="text-xs text-muted mb-1">SELECTED PROPERTY</div>
-      <div class="font-weight-bold text-sm">{{ listing.company_name }}</div>
+    <a href="{% url 'hosts:listing_insights' listing.slug %}" class="sidebar-link active">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+      Insights
+    </a>
+    <a href="{% url 'hosts:listing_billing' listing.slug %}" class="sidebar-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+      Billing & Plans
+    </a>
+    <div class="sidebar-context-card">
+      <div class="context-label">Current Property</div>
+      <div class="context-value">
+        <span class="context-dot"></span>
+        {{ listing.company_name }}
+      </div>
     </div>
   </aside>
 
@@ -47,27 +57,46 @@
       <p class="page-subtitle">Granular engagement metrics for your digital presence.</p>
     </div>
 
-    <!-- Key Metrics -->
-    <div class="insights-grid">
-      <div class="stat-box">
-        <div class="stat-box-label">Impressions</div>
-        <div class="stat-box-value">{{ stats.views }}</div>
-        <div class="text-xs text-muted">Total page views</div>
+    <!-- Key Metrics — Compact & Elegant -->
+    <div class="metrics-grid-compact">
+      <div class="metric-glass-card">
+        <div class="metric-icon-mini" style="color: var(--pro-primary);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+        </div>
+        <div class="metric-data">
+          <div class="metric-value-pro">{{ stats.views }}</div>
+          <div class="metric-label-pro">Impressions</div>
+        </div>
       </div>
-      <div class="stat-box">
-        <div class="stat-box-label">Social Clicks</div>
-        <div class="stat-box-value">{{ stats.clicks }}</div>
-        <div class="text-xs text-muted">Website redirects</div>
+
+      <div class="metric-glass-card">
+        <div class="metric-icon-mini" style="color: var(--pro-success);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+        </div>
+        <div class="metric-data">
+          <div class="metric-value-pro">{{ stats.clicks }}</div>
+          <div class="metric-label-pro">Social Clicks</div>
+        </div>
       </div>
-      <div class="stat-box">
-        <div class="stat-box-label">Unique Visitors</div>
-        <div class="stat-box-value">{{ stats.unique_visitors }}</div>
-        <div class="text-xs text-muted">Based on IP hashes</div>
+
+      <div class="metric-glass-card">
+        <div class="metric-icon-mini" style="color: var(--pro-warning);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+        </div>
+        <div class="metric-data">
+          <div class="metric-value-pro">{{ stats.unique_visitors }}</div>
+          <div class="metric-label-pro">Unique Visitors</div>
+        </div>
       </div>
-      <div class="stat-box">
-        <div class="stat-box-label">Map Interactions</div>
-        <div class="stat-box-value">{{ stats.map_opens }}</div>
-        <div class="text-xs text-muted">Detail popup opens</div>
+
+      <div class="metric-glass-card">
+        <div class="metric-icon-mini" style="color: var(--pro-danger);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+        </div>
+        <div class="metric-data">
+          <div class="metric-value-pro">{{ stats.map_opens }}</div>
+          <div class="metric-label-pro">Map Interaction</div>
+        </div>
       </div>
     </div>
 
@@ -80,7 +109,7 @@
     </div>
 
     <div class="mt-10">
-      <a href="{% url 'hosts:listing_edit' listing.slug %}" class="btn btn-primary btn-sm">Adjust Presence Strategy (Edit)</a>
+      <a href="{% url 'hosts:listing_edit' listing.slug %}" class="pro-btn pro-btn-primary" style="width: fit-content; padding: 0 2rem;">Adjust Presence Strategy (Edit)</a>
     </div>
   </main>
 </div>

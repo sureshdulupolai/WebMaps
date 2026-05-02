@@ -13,7 +13,7 @@ from django.conf import settings
 from auth_app.decorators import jwt_login_required, role_required
 from utils.helpers import sanitize_input
 from payments.models import SubscriptionPlan
-from .models import Listing, ServiceItem
+from .models import Listing, ServiceItem, Category, ListingStatus
 from .services import create_listing, update_listing
 from .validators import (
     validate_listing_url, validate_coordinates,
@@ -31,28 +31,42 @@ logger = logging.getLogger('webmaps')
 def dashboard_view(request):
     listings = Listing.objects.filter(
         host=request.user, deleted_at__isnull=True
-    ).prefetch_related('services')
+    ).exclude(status=ListingStatus.DRAFT).prefetch_related('services')
+
+    drafts = Listing.objects.filter(
+        host=request.user, status=ListingStatus.DRAFT, deleted_at__isnull=True
+    )
 
     # Aggregate stats per listing
     from analytics.services import aggregate_listing_stats
-    from payments.models import Subscription
-
     listing_data = []
     for listing in listings:
         stats = aggregate_listing_stats(listing.id)
+        from payments.models import Subscription, PaymentLog
         try:
-            sub = Subscription.objects.get(listing=listing)
+            sub = Subscription.objects.select_related('plan').get(listing=listing)
             remaining_days = max(0, (sub.expires_at.date() - __import__('datetime').date.today()).days)
-            sub_status = 'active' if sub.is_active else 'expired'
+            sub_status = 'active' if sub.is_active and not sub.is_expired else 'expired'
+            
+            # Fetch last successful payment for billing info
+            payment_log = PaymentLog.objects.filter(listing=listing, status='success').order_by('-created_at').first()
+
+            # Fetch coupon usage if any
+            from coupon.models import CouponUsage
+            coupon_usage = CouponUsage.objects.filter(listing_slug=listing.slug).order_by('-used_at').first()
         except Exception:
             sub = None
             remaining_days = 0
             sub_status = 'no_subscription'
+            payment_log = None
+            coupon_usage = None
 
         listing_data.append({
             'listing': listing,
             'stats': stats,
             'subscription': sub,
+            'payment_log': payment_log,
+            'coupon_usage': coupon_usage,
             'remaining_days': remaining_days,
             'sub_status': sub_status,
         })
@@ -65,6 +79,7 @@ def dashboard_view(request):
 
     return render(request, 'hosts/dashboard.html', {
         'listing_data': listing_data,
+        'drafts': drafts,
         'notifications': notifications,
     })
 
@@ -92,18 +107,24 @@ def listing_insights_view(request, slug):
 def listing_create_view(request):
     if request.method == 'GET':
         plans = SubscriptionPlan.objects.all()
+        categories = Category.objects.all()
+        latest_draft = Listing.objects.filter(host=request.user, status=ListingStatus.DRAFT).first()
+        
         return render(request, 'hosts/listing_form.html', {
             'action': 'create',
             'razorpay_key': settings.RAZORPAY_KEY_ID,
             'plans': plans,
+            'categories': categories,
+            'latest_draft': latest_draft,
             'form_data': {
                 'company_name': '', 'website_url': '', 'mobile_number': '', 'short_description': '',
-                'latitude': '', 'longitude': '', 'location_name': ''
+                'latitude': '', 'longitude': '', 'location_name': '', 'category_id': ''
             },
         })
 
     errors = {}
     data = {
+        'category_id': request.POST.get('category'),
         'website_url': sanitize_input(request.POST.get('website_url', '').strip()),
         'company_name': sanitize_input(request.POST.get('company_name', '').strip()),
         'mobile_number': sanitize_input(request.POST.get('mobile_number', '').strip()),
@@ -145,6 +166,7 @@ def listing_create_view(request):
             'errors': errors, 'form_data': data, 'action': 'create',
             'razorpay_key': settings.RAZORPAY_KEY_ID,
             'plans': SubscriptionPlan.objects.all(),
+            'categories': Category.objects.all(),
         })
 
     # Handle parsed services JSON
@@ -165,17 +187,20 @@ def listing_create_view(request):
             data['operating_hours'] = {}
 
     file_obj = request.FILES.get('service_file')
-    listing, service_errors = create_listing(request.user, data, file_obj, parsed_services)
+    is_draft = request.POST.get('save_draft') == 'true'
+    listing, service_errors = create_listing(request.user, data, file_obj, parsed_services, is_draft=is_draft)
 
     if service_errors:
         plans = SubscriptionPlan.objects.all()
+        categories = Category.objects.all()
         errors.update(service_errors)
         if request.headers.get('x-requested-with') == 'XMLHttpRequest':
             return JsonResponse({'errors': errors}, status=400)
         return render(request, 'hosts/listing_form.html', {
             'errors': errors, 'form_data': data, 'action': 'create',
             'razorpay_key': settings.RAZORPAY_KEY_ID,
-            'plans': plans
+            'plans': plans,
+            'categories': categories
         })
 
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
@@ -214,10 +239,11 @@ def listing_edit_view(request, slug):
             'needs_payment': False,
             'form_data': {
                 'company_name': listing.company_name, 'website_url': listing.website_url,
-                'mobile_number': listing.mobile_number,
+                'mobile_number': listing.mobile_number, 'category_id': listing.category_id,
                 'short_description': listing.short_description, 'latitude': listing.latitude,
                 'longitude': listing.longitude, 'location_name': listing.location_name
             },
+            'categories': Category.objects.all(),
         })
 
     if request.method == 'GET':
@@ -250,6 +276,7 @@ def listing_edit_view(request, slug):
         })
     
     data = {
+        'category_id': request.POST.get('category'),
         'website_url': sanitize_input(request.POST.get('website_url', '').strip()),
         'company_name': sanitize_input(request.POST.get('company_name', '').strip()),
         'mobile_number': sanitize_input(request.POST.get('mobile_number', '').strip()),
@@ -364,4 +391,28 @@ def listing_delete_view(request, slug):
     listing.save()
     messages.info(request, 'Listing has been deleted.')
     return redirect('hosts:dashboard')
+
+
+@jwt_login_required
+@role_required('host')
+def listing_billing_view(request, slug):
+    listing = get_object_or_404(Listing, slug=slug, host=request.user, deleted_at__isnull=True)
+    from payments.models import Subscription, PaymentLog
+    from coupon.models import CouponUsage
+
+    try:
+        subscription = Subscription.objects.select_related('plan').get(listing=listing)
+    except Subscription.DoesNotExist:
+        subscription = None
+
+    payments = PaymentLog.objects.filter(listing=listing).order_by('-created_at')
+    coupons = CouponUsage.objects.filter(listing_slug=listing.slug).order_by('-used_at')
+
+    return render(request, 'hosts/billing_details.html', {
+        'listing': listing,
+        'subscription': subscription,
+        'payments': payments,
+        'coupons': coupons,
+        'today': timezone.now().date(),
+    })
 
