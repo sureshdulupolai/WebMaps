@@ -29,7 +29,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // 02. STATE & CONSTANTS
     const container = document.querySelector('.container');
     const needsPayment = container && container.dataset.needsPayment === 'true';
+    const needsSubscription = container && container.dataset.needsSubscription === 'true';
     const hasActiveSub = container && container.dataset.hasSubscription === 'true';
+    const currentPlanId = container && container.dataset.currentPlanId;
     let currentStep = needsPayment ? 4 : 1;
     let parsedServices = [];
     let appliedDiscount = 0;
@@ -526,22 +528,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Calculate Pricing
         const selectedPlan = form.querySelector('.plan-card.active');
-        if (selectedPlan) {
+        const updateCountInput = document.getElementById('id_update_count');
+        const currentUpdateCount = updateCountInput ? parseInt(updateCountInput.value) : 0;
+        const isEdit = initialData && initialData.slug && initialData.slug.length > 0;
+        
+        let updateFee = 0;
+        if (isEdit && currentUpdateCount >= 2) {
+            updateFee = 29; // Exactly ₹29 for paid updates
+        }
+
+        if (selectedPlan || (hasActiveSub && updateFee > 0)) {
             pricingContainer.classList.remove('d-none');
-            const baseCost = parseFloat(selectedPlan.dataset.amount);
-            
-            let updateFee = 0;
-            const isEdit = initialData && initialData.slug && initialData.slug.length > 0;
-            const updateCountInput = document.getElementById('id_update_count');
-            const currentUpdateCount = updateCountInput ? parseInt(updateCountInput.value) : 0;
-            
-            if (isEdit && currentUpdateCount >= 2 && !isDraft && !hasActiveSub) {
-                updateFee = 22.88; // Results in ~₹29 after GST and Fee
-            }
+            const baseCost = selectedPlan ? parseFloat(selectedPlan.dataset.amount) : 0;
 
             // --- REFINED CALCULATION LOGIC ---
             // 1. Taxable Subtotal
-            const rawTaxable = baseCost + updateFee;
+            // If we are just doing a paid update (updateFee=29), baseCost should be ignored if it's 0
+            const rawTaxable = (updateFee > 0 && baseCost === 0) ? updateFee : (baseCost + updateFee);
             
             // 2. Apply Discount to Taxable amount
             // If it's a 100% coupon (appliedDiscount >= baseCost), we waive the whole thing including updateFee
@@ -556,8 +559,8 @@ document.addEventListener('DOMContentLoaded', function () {
             // 4. Platform Fee (Only if amount > 0)
             const platformFee = remainingTaxable > 0 ? 2 : 0;
             
-            const total = remainingTaxable + cgst + sgst + platformFee;
-            const subtotal = rawTaxable + (rawTaxable * 0.18) + (rawTaxable > 0 ? 2 : 0);
+            const total = (baseCost === 0 && updateFee > 0 && !isFullDiscount) ? 29.00 : (remainingTaxable + cgst + sgst + platformFee);
+            const subtotal = (baseCost === 0 && updateFee > 0) ? 29.00 : (rawTaxable + (rawTaxable * 0.18) + (rawTaxable > 0 ? 2 : 0));
 
             pricingContainer.innerHTML = `
                 <div class="pricing-breakdown" style="padding: 24px; background: rgba(0,0,0,0.2); border-radius: 20px; border: 1px solid rgba(255,255,255,0.05);">
@@ -567,13 +570,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     ${updateFee > 0 ? `<div class="breakdown-row" style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:13px; color:rgba(255,255,255,0.4);"><span>Update Surcharge (Limit Reached)</span><span>₹${updateFee.toFixed(2)}</span></div>` : ''}
                     
                     <div class="breakdown-row" style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:13px; color:rgba(255,255,255,0.4);">
-                        <span>CGST (9%)</span><span>₹${cgst.toFixed(2)}</span>
+                        <span>CGST (9%)</span><span>₹${(total > 29 ? cgst : (total === 29 ? 2.21 : cgst)).toFixed(2)}</span>
                     </div>
                     <div class="breakdown-row" style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:13px; color:rgba(255,255,255,0.4);">
-                        <span>SGST (9%)</span><span>₹${sgst.toFixed(2)}</span>
+                        <span>SGST (9%)</span><span>₹${(total > 29 ? sgst : (total === 29 ? 2.21 : sgst)).toFixed(2)}</span>
                     </div>
                     <div class="breakdown-row" style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:13px; color:rgba(255,255,255,0.4);">
-                        <span>Platform Fee</span><span>₹${platformFee.toFixed(2)}</span>
+                        <span>Platform Fee</span><span>₹${(total > 29 ? platformFee : (total === 29 ? 2.00 : platformFee)).toFixed(2)}</span>
                     </div>
                     
                     ${appliedDiscount > 0 ? `
@@ -600,7 +603,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 submitBtn.classList.add('btn-success');
                 submitBtn.style.boxShadow = '0 0 30px rgba(16, 185, 129, 0.2)';
             } else {
-                submitBtn.textContent = 'Pay & Initialize Listing';
+                submitBtn.textContent = (updateFee > 0 && baseCost === 0) ? 'Pay ₹29 & Update' : 'Pay & Initialize Listing';
                 submitBtn.classList.add('btn-primary');
                 submitBtn.classList.remove('btn-success');
                 submitBtn.style.boxShadow = 'none';
@@ -619,15 +622,28 @@ document.addEventListener('DOMContentLoaded', function () {
         applyCouponBtn.addEventListener('click', async () => {
             const code = couponInput.value.trim().toUpperCase();
             const selectedPlan = form.querySelector('.plan-card.active');
-
+            
             if (!code) {
                 showCouponFeedback("Please enter a coupon code.", "error");
                 return;
             }
-            if (!selectedPlan) {
+
+            const updateCountInput = document.getElementById('id_update_count');
+            const currentUpdateCount = updateCountInput ? parseInt(updateCountInput.value) : 0;
+            const isEdit = initialData && initialData.slug && initialData.slug.length > 0;
+            const payingUpdateFee = isEdit && currentUpdateCount >= 2;
+
+            const container = document.querySelector('.container');
+            const isPayingUpdate = (container?.dataset?.needsPayment || '').toLowerCase() === 'true';
+            const hasSub = (container?.dataset?.hasSubscription || '').toLowerCase() === 'true';
+
+            // If no plan selected, allow if it's a paid update OR if they have an active sub
+            if (!selectedPlan && !isPayingUpdate && !hasSub) {
                 showCouponFeedback("Please select a plan first.", "error");
                 return;
             }
+
+            const validationAmount = selectedPlan ? parseFloat(selectedPlan.dataset.amount) : 29.00;
 
             applyCouponBtn.disabled = true;
             applyCouponBtn.textContent = "Checking...";
@@ -641,7 +657,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     },
                     body: JSON.stringify({
                         code: code,
-                        amount: parseInt(selectedPlan.dataset.amount),
+                        amount: validationAmount,
                         listing_slug: initialData ? initialData.slug : null
                     })
                 });
@@ -698,25 +714,20 @@ document.addEventListener('DOMContentLoaded', function () {
             const updateCountInput = document.getElementById('id_update_count');
             const currentUpdateCount = updateCountInput ? parseInt(updateCountInput.value) : 0;
             
-            // IF Active Subscription, bypass limit.
-            if (currentUpdateCount >= 2 && !hasActiveSub) {
+            // Enforce update fee for all users after 2 free updates
+            if (currentUpdateCount >= 2 && currentStep !== 4) {
                 const totalUpdateFee = 29; // Fixed per user request
                 showDialog(
-                    "Limit Reached", 
-                    `You have already used your 2 free updates. To save these changes, you can proceed with a single update payment of ₹${totalUpdateFee} or select a subscription plan.`,
+                    "Paid Update Required", 
+                    `You have reached your free update limit. To save this draft and apply changes, a small fee of ₹${totalUpdateFee} is required.`,
                     'warning',
                     null,
                     {
-                        label: `Pay ₹${totalUpdateFee} & Update`,
+                        label: `Proceed to Payment`,
                         callback: () => {
-                            const planRadio = form.querySelector('[name="plan_id"]');
-                            if (planRadio) {
-                                submitBtn.click();
-                            } else {
-                                // Scroll to plans
-                                window.scrollTo({ top: document.querySelector('.plans-grid').offsetTop - 100, behavior: 'smooth' });
-                                showDialog("Select Plan", "Please select a plan to proceed with the paid update.");
-                            }
+                           // Move to finalize step
+                           currentStep = 4;
+                           updateWizard();
                         }
                     }
                 );
@@ -767,35 +778,78 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // --- Stop Listing Logic ---
-    const stopListingBtn = document.getElementById('stop-listing-btn');
-    if (stopListingBtn && initialData && initialData.slug) {
-        stopListingBtn.addEventListener('click', () => {
-            showDialog(
-                "Archive Listing",
-                "Are you sure you want to stop and archive this listing? This will hide it from the map permanently.",
-                'warning',
-                null,
-                {
-                    label: "Archive Permanently",
-                    callback: async () => {
-                        try {
-                            const response = await fetch(`/hosts/listing/${initialData.slug}/delete/`, {
-                                method: 'POST',
-                                headers: { 'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value }
-                            });
-                            if (response.ok) {
-                                window.location.href = '/hosts/dashboard/';
-                            } else {
-                                showDialog("Error", "Failed to archive listing.");
-                            }
-                        } catch (err) {
-                            showDialog("Error", "Network error while archiving.");
-                        }
+    // --- Visibility Toggle Logic ---
+    const visibilityBtn = document.getElementById('visibility-toggle-btn');
+    if (visibilityBtn && initialData && initialData.slug) {
+        visibilityBtn.addEventListener('click', () => {
+            const currentState = visibilityBtn.dataset.currentState; // 'active' or 'hidden'
+            const toggleInput = document.getElementById('id_toggle_visibility');
+            const now = new Date();
+            const cooldownMs = 8 * 60 * 60 * 1000; // 8 hours
+
+            if (currentState === 'active') {
+                // Check Start Cooldown
+                if (initialData.last_started_at) {
+                    const lastStarted = new Date(initialData.last_started_at);
+                    if (now - lastStarted < cooldownMs) {
+                        const remaining = cooldownMs - (now - lastStarted);
+                        const hours = Math.ceil(remaining / (1000 * 60 * 60));
+                        showCooldownAlert(`You can only stop this listing after 8 hours of starting it. Please wait ${hours} more hours.`, "Starting Cooldown");
+                        return;
                     }
                 }
-            );
+                
+                showDialog(
+                    "Stop Listing?",
+                    "This will hide your listing from the public map. You can restart it after 8 hours.",
+                    'info',
+                    null,
+                    {
+                        label: "Stop & Save",
+                        callback: () => {
+                            if (toggleInput) toggleInput.value = 'stop';
+                            submitBtn.click();
+                        }
+                    }
+                );
+            } else {
+                // Check Stop Cooldown
+                if (initialData.last_stopped_at) {
+                    const lastStopped = new Date(initialData.last_stopped_at);
+                    if (now - lastStopped < cooldownMs) {
+                        const remaining = cooldownMs - (now - lastStopped);
+                        const hours = Math.ceil(remaining / (1000 * 60 * 60));
+                        showCooldownAlert(`You can only start this listing after 8 hours of stopping it. Please wait ${hours} more hours.`, "Stopping Cooldown");
+                        return;
+                    }
+                }
+
+                showDialog(
+                    "Start Listing?",
+                    "This will make your listing visible to all users on the map immediately.",
+                    'success',
+                    null,
+                    {
+                        label: "Start & Save",
+                        callback: () => {
+                            if (toggleInput) toggleInput.value = 'start';
+                            submitBtn.click();
+                        }
+                    }
+                );
+            }
         });
+    }
+
+    function showCooldownAlert(message, title) {
+        const modal = document.getElementById('cooldown-modal');
+        const titleEl = document.getElementById('cooldown-title');
+        const msgEl = document.getElementById('cooldown-message');
+        if (modal && titleEl && msgEl) {
+            titleEl.textContent = title;
+            msgEl.textContent = message;
+            modal.style.display = 'flex';
+        }
     }
 
     // --- Custom Dialog ---
@@ -850,6 +904,21 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // 11. RAZORPAY & SUBMISSION
+    if (saveDraftBtn) {
+        saveDraftBtn.addEventListener('click', () => {
+            const container = document.querySelector('.container');
+            const isPayingUpdate = (container?.dataset?.needsPayment || '').toLowerCase() === 'true';
+            
+            if (isPayingUpdate) {
+                // If payment is needed, Save Draft behaves like the primary Pay button
+                submitBtn.click();
+            } else {
+                // Otherwise, it's a normal save
+                form.submit();
+            }
+        });
+    }
+
     if (submitBtn) {
         submitBtn.addEventListener('click', async (e) => {
             e.preventDefault();
@@ -860,14 +929,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
             try {
                 // 1. Check plan selection FIRST (so backend knows this is a paid update)
+                // 1. Check plan selection
+                let planId = null;
                 const selectedPlan = form.querySelector('[name="plan_id"]:checked');
-                if (!selectedPlan) {
+                
+                if (selectedPlan) {
+                    planId = selectedPlan.value;
+                } else if (hasActiveSub && currentPlanId) {
+                    // Use existing plan if just paying update fee
+                    planId = currentPlanId;
+                }
+
+                if (!planId) {
+                    const isPaidUpdate = (container?.dataset?.needsPayment || '').toLowerCase() === 'true';
+                    if (isPaidUpdate && hasActiveSub) {
+                         // Double check: if we are here and still no planId, use currentPlanId
+                         planId = currentPlanId;
+                    }
+                }
+
+                if (!planId) {
                     showDialog("Plan Required", "Please select a subscription plan to continue.");
                     submitBtn.disabled = false;
-                    submitBtn.textContent = 'Pay & Initialize Listing';
+                    submitBtn.textContent = hasActiveSub ? 'Pay ₹29 & Save Changes' : 'Pay & Initialize Listing';
                     return;
                 }
-                const planId = selectedPlan.value;
                 console.log("Selected Plan ID:", planId);
 
                 // 2. Save listing via AJAX
@@ -900,13 +986,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // 3. Initiate Payment
                 submitBtn.innerHTML = '<span class="loading-spinner"></span> Creating Order...';
+                const isPaidUpdate = (container?.dataset?.needsPayment || '').toLowerCase() === 'true';
+                const paymentType = selectedPlan ? 'subscription' : (isPaidUpdate ? 'update' : 'subscription');
+
                 const payInitResp = await fetch(`/payments/initiate/${activeSlug}/`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                         'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
                     },
-                    body: `plan_id=${planId}&coupon_code=${appliedCoupon || ''}`
+                    body: new URLSearchParams({
+                        plan_id: planId,
+                        coupon_code: appliedCoupon || '',
+                        payment_type: paymentType
+                    })
                 });
 
                 const initText = await payInitResp.text();
@@ -969,7 +1062,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 razorpay_signature: response.razorpay_signature,
                                 listing_slug: activeSlug,
                                 plan_id: planId,
-                                coupon_code: appliedCoupon
+                                coupon_code: appliedCoupon,
+                                payment_type: paymentType
                             })
                         });
 
@@ -1052,4 +1146,26 @@ document.addEventListener('DOMContentLoaded', function () {
     loadFromLocal();
     updateCharCount();
     updateWizard();
+
+    // 15. COOLDOWN TIMER (On Load)
+    if (initialData && (initialData.last_stopped_at || initialData.last_started_at)) {
+        const now = new Date();
+        const cooldownMs = 8 * 60 * 60 * 1000;
+        const lastAction = initialData.is_active_on_map 
+            ? new Date(initialData.last_started_at) 
+            : new Date(initialData.last_stopped_at);
+        
+        if (now - lastAction < cooldownMs) {
+            const remaining = cooldownMs - (now - lastAction);
+            const hours = Math.floor(remaining / (1000 * 60 * 60));
+            const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+            
+            if (visibilityBtn) {
+                visibilityBtn.disabled = true;
+                visibilityBtn.title = `Cooldown active: ${hours}h ${minutes}m remaining`;
+                visibilityBtn.style.opacity = '0.5';
+                visibilityBtn.style.cursor = 'not-allowed';
+            }
+        }
+    }
 });

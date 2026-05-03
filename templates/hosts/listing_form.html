@@ -11,7 +11,11 @@
 {% endblock %}
 
 {% block content %}
-<div class="container container-lg py-12" data-rzp-key="{{ razorpay_key }}" data-needs-payment="{{ needs_payment|yesno:'true,false' }}" data-has-subscription="{{ has_active_sub|yesno:'true,false' }}">
+<div class="container container-lg py-12" data-rzp-key="{{ razorpay_key }}" 
+  data-needs-payment="{{ needs_payment|yesno:'true,false' }}" 
+  data-needs-subscription="{{ needs_subscription|yesno:'true,false' }}"
+  data-has-subscription="{{ has_active_sub|yesno:'true,false' }}"
+  data-current-plan-id="{{ current_plan_id|default:'' }}">
   <div class="page-header mb-10 mt-6">
     <div class="d-flex align-center justify-between">
       <div>
@@ -232,14 +236,16 @@
           {% endif %}
 
           <p class="text-xs text-secondary mb-8">
-            {% if needs_payment %}
+            {% if needs_subscription %}
             Choose a subscription tier to activate your listing. Your listing will go live immediately after verification.
+            {% elif needs_payment %}
+            You have reached your free update limit. A small fee of ₹29 is required to apply these changes.
             {% else %}
             Review your changes below before saving them to your live listing.
             {% endif %}
           </p>
 
-          {% if needs_payment %}
+          {% if needs_subscription %}
           <div class="plans-grid mb-10">
             {% for plan in plans %}
             <label class="plan-card {% if forloop.first %}active{% endif %}" data-plan-id="{{ plan.id }}" data-amount="{{ plan.total_cost }}">
@@ -266,7 +272,7 @@
             <div class="coupon-section mt-6 pt-6 border-top border-muted border-opacity-10">
               <label class="text-xs font-weight-bold text-primary mb-2 d-block letter-spacing-1">HAVE A COUPON?</label>
               <div class="coupon-input-group d-flex gap-4">
-                <input type="text" id="coupon-code-input" class="form-input flex-grow" placeholder="Enter code (e.g. SAVE50)" style="margin-bottom: 0;">
+                <input type="text" id="coupon-code-input" name="coupon_code" class="form-input flex-grow" placeholder="Enter code (e.g. SAVE50)" style="margin-bottom: 0;">
                 <button type="button" id="apply-coupon-btn" class="btn btn-outline btn-sm" style="height: 52px; min-width: 120px;">Apply</button>
               </div>
               <div id="coupon-feedback" class="text-xs mt-2 d-none"></div>
@@ -280,22 +286,43 @@
           <input type="hidden" name="razorpay_order_id" id="razorpay_order_id">
           <input type="hidden" name="razorpay_signature" id="razorpay_signature">
           <input type="hidden" id="id_update_count" value="{{ listing.update_count|default:0 }}">
+          <input type="hidden" name="toggle_visibility" id="id_toggle_visibility" value="">
 
           <div class="dual-actions">
-            {% if needs_payment %}
-            <button type="button" class="btn btn-save-draft" id="save-draft-btn">
-              Save Draft
-            </button>
-            <button type="button" class="btn btn-primary" id="submit-listing-btn">
-              Pay & Initialize Listing
-            </button>
+            {% if has_active_sub %}
+              <!-- Active Plan: Always show visibility toggle -->
+              <button type="button" class="btn btn-outline" id="visibility-toggle-btn" 
+                data-current-state="{{ is_active_on_map|yesno:'active,hidden' }}"
+                style="border-color: {% if is_active_on_map %}var(--danger){% else %}var(--success){% endif %}; color: {% if is_active_on_map %}var(--danger){% else %}var(--success){% endif %};">
+                {% if is_active_on_map %}Stop & Save{% else %}Start & Save{% endif %}
+              </button>
+
+              {% if needs_payment %}
+                <button type="button" class="btn btn-primary" id="submit-listing-btn">
+                  Pay ₹29 & Save Changes
+                </button>
+              {% else %}
+                <button type="button" class="btn btn-primary" id="submit-listing-btn">
+                  Save Changes
+                </button>
+              {% endif %}
+
             {% else %}
-            <button type="button" class="btn btn-outline" id="stop-listing-btn" style="border-color: var(--danger); color: var(--danger);">
-              Stop/Archive Listing
-            </button>
-            <button type="button" class="btn btn-primary" id="submit-listing-btn">
-              Save Changes
-            </button>
+              <!-- No Active Plan: Standard Flow -->
+              {% if needs_payment %}
+                {% if not needs_update_payment %}
+                <button type="button" class="btn btn-save-draft" id="save-draft-btn">
+                  Save Draft
+                </button>
+                {% endif %}
+                <button type="button" class="btn btn-primary" id="submit-listing-btn">
+                  {% if needs_subscription %}Pay & Initialize Listing{% else %}Pay ₹29 & Update{% endif %}
+                </button>
+              {% else %}
+                <button type="button" class="btn btn-primary" id="submit-listing-btn">
+                  Save Changes
+                </button>
+              {% endif %}
             {% endif %}
           </div>
         </div>
@@ -371,6 +398,19 @@
     </div>
   </div>
 </div>
+<!-- Cooldown Alert Modal -->
+<div id="cooldown-modal" class="sample-modal-overlay">
+  <div class="sample-modal-content text-center" style="max-width: 400px;">
+    <div class="fetching-icon-wrap mb-6" style="background: linear-gradient(135deg, #f59e0b, #fbbf24); margin: 0 auto 24px;">
+       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+         <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+       </svg>
+    </div>
+    <h3 class="h4 mb-2" id="cooldown-title">Cooldown Active</h3>
+    <p class="text-sm text-secondary mb-8" id="cooldown-message">You can only toggle visibility every 8 hours to prevent spam.</p>
+    <button type="button" class="btn btn-primary btn-sm w-full" onclick="document.getElementById('cooldown-modal').style.display='none'">Understood</button>
+  </div>
+</div>
 {% endblock %}
 
 {% block extra_js %}
@@ -379,7 +419,10 @@
 {
   "slug": "{{ listing.slug|default:'' }}",
   "services": {{ initial_services_json|default:"[]"|safe }},
-  "operating_hours": {{ initial_hours_json|default:"{}"|safe }}
+  "operating_hours": {{ initial_hours_json|default:"{}"|safe }},
+  "is_active_on_map": {{ is_active_on_map|yesno:'true,false' }},
+  "last_stopped_at": "{{ listing.last_stopped_at|date:'c' }}",
+  "last_started_at": "{{ listing.last_started_at|date:'c' }}"
 }
 </script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"

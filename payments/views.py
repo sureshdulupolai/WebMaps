@@ -53,15 +53,11 @@ def initiate_payment_view(request, slug):
         
         # 2. Check for update surcharge (matching listing_form.js logic)
         update_surcharge = Decimal('0')
-        if listing.slug and listing.update_count >= 2:
-            # Check if active subscription exists (Unlimited updates)
-            from .models import Subscription
-            try:
-                sub = Subscription.objects.get(listing=listing)
-                if not (sub.is_active and not sub.is_expired):
-                    update_surcharge = Decimal('22.88') # results in ~29 INR total
-            except Subscription.DoesNotExist:
-                update_surcharge = Decimal('22.88')
+        if listing.update_count >= 2:
+            # Check if they have an active subscription
+            # The user wants to charge ₹29 for updates AFTER 2 free ones, 
+            # even if membership is active, as per their specific request.
+            update_surcharge = Decimal('22.88') # This results in ~29 total
         
         # 3. Calculate Taxes (18% total GST)
         taxable_amount = base_amount + update_surcharge
@@ -70,8 +66,12 @@ def initiate_payment_view(request, slug):
         # 4. Platform Fee (Matching frontend's extra +2)
         platform_fee_extra = Decimal('2')
         
-        # 5. Final Total in INR (rounded to 2 decimal places for consistency)
-        final_total_inr = (taxable_amount + gst_amount + platform_fee_extra).quantize(Decimal('0.01'))
+        # 5. Final Total in INR
+        if base_amount == 0 and update_surcharge > 0:
+            # If ONLY paying for update, make it exactly 29
+            final_total_inr = Decimal('29.00')
+        else:
+            final_total_inr = (taxable_amount + gst_amount + platform_fee_extra).quantize(Decimal('0.01'))
 
         # 6. Apply Coupon
         coupon_code = request.POST.get('coupon_code', '').strip().upper()
@@ -137,6 +137,7 @@ def verify_payment_view(request):
     slug = body.get('listing_slug', '')
     plan_id = body.get('plan_id', '')
     coupon_code = body.get('coupon_code', '').strip().upper()
+    payment_type = body.get('payment_type', '')
 
     # 1. Handle Free Checkout (Zero Amount)
     is_free = str(order_id).startswith('FREE_')
@@ -147,11 +148,15 @@ def verify_payment_view(request):
     try:
         listing = Listing.objects.get(slug=slug)
         plan = SubscriptionPlan.objects.get(id=plan_id)
+        
+        # Determine if it's an update-only payment
+        is_update_only = (payment_type == 'update')
+
         activate_subscription(listing, plan, {
             'order_id': order_id,
             'payment_id': payment_id,
             'signature': signature,
-        })
+        }, is_update_only=is_update_only)
 
         # 📄 LOG TRANSACTION
         from .models import PaymentLog

@@ -74,6 +74,8 @@ def search_by_location(request):
         radius_km=distance_filter,
         category=category if category != 'All' else None
     )
+    # Filter by is_active_on_map
+    results = [r for r in results if r['listing'].is_active_on_map]
     listings_data = serialize_listings(results, rating_filter)
 
     return JsonResponse({
@@ -119,7 +121,7 @@ def route_search(request):
 
 def all_listings_api(request):
     """AJAX endpoint to return all approved listings."""
-    listings = Listing.objects.filter(status='approved', deleted_at__isnull=True)
+    listings = Listing.objects.filter(status='approved', deleted_at__isnull=True, is_active_on_map=True)
     listings_data = []
     for l in listings:
         listings_data.append({

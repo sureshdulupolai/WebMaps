@@ -81,6 +81,11 @@ class Listing(models.Model):
     # Update tracking (max 2)
     update_count = models.PositiveSmallIntegerField(default=0)
 
+    # Map Visibility & Cooldown
+    is_active_on_map = models.BooleanField(default=True, help_text="Toggle to show/hide on public map")
+    last_stopped_at = models.DateTimeField(null=True, blank=True)
+    last_started_at = models.DateTimeField(null=True, blank=True)
+
     # Schedule
     operating_hours = models.JSONField(null=True, blank=True)
 

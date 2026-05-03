@@ -149,6 +149,34 @@ def update_listing(listing, data: dict, file_obj=None, parsed_services: list = N
     listing.longitude = lng
     listing.location_name = data.get('location_name', listing.location_name)
     listing.operating_hours = data.get('operating_hours', listing.operating_hours)
+    
+    # Handle Stop/Start Visibility with 8h Cooldown
+    toggle_visibility = data.get('toggle_visibility')
+    now = timezone.now()
+    cooldown = timezone.timedelta(hours=8)
+
+    if toggle_visibility == 'stop' and listing.is_active_on_map:
+        # Check if they just started it recently
+        if listing.last_started_at and (now - listing.last_started_at) < cooldown:
+            remaining = cooldown - (now - listing.last_started_at)
+            hours = int(remaining.total_seconds() // 3600)
+            return False, f'You can only stop this listing after 8 hours of starting it. Please wait {hours} more hours.'
+        
+        listing.is_active_on_map = False
+        listing.last_stopped_at = now
+        logger.info(f"Listing HIDDEN from map: {listing.slug}")
+
+    elif toggle_visibility == 'start' and not listing.is_active_on_map:
+        # Check if they just stopped it recently
+        if listing.last_stopped_at and (now - listing.last_stopped_at) < cooldown:
+            remaining = cooldown - (now - listing.last_stopped_at)
+            hours = int(remaining.total_seconds() // 3600)
+            return False, f'You can only start this listing after 8 hours of stopping it. Please wait {hours} more hours.'
+        
+        listing.is_active_on_map = True
+        listing.last_started_at = now
+        logger.info(f"Listing SHOWN on map: {listing.slug}")
+
     listing.update_count += 1
     listing.save()
 

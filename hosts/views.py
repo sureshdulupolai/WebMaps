@@ -219,24 +219,30 @@ def listing_edit_view(request, slug):
     listing = get_object_or_404(Listing, slug=slug, host=request.user, deleted_at__isnull=True)
     from payments.models import Subscription, SubscriptionPlan
 
-    # Calculate if payment is needed
+    # Calculate if payment is needed for subscription
     try:
         sub = Subscription.objects.get(listing=listing)
-        needs_payment = not sub.is_active or sub.is_expired
+        needs_subscription = not sub.is_active or sub.is_expired
     except Subscription.DoesNotExist:
-        needs_payment = True
+        needs_subscription = True
 
-    # Check for update limit ONLY on GET requests. 
-    # POST requests should fall through to the logic that handles plans/coupons.
-    if request.method == 'GET' and not listing.can_update and not needs_payment:
+    # Calculate update fee (₹29 after 2 free updates)
+    update_fee = 29 if listing.update_count >= 2 else 0
+    needs_update_payment = (update_fee > 0)
+
+    # Check for update limit ONLY on GET requests if they don't want to pay.
+    # But now we allow paying ₹29, so we don't block them entirely if they are ready to pay.
+    if request.method == 'GET' and not listing.can_update and not needs_subscription and not needs_update_payment:
+        # This case shouldn't really happen if update_fee is 29, but keeping for safety
         plans = SubscriptionPlan.objects.all()
         return render(request, 'hosts/listing_form.html', {
             'listing': listing,
-            'error': 'You have reached the maximum number of updates (2) for this listing.',
+            'error': 'Update limit reached. A small fee of ₹29 is applicable for further updates.',
             'action': 'edit',
             'razorpay_key': settings.RAZORPAY_KEY_ID,
             'plans': plans,
-            'needs_payment': False,
+            'needs_payment': True,
+            'update_fee': 29,
             'form_data': {
                 'company_name': listing.company_name, 'website_url': listing.website_url,
                 'mobile_number': listing.mobile_number, 'category_id': listing.category_id,
@@ -263,8 +269,13 @@ def listing_edit_view(request, slug):
             'action': 'edit',
             'razorpay_key': settings.RAZORPAY_KEY_ID,
             'plans': plans,
-            'needs_payment': needs_payment,
-            'has_active_sub': not needs_payment, # If no payment needed, it means sub is active or they are in free trial
+            'needs_payment': needs_subscription or needs_update_payment,
+            'needs_subscription': needs_subscription,
+            'needs_update_payment': needs_update_payment,
+            'update_fee': update_fee,
+            'has_active_sub': not needs_subscription,
+            'is_active_on_map': listing.is_active_on_map,
+            'current_plan_id': listing.subscription.plan.id if hasattr(listing, 'subscription') and listing.subscription.plan else None,
             'initial_services_json': json.dumps(services_list),
             'initial_hours_json': json.dumps(listing.operating_hours or {}),
             'form_data': {
@@ -285,6 +296,7 @@ def listing_edit_view(request, slug):
         'longitude': request.POST.get('longitude', str(listing.longitude)).strip(),
         'location_name': sanitize_input(request.POST.get('location_name', '').strip()),
         'operating_hours': request.POST.get('operating_hours'),
+        'toggle_visibility': request.POST.get('toggle_visibility'),
     }
 
     # Handle parsed services JSON

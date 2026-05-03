@@ -48,7 +48,7 @@ def verify_razorpay_payment(order_id: str, payment_id: str, signature: str) -> b
     return hmac.compare_digest(expected, signature)
 
 
-def activate_subscription(listing, plan: SubscriptionPlan, payment_data: dict):
+def activate_subscription(listing, plan: SubscriptionPlan, payment_data: dict, is_update_only=False):
     """Activate (or renew) a paid subscription for a listing."""
     sub, _ = Subscription.objects.get_or_create(listing=listing)
     sub.plan = plan
@@ -57,8 +57,11 @@ def activate_subscription(listing, plan: SubscriptionPlan, payment_data: dict):
     sub.razorpay_order_id = payment_data.get('order_id') or ''
     sub.razorpay_payment_id = payment_data.get('payment_id') or ''
     sub.razorpay_signature = payment_data.get('signature') or ''
-    sub.starts_at = timezone.now()
-    sub.expires_at = timezone.now() + timedelta(days=plan.duration_days)
+    
+    if not is_update_only:
+        sub.starts_at = timezone.now()
+        sub.expires_at = timezone.now() + timedelta(days=plan.duration_days)
+        
     sub.save()
     
     # Auto-approve listing upon payment so it goes live immediately

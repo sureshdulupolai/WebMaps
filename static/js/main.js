@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function fetchNotifications() {
     try {
-      const response = await fetch('/coupon/notifications/');
+      const response = await fetch('/notifications/list/');
       if (!response.ok) return;
       const data = await response.json();
       
@@ -86,34 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           notifList.innerHTML = data.notifications.map(n => `
             <div class="notif-item ${n.is_read ? '' : 'unread'}">
-              <div class="notif-title">${n.title}</div>
               <div class="notif-message">${n.message}</div>
-              ${n.coupon_code ? `
-                <div class="notif-coupon-code">
-                  <span>${n.coupon_code}</span>
-                  <button class="btn-copy" data-code="${n.coupon_code}">COPY</button>
-                </div>
-              ` : ''}
               <div class="notif-time">${n.created_at}</div>
             </div>
           `).join('');
-
-          // Add copy listeners
-          notifList.querySelectorAll('.btn-copy').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-              e.stopPropagation();
-              const code = btn.dataset.code;
-              navigator.clipboard.writeText(code).then(() => {
-                const originalText = btn.textContent;
-                btn.textContent = 'COPIED!';
-                btn.style.background = '#10b981';
-                setTimeout(() => {
-                  btn.textContent = originalText;
-                  btn.style.background = '';
-                }, 2000);
-              });
-            });
-          });
         }
       }
     } catch (err) {
@@ -121,32 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  if (notifBell) {
-    notifBell.addEventListener('click', (e) => {
-      e.stopPropagation();
-      notifDropdown.classList.toggle('active');
-      fetchNotifications();
-    });
-  }
-
-  if (notifMarkReadBtn) {
-    notifMarkReadBtn.addEventListener('click', async (e) => {
-      e.stopPropagation();
-      try {
-        const response = await fetch('/coupon/notifications/read/');
-        if (response.ok) {
-          if (notifBadge) notifBadge.classList.add('d-none');
-          fetchNotifications();
-        }
-      } catch (err) {
-        console.error("Failed to mark read", err);
-      }
-    });
-  }
-
-  document.addEventListener('click', () => {
-    if (notifDropdown) notifDropdown.classList.remove('active');
-  });
+  // Make it global for sub-pages
+  window.fetchNotifications = fetchNotifications;
 
   // Initial fetch
   if (notifBell) fetchNotifications();

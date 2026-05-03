@@ -24,10 +24,16 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Listing)
 class ListingAdmin(admin.ModelAdmin):
-    list_display = ('company_name', 'host', 'category', 'status', 'update_count', 'created_at')
+    list_display = ('company_name', 'host', 'category', 'status', 'update_count', 'is_active_on_map', 'created_at')
     list_filter = ('status', 'category')
     search_fields = ('company_name', 'website_url', 'slug')
-    readonly_fields = ('id', 'slug', 'created_at', 'updated_at')
+    readonly_fields = ('id', 'slug', 'created_at', 'updated_at', 'last_started_at', 'last_stopped_at')
+    fieldsets = (
+        ('Basic Info', {'fields': ('id', 'slug', 'company_name', 'host', 'category', 'status', 'update_count')}),
+        ('Location', {'fields': ('latitude', 'longitude', 'location_name')}),
+        ('Visibility & Cooldown', {'fields': ('is_active_on_map', 'last_started_at', 'last_stopped_at')}),
+        ('Audit', {'fields': ('created_at', 'updated_at')}),
+    )
     inlines = [ServiceItemInline, ListingDocumentInline]
 
 

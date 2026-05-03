@@ -9,9 +9,13 @@ from .models import Notification
 logger = logging.getLogger('webmaps')
 
 
-def create_notification(user, message: str) -> Notification:
-    """Create a new notification for a user."""
-    notif = Notification.objects.create(user=user, message=message)
+def create_notification(user, message: str, expires_at=None) -> Notification:
+    """Create a new notification for a user. Defaults to 30 days expiry if not set."""
+    if not expires_at:
+        from datetime import timedelta
+        expires_at = timezone.now() + timedelta(days=30)
+        
+    notif = Notification.objects.create(user=user, message=message, expires_at=expires_at)
     logger.info(f"Notification created for {user.email}: {message[:60]}")
     return notif
 
