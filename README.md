@@ -202,56 +202,6 @@ WebMaps/
 
 ---
 
-## 🚀 Installation & Local Development
-
-Follow these simple steps to spin up the development environment:
-
-### 1. Clone & Set Up Directory
-```bash
-git clone https://github.com/your-username/WebMaps.git
-cd WebMaps
-```
-
-### 2. Configure Environment Variables
-Create a `.env` file in the project root:
-```env
-DEBUG=True
-SECRET_KEY=django-insecure-highly-confidential-secret-key
-DEVELOPER_SECRET_KEY=webmaps_admin_secure_2026
-ALLOWED_HOSTS=127.0.0.1,localhost
-SITE_URL=http://127.0.0.1:8000
-
-# Payments
-RAZORPAY_KEY_ID=your_razorpay_key_id
-RAZORPAY_KEY_SECRET=your_razorpay_key_secret
-
-# Optional: Geocoding fallback keys
-GOOGLE_MAPS_API_KEY=your_google_maps_key
-```
-
-### 3. Build & Run
-Ensure python is installed, then execute:
-```powershell
-# Create & Activate Virtual Environment
-python -m venv venv
-.\venv\Scripts\activate
-
-# Install Hardened Dependencies
-pip install -r requirements.txt
-
-# Migrate Schema
-python manage.py makemigrations
-python manage.py migrate
-
-# Load Default Subscription Plans & Categories (if migrations exist)
-# python manage.py loaddata initial_data.json
-
-# Run Server
-python manage.py runserver
-```
-
----
-
 ## 🔍 Code Optimization & DB Performance Practices
 
 To ensure sub-millisecond response rates, the repository implements strict optimization rules:
