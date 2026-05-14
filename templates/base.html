@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="{% block meta_description %}WebMaps — Discover businesses and services near you on an interactive map.{% endblock %}">
   <meta name="keywords" content="{% block meta_keywords %}maps, business local, service finder, webmaps{% endblock %}">
@@ -50,25 +51,25 @@
       {% if request.user.is_authenticated %}
         <!-- Dashboard Icon -->
         {% if request.user.role == 'host' %}
-          <a href="{% url 'hosts:dashboard' %}" class="btn-icon" id="nav-dashboard" title="Dashboard">
+          <a href="{% url 'hosts:dashboard' %}" class="btn-icon {% if request.resolver_match.view_name == 'hosts:dashboard' %}active{% endif %}" id="nav-dashboard" title="Dashboard">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
           </a>
         {% elif request.user.role == 'admin' %}
-          <a href="{% url 'adminpanel:dashboard' %}" class="btn-icon" id="nav-admin" title="Admin Panel">
+          <a href="{% url 'adminpanel:dashboard' %}" class="btn-icon {% if request.resolver_match.view_name == 'adminpanel:dashboard' %}active{% endif %}" id="nav-admin" title="Admin Panel">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
           </a>
         {% endif %}
-
+ 
         <!-- Notification Bell -->
         <div class="pos-relative">
-          <a href="{% url 'notifications:page' %}" class="btn-icon" id="notif-bell" title="Notifications">
+          <a href="{% url 'notifications:page' %}" class="btn-icon {% if request.resolver_match.view_name == 'notifications:page' %}active{% endif %}" id="notif-bell" title="Notifications">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
             <span class="notif-badge d-none" id="notif-badge">0</span>
           </a>
         </div>
-
+ 
         <!-- User Profile Icon -->
-        <a href="{% url 'users:profile' %}" class="btn-icon" id="nav-profile" title="Profile: {{ request.user.username }}">
+        <a href="{% url 'users:profile' %}" class="btn-icon {% if request.resolver_match.view_name == 'users:profile' %}active{% endif %}" id="nav-profile" title="Profile: {{ request.user.username }}">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
         </a>
 

@@ -7059,3 +7059,356 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-14 19:18:19,845] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
 [2026-05-14 19:18:19,867] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
 [2026-05-14 19:18:21,425] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33698
+[2026-05-14 19:19:52,978] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-14 19:19:55,224] INFO django.server "GET /adminpanel/ HTTP/1.1" 302 0
+[2026-05-14 19:19:55,423] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7967
+[2026-05-14 19:19:55,514] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-05-14 19:19:57,149] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-14 19:19:59,886] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-05-14 19:19:59,888] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-14 19:20:00,086] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33787
+[2026-05-14 19:20:07,018] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:07,026] INFO django.server "GET / HTTP/1.1" 200 16246
+[2026-05-14 19:20:07,168] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-05-14 19:20:07,318] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:07,330] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 19:20:10,965] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:10,971] INFO django.server "GET /auth/login/ HTTP/1.1" 302 0
+[2026-05-14 19:20:11,023] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:11,039] INFO django.server "GET / HTTP/1.1" 200 16246
+[2026-05-14 19:20:11,203] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:11,210] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 19:20:12,301] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:12,305] INFO django.server "GET /auth/login/ HTTP/1.1" 302 0
+[2026-05-14 19:20:12,340] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:12,351] INFO django.server "GET / HTTP/1.1" 200 16246
+[2026-05-14 19:20:12,465] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:12,476] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 19:20:14,800] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:14,808] INFO django.server "GET / HTTP/1.1" 200 16246
+[2026-05-14 19:20:16,031] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-14 19:20:16,039] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 18140
+[2026-05-14 19:20:16,051] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 19264
+[2026-05-14 19:20:16,052] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 16194
+[2026-05-14 19:20:16,071] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16567
+[2026-05-14 19:20:16,402] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-14 19:20:16,491] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-14 19:20:16,497] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-14 19:20:17,053] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:17,063] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 19:20:18,404] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:18,406] INFO django.server "GET /auth/login/ HTTP/1.1" 302 0
+[2026-05-14 19:20:18,436] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:18,440] INFO django.server "GET / HTTP/1.1" 200 16246
+[2026-05-14 19:20:18,551] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:18,559] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 19:20:19,590] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:19,614] INFO django.server "GET /auth/register/ HTTP/1.1" 200 10656
+[2026-05-14 19:20:19,693] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-05-14 19:20:19,695] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-14 19:20:19,725] INFO django.server "GET /static/images/register_illustration.png HTTP/1.1" 200 649560
+[2026-05-14 19:20:20,690] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:20,692] INFO django.server "GET /auth/login/ HTTP/1.1" 302 0
+[2026-05-14 19:20:20,718] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:20,722] INFO django.server "GET / HTTP/1.1" 200 16246
+[2026-05-14 19:20:20,812] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:20,819] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 19:20:21,776] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:21,780] INFO django.server "GET /auth/login/ HTTP/1.1" 302 0
+[2026-05-14 19:20:21,823] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:21,834] INFO django.server "GET / HTTP/1.1" 200 16246
+[2026-05-14 19:20:22,007] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:22,019] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 19:20:25,277] INFO webmaps User logged out
+[2026-05-14 19:20:25,285] INFO django.server "POST /auth/logout/ HTTP/1.1" 302 0
+[2026-05-14 19:20:25,338] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7967
+[2026-05-14 19:20:28,117] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7967
+[2026-05-14 19:20:30,075] INFO django.server "GET / HTTP/1.1" 200 16246
+[2026-05-14 19:20:30,437] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 19:20:31,192] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7967
+[2026-05-14 19:20:34,412] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:34,421] INFO django.server "GET / HTTP/1.1" 200 16246
+[2026-05-14 19:20:34,479] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-14 19:20:34,589] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:34,603] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 19:20:35,832] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:35,838] INFO django.server "GET /auth/login/ HTTP/1.1" 302 0
+[2026-05-14 19:20:35,888] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:35,899] INFO django.server "GET / HTTP/1.1" 200 16246
+[2026-05-14 19:20:36,061] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:36,069] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 19:20:37,808] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:37,813] INFO django.server "GET /auth/login/ HTTP/1.1" 302 0
+[2026-05-14 19:20:37,845] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:37,855] INFO django.server "GET / HTTP/1.1" 200 16246
+[2026-05-14 19:20:37,943] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:20:37,954] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 19:20:56,812] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-14 19:20:59,366] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-05-14 19:20:59,368] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-14 19:20:59,449] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33787
+[2026-05-14 19:21:01,648] INFO django.server "GET / HTTP/1.1" 200 18271
+[2026-05-14 19:21:01,790] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-14 19:21:01,809] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 19:21:03,428] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33787
+[2026-05-14 19:21:04,643] INFO django.server "GET /notifications/ HTTP/1.1" 200 11495
+[2026-05-14 19:21:04,760] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-14 19:21:06,054] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33787
+[2026-05-14 19:21:07,117] INFO django.server "GET /notifications/ HTTP/1.1" 200 11495
+[2026-05-14 19:21:07,216] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-14 19:21:08,913] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33787
+[2026-05-14 19:21:13,129] INFO django.server "GET /notifications/ HTTP/1.1" 200 11495
+[2026-05-14 19:21:13,311] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-14 19:21:14,214] INFO django.server "GET /users/profile/ HTTP/1.1" 200 12579
+[2026-05-14 19:21:14,378] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-14 19:21:16,030] INFO django.server "GET /notifications/ HTTP/1.1" 200 11495
+[2026-05-14 19:21:16,122] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-14 19:21:18,090] INFO django.server "GET /users/profile/ HTTP/1.1" 200 12579
+[2026-05-14 19:21:18,203] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-14 19:21:18,214] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\middleware\jwt_middleware.py changed, reloading.
+[2026-05-14 19:21:21,689] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-14 19:21:24,147] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33787
+[2026-05-14 19:21:29,957] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:21:29,960] INFO django.server "GET /auth/login/ HTTP/1.1" 302 0
+[2026-05-14 19:21:29,985] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:21:29,998] INFO django.server "GET / HTTP/1.1" 200 16246
+[2026-05-14 19:21:30,032] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-14 19:21:30,119] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:21:30,133] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 19:21:33,600] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:21:33,610] INFO django.server "GET / HTTP/1.1" 200 16246
+[2026-05-14 19:21:34,835] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 19264
+[2026-05-14 19:21:34,845] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 18140
+[2026-05-14 19:21:34,851] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-14 19:21:34,857] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 16194
+[2026-05-14 19:21:34,863] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16567
+[2026-05-14 19:21:35,317] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-14 19:21:35,326] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-14 19:21:35,336] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-14 19:21:35,548] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:21:35,561] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 19:21:37,073] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:21:37,077] INFO django.server "GET /auth/login/ HTTP/1.1" 302 0
+[2026-05-14 19:21:37,125] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:21:37,137] INFO django.server "GET / HTTP/1.1" 200 16246
+[2026-05-14 19:21:37,327] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:21:37,348] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 19:21:58,659] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-14 19:22:03,839] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:22:03,954] INFO django.server "GET / HTTP/1.1" 200 16246
+[2026-05-14 19:22:03,996] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-14 19:22:04,193] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:22:04,211] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 19:22:05,796] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:22:05,801] INFO django.server "GET /auth/login/ HTTP/1.1" 302 0
+[2026-05-14 19:22:05,829] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:22:05,842] INFO django.server "GET / HTTP/1.1" 200 16246
+[2026-05-14 19:22:05,944] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:22:05,969] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 19:22:39,606] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:22:39,621] INFO django.server "GET / HTTP/1.1" 200 16246
+[2026-05-14 19:22:39,656] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-14 19:22:39,708] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:22:39,718] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 19:22:43,391] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:22:43,395] INFO django.server "GET /auth/login/ HTTP/1.1" 302 0
+[2026-05-14 19:22:43,452] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:22:43,465] INFO django.server "GET / HTTP/1.1" 200 16246
+[2026-05-14 19:22:43,620] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:22:43,634] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 19:22:43,873] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:22:43,876] INFO django.server "GET /auth/login/ HTTP/1.1" 302 0
+[2026-05-14 19:22:43,904] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:22:43,907] INFO django.server "GET / HTTP/1.1" 200 16246
+[2026-05-14 19:22:44,005] WARNING webmaps Middleware JWT Auth error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-14 19:22:44,015] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 19:22:46,689] INFO webmaps User logged out
+[2026-05-14 19:22:46,693] INFO django.server "POST /auth/logout/ HTTP/1.1" 302 0
+[2026-05-14 19:22:46,760] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7967
+[2026-05-14 19:22:49,154] INFO django.server "GET / HTTP/1.1" 200 16246
+[2026-05-14 19:22:49,432] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 19:22:50,441] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7967
+[2026-05-14 19:22:52,071] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-14 19:22:54,804] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-05-14 19:22:54,808] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-14 19:22:55,076] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33787
+[2026-05-14 19:23:43,886] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\auth_app\views.py changed, reloading.
+[2026-05-14 19:23:46,890] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-14 19:24:28,413] INFO django.server "GET / HTTP/1.1" 200 18360
+[2026-05-14 19:24:29,329] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-14 19:24:29,338] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 18140
+[2026-05-14 19:24:29,371] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 16194
+[2026-05-14 19:24:29,489] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16567
+[2026-05-14 19:24:29,501] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 19264
+[2026-05-14 19:24:29,957] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-14 19:24:29,970] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-14 19:24:29,975] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-14 19:24:30,153] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 19:24:30,158] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-14 19:24:34,163] INFO webmaps User logged out
+[2026-05-14 19:24:34,165] INFO django.server "POST /auth/logout/ HTTP/1.1" 302 0
+[2026-05-14 19:24:34,203] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7967
+[2026-05-14 19:24:38,752] INFO django.server "GET / HTTP/1.1" 200 16302
+[2026-05-14 19:24:38,853] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 19:24:40,109] INFO django.server "GET /auth/login/ HTTP/1.1" 200 8023
+[2026-05-14 19:24:41,657] INFO webmaps Login attempt: User found for sureshone@gmail.com
+[2026-05-14 19:24:41,834] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\middleware\middleware.py changed, reloading.
+[2026-05-14 19:24:45,135] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-14 19:24:51,617] INFO webmaps Login attempt: User found for sureshone@gmail.com
+[2026-05-14 19:24:53,836] INFO webmaps User logged in: sureshone@gmail.com
+[2026-05-14 19:24:53,839] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-14 19:24:53,952] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 15096
+[2026-05-14 19:24:54,051] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-14 19:24:57,262] INFO webmaps User logged out
+[2026-05-14 19:24:57,266] INFO django.server "POST /auth/logout/ HTTP/1.1" 302 0
+[2026-05-14 19:24:57,306] INFO django.server "GET /auth/login/ HTTP/1.1" 200 8023
+[2026-05-14 19:24:57,349] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-14 19:24:59,973] INFO webmaps Login attempt: User found for sureshone@gmail.com
+[2026-05-14 19:25:02,002] INFO webmaps User logged in: sureshone@gmail.com
+[2026-05-14 19:25:02,005] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-14 19:25:02,080] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 15096
+[2026-05-14 19:25:02,262] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-14 19:25:04,555] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33787
+[2026-05-14 19:25:05,032] INFO django.server "GET /static/css/admin.css HTTP/1.1" 200 9585
+[2026-05-14 19:25:05,067] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16567
+[2026-05-14 19:25:06,072] WARNING django.request Not Found: /favicon.ico
+[2026-05-14 19:25:06,074] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 5020
+[2026-05-14 19:25:07,279] INFO django.server "GET /notifications/ HTTP/1.1" 200 11551
+[2026-05-14 19:25:07,399] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-14 19:25:08,809] INFO django.server "GET /users/profile/ HTTP/1.1" 200 12635
+[2026-05-14 19:25:08,929] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-14 19:25:09,983] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33787
+[2026-05-14 19:25:11,834] INFO django.server "GET / HTTP/1.1" 200 18327
+[2026-05-14 19:25:11,952] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-14 19:25:11,980] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 19:25:13,773] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33787
+[2026-05-14 19:25:22,966] INFO django.server "GET /hosts/listing/create/?new=true HTTP/1.1" 200 22352
+[2026-05-14 19:25:23,053] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 200 15106
+[2026-05-14 19:25:23,060] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 200 51558
+[2026-05-14 19:25:23,679] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-14 19:25:25,774] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 15096
+[2026-05-14 19:25:25,922] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-14 19:25:38,399] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 12374
+[2026-05-14 19:25:38,454] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-14 19:25:38,550] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-14 19:25:47,499] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 200 13111
+[2026-05-14 19:25:47,634] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-14 19:25:48,419] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 200 13111
+[2026-05-14 19:25:48,543] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-14 19:25:52,838] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 15096
+[2026-05-14 19:25:52,905] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-14 19:29:14,082] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 31159
+[2026-05-14 19:29:14,135] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-14 19:29:19,113] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 28396
+[2026-05-14 19:35:15,325] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\adminpanel\urls.py changed, reloading.
+[2026-05-14 19:35:19,944] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-14 19:35:32,148] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\adminpanel\views.py changed, reloading.
+[2026-05-14 19:35:36,316] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-14 19:36:01,224] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 31009
+[2026-05-14 19:36:01,430] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-14 19:36:22,679] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 31009
+[2026-05-14 19:36:23,487] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16567
+[2026-05-14 19:36:23,494] INFO django.server "GET /static/css/admin.css HTTP/1.1" 200 9585
+[2026-05-14 19:36:24,177] WARNING django.request Not Found: /favicon.ico
+[2026-05-14 19:36:24,179] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 5020
+[2026-05-14 19:36:32,051] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 31009
+[2026-05-14 19:36:32,200] INFO django.server "GET /static/css/admin.css HTTP/1.1" 200 9585
+[2026-05-14 19:36:32,202] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16567
+[2026-05-14 19:36:32,788] WARNING django.request Not Found: /favicon.ico
+[2026-05-14 19:36:32,793] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 5020
+[2026-05-14 19:41:19,153] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 302 0
+[2026-05-14 19:41:19,224] INFO django.server "GET /auth/login/ HTTP/1.1" 200 8023
+[2026-05-14 19:41:19,379] INFO django.server "GET /static/css/auth.css HTTP/1.1" 200 7039
+[2026-05-14 19:41:19,380] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-14 19:41:19,382] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16567
+[2026-05-14 19:41:19,392] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-14 19:41:19,408] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-14 19:41:19,426] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-14 19:41:19,434] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-05-14 19:41:19,456] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 6775
+[2026-05-14 19:41:21,403] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-14 19:41:24,355] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-05-14 19:41:24,358] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-14 19:41:24,564] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33788
+[2026-05-14 19:41:24,922] WARNING django.request Not Found: /favicon.ico
+[2026-05-14 19:41:24,923] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 5020
+[2026-05-14 19:41:27,606] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 32611
+[2026-05-14 19:41:32,275] INFO django.server "GET /adminpanel/users/f15a3137-be6d-417f-af50-c4423fd0d5d9/ HTTP/1.1" 200 30312
+[2026-05-14 19:43:34,662] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 32611
+[2026-05-14 19:43:34,773] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-14 19:44:46,403] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 32611
+[2026-05-14 19:44:49,043] INFO django.server "GET /adminpanel/users/f15a3137-be6d-417f-af50-c4423fd0d5d9/ HTTP/1.1" 200 33460
+[2026-05-14 19:45:33,650] INFO django.server "GET /users/profile/ HTTP/1.1" 200 12635
+[2026-05-14 19:45:33,994] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-14 19:45:37,734] INFO django.server "GET /notifications/ HTTP/1.1" 200 11551
+[2026-05-14 19:45:37,832] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-14 19:45:38,676] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33788
+[2026-05-14 19:45:41,021] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 32611
+[2026-05-14 19:45:42,299] INFO django.server "GET /adminpanel/users/552d4ba2-e766-4882-bce0-c60fdd94d643/ HTTP/1.1" 200 35121
+[2026-05-14 19:45:53,162] INFO django.server "GET /adminpanel/listings/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 31450
+[2026-05-14 19:47:52,008] INFO django.server "GET /adminpanel/users/552d4ba2-e766-4882-bce0-c60fdd94d643/ HTTP/1.1" 200 36948
+[2026-05-14 19:47:52,152] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-14 19:48:41,093] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33788
+[2026-05-14 19:48:54,871] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 32611
+[2026-05-14 19:48:56,492] INFO django.server "GET /adminpanel/users/552d4ba2-e766-4882-bce0-c60fdd94d643/ HTTP/1.1" 200 36948
+[2026-05-14 19:50:50,659] INFO django.server "GET /adminpanel/users/552d4ba2-e766-4882-bce0-c60fdd94d643/ HTTP/1.1" 200 39110
+[2026-05-14 19:50:50,857] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-14 19:53:10,517] INFO django.server "GET /adminpanel/users/552d4ba2-e766-4882-bce0-c60fdd94d643/ HTTP/1.1" 200 40029
+[2026-05-14 19:54:40,071] INFO django.server "GET /adminpanel/users/552d4ba2-e766-4882-bce0-c60fdd94d643/ HTTP/1.1" 200 39110
+[2026-05-14 19:54:40,352] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-14 19:56:31,916] INFO django.server "GET /adminpanel/users/552d4ba2-e766-4882-bce0-c60fdd94d643/ HTTP/1.1" 302 0
+[2026-05-14 19:56:31,993] INFO django.server "GET /auth/login/ HTTP/1.1" 200 8023
+[2026-05-14 19:56:32,133] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-05-14 19:56:33,686] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-14 19:56:36,792] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-05-14 19:56:36,796] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-14 19:56:36,935] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33788
+[2026-05-14 19:56:39,207] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 32611
+[2026-05-14 19:56:40,833] INFO django.server "GET /adminpanel/users/552d4ba2-e766-4882-bce0-c60fdd94d643/ HTTP/1.1" 200 37798
+[2026-05-14 19:59:22,133] INFO django.server "GET /adminpanel/users/552d4ba2-e766-4882-bce0-c60fdd94d643/ HTTP/1.1" 200 38483
+[2026-05-14 19:59:22,276] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-14 20:00:52,550] INFO django.server "GET /adminpanel/users/552d4ba2-e766-4882-bce0-c60fdd94d643/ HTTP/1.1" 200 36444
+[2026-05-14 20:01:07,477] INFO django.server "GET /adminpanel/users/552d4ba2-e766-4882-bce0-c60fdd94d643/ HTTP/1.1" 200 38273
+[2026-05-14 20:03:36,246] INFO django.server "GET /adminpanel/users/552d4ba2-e766-4882-bce0-c60fdd94d643/ HTTP/1.1" 200 37526
+[2026-05-14 20:03:36,448] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-14 20:03:52,726] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 32611
+[2026-05-14 20:03:53,998] INFO django.server "GET /adminpanel/users/f15a3137-be6d-417f-af50-c4423fd0d5d9/ HTTP/1.1" 200 35196
+[2026-05-14 20:05:21,231] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 32611
+[2026-05-14 20:05:27,146] INFO django.server "GET /adminpanel/users/552d4ba2-e766-4882-bce0-c60fdd94d643/ HTTP/1.1" 200 37526
+[2026-05-14 20:06:32,996] INFO django.server "GET /adminpanel/users/552d4ba2-e766-4882-bce0-c60fdd94d643/ HTTP/1.1" 200 37715
+[2026-05-14 20:06:35,411] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 32611
+[2026-05-14 20:06:37,320] INFO django.server "GET /adminpanel/users/f15a3137-be6d-417f-af50-c4423fd0d5d9/ HTTP/1.1" 200 35409
+[2026-05-14 20:06:42,672] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 32611
+[2026-05-14 20:06:44,961] INFO django.server "GET /adminpanel/users/552d4ba2-e766-4882-bce0-c60fdd94d643/ HTTP/1.1" 200 37715
+[2026-05-14 20:06:46,973] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 32611
+[2026-05-14 20:09:50,610] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 32757
+[2026-05-14 20:09:50,774] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-14 20:11:39,178] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 302 0
+[2026-05-14 20:11:39,205] INFO django.server "GET /auth/login/ HTTP/1.1" 200 8023
+[2026-05-14 20:11:39,285] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16567
+[2026-05-14 20:11:39,291] INFO django.server "GET /static/css/auth.css HTTP/1.1" 200 7039
+[2026-05-14 20:11:39,298] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-14 20:11:39,326] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-05-14 20:11:39,335] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-14 20:11:39,346] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-14 20:11:39,364] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-14 20:11:39,377] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 6775
+[2026-05-14 20:11:40,766] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-14 20:11:43,421] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-05-14 20:11:43,425] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-14 20:11:43,591] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33788
+[2026-05-14 20:11:43,843] WARNING django.request Not Found: /favicon.ico
+[2026-05-14 20:11:43,844] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 5020
+[2026-05-14 20:11:46,358] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 32618
+[2026-05-14 20:11:48,208] INFO django.server "GET /adminpanel/users/f15a3137-be6d-417f-af50-c4423fd0d5d9/ HTTP/1.1" 200 35409
+[2026-05-14 20:11:50,976] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 32618
+[2026-05-14 20:11:52,209] INFO django.server "GET /adminpanel/users/552d4ba2-e766-4882-bce0-c60fdd94d643/ HTTP/1.1" 200 37715
+[2026-05-14 20:11:54,483] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 32618
+[2026-05-14 20:12:14,075] INFO django.server "GET /adminpanel/users/?q=&role=&date= HTTP/1.1" 200 32618
+[2026-05-14 20:12:17,635] INFO django.server "GET /adminpanel/users/?q=&role=customer&date= HTTP/1.1" 200 27892
+[2026-05-14 20:12:20,766] INFO django.server "GET /adminpanel/users/?q=&role=host&date= HTTP/1.1" 200 30192
+[2026-05-14 20:12:23,270] INFO django.server "GET /adminpanel/users/?q=&role=customer&date= HTTP/1.1" 200 27892
+[2026-05-14 20:12:26,050] INFO django.server "GET /adminpanel/users/?q=&role=admin&date= HTTP/1.1" 200 30196
+[2026-05-14 20:12:31,362] INFO django.server "GET /adminpanel/users/?q=&role=customer&date= HTTP/1.1" 200 27892
+[2026-05-14 20:12:31,905] INFO django.server "GET /adminpanel/users/?q=&role=customer&date= HTTP/1.1" 200 27892
+[2026-05-14 20:12:34,508] INFO django.server "GET /adminpanel/users/?q=&role=&date= HTTP/1.1" 200 32618

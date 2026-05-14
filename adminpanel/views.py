@@ -70,8 +70,70 @@ def dashboard_view(request):
 @jwt_login_required
 @role_required('admin')
 def user_list_view(request):
-    users = User.objects.filter(deleted_at__isnull=True).order_by('-created_at')
-    return render(request, 'adminpanel/users.html', {'users': users})
+    from django.db.models import Q
+    from datetime import timedelta
+    
+    q = request.GET.get('q', '').strip()
+    role = request.GET.get('role', '')
+    date_filter = request.GET.get('date', '')
+    
+    users = User.objects.filter(deleted_at__isnull=True)
+    
+    if q:
+        users = users.filter(
+            Q(email__icontains=q) | 
+            Q(username__icontains=q) | 
+            Q(first_name__icontains=q) | 
+            Q(last_name__icontains=q)
+        )
+    
+    if role:
+        users = users.filter(role=role)
+        
+    if date_filter:
+        now = timezone.now()
+        if date_filter == 'today':
+            users = users.filter(created_at__date=now.date())
+        elif date_filter == 'week':
+            users = users.filter(created_at__gte=now - timedelta(days=7))
+        elif date_filter == 'month':
+            users = users.filter(created_at__gte=now - timedelta(days=30))
+
+    users = users.order_by('-created_at')
+    
+    return render(request, 'adminpanel/users.html', {
+        'users': users,
+        'q': q,
+        'role_filter': role,
+        'date_filter': date_filter
+    })
+
+
+@jwt_login_required
+@role_required('admin')
+def user_detail_view(request, user_id):
+    """Deep analytics and data view for a specific user."""
+    from payments.models import PaymentLog
+    
+    target_user = get_object_or_404(User, id=user_id)
+    listings = Listing.objects.filter(host=target_user, deleted_at__isnull=True)
+    payments = PaymentLog.objects.filter(user=target_user).order_by('-created_at')
+    total_paid = payments.filter(status='success').aggregate(total=Sum('amount'))['total'] or 0
+    
+    # Coupon usage
+    coupon_usages = CouponUsage.objects.filter(user=target_user).select_related('coupon')
+    
+    # Reviews given
+    reviews = Review.objects.filter(user=target_user).select_related('listing')
+    
+    return render(request, 'adminpanel/user_detail.html', {
+        'target_user': target_user,
+        'listings': listings,
+        'payments': payments,
+        'total_paid': total_paid,
+        'coupon_usages': coupon_usages,
+        'reviews': reviews,
+    })
 
 
 @jwt_login_required

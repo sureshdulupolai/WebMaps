@@ -9,6 +9,7 @@ app_name = 'adminpanel'
 urlpatterns = [
     path('', views.dashboard_view, name='dashboard'),
     path('users/', views.user_list_view, name='users'),
+    path('users/<uuid:user_id>/', views.user_detail_view, name='user_detail'),
     path('listings/', views.listing_list_view, name='listings'),
     path('listings/<slug:slug>/', views.listing_detail_view, name='listing_detail'),
     path('listings/<slug:slug>/approve/', views.approve_listing_view, name='approve_listing'),

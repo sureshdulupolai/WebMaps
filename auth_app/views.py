@@ -186,10 +186,9 @@ def register_developer_view(request):
 # ─────────────────────────────────────────────
 @require_http_methods(['GET', 'POST'])
 def login_view(request):
-    # Already logged in?
-    access_token = request.COOKIES.get(settings.JWT_ACCESS_COOKIE)
-    if access_token:
-        return redirect('maps:home')
+    # Already logged in? Middleware handles token validation/refresh
+    if request.user.is_authenticated:
+        return redirect(_get_redirect_after_login(request.user))
 
     if request.method == 'GET':
         return render(request, 'auth/login.html')

@@ -6,31 +6,69 @@
 
 {% block content %}
 <div class="animate-fade-in">
-    <div class="glass-header d-flex justify-between align-center">
+    <div class="glass-header d-flex justify-between align-center" style="padding: 0.8rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(13, 17, 23, 0.4); border-radius: 12px 12px 0 0;">
         <div>
-            <h1 class="page-title">Identity Control</h1>
-            <p class="page-subtitle">Security management for platform identities and authentication states.</p>
+            <h1 class="page-title" style="font-size: 1.1rem; margin-bottom: 0; font-weight: 800; letter-spacing: -0.02em;">Identity Control</h1>
+            <p class="page-subtitle" style="font-size: 0.65rem; opacity: 0.4; margin-top: 2px;">System-wide identity & permission management</p>
         </div>
-        <div class="glass-card py-2 px-5 d-flex align-center gap-3">
-            <div class="stat-icon" style="margin: 0; width: 32px; height: 32px; background: rgba(99, 102, 241, 0.1); color: var(--secondary); display: grid; place-items: center;">
-                <i class="material-icons" style="font-size: 18px;">people</i>
-            </div>
-            <div>
-                <div class="text-[10px] opacity-40 uppercase font-black mb-0.5">Total Identities</div>
-                <div class="text-lg font-black text-white leading-none">{{ users|length }}</div>
+        <div class="d-flex align-center gap-3">
+            <div class="glass-card py-1.5 px-3 d-flex align-center gap-3" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px;">
+                <div class="stat-icon" style="margin: 0; width: 24px; height: 24px; background: rgba(99, 102, 241, 0.1); color: var(--secondary); display: grid; place-items: center; border-radius: 6px;">
+                    <i class="material-icons" style="font-size: 14px;">people</i>
+                </div>
+                <div class="text-sm font-black text-white leading-none" style="font-size: 14px;">{{ users|length }}</div>
             </div>
         </div>
     </div>
 
-    <div class="table-container mt-6">
+    <!-- Premium Filters Section -->
+    <div class="mt-4 px-2">
+        <form method="GET" class="d-flex flex-wrap gap-3 align-center m-0">
+            <div style="flex: 1; min-width: 300px; position: relative;">
+                <i class="material-icons" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-size: 18px; color: rgba(255,255,255,0.2); z-index: 5;">search</i>
+                <input type="text" name="q" value="{{ q }}" placeholder="Search by name, email or signature..." 
+                       class="admin-filter-input" style="padding-left: 42px;">
+            </div>
+            
+            <div class="filter-select-wrapper">
+                <select name="role" class="admin-filter-input">
+                    <option value="" class="dark-option">All Roles</option>
+                    <option value="customer" class="dark-option" {% if role_filter == 'customer' %}selected{% endif %}>Customer</option>
+                    <option value="host" class="dark-option" {% if role_filter == 'host' %}selected{% endif %}>Host</option>
+                    <option value="admin" class="dark-option" {% if role_filter == 'admin' %}selected{% endif %}>Admin</option>
+                </select>
+            </div>
+
+            <div class="filter-select-wrapper">
+                <select name="date" class="admin-filter-input">
+                    <option value="" class="dark-option">All Time</option>
+                    <option value="today" class="dark-option" {% if date_filter == 'today' %}selected{% endif %}>Today</option>
+                    <option value="week" class="dark-option" {% if date_filter == 'week' %}selected{% endif %}>Last 7 Days</option>
+                    <option value="month" class="dark-option" {% if date_filter == 'month' %}selected{% endif %}>Last 30 Days</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-primary" style="height: 42px; border-radius: 10px; padding: 0 24px; font-size: 13px; font-weight: 800; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);">
+                APPLY FILTER
+            </button>
+            
+            {% if q or role_filter or date_filter %}
+                <a href="{% url 'adminpanel:users' %}" class="btn-icon" style="width: 42px; height: 42px; background: rgba(239, 68, 68, 0.1); color: #f87171;" title="Clear All">
+                    <i class="material-icons">close</i>
+                </a>
+            {% endif %}
+        </form>
+    </div>
+
+    <div class="table-container mt-4" style="background: rgba(13, 17, 23, 0.3); border: 1px solid rgba(255,255,255,0.03);">
         <table class="premium-table">
             <thead>
-                <tr>
-                    <th style="padding-left: 24px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Identity Signature</th>
-                    <th style="font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Email Horizon</th>
-                    <th style="font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Access Role</th>
-                    <th style="font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Join Sequence</th>
-                    <th class="text-right" style="padding-right: 24px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Operations</th>
+                <tr style="background: rgba(255,255,255,0.01);">
+                    <th style="padding-left: 24px;">Identity</th>
+                    <th>Email Horizon</th>
+                    <th>Access Role</th>
+                    <th>Join Sequence</th>
+                    <th class="text-right" style="padding-right: 24px;">Operations</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,33 +76,35 @@
                 <tr class="hover:bg-white-5 transition-all">
                     <td style="padding-left: 24px;">
                         <div class="d-flex align-center gap-3">
-                            <div class="chip-avatar" style="width: 32px; height: 32px; font-size: 11px; background: rgba(255,255,255,0.03); border: 1px solid var(--admin-border); color: var(--admin-accent);">
+                            <div class="chip-avatar" style="width: 34px; height: 34px; font-size: 12px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(99, 102, 241, 0.05)); border: 1px solid rgba(99, 102, 241, 0.3); color: #fff; font-weight: 800;">
                                 {{ user.username|first|upper }}
                             </div>
                             <div>
-                                <div class="font-bold text-white text-sm">{{ user.username }}</div>
-                                <div class="text-[9px] opacity-30 font-mono">{{ user.id|truncatechars:18 }}</div>
+                                <a href="{% url 'adminpanel:user_detail' user.id %}" class="font-bold text-white text-sm hover:text-indigo-400 transition-colors" style="text-decoration: none; display: block; line-height: 1.2;">{{ user.username }}</a>
                             </div>
                         </div>
                     </td>
                     <td>
-                        <div class="text-xs font-medium text-white/80">{{ user.email }}</div>
+                        <div class="text-xs font-medium text-white/70">{{ user.email }}</div>
                     </td>
                     <td>
-                        <span class="status-badge {% if user.role == 'admin' %}badge-danger{% elif user.role == 'host' %}badge-info{% else %}badge-outline{% endif %}" style="font-size: 8px; font-weight: 800; border-radius: 4px;">
+                        <span class="status-badge {% if user.role == 'admin' %}badge-danger{% elif user.role == 'host' %}badge-info{% else %}badge-outline{% endif %}">
                             {{ user.role|upper }}
                         </span>
                     </td>
                     <td>
-                        <div class="text-xs text-white/60">{{ user.created_at|date:"M d, Y" }}</div>
-                        <div class="text-[9px] opacity-20 uppercase font-bold">{{ user.created_at|timesince }} ago</div>
+                        <div class="text-xs text-white/50">{{ user.created_at|date:"M d, Y" }}</div>
+                        <div class="text-[9px] opacity-30 uppercase font-bold tracking-wider">{{ user.created_at|timesince }} ago</div>
                     </td>
                     <td style="padding-right: 24px;">
                         <div class="d-flex gap-2 justify-end">
-                            <form action="{% url 'adminpanel:user_delete' user.id %}" method="POST" class="m-0" onsubmit="return confirm('Terminate this system identity? This action is non-reversible.');">
+                            <a href="{% url 'adminpanel:user_detail' user.id %}" class="action-icon-btn" style="width: 30px; height: 30px; background: rgba(255,255,255,0.03);" title="Deep Analytics">
+                                <i class="material-icons" style="font-size: 16px;">analytics</i>
+                            </a>
+                            <form action="{% url 'adminpanel:user_delete' user.id %}" method="POST" class="m-0" onsubmit="return confirm('Terminate this system identity?');">
                                 {% csrf_token %}
-                                <button type="submit" class="action-icon-btn btn-danger" style="width: 28px; height: 28px;" title="Terminate">
-                                    <i class="material-icons">delete</i>
+                                <button type="submit" class="action-icon-btn btn-danger" style="width: 30px; height: 30px;" title="Terminate">
+                                    <i class="material-icons" style="font-size: 16px;">delete</i>
                                 </button>
                             </form>
                         </div>
@@ -72,9 +112,9 @@
                 </tr>
                 {% empty %}
                 <tr>
-                    <td colspan="5" class="text-center py-20 opacity-20">
-                        <i class="material-icons mb-4" style="font-size: 40px; display: block;">person_off</i>
-                        <p class="font-mono text-xs letter-spacing-1">REGISTRY EMPTY: NO SIGNATURES DETECTED</p>
+                    <td colspan="5" class="text-center py-24 opacity-10">
+                        <i class="material-icons mb-4" style="font-size: 48px; display: block;">person_off</i>
+                        <p class="font-mono text-[10px] letter-spacing-2">REGISTRY_EMPTY: NO_SIGNATURES_DETECTED</p>
                     </td>
                 </tr>
                 {% endfor %}
@@ -84,6 +124,50 @@
 </div>
 
 <style>
-    .badge-outline { border: 1px solid var(--border); color: var(--text-muted); padding: 2px 8px; font-size: 8px; font-weight: 800; border-radius: 6px; }
+    .admin-filter-input {
+        width: 100%;
+        height: 42px;
+        background: rgba(255, 255, 255, 0.03) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 10px !important;
+        color: #fff !important;
+        padding: 0 16px;
+        font-size: 13px;
+        transition: all 0.3s ease;
+        outline: none;
+    }
+    .admin-filter-input:focus {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border-color: rgba(99, 102, 241, 0.4) !important;
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    }
+    .dark-option {
+        background-color: #0d1117 !important;
+        color: #fff !important;
+    }
+    .filter-select-wrapper { position: relative; width: 140px; }
+    .admin-filter-input select {
+        appearance: auto !important; /* Use browser default for simplicity and to avoid double arrows */
+        -webkit-appearance: auto !important;
+    }
+    
+    .badge-outline { border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.4); padding: 2px 8px; font-size: 8px; font-weight: 800; border-radius: 4px; }
+    
+    .status-badge {
+        padding: 2px 8px;
+        font-size: 8px;
+        font-weight: 800;
+        border-radius: 4px;
+        display: inline-block;
+    }
+    .premium-table th {
+        font-size: 9px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: rgba(255,255,255,0.3);
+        font-weight: 900;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        padding: 14px 12px;
+    }
 </style>
 {% endblock %}

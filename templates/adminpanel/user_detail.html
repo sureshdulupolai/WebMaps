@@ -1,0 +1,333 @@
+{% extends 'adminpanel/admin_base.html' %}
+{% load static %}
+
+{% block title %}Intel: {{ target_user.username }}{% endblock %}
+{% block breadcrumb %}
+    <a href="{% url 'adminpanel:users' %}" class="opacity-40 hover:opacity-100 transition-opacity">Registry</a>
+    <span class="mx-2 opacity-20">/</span>
+    <span class="text-white">{{ target_user.username }}</span>
+{% endblock %}
+
+{% block content %}
+<div class="animate-fade-in px-4">
+    
+    <!-- Professional Header -->
+    <div style="display:flex; justify-content:space-between; align-items:center; padding: 20px 32px; background: rgba(20,20,28,0.7); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; margin-bottom: 32px;">
+        <div style="display:flex; align-items:center; gap:16px;">
+            <div style="width:48px; height:48px; border-radius:14px; background:rgba(168,85,247,0.1); border:1px solid rgba(168,85,247,0.2); display:grid; place-items:center;">
+                <i class="material-icons" style="font-size:24px; color:var(--admin-accent);">person</i>
+            </div>
+            <div>
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <h1 style="font-size:24px; font-weight:900; margin:0; color:#fff; letter-spacing:-0.5px;">{{ target_user.username }}</h1>
+                    <span class="status-badge {% if target_user.role == 'admin' %}badge-danger{% elif target_user.role == 'host' %}badge-info{% else %}badge-outline{% endif %} px-2.5 py-1" style="font-size: 9px; font-weight: 900;">
+                        {{ target_user.role|upper }}
+                    </span>
+                </div>
+                <p style="font-size:11px; color:rgba(255,255,255,0.3); margin:4px 0 0; font-weight:700; text-transform:uppercase; letter-spacing:1px; display:flex; align-items:center; gap:6px;">
+                    <i class="material-icons" style="font-size:14px;">verified_user</i> Strategic Intelligence Profile
+                </p>
+            </div>
+        </div>
+        <a href="{% url 'adminpanel:users' %}" class="action-icon-btn" style="width: 44px; height: 44px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; color: #fff;" title="Back to Registry">
+            <i class="material-icons">arrow_back</i>
+        </a>
+    </div>
+
+    <!-- Top Metrics Row: 3 Cards Per Line -->
+    <div class="metrics-grid mb-8">
+        <!-- Gross Revenue -->
+        <div class="glass-card stat-card-mini" style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.05), transparent);">
+            <div class="stat-card-inner">
+                <div class="stat-card-data">
+                    <p class="stat-card-label">Gross Revenue</p>
+                    <h2 class="stat-card-value">₹{{ total_paid }}</h2>
+                </div>
+                <div class="stat-card-icon bg-green-500/10 text-green-400">
+                    <i class="material-icons">payments</i>
+                </div>
+            </div>
+            <div class="stat-card-footer text-green-400">LIFETIME_LTV</div>
+        </div>
+
+        <!-- Platform Assets -->
+        <div class="glass-card stat-card-mini">
+            <div class="stat-card-inner">
+                <div class="stat-card-data">
+                    <p class="stat-card-label">Assets</p>
+                    <h2 class="stat-card-value">{{ listings.count }}</h2>
+                </div>
+                <div class="stat-card-icon bg-indigo-500/10 text-indigo-400">
+                    <i class="material-icons">business_center</i>
+                </div>
+            </div>
+            <div class="stat-card-footer">ACTIVE_LISTINGS</div>
+        </div>
+
+        <!-- Redemptions -->
+        <div class="glass-card stat-card-mini">
+            <div class="stat-card-inner">
+                <div class="stat-card-data">
+                    <p class="stat-card-label">Coupons</p>
+                    <h2 class="stat-card-value">{{ coupon_usages.count }}</h2>
+                </div>
+                <div class="stat-card-icon bg-purple-500/10 text-purple-400">
+                    <i class="material-icons">style</i>
+                </div>
+            </div>
+            <div class="stat-card-footer">REDEMPTIONS</div>
+        </div>
+
+        <!-- Engagement -->
+        <div class="glass-card stat-card-mini">
+            <div class="stat-card-inner">
+                <div class="stat-card-data">
+                    <p class="stat-card-label">Reviews</p>
+                    <h2 class="stat-card-value">{{ reviews.count }}</h2>
+                </div>
+                <div class="stat-card-icon bg-orange-500/10 text-orange-400">
+                    <i class="material-icons">forum</i>
+                </div>
+            </div>
+            <div class="stat-card-footer">USER_FEEDBACK</div>
+        </div>
+
+        <!-- Promotion Intel -->
+        <div class="glass-card stat-card-mini" style="background: rgba(129, 140, 248, 0.05);">
+            <div class="stat-card-inner">
+                <div class="stat-card-data" style="min-width: 0;">
+                    <p class="stat-card-label">Promotion Intel</p>
+                    {% if coupon_usages %}
+                        {% with usage=coupon_usages.first %}
+                        <h2 class="stat-card-value-small" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">{{ usage.coupon.code }}</h2>
+                        <div class="stat-card-subvalue text-green-400">-₹{{ usage.discount_applied }}</div>
+                        {% endwith %}
+                    {% else %}
+                        <h2 class="stat-card-value">NONE</h2>
+                    {% endif %}
+                </div>
+                <div class="stat-card-icon bg-indigo-500/10 text-indigo-400">
+                    <i class="material-icons">local_offer</i>
+                </div>
+            </div>
+            <div class="stat-card-footer">LATEST_PROMO</div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Sidebar Column: Expanded Identity -->
+        <div class="lg:col-span-4" style="display: flex; flex-direction: column; gap: 24px;">
+            <div class="glass-card" style="padding:40px; border-color: rgba(255,255,255,0.1); height: fit-content;">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:40px;">
+                    <i class="material-icons" style="font-size:24px; color:rgba(168,85,247,0.4);">fingerprint</i>
+                    <h3 style="font-size:14px; font-weight:900; color:#fff; text-transform:uppercase; letter-spacing:2px; margin:0;">User Profile</h3>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 32px;">
+                    <div class="blueprint-item">
+                        <label style="font-size:10px; font-weight:900; color:rgba(255,255,255,0.2); text-transform:uppercase; letter-spacing:1.5px; display:block; margin-bottom:12px;">Account Identifier</label>
+                        <div style="font-size:13px; font-family:'JetBrains Mono', monospace; color:rgba(255,255,255,0.5); word-break:break-all; line-height: 1.6;">{{ target_user.id }}</div>
+                    </div>
+                    <div class="blueprint-item">
+                        <label style="font-size:10px; font-weight:900; color:rgba(255,255,255,0.2); text-transform:uppercase; letter-spacing:1.5px; display:block; margin-bottom:12px;">Communications</label>
+                        <div style="font-size:17px; color:#fff; font-weight:700;">{{ target_user.email }}</div>
+                    </div>
+                    <div class="blueprint-item">
+                        <label style="font-size:10px; font-weight:900; color:rgba(255,255,255,0.2); text-transform:uppercase; letter-spacing:1.5px; display:block; margin-bottom:12px;">Access Level</label>
+                        <span class="status-badge {% if target_user.role == 'admin' %}badge-danger{% else %}badge-info{% endif %} px-4 py-1.5" style="font-size:10px; font-weight:900;">{{ target_user.role|upper }}</span>
+                    </div>
+                    <div class="blueprint-item">
+                        <label style="font-size:10px; font-weight:900; color:rgba(255,255,255,0.2); text-transform:uppercase; letter-spacing:1.5px; display:block; margin-bottom:12px;">Registry Date</label>
+                        <div style="font-size:16px; color:rgba(255,255,255,0.8); font-weight:600;">{{ target_user.created_at|date:"F d, Y" }}</div>
+                    </div>
+                    <div class="blueprint-item">
+                        <label style="font-size:10px; font-weight:900; color:rgba(255,255,255,0.2); text-transform:uppercase; letter-spacing:1.5px; display:block; margin-bottom:12px;">Network Origin</label>
+                        <div style="font-size:13px; font-family:'JetBrains Mono', monospace; color:rgba(255,255,255,0.2);">{{ target_user.last_login_ip|default:"127.0.0.1 (Internal)" }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Column: Tables -->
+        <div class="lg:col-span-8" style="display: flex; flex-direction: column; gap: 24px;">
+            <!-- Merchant Assets Table -->
+            <div class="glass-card" style="padding:0; overflow:hidden; border-color: rgba(255,255,255,0.06); height: fit-content;">
+                <div class="table-container">
+                    <table class="premium-table">
+                        <thead>
+                            <tr style="background:rgba(255,255,255,0.03);">
+                                <th style="padding-left:28px;">Merchant / Listing</th>
+                                <th>Status</th>
+                                <th>Onboarded</th>
+                                <th class="text-right" style="padding-right:28px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for listing in listings %}
+                            <tr class="hover:bg-white-5">
+                                <td style="padding-left:28px;">
+                                    <div style="font-weight:700; color:#fff; font-size:13px;">{{ listing.company_name }}</div>
+                                    <div style="font-size:9px; color:rgba(255,255,255,0.3); font-weight:800; text-transform:uppercase; margin-top:2px;">{{ listing.location_name }}</div>
+                                </td>
+                                <td>
+                                    <span class="status-badge {% if listing.status == 'approved' %}badge-success{% elif listing.status == 'pending' %}badge-warning{% else %}badge-danger{% endif %} px-2">
+                                        {{ listing.status|upper }}
+                                    </span>
+                                </td>
+                                <td style="font-size:12px; color:rgba(255,255,255,0.4);">{{ listing.created_at|date:"M d, Y" }}</td>
+                                <td class="text-right" style="padding-right:28px;">
+                                    <a href="{% url 'adminpanel:listing_detail' listing.slug %}" class="action-icon-btn" style="background:rgba(99, 102, 241, 0.1); color:#818cf8; width:32px; height:32px;">
+                                        <i class="material-icons" style="font-size:16px;">visibility</i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr><td colspan="4" style="padding:32px; text-align:center; opacity:0.1; font-size:10px; font-weight:900; letter-spacing:2px; color:#fff;">VACANT_ASSETS</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Financial Ledger Table -->
+            <div class="glass-card" style="padding:0; overflow:hidden; border-color: rgba(255,255,255,0.06); height: fit-content;">
+                <div class="table-container">
+                    <table class="premium-table">
+                        <thead>
+                            <tr style="background:rgba(255,255,255,0.03);">
+                                <th style="padding-left:28px;">Payment Description</th>
+                                <th>Amount</th>
+                                <th>Gateway</th>
+                                <th>Status</th>
+                                <th class="text-right" style="padding-right:28px;">Timestamp</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for pay in payments %}
+                            <tr class="hover:bg-white-5">
+                                <td style="padding-left:28px;">
+                                    <div style="font-weight:700; color:#fff; font-size:13px;">{{ pay.listing.company_name|default:"General Subscription" }}</div>
+                                    <div style="font-size:9px; color:rgba(255,255,255,0.3); font-weight:800; text-transform:uppercase; margin-top:2px;">Plan: {{ pay.plan.name|default:"WEB_UPDATE" }}</div>
+                                </td>
+                                <td style="font-size:15px; font-weight:800; color:#fff;">₹{{ pay.amount }}</td>
+                                <td style="font-size:10px; font-weight:900; color:rgba(255,255,255,0.2); text-transform:uppercase;">{{ pay.payment_method|default:"RAZORPAY" }}</td>
+                                <td>
+                                    <span class="status-badge {% if pay.status == 'success' %}badge-success{% else %}badge-danger{% endif %}">
+                                        {{ pay.status|upper }}
+                                    </span>
+                                </td>
+                                <td class="text-right" style="padding-right:28px; font-size:12px; color:rgba(255,255,255,0.3);">{{ pay.created_at|date:"M d, Y" }}</td>
+                            </tr>
+                            {% empty %}
+                            <tr><td colspan="5" style="padding:32px; text-align:center; opacity:0.1; font-size:10px; font-weight:900; letter-spacing:2px; color:#fff;">NO_TRANSACTIONS</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .grid { display: grid; }
+    
+    /* Metrics Grid: 3 cards per line */
+    .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 20px;
+    }
+    @media (min-width: 640px) { .metrics-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (min-width: 1024px) { .metrics-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+    .stat-card-mini {
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 120px;
+    }
+    .stat-card-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        gap: 12px;
+    }
+    .stat-card-label {
+        font-size: 10px;
+        font-weight: 800;
+        color: rgba(255,255,255,0.3);
+        text-transform: uppercase;
+        margin: 0 0 4px;
+    }
+    .stat-card-value {
+        font-size: 28px;
+        font-weight: 900;
+        color: #fff;
+        margin: 0;
+        letter-spacing: -1px;
+    }
+    .stat-card-value-small {
+        font-size: 16px;
+        font-weight: 900;
+        color: #818cf8;
+        margin: 0;
+        font-family: 'JetBrains Mono', monospace;
+    }
+    .stat-card-subvalue {
+        font-size: 10px;
+        font-weight: 800;
+        margin-top: 4px;
+    }
+    .stat-card-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+    }
+    .stat-card-icon i { font-size: 20px; }
+    .stat-card-footer {
+        margin-top: 16px;
+        font-size: 9px;
+        color: rgba(255,255,255,0.2);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .status-badge {
+        padding: 2px 8px;
+        font-size: 8px;
+        font-weight: 800;
+        border-radius: 4px;
+        display: inline-block;
+    }
+    .badge-success { background: rgba(34, 197, 94, 0.1); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.2); }
+    .badge-danger { background: rgba(239, 68, 68, 0.1); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.2); }
+    .badge-info { background: rgba(59, 130, 246, 0.1); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.2); }
+    .badge-outline { background: transparent; color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.1); }
+
+    .premium-table { border-collapse: collapse; width: 100%; }
+    .premium-table th {
+        font-size: 9px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: rgba(255,255,255,0.2);
+        padding: 16px 20px;
+        text-align: left;
+        border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .premium-table td {
+        padding: 18px 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.01);
+    }
+
+    @media (min-width: 1024px) {
+        .lg\:grid-cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+        .lg\:col-span-4 { grid-column: span 4 / span 4; }
+        .lg\:col-span-8 { grid-column: span 8 / span 8; }
+    }
+</style>
+{% endblock %}
