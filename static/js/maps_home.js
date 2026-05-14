@@ -332,25 +332,28 @@ window.handleMapClick = async function(lat, lng) {
   };
 };
 
-function initSearchEnhancements() {
-  const input = document.getElementById('loc-search-input');
-  const btn = document.getElementById('loc-search-btn');
-  const suggestionsBox = document.getElementById('search-suggestions');
-  let searchTimeout;
+function setupAutocomplete(inputId, suggestionsBoxId, isLocationSearch = false) {
+  const input = document.getElementById(inputId);
+  const suggestionsBox = document.getElementById(suggestionsBoxId);
   let suggestionTimeout;
 
-  if (!input || !btn || !suggestionsBox) return;
+  if (!input || !suggestionsBox) return;
+
+  const btn = isLocationSearch ? document.getElementById('loc-search-btn') : null;
+  let searchTimeout;
 
   input.addEventListener('input', (e) => {
     const query = e.target.value.trim();
     
-    btn.style.display = 'none';
-    clearTimeout(searchTimeout);
-    if (query.length > 2) {
-      searchTimeout = setTimeout(() => {
-        btn.style.display = 'flex';
-        btn.style.animation = 'fadeIn 0.3s ease-out';
-      }, 200);
+    if (isLocationSearch && btn) {
+      btn.style.display = 'none';
+      clearTimeout(searchTimeout);
+      if (query.length > 2) {
+        searchTimeout = setTimeout(() => {
+          btn.style.display = 'flex';
+          btn.style.animation = 'fadeIn 0.3s ease-out';
+        }, 200);
+      }
     }
 
     clearTimeout(suggestionTimeout);
@@ -363,7 +366,7 @@ function initSearchEnhancements() {
           }
           const res = await fetch(url);
           const data = await res.json();
-          renderSuggestions(data);
+          renderSuggestions(data, suggestionsBox, inputId, isLocationSearch);
         } catch (err) {
           console.warn("Suggestions fetch failed:", err);
         }
@@ -375,34 +378,13 @@ function initSearchEnhancements() {
 
   input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
-      e.preventDefault();
-      handleSearchLocation(e);
-      suggestionsBox.classList.remove('active');
+      if (isLocationSearch) {
+        e.preventDefault();
+        handleSearchLocation(e);
+        suggestionsBox.classList.remove('active');
+      }
     }
   });
-
-  function renderSuggestions(data) {
-    if (!data || data.length === 0) {
-      suggestionsBox.classList.remove('active');
-      return;
-    }
-
-    suggestionsBox.innerHTML = data.map(item => {
-      const name = item.display_name.split(',')[0];
-      const sub = item.display_name.split(',').slice(1, 3).join(',');
-      const safeName = item.display_name.replace(/'/g, "\\'");
-      return `
-        <div class="suggestion-item" onclick="selectSuggestion('${safeName}', ${item.lat}, ${item.lon})">
-          <div class="suggestion-icon">📍</div>
-          <div class="suggestion-content">
-            <div style="font-weight:700; color:#fff; font-size:14px;">${name}</div>
-            <div style="font-size:11px; opacity:0.6;">${sub}</div>
-          </div>
-        </div>
-      `;
-    }).join('');
-    suggestionsBox.classList.add('active');
-  }
 
   document.addEventListener('click', (e) => {
     if (!input.contains(e.target) && !suggestionsBox.contains(e.target)) {
@@ -411,18 +393,53 @@ function initSearchEnhancements() {
   });
 }
 
-function selectSuggestion(name, lat, lon) {
-  const input = document.getElementById('loc-search-input');
-  const suggestionsBox = document.getElementById('search-suggestions');
+function renderSuggestions(data, suggestionsBox, inputId, isLocationSearch) {
+  if (!data || data.length === 0) {
+    suggestionsBox.classList.remove('active');
+    return;
+  }
+
+  suggestionsBox.innerHTML = data.map(item => {
+    const name = item.display_name.split(',')[0];
+    const sub = item.display_name.split(',').slice(1, 3).join(',');
+    const safeName = item.display_name.replace(/'/g, "\\'");
+    return `
+      <div class="suggestion-item" onclick="selectSuggestionGen('${safeName}', ${item.lat}, ${item.lon}, '${inputId}', '${suggestionsBox.id}', ${isLocationSearch})">
+        <div class="suggestion-icon">📍</div>
+        <div class="suggestion-content">
+          <div style="font-weight:700; color:#fff; font-size:14px;">${name}</div>
+          <div style="font-size:11px; opacity:0.6;">${sub}</div>
+        </div>
+      </div>
+    `;
+  }).join('');
+  suggestionsBox.classList.add('active');
+}
+
+function selectSuggestionGen(name, lat, lon, inputId, suggestionsBoxId, isLocationSearch) {
+  const input = document.getElementById(inputId);
+  const suggestionsBox = document.getElementById(suggestionsBoxId);
   if (input) {
     input.value = name;
     input.setAttribute('data-lat', lat);
     input.setAttribute('data-lng', lon);
   }
   if (suggestionsBox) suggestionsBox.classList.remove('active');
-  handleSearchLocation(null, lat, lon);
-  const btn = document.getElementById('loc-search-btn');
-  if (btn) btn.style.display = 'flex';
+  
+  if (isLocationSearch) {
+    handleSearchLocation(null, lat, lon);
+    const btn = document.getElementById('loc-search-btn');
+    if (btn) btn.style.display = 'flex';
+  }
+}
+
+function initSearchEnhancements() {
+  setupAutocomplete('loc-search-input', 'search-suggestions', true);
+}
+
+// Keep the old one for compatibility if any other script calls it directly
+function selectSuggestion(name, lat, lon) {
+  selectSuggestionGen(name, lat, lon, 'loc-search-input', 'search-suggestions', true);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -432,6 +449,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Expose globals
 window.selectSuggestion = selectSuggestion;
+window.selectSuggestionGen = selectSuggestionGen;
 window.handleLocationEnable = handleLocationEnable;
 window.closeLocationOverlay = closeLocationOverlay;
 window.closeMapClickOverlay = closeMapClickOverlay;

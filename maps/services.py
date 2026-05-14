@@ -31,25 +31,21 @@ def parse_route_query(query: str) -> tuple:
 # ─────────────────────────────────────────────
 def geocode_location(place_name: str) -> dict:
     """
-    Geocode a place name using Google Maps Geocoding API.
+    Geocode a place name using OpenStreetMap Nominatim API.
     Returns {'lat': float, 'lng': float, 'formatted_address': str} or None
     """
-    if not settings.GOOGLE_MAPS_API_KEY:
-        logger.warning("GOOGLE_MAPS_API_KEY not configured.")
-        return None
-
     try:
-        url = 'https://maps.googleapis.com/maps/api/geocode/json'
-        params = {'address': place_name, 'key': settings.GOOGLE_MAPS_API_KEY}
-        resp = requests.get(url, params=params, timeout=5)
+        url = 'https://nominatim.openstreetmap.org/search'
+        params = {'q': place_name, 'format': 'json', 'limit': 1}
+        headers = {'User-Agent': 'WebMaps/1.0'}
+        resp = requests.get(url, params=params, headers=headers, timeout=5)
         data = resp.json()
 
-        if data.get('status') == 'OK':
-            loc = data['results'][0]['geometry']['location']
+        if data and len(data) > 0:
             return {
-                'lat': loc['lat'],
-                'lng': loc['lng'],
-                'formatted_address': data['results'][0]['formatted_address'],
+                'lat': float(data[0]['lat']),
+                'lng': float(data[0]['lon']),
+                'formatted_address': data[0]['display_name'],
             }
     except Exception as e:
         logger.error(f"Geocoding failed for '{place_name}': {e}")
@@ -75,11 +71,39 @@ def haversine_distance(lat1, lng1, lat2, lng2) -> float:
 # ─────────────────────────────────────────────
 #  ROUTE-BASED LISTING SEARCH
 # ─────────────────────────────────────────────
+def distance_to_line_segment(lat, lng, start_lat, start_lng, end_lat, end_lng):
+    """
+    Calculate approx distance in km from point to line segment.
+    """
+    R = 6371.0
+    lat1, lng1 = math.radians(start_lat), math.radians(start_lng)
+    lat2, lng2 = math.radians(end_lat), math.radians(end_lng)
+    lat3, lng3 = math.radians(lat), math.radians(lng)
+
+    x1, y1 = 0.0, 0.0
+    x2 = R * (lng2 - lng1) * math.cos((lat1 + lat2) / 2)
+    y2 = R * (lat2 - lat1)
+    x3 = R * (lng3 - lng1) * math.cos((lat1 + lat3) / 2)
+    y3 = R * (lat3 - lat1)
+
+    dx = x2 - x1
+    dy = y2 - y1
+    length_sq = dx*dx + dy*dy
+
+    if length_sq == 0:
+        return haversine_distance(lat, lng, start_lat, start_lng)
+
+    t = max(0, min(1, (x3 * dx + y3 * dy) / length_sq))
+    proj_x = x1 + t * dx
+    proj_y = y1 + t * dy
+
+    return math.sqrt((x3 - proj_x)**2 + (y3 - proj_y)**2)
+
+
 def get_listings_along_route(start_coords: dict, end_coords: dict, radius_km: float = 5) -> list:
     """
     Return approved listings within `radius_km` of the straight-line route
     between start and end coordinates.
-    Uses perpendicular distance approximation for efficiency.
     """
     listings = Listing.objects.filter(
         status='approved',
@@ -87,30 +111,29 @@ def get_listings_along_route(start_coords: dict, end_coords: dict, radius_km: fl
     ).prefetch_related('services', 'subscription')
 
     results = []
+    start_lat = float(start_coords['lat'])
+    start_lng = float(start_coords['lng'])
+    end_lat = float(end_coords['lat'])
+    end_lng = float(end_coords['lng'])
+
+    min_lat = min(start_lat, end_lat) - (radius_km / 111.0)
+    max_lat = max(start_lat, end_lat) + (radius_km / 111.0)
+    min_lng = min(start_lng, end_lng) - (radius_km / 85.0)
+    max_lng = max(start_lng, end_lng) + (radius_km / 85.0)
+
     for listing in listings:
         lat = float(listing.latitude)
         lng = float(listing.longitude)
 
-        # Check proximity to either endpoint (simple bounding box + haversine)
-        d_start = haversine_distance(
-            start_coords['lat'], start_coords['lng'], lat, lng
-        )
-        d_end = haversine_distance(
-            end_coords['lat'], end_coords['lng'], lat, lng
-        )
-
-        # Bounding box check (fast filter before haversine)
-        min_lat = min(start_coords['lat'], end_coords['lat']) - (radius_km / 111)
-        max_lat = max(start_coords['lat'], end_coords['lat']) + (radius_km / 111)
-        min_lng = min(start_coords['lng'], end_coords['lng']) - (radius_km / 85)
-        max_lng = max(start_coords['lng'], end_coords['lng']) + (radius_km / 85)
-
+        # Bounding box check (fast filter before distance calc)
         if not (min_lat <= lat <= max_lat and min_lng <= lng <= max_lng):
             continue
 
-        # Include if within radius of either endpoint or along the path
-        if d_start <= radius_km or d_end <= radius_km:
-            results.append({'listing': listing, 'distance_km': min(d_start, d_end)})
+        d_segment = distance_to_line_segment(lat, lng, start_lat, start_lng, end_lat, end_lng)
+
+        # Include if within radius of the path segment
+        if d_segment <= radius_km:
+            results.append({'listing': listing, 'distance_km': round(d_segment, 2)})
 
     results.sort(key=lambda x: x['distance_km'])
     return results

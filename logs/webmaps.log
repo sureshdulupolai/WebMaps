@@ -6472,3 +6472,166 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-03 13:20:13,135] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 13987
 [2026-05-03 13:20:13,260] WARNING django.security.SuspiciousSession Session data corrupted
 [2026-05-03 13:20:13,292] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 237
+[2026-05-09 10:34:39,022] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-09 10:34:45,032] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:34:45,258] INFO django.server "GET / HTTP/1.1" 200 18815
+[2026-05-09 10:34:45,366] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-05-09 10:34:45,368] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-09 10:34:45,375] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-09 10:34:45,386] INFO django.server "GET /static/js/main.js HTTP/1.1" 304 0
+[2026-05-09 10:34:45,418] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-05-09 10:34:45,434] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 304 0
+[2026-05-09 10:34:45,443] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-09 10:34:46,012] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-09 10:34:46,146] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:34:46,259] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-09 10:37:14,994] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:37:15,045] INFO django.server "GET /api/maps/search/?q=Sakinaka+Tele+Exchange+Lane%2C+Bindal+Estate%2C+Asalpha%2C+L+Ward%2C+Mumbai+Zone+5%2C+Mumbai%2C+Mumbai+Suburban+District%2C+Maharashtra%2C+400072%2C+India&category=All&rating=&distance=10&price=&lat=19.098858&lng=72.8809552 HTTP/1.1" 200 775
+[2026-05-09 10:37:35,919] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:37:36,005] INFO django.server "POST /api/analytics/track/ HTTP/1.1" 200 12
+[2026-05-09 10:37:44,354] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:37:44,565] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 39572
+[2026-05-09 10:38:48,237] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:38:48,246] INFO django.server "GET / HTTP/1.1" 200 18815
+[2026-05-09 10:38:48,438] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:38:48,473] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-09 10:38:49,979] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:38:50,059] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7872
+[2026-05-09 10:38:50,155] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-05-09 10:38:50,163] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-05-09 10:38:50,164] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 304 0
+[2026-05-09 10:38:52,021] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:38:52,029] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-09 10:38:54,289] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-05-09 10:38:54,292] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-09 10:38:54,318] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:38:54,664] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 31642
+[2026-05-09 10:38:54,747] INFO django.server "GET /static/css/admin.css HTTP/1.1" 304 0
+[2026-05-09 10:38:55,218] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:38:56,358] WARNING django.request Not Found: /favicon.ico
+[2026-05-09 10:38:56,372] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 5020
+[2026-05-09 10:39:17,269] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:39:17,420] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 29262
+[2026-05-09 10:39:33,576] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:39:33,747] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 26511
+[2026-05-09 10:39:35,417] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:39:35,544] INFO django.server "GET /adminpanel/listings/ HTTP/1.1" 200 25902
+[2026-05-09 10:39:37,148] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:39:37,438] INFO django.server "GET /adminpanel/promotions/ HTTP/1.1" 200 43904
+[2026-05-09 10:40:04,012] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:40:04,035] INFO django.server "GET / HTTP/1.1" 200 19865
+[2026-05-09 10:40:04,136] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:40:04,156] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-09 10:40:04,223] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:40:04,244] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-09 10:40:11,389] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:40:11,404] INFO django.server "GET / HTTP/1.1" 200 18815
+[2026-05-09 10:40:11,453] INFO django.server "GET /static/js/main.js HTTP/1.1" 304 0
+[2026-05-09 10:40:11,476] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-05-09 10:40:11,506] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-09 10:40:11,511] INFO django.server "GET /static/js/modals.js HTTP/1.1" 304 0
+[2026-05-09 10:40:11,568] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 304 0
+[2026-05-09 10:40:11,569] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 304 0
+[2026-05-09 10:40:11,593] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-09 10:40:11,616] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-09 10:40:11,909] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:40:11,938] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-09 10:40:13,851] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:40:13,876] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7872
+[2026-05-09 10:40:13,904] INFO django.server "GET /static/js/auth.js HTTP/1.1" 304 0
+[2026-05-09 10:40:13,941] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-05-09 10:40:13,943] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 304 0
+[2026-05-09 10:40:15,976] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:40:16,024] INFO webmaps Login attempt: User found for sureshone@gmail.com
+[2026-05-09 10:40:18,504] INFO webmaps User logged in: sureshone@gmail.com
+[2026-05-09 10:40:18,506] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-09 10:40:18,858] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:40:19,083] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 13988
+[2026-05-09 10:40:19,122] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-09 10:40:19,514] INFO django.server "GET /static/js/dashboard.js HTTP/1.1" 200 1967
+[2026-05-09 10:40:19,548] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:40:19,601] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 237
+[2026-05-09 10:40:58,098] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:40:58,358] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 11272
+[2026-05-09 10:41:00,789] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:41:00,939] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 237
+[2026-05-09 10:41:24,780] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:41:24,879] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 200 12052
+[2026-05-09 10:41:24,929] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:41:24,958] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 237
+[2026-05-09 10:47:15,379] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:47:15,565] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 200 12008
+[2026-05-09 10:47:15,830] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:47:15,875] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 237
+[2026-05-09 10:49:17,096] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:49:17,126] INFO django.server "GET / HTTP/1.1" 200 19956
+[2026-05-09 10:49:17,236] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:49:17,262] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 237
+[2026-05-09 10:49:17,336] WARNING django.security.SuspiciousSession Session data corrupted
+[2026-05-09 10:49:17,399] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 17:07:50,074] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-14 17:07:59,637] INFO django.server "GET / HTTP/1.1" 200 18815
+[2026-05-14 17:07:59,973] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16273
+[2026-05-14 17:08:00,016] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 18720
+[2026-05-14 17:08:00,042] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-14 17:08:00,120] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-14 17:08:00,189] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-14 17:08:00,276] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-14 17:08:00,974] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 18140
+[2026-05-14 17:08:00,975] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 15497
+[2026-05-14 17:08:03,731] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 17:08:22,074] ERROR webmaps Captured error: AttributeError: 'Settings' object has no attribute 'GOOGLE_MAPS_API_KEY' @ /api/maps/route/
+[2026-05-14 17:08:22,075] ERROR webmaps Unhandled exception at /api/maps/route/: AttributeError: 'Settings' object has no attribute 'GOOGLE_MAPS_API_KEY'
+[2026-05-14 17:08:22,112] ERROR django.request Internal Server Error: /api/maps/route/
+[2026-05-14 17:08:22,114] ERROR django.server "GET /api/maps/route/?from=sakinaka&to=andheri&category=All&distance=5 HTTP/1.1" 500 5989
+[2026-05-14 17:13:31,437] INFO django.server "GET / HTTP/1.1" 200 19071
+[2026-05-14 17:13:31,832] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 17:13:45,610] ERROR webmaps Captured error: AttributeError: 'Settings' object has no attribute 'GOOGLE_MAPS_API_KEY' @ /api/maps/route/
+[2026-05-14 17:13:45,614] ERROR webmaps Unhandled exception at /api/maps/route/: AttributeError: 'Settings' object has no attribute 'GOOGLE_MAPS_API_KEY'
+[2026-05-14 17:13:45,624] ERROR django.request Internal Server Error: /api/maps/route/
+[2026-05-14 17:13:45,629] ERROR django.server "GET /api/maps/route/?from=sakinaka&to=andheri&category=All&distance=5 HTTP/1.1" 500 5989
+[2026-05-14 17:14:36,175] INFO django.server "GET / HTTP/1.1" 200 19071
+[2026-05-14 17:14:36,285] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16273
+[2026-05-14 17:14:36,311] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 18720
+[2026-05-14 17:14:36,327] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-14 17:14:36,340] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-14 17:14:36,359] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-14 17:14:36,369] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-14 17:14:36,377] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 18140
+[2026-05-14 17:14:36,389] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 16326
+[2026-05-14 17:14:40,153] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 17:15:16,796] ERROR webmaps Captured error: AttributeError: 'Settings' object has no attribute 'GOOGLE_MAPS_API_KEY' @ /api/maps/route/
+[2026-05-14 17:15:16,798] ERROR webmaps Unhandled exception at /api/maps/route/: AttributeError: 'Settings' object has no attribute 'GOOGLE_MAPS_API_KEY'
+[2026-05-14 17:15:16,804] ERROR django.request Internal Server Error: /api/maps/route/
+[2026-05-14 17:15:16,808] ERROR django.server "GET /api/maps/route/?from=Sakinaka+Tele+Exchange+Lane%2C+Bindal+Estate%2C+Asalpha%2C+L+Ward%2C+Mumbai+Zone+5%2C+Mumbai%2C+Mumbai+Suburban+District%2C+Maharashtra%2C+400072%2C+India&to=Andheri%2C+Masjid+Galli%2C+Gaondevi+Dongri%2C+Andheri+West%2C+K%2FW+Ward%2C+Mumbai+Zone+3%2C+Mumbai%2C+Mumbai+Suburban+District%2C+Maharashtra%2C+400069%2C+India&category=All&distance=5 HTTP/1.1" 500 6589
+[2026-05-14 17:15:24,798] ERROR webmaps Captured error: AttributeError: 'Settings' object has no attribute 'GOOGLE_MAPS_API_KEY' @ /api/maps/route/
+[2026-05-14 17:15:24,800] ERROR webmaps Unhandled exception at /api/maps/route/: AttributeError: 'Settings' object has no attribute 'GOOGLE_MAPS_API_KEY'
+[2026-05-14 17:15:24,808] ERROR django.request Internal Server Error: /api/maps/route/
+[2026-05-14 17:15:24,811] ERROR django.server "GET /api/maps/route/?from=Sakinaka+Tele+Exchange+Lane%2C+Bindal+Estate%2C+Asalpha%2C+L+Ward%2C+Mumbai+Zone+5%2C+Mumbai%2C+Mumbai+Suburban+District%2C+Maharashtra%2C+400072%2C+India&to=Andheri%2C+Masjid+Galli%2C+Gaondevi+Dongri%2C+Andheri+West%2C+K%2FW+Ward%2C+Mumbai+Zone+3%2C+Mumbai%2C+Mumbai+Suburban+District%2C+Maharashtra%2C+400069%2C+India&category=All&distance=10 HTTP/1.1" 500 6591
+[2026-05-14 17:15:29,049] ERROR webmaps Captured error: AttributeError: 'Settings' object has no attribute 'GOOGLE_MAPS_API_KEY' @ /api/maps/route/
+[2026-05-14 17:15:29,050] ERROR webmaps Unhandled exception at /api/maps/route/: AttributeError: 'Settings' object has no attribute 'GOOGLE_MAPS_API_KEY'
+[2026-05-14 17:15:29,054] ERROR django.request Internal Server Error: /api/maps/route/
+[2026-05-14 17:15:29,056] ERROR django.server "GET /api/maps/route/?from=Sakinaka+Tele+Exchange+Lane%2C+Bindal+Estate%2C+Asalpha%2C+L+Ward%2C+Mumbai+Zone+5%2C+Mumbai%2C+Mumbai+Suburban+District%2C+Maharashtra%2C+400072%2C+India&to=Andheri%2C+Masjid+Galli%2C+Gaondevi+Dongri%2C+Andheri+West%2C+K%2FW+Ward%2C+Mumbai+Zone+3%2C+Mumbai%2C+Mumbai+Suburban+District%2C+Maharashtra%2C+400069%2C+India&category=All&distance=5 HTTP/1.1" 500 6589
+[2026-05-14 17:19:02,414] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\maps\services.py changed, reloading.
+[2026-05-14 17:19:05,485] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-14 17:19:37,700] INFO django.server "GET / HTTP/1.1" 200 19071
+[2026-05-14 17:19:38,647] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 16273
+[2026-05-14 17:19:38,656] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 18720
+[2026-05-14 17:19:38,755] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 18140
+[2026-05-14 17:19:38,848] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 16326
+[2026-05-14 17:19:38,955] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-14 17:19:39,175] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-14 17:19:39,499] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-14 17:19:39,593] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-14 17:19:39,822] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 17:20:16,058] INFO django.server "GET /api/maps/route/?from=Sakinaka+Tele+Exchange+Lane%2C+Bindal+Estate%2C+Asalpha%2C+L+Ward%2C+Mumbai+Zone+5%2C+Mumbai%2C+Mumbai+Suburban+District%2C+Maharashtra%2C+400072%2C+India&to=Andheri%2C+Masjid+Galli%2C+Gaondevi+Dongri%2C+Andheri+West%2C+K%2FW+Ward%2C+Mumbai+Zone+3%2C+Mumbai%2C+Mumbai+Suburban+District%2C+Maharashtra%2C+400069%2C+India&category=All&distance=5 HTTP/1.1" 200 986
+[2026-05-14 17:20:30,153] INFO django.server "GET /api/maps/route/?from=Sakinaka+Tele+Exchange+Lane%2C+Bindal+Estate%2C+Asalpha%2C+L+Ward%2C+Mumbai+Zone+5%2C+Mumbai%2C+Mumbai+Suburban+District%2C+Maharashtra%2C+400072%2C+India&to=Andheri%2C+Masjid+Galli%2C+Gaondevi+Dongri%2C+Andheri+West%2C+K%2FW+Ward%2C+Mumbai+Zone+3%2C+Mumbai%2C+Mumbai+Suburban+District%2C+Maharashtra%2C+400069%2C+India&category=All&distance=10 HTTP/1.1" 200 986
+[2026-05-14 17:21:25,658] INFO django.server "GET /api/maps/route/?from=Odisha%2C+India&to=Odisha%2C+India&category=All&distance=10 HTTP/1.1" 200 200
+[2026-05-14 17:22:06,435] INFO django.server "GET /api/maps/route/?from=Ghatkopar%2C+Station+Road%2C+Kapol+Wadi%2C+Ghatkopar+East%2C+N+Ward%2C+Mumbai+Zone+6%2C+Mumbai%2C+Mumbai+Suburban+District%2C+Maharashtra%2C+400086%2C+India&to=Asalpha%2C+L+Ward%2C+Mumbai+Zone+5%2C+Mumbai%2C+Mumbai+Suburban+District%2C+Maharashtra%2C+400072%2C+India&category=All&distance=10 HTTP/1.1" 200 933
+[2026-05-14 17:23:26,301] INFO django.server "GET /api/maps/search/?q=Sakinaka+Tele+Exchange+Lane%2C+Bindal+Estate%2C+Asalpha%2C+L+Ward%2C+Mumbai+Zone+5%2C+Mumbai%2C+Mumbai+Suburban+District%2C+Maharashtra%2C+400072%2C+India&category=All&rating=&distance=10&price=&lat=19.098858&lng=72.8809552 HTTP/1.1" 200 775
+[2026-05-14 17:23:29,193] INFO django.server "GET /api/maps/search/?q=Sakinaka+Tele+Exchange+Lane%2C+Bindal+Estate%2C+Asalpha%2C+L+Ward%2C+Mumbai+Zone+5%2C+Mumbai%2C+Mumbai+Suburban+District%2C+Maharashtra%2C+400072%2C+India&category=All&rating=&distance=10&price=&lat=19.098858&lng=72.8809552 HTTP/1.1" 200 775
+[2026-05-14 17:23:45,214] INFO django.server "POST /api/analytics/track/ HTTP/1.1" 200 12
+[2026-05-14 17:23:45,500] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 39572
+[2026-05-14 17:24:19,342] INFO django.server "GET / HTTP/1.1" 200 16517
+[2026-05-14 17:24:19,471] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 16194
+[2026-05-14 17:24:19,571] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438

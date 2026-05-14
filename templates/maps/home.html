@@ -128,12 +128,7 @@
         </div>
       </div>
 
-      <div class="search-tabs-pill mb-6" role="tablist">
-        <button type="button" class="tab-pill active" role="tab" aria-selected="true" onclick="toggleTab('location')"
-          id="tab-location">Near Me</button>
-        <button type="button" class="tab-pill" role="tab" aria-selected="false" onclick="toggleTab('route')"
-          id="tab-route">Along Route</button>
-      </div>
+
 
       <!-- View Toggle -->
       <div class="view-toggle-group mb-6">
@@ -217,41 +212,7 @@
         </div>
       </form>
 
-      <!-- Route Search -->
-      <form id="search-form-route" class="tab-content" role="search" aria-label="Search by Route"
-        onsubmit="handleSearchRoute(event)">
-        <div class="form-group mb-4">
-          <label
-            class="text-xs text-secondary mb-2 d-block opacity-50 uppercase font-bold letter-spacing-1">From</label>
-          <input type="text" id="route-from" class="input-premium" placeholder="Origin Address" required>
-        </div>
-        <div class="form-group mb-6">
-          <label class="text-xs text-secondary mb-2 d-block opacity-50 uppercase font-bold letter-spacing-1">To</label>
-          <input type="text" id="route-to" class="input-premium" placeholder="Destination Address" required>
-        </div>
 
-        <div class="filter-section-title mb-3">Route Options</div>
-        <div id="route-filters" class="grid grid-2 gap-3 mb-6" style="margin-top: 10px; margin-left: 5px;">
-          <div class="filter-group">
-            <label class="text-xs text-secondary mb-1 d-block opacity-50">CATEGORY</label>
-            <select id="route-filter-category" class="form-control-premium">
-              <option value="All">All Categories</option>
-              <option value="Restaurant">Restaurants</option>
-              <option value="Cafe">Cafes</option>
-              <option value="Services">Services</option>
-            </select>
-          </div>
-          <div class="filter-group">
-            <label class="text-xs text-secondary mb-1 d-block opacity-50">BUFFER</label>
-            <select id="route-filter-distance" class="form-control-premium">
-              <option value="5">Within 5 km</option>
-              <option value="10">Within 10 km</option>
-            </select>
-          </div>
-        </div>
-        <button type="submit" class="search-action-btn w-full py-4 text-base" id="route-search-btn">Discover Along
-          Route</button>
-      </form>
 
     </div>
 
