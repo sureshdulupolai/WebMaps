@@ -3,57 +3,211 @@
 
 {% block title %}Access Denied — WebMaps{% endblock %}
 
+{% block body_attrs %}class="map-page-fixed"{% endblock %}
+
+
 {% block content %}
-<div class="error-page-wrapper">
-  <div class="error-page-card">
-
-    <div class="error-illustration-wrap error-403-glow">
-      <img src="{% static 'images/403_illustration.png' %}" alt="Forbidden">
+<div class="premium-error-container" style="--glow-color: rgba(168, 85, 247, 0.3); --glow-color-2: rgba(236, 72, 153, 0.2); --badge-color: #c084fc; --btn-color: #9333ea;">
+  <div class="error-bg-text">403</div>
+  
+  <div class="glass-error-card">
+    <div class="error-icon">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+      </svg>
     </div>
-
-    <span class="error-badge error-badge--purple">403 · Forbidden</span>
-
-    <h1>Access Denied</h1>
-
-    <p>You don't have permission to view this page. If you think this is a mistake, please sign in with the correct account.</p>
-
+    
+    <div class="error-badge">403 · Forbidden</div>
+    <h1 class="error-title">Access Denied</h1>
+    <p class="error-message">You don't have permission to view this page. If you think this is a mistake, please sign in with the correct account.</p>
+    
     <div class="error-actions">
-      <a href="{% url 'auth_app:login' %}" class="btn btn-lg" style="width: 100%; height: 50px; font-weight: 700; background: #9333ea; color: #fff; border: none; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center;">
-        Sign In
-      </a>
-      <a href="{% url 'maps:home' %}" class="btn btn-outline btn-lg" style="width: 100%; height: 50px; font-weight: 600;">
-        Back to Home
-      </a>
+      <a href="{% url 'auth_app:login' %}" class="btn-premium">Sign In</a>
+      <a href="{% url 'maps:home' %}" class="btn-outline-premium">Back to Home</a>
     </div>
-
-    <p class="error-footer-code">HTTP 403 · Permission Denied</p>
   </div>
 </div>
 
 <style>
-  .error-page-wrapper {
-    min-height: 100vh;
-    display: flex; align-items: center; justify-content: center;
-    padding: 40px 20px;
-    background: radial-gradient(ellipse at 50% 0%, rgba(168, 85, 247, 0.08), transparent 60%), var(--bg-color);
+  .premium-error-container {
+    position: relative;
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #0b0f19;
+    padding: 20px;
   }
-  .error-page-card {
-    width: 100%; max-width: 420px;
-    display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center;
+
+  .premium-error-container::before,
+  .premium-error-container::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.6;
+    z-index: 0;
+    animation: floatOrb 10s infinite alternate ease-in-out;
+    pointer-events: none;
   }
-  .error-illustration-wrap { width: 180px; height: 180px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-  .error-403-glow { background: radial-gradient(circle, rgba(168, 85, 247, 0.12), transparent 70%); }
-  .error-illustration-wrap img {
-    width: 100%; height: 100%; object-fit: contain;
-    filter: drop-shadow(0 0 24px rgba(168, 85, 247, 0.35));
-    animation: floatImg 4s ease-in-out infinite;
+
+  .premium-error-container::before {
+    width: 600px;
+    height: 600px;
+    background: var(--glow-color);
+    top: -200px;
+    left: -200px;
   }
-  @keyframes floatImg { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-  .error-badge { display: inline-flex; align-items: center; padding: 4px 14px; border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
-  .error-badge--purple { background: rgba(168, 85, 247, 0.1); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.25); }
-  .error-page-card h1 { font-size: 28px; font-weight: 800; color: #fff; margin: 0; letter-spacing: -0.025em; }
-  .error-page-card > p { font-size: 15px; color: var(--text-secondary); line-height: 1.65; margin: 0; max-width: 340px; }
-  .error-actions { display: flex; flex-direction: column; gap: 12px; width: 100%; margin-top: 4px; }
-  .error-footer-code { margin: 0; font-size: 11px; color: var(--text-muted); font-family: 'SF Mono','Fira Code',monospace; opacity: 0.5; letter-spacing: 0.05em; }
+
+  .premium-error-container::after {
+    width: 500px;
+    height: 500px;
+    background: var(--glow-color-2);
+    bottom: -150px;
+    right: -150px;
+    animation-delay: -5s;
+  }
+
+  @keyframes floatOrb {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(60px, 60px) scale(1.1); }
+  }
+
+  .error-bg-text {
+    position: absolute;
+    font-size: 35vw;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.02);
+    z-index: 0;
+    font-family: 'Outfit', sans-serif;
+    user-select: none;
+    line-height: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .glass-error-card {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 440px;
+    padding: 50px 40px;
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 24px 40px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes slideUpFade {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .error-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.01));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 12px 32px var(--glow-color);
+    color: #fff;
+    animation: pulseIcon 3s infinite alternate;
+  }
+
+  @keyframes pulseIcon {
+    0% { transform: translateY(0); box-shadow: 0 8px 24px var(--glow-color); }
+    100% { transform: translateY(-8px); box-shadow: 0 16px 40px var(--glow-color); }
+  }
+
+  .error-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--badge-color);
+    margin-bottom: 20px;
+  }
+
+  .error-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 16px 0;
+    line-height: 1.1;
+  }
+
+  .error-message {
+    font-size: 1.05rem;
+    color: var(--text-secondary, #94a3b8);
+    line-height: 1.6;
+    margin: 0 0 40px 0;
+  }
+
+  .error-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .btn-premium, .btn-outline-premium {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 56px;
+    border-radius: 16px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .btn-premium {
+    background: var(--btn-color);
+    color: #fff;
+    border: none;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  }
+
+  .btn-premium:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px var(--glow-color);
+    filter: brightness(1.1);
+  }
+
+  .btn-outline-premium {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-outline-premium:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
 </style>
 {% endblock %}

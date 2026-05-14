@@ -66,11 +66,12 @@ class RateLimitMiddleware:
     Login: 5 req/min, Register: 3 req/min, API: 100 req/min
     """
 
-    RATE_RULES = [
-        (re.compile(r'^/auth/login/'), 'login', 60, 5),
-        (re.compile(r'^/auth/register/'), 'register', 60, 3),
-        (re.compile(r'^/api/'), 'api', 60, 100),
-    ]
+    def _get_rules(self):
+        return [
+            (re.compile(r'^/auth/login/'), 'login', 60, getattr(settings, 'RATE_LIMIT_LOGIN', 20)),
+            (re.compile(r'^/auth/register/'), 'register', 60, getattr(settings, 'RATE_LIMIT_REGISTER', 10)),
+            (re.compile(r'^/api/'), 'api', 60, getattr(settings, 'RATE_LIMIT_API', 100)),
+        ]
 
     def __init__(self, get_response):
         self.get_response = get_response
@@ -101,8 +102,12 @@ class RateLimitMiddleware:
         if not getattr(settings, 'ENABLE_RATE_LIMITING', True):
             return self.get_response(request)
 
-        for pattern, rule_name, window, max_count in self.RATE_RULES:
+        for pattern, rule_name, window, max_count in self._get_rules():
             if pattern.match(path):
+                # ONLY rate limit POST requests for login/register to prevent blocking page loads
+                if rule_name in ['login', 'register'] and request.method != 'POST':
+                    break
+
                 if self._is_rate_limited(ip_key, rule_name, window, max_count):
                     logger.warning(f"Rate limit hit: {rule_name} from {ip_key[:8]}...")
                     
@@ -116,7 +121,7 @@ class RateLimitMiddleware:
                     try:
                         from errors.views import error_429
                         return error_429(request)
-                    except ImportError:
+                    except Exception:
                         return HttpResponse(
                             '<html><body style="background:#08090d;color:#fff;display:grid;place-items:center;height:100vh;font-family:sans-serif;">'
                             '<h2>Too many requests. Please slow down.</h2></body></html>',

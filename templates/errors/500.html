@@ -3,57 +3,212 @@
 
 {% block title %}Server Error — WebMaps{% endblock %}
 
+{% block body_attrs %}class="map-page-fixed"{% endblock %}
+
+
 {% block content %}
-<div class="error-page-wrapper">
-  <div class="error-page-card">
-
-    <div class="error-illustration-wrap error-500-glow">
-      <img src="{% static 'images/500_illustration.png' %}" alt="Server Error">
+<div class="premium-error-container" style="--glow-color: rgba(239, 68, 68, 0.3); --glow-color-2: rgba(249, 115, 22, 0.2); --badge-color: #f87171; --btn-color: #ef4444;">
+  <div class="error-bg-text">500</div>
+  
+  <div class="glass-error-card">
+    <div class="error-icon">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+        <line x1="12" y1="9" x2="12" y2="13"></line>
+        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+      </svg>
     </div>
-
-    <span class="error-badge error-badge--red">500 · Server Error</span>
-
-    <h1>Something Broke</h1>
-
-    <p>A fault occurred in our core system. Our team has been notified and is working to restore service as quickly as possible.</p>
-
+    
+    <div class="error-badge">500 · Server Error</div>
+    <h1 class="error-title">Something Broke</h1>
+    <p class="error-message">A fault occurred in our core system. Our team has been notified and is working to restore service as quickly as possible.</p>
+    
     <div class="error-actions">
-      <button onclick="location.reload()" class="btn btn-lg" style="width: 100%; height: 50px; font-weight: 700; background: var(--danger); color: #fff; border: none; border-radius: var(--radius-sm); cursor: pointer;">
-        Try Again
-      </button>
-      <a href="{% url 'maps:home' %}" class="btn btn-outline btn-lg" style="width: 100%; height: 50px; font-weight: 600;">
-        Back to Home
-      </a>
+      <button onclick="location.reload()" class="btn-premium">Try Again</button>
+      <a href="{% url 'maps:home' %}" class="btn-outline-premium">Back to Home</a>
     </div>
-
-    <p class="error-footer-code">HTTP 500 · Internal Server Error</p>
   </div>
 </div>
 
 <style>
-  .error-page-wrapper {
-    min-height: 100vh;
-    display: flex; align-items: center; justify-content: center;
-    padding: 40px 20px;
-    background: radial-gradient(ellipse at 50% 0%, rgba(239, 68, 68, 0.08), transparent 60%), var(--bg-color);
+  .premium-error-container {
+    position: relative;
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #0b0f19;
+    padding: 20px;
   }
-  .error-page-card {
-    width: 100%; max-width: 420px;
-    display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center;
+
+  .premium-error-container::before,
+  .premium-error-container::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.6;
+    z-index: 0;
+    animation: floatOrb 10s infinite alternate ease-in-out;
+    pointer-events: none;
   }
-  .error-illustration-wrap { width: 180px; height: 180px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-  .error-500-glow { background: radial-gradient(circle, rgba(239, 68, 68, 0.12), transparent 70%); }
-  .error-illustration-wrap img {
-    width: 100%; height: 100%; object-fit: contain;
-    filter: drop-shadow(0 0 24px rgba(239, 68, 68, 0.35));
-    animation: floatImg 4s ease-in-out infinite;
+
+  .premium-error-container::before {
+    width: 600px;
+    height: 600px;
+    background: var(--glow-color);
+    top: -200px;
+    left: -200px;
   }
-  @keyframes floatImg { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-  .error-badge { display: inline-flex; align-items: center; padding: 4px 14px; border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
-  .error-badge--red { background: rgba(239, 68, 68, 0.1); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.25); }
-  .error-page-card h1 { font-size: 28px; font-weight: 800; color: #fff; margin: 0; letter-spacing: -0.025em; }
-  .error-page-card > p { font-size: 15px; color: var(--text-secondary); line-height: 1.65; margin: 0; max-width: 340px; }
-  .error-actions { display: flex; flex-direction: column; gap: 12px; width: 100%; margin-top: 4px; }
-  .error-footer-code { margin: 0; font-size: 11px; color: var(--text-muted); font-family: 'SF Mono','Fira Code',monospace; opacity: 0.5; letter-spacing: 0.05em; }
+
+  .premium-error-container::after {
+    width: 500px;
+    height: 500px;
+    background: var(--glow-color-2);
+    bottom: -150px;
+    right: -150px;
+    animation-delay: -5s;
+  }
+
+  @keyframes floatOrb {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(60px, 60px) scale(1.1); }
+  }
+
+  .error-bg-text {
+    position: absolute;
+    font-size: 35vw;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.02);
+    z-index: 0;
+    font-family: 'Outfit', sans-serif;
+    user-select: none;
+    line-height: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .glass-error-card {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 440px;
+    padding: 50px 40px;
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 24px 40px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes slideUpFade {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .error-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.01));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 12px 32px var(--glow-color);
+    color: #fff;
+    animation: pulseIcon 3s infinite alternate;
+  }
+
+  @keyframes pulseIcon {
+    0% { transform: translateY(0); box-shadow: 0 8px 24px var(--glow-color); }
+    100% { transform: translateY(-8px); box-shadow: 0 16px 40px var(--glow-color); }
+  }
+
+  .error-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--badge-color);
+    margin-bottom: 20px;
+  }
+
+  .error-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 16px 0;
+    line-height: 1.1;
+  }
+
+  .error-message {
+    font-size: 1.05rem;
+    color: var(--text-secondary, #94a3b8);
+    line-height: 1.6;
+    margin: 0 0 40px 0;
+  }
+
+  .error-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .btn-premium, .btn-outline-premium {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 56px;
+    border-radius: 16px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .btn-premium {
+    background: var(--btn-color);
+    color: #fff;
+    border: none;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  }
+
+  .btn-premium:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px var(--glow-color);
+    filter: brightness(1.1);
+  }
+
+  .btn-outline-premium {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-outline-premium:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
 </style>
 {% endblock %}

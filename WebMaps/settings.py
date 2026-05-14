@@ -273,7 +273,7 @@ ALLOWED_UPLOAD_MIME_TYPES = ['text/plain', 'text/csv', 'application/pdf']
 #  RATE LIMITING (custom middleware config)
 # ─────────────────────────────────────────────
 ENABLE_RATE_LIMITING = config('ENABLE_RATE_LIMITING', default=not DEBUG, cast=bool)
-RATE_LIMIT_LOGIN = 5       # per minute
+RATE_LIMIT_LOGIN = 20      # per minute
 RATE_LIMIT_REGISTER = 3    # per minute
 RATE_LIMIT_API = 100       # per minute
 
