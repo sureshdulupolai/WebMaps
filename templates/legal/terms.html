@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Service Agreement | WebMaps{% endblock %}
+
+{% block content %}
+<div class="container mt-10" style="margin-bottom: 40px;">
+    <div class="profile-main-card">
+        <header class="mb-8 border-bottom pb-6" style="border-color: rgba(255,255,255,0.05);">
+            <h1 class="mb-2">Service Agreement</h1>
+            <p class="text-secondary">Standard Enterprise Terms — v2.4</p>
+        </header>
+
+        <section class="legal-content" style="color: var(--text-secondary); line-height: 1.8;">
+            <h2 class="h4 text-white mb-4">1. Acceptable Use</h2>
+            <p class="mb-6">
+                Users must not attempt to scrape, reverse-engineer, or disrupt the WebMaps geographic engine. 
+                Any unauthorized access to private host registry data will result in immediate termination.
+            </p>
+
+            <h2 class="h4 text-white mb-4">2. Host Obligations</h2>
+            <p class="mb-6">
+                Business owners (Hosts) are responsible for the accuracy of their listing data, including 
+                operating hours, pricing, and geographic coordinates.
+            </p>
+
+            <h2 class="h4 text-white mb-4">3. Payments & Refunds</h2>
+            <p class="mb-6">
+                All subscriptions processed via Razorpay are governed by our transaction policy. 
+                Refunds are processed within 5-7 business days for eligible service disruptions.
+            </p>
+
+            <div class="secondary-card" style="padding: 24px; margin-top: 40px; border: 1px solid rgba(255,255,255,0.05); border-radius: 16px;">
+                <p class="text-secondary" style="margin: 0; line-height: 1.5;">By using WebMaps, you agree to these terms in their entirety.</p>
+            </div>
+        </section>
+    </div>
+</div>
+
+<style>
+.legal-content h2 { font-size: 1.25rem; font-weight: 700; margin-top: 2rem; }
+.legal-content p { font-size: 0.95rem; }
+</style>
+{% endblock %}

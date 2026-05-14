@@ -262,4 +262,19 @@
   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="{% static 'js/maps.js' %}?v=4.0"></script>
 <script src="{% static 'js/maps_home.js' %}?v=4.0"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const iQ = "{{ initial_query|escapejs }}";
+    const iC = "{{ initial_category|escapejs }}";
+    if (iQ || iC) {
+        const input = document.getElementById('loc-search-input');
+        const cat = document.getElementById('loc-filter-category');
+        if (iQ && input) input.value = iQ;
+        if (iC && cat) cat.value = iC;
+        setTimeout(() => {
+          if (typeof handleSearchLocation === 'function') handleSearchLocation({ preventDefault: () => {} });
+        }, 800);
+    }
+  });
+</script>
 {% endblock %}

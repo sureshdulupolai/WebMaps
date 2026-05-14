@@ -1,8 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}{{ listing.company_name }} — WebMaps{% endblock %}
-{% block meta_description %}{{ listing.short_description }}{% endblock %}
+{% block title %}{{ seo_data.title }}{% endblock %}
+{% block meta_description %}{{ seo_data.description }}{% endblock %}
+{% block canonical %}{{ seo_data.canonical_url }}{% endblock %}
+{% block og_title %}{{ seo_data.title }}{% endblock %}
+{% block og_description %}{{ seo_data.description }}{% endblock %}
+{% block og_image %}{{ seo_data.og_image }}{% endblock %}
+
+{% block extra_schema %}
+{{ listing_schema }}
+{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -450,24 +458,24 @@
   </div>
 </div>
 
-<div class="container">
+<article class="container" role="main">
   <div class="detail-layout">
     <!-- Main Content -->
     <div class="detail-main">
       <!-- About Section -->
-      <div class="premium-card">
-        <h2 class="section-title">
+      <section class="premium-card" aria-labelledby="about-title">
+        <h2 id="about-title" class="section-title">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
           Overview
         </h2>
         <p class="text-secondary" style="font-size: 1.1rem; line-height: 1.7; margin: 0;">
           {{ listing.short_description }}
         </p>
-      </div>
+      </section>
 
       <!-- Services Section -->
-      <div class="premium-card">
-        <h2 class="section-title">
+      <section class="premium-card" aria-labelledby="services-title">
+        <h2 id="services-title" class="section-title">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
           Services & Pricing
         </h2>
@@ -483,7 +491,7 @@
               </div>
               <div class="service-grid">
                 {% for svc in cat.list %}
-                <div class="service-item">
+                <div class="service-item" role="listitem">
                   <div class="service-info">
                     <h4>{{ svc.service_name }}</h4>
                     <p>Standard quality service</p>
@@ -498,9 +506,35 @@
         {% else %}
           <div class="text-center py-8 opacity-50">No services listed yet.</div>
         {% endif %}
-      </div>      <!-- Reviews Section -->
-      <div class="premium-card">
-        <h2 class="section-title">
+      </section>
+
+      <!-- AI-FRIENDLY FAQ SECTION -->
+      <section class="premium-card" aria-labelledby="faq-title">
+        <h2 id="faq-title" class="section-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Common Questions (AI FAQ)
+        </h2>
+        <div class="faq-container">
+          <div class="faq-item mb-6" style="border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 16px;">
+            <h3 style="font-size: 15px; color: #fff; margin-bottom: 8px;">Where is {{ listing.company_name }} located?</h3>
+            <p style="font-size: 14px; color: var(--text-secondary);">{{ listing.company_name }} is located at {{ listing.address }}, {{ listing.city }}. You can find the exact coordinates on our map above.</p>
+          </div>
+          <div class="faq-item mb-6" style="border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 16px;">
+            <h3 style="font-size: 15px; color: #fff; margin-bottom: 8px;">What services does {{ listing.company_name }} offer?</h3>
+            <p style="font-size: 14px; color: var(--text-secondary);">They offer various services including 
+              {% for svc in services|slice:":3" %}{{ svc.service_name }}{% if not forloop.last %}, {% endif %}{% endfor %}.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3 style="font-size: 15px; color: #fff; margin-bottom: 8px;">How do I contact this business?</h3>
+            <p style="font-size: 14px; color: var(--text-secondary);">You can contact them directly at {{ listing.phone }} or visit their website if provided.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Reviews Section -->
+      <section class="premium-card review-section" aria-labelledby="reviews-title">
+        <h2 id="reviews-title" class="section-title">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
           Customer Feedback
         </h2>
@@ -537,7 +571,7 @@
               <form method="post" action="{% url 'maps:add_review' listing.slug %}">
                 {% csrf_token %}
                 <div class="mb-6">
-                  <div class="star-rating">
+                  <div class="star-rating" role="radiogroup" aria-label="Rate this business">
                     <input type="radio" id="star5" name="rating" value="5" checked><label for="star5">★</label>
                     <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
                     <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
@@ -570,7 +604,7 @@
         <div class="reviews-list mt-4" id="reviews-container">
           {% for rev in reviews %}
             {% if rev.user != user %}
-              <div class="review-item" data-rating="{{ rev.rating }}">
+              <div class="review-item" data-rating="{{ rev.rating }}" role="comment">
                 <div class="review-header d-flex justify-between mb-4">
                   <div class="user-info d-flex align-center gap-3">
                     <div class="user-avatar" style="width: 40px; height: 40px; background: var(--primary); border-radius: 12px; display: grid; place-items: center; color: white; font-weight: 800;">
@@ -578,10 +612,10 @@
                     </div>
                     <div>
                       <div class="font-weight-bold text-sm">{{ rev.user.username }}</div>
-                      <div class="text-xs text-muted">{{ rev.created_at|date:"M d, Y" }}</div>
+                      <time datetime="{{ rev.created_at|date:'c' }}" class="text-xs text-muted">{{ rev.created_at|date:"M d, Y" }}</time>
                     </div>
                   </div>
-                  <div class="rating-stars" style="color: #fbbf24; font-size: 14px;">
+                  <div class="rating-stars" style="color: #fbbf24; font-size: 14px;" aria-label="{{ rev.rating }} stars">
                     {% for i in "12345"|make_list %}
                       {% if forloop.counter <= rev.rating %}★{% else %}☆{% endif %}
                     {% endfor %}
@@ -604,31 +638,31 @@
             {% endif %}
           {% endfor %}
         </div>
-      </div>
+      </section>
     </div>
 
     <!-- Sidebar -->
-    <div class="detail-sidebar">
+    <aside class="detail-sidebar">
       <!-- Map & Location -->
-      <div class="premium-card">
-        <h2 class="section-title">
+      <section class="premium-card" aria-labelledby="location-title">
+        <h2 id="location-title" class="section-title">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           Find Us
         </h2>
-        <div id="detail-map"></div>
-        <p class="text-sm text-secondary mb-4">
+        <div id="detail-map" aria-label="Interactive map showing business location"></div>
+        <address class="text-sm text-secondary mb-4" style="font-style: normal;">
           {{ listing.location_name }}
-        </p>
+        </address>
         <div class="d-flex gap-3">
           <button class="btn btn-outline btn-sm flex-1" onclick="copyAddress()">Copy Address</button>
           <a href="https://www.google.com/maps/dir/?api=1&destination={{ listing.latitude }},{{ listing.longitude }}" target="_blank" class="btn btn-primary btn-sm flex-1" style="display: flex; justify-content: center; align-items: center; text-decoration: none;">Get Directions</a>
         </div>
-      </div>
+      </section>
 
       <!-- Operating Hours -->
       {% if listing.operating_hours %}
-      <div class="premium-card">
-        <h2 class="section-title">
+      <section class="premium-card" aria-labelledby="hours-title">
+        <h2 id="hours-title" class="section-title">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
           Hours
         </h2>
@@ -637,18 +671,18 @@
             <div class="hour-row">
               <span class="day-name">{{ day }}</span>
               {% if hrs.is_open %}
-                <span class="time-range">{{ hrs.open }} - {{ hrs.close }}</span>
+                <time class="time-range">{{ hrs.open }} - {{ hrs.close }}</time>
               {% else %}
                 <span class="time-range closed">Closed</span>
               {% endif %}
             </div>
           {% endfor %}
         </div>
-      </div>
+      </section>
       {% endif %}
-    </div>
+    </aside>
   </div>
-</div>
+</article>
 {% endblock %}
 
 {% block extra_js %}

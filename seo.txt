@@ -1,0 +1,43 @@
+Act as a senior Google-grade SEO engineer, Django architect, and AI-search optimization expert.
+
+Analyze my Django SaaS project called "WebMaps", a location-based business discovery platform using OpenStreetMap, Leaflet, JWT authentication, Razorpay billing, advanced security middleware, route-based geographic search, and role-based dashboards.
+
+Your task:
+
+1. Improve technical SEO without breaking existing functionality.
+2. Make the website highly optimized for:
+
+   * Google Search
+   * Google AI Overview
+   * ChatGPT search systems
+   * Perplexity AI
+   * Gemini AI
+3. Add production-grade:
+
+   * sitemap.xml
+   * robots.txt
+   * dynamic meta tags
+   * canonical URLs
+   * OpenGraph tags
+   * Twitter cards
+   * JSON-LD structured schema
+   * LocalBusiness schema
+   * FAQ schema
+4. Improve page speed and Core Web Vitals.
+5. Optimize Django templates for semantic HTML5.
+6. Ensure all map/listing pages are crawlable by search engines.
+7. Add AI-friendly FAQ sections dynamically.
+8. Suggest PostgreSQL + PostGIS optimization.
+9. Improve internal linking structure.
+10. Ensure security middleware and SEO do not conflict.
+11. Preserve all existing security protections and business logic.
+12. Never remove existing middleware, JWT logic, or Razorpay flow unless absolutely necessary.
+13. Generate safe, production-grade code only.
+14. Explain every modification before changing architecture.
+15. Focus heavily on scalable SEO architecture for millions of pages.
+
+Important:
+Do not damage the project structure.
+Do not remove existing security systems.
+Do not simplify the architecture.
+Maintain enterprise-grade standards.

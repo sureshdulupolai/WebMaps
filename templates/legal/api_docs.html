@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Developer API | WebMaps Engine{% endblock %}
+
+{% block content %}
+<div class="container mt-10" style="margin-bottom: 40px;">
+    <div class="profile-main-card">
+        <header class="mb-8 border-bottom pb-6" style="border-color: rgba(255,255,255,0.05);">
+            <div class="d-flex align-center gap-3 mb-4">
+                <span class="badge badge-approved" style="background: rgba(99, 102, 241, 0.15); color: var(--primary);">Developer Portal</span>
+            </div>
+            <h1 class="mb-2">API Documentation</h1>
+            <p class="text-secondary">Integrate WebMaps Intelligence into your own applications.</p>
+        </header>
+
+        <section class="api-docs">
+            <!-- GET ALL LISTINGS -->
+            <div class="endpoint-block" style="margin-bottom: 60px;">
+                <div class="d-flex align-center gap-4 mb-4">
+                    <span class="method-badge get">GET</span>
+                    <code class="text-white" style="font-size: 1.1rem;">/api/maps/all/</code>
+                </div>
+                <p class="text-secondary mb-4">Public fetch for map initialization and point discovery.</p>
+                <div class="code-preview" style="background: #0d0e12; padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+                    <pre style="margin: 0; color: #a5b4fc; font-size: 13px;">{
+  "status": "success",
+  "data": [
+    { "id": "uuid", "name": "Business Name", "lat": 19.076, "lng": 72.877 }
+  ]
+}</pre>
+                </div>
+            </div>
+
+            <!-- POST ROUTE INTELLIGENCE -->
+            <div class="endpoint-block" style="margin-bottom: 60px; opacity: 0.8;">
+                <div class="d-flex align-center gap-4 mb-4">
+                    <span class="method-badge post">POST</span>
+                    <code class="text-white" style="font-size: 1.1rem;">/api/maps/route/</code>
+                    <span class="badge" style="background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.2);">Internal Only</span>
+                </div>
+                <p class="text-secondary mb-4">Route-based intelligence engine.</p>
+                <div class="secondary-card" style="padding: 16px; background: rgba(239, 68, 68, 0.03); border: 1px solid rgba(239, 68, 68, 0.1); border-radius: 12px;">
+                    <p class="text-sm" style="margin: 0; color: #f87171;">
+                        <strong>Security Enforcement:</strong> For system integrity, POST operations are restricted to internal WebMaps services. External write-access is permanently disabled to prevent unauthorized data injection.
+                    </p>
+                </div>
+            </div>
+
+            <div class="secondary-card" style="padding: 24px; border: 1px solid rgba(255,255,255,0.05); border-radius: 16px;">
+                <h3 class="h5 text-white mb-2">Fetch-Only Access</h3>
+                <p class="text-sm" style="margin: 0;">Our API is designed for read-only geographic exploration. If you require deep integration, contact <span class="text-primary">dev@webmaps.ai</span></p>
+            </div>
+        </section>
+    </div>
+</div>
+
+<style>
+.method-badge {
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 800;
+}
+.method-badge.get { background: rgba(16, 185, 129, 0.1); color: var(--success); }
+.method-badge.post { background: rgba(99, 102, 241, 0.1); color: var(--primary); }
+</style>
+{% endblock %}

@@ -1,8 +1,12 @@
 User-agent: *
+Allow: /
+Disallow: /admin/
 Disallow: /adminpanel/
-Disallow: /auth/
-Disallow: /users/
-Disallow: /hosts/
-Disallow: /payments/
+Disallow: /auth/logout/
+Disallow: /payments/checkout/
+Disallow: /hosts/dashboard/
 
-Sitemap: /sitemap.xml
+# Host dynamic content protection
+Disallow: /hosts/*
+
+Sitemap: {{ site_url }}/sitemap.xml

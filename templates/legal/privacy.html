@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Privacy Protocol | WebMaps{% endblock %}
+
+{% block content %}
+<div class="container mt-10" style="margin-bottom: 40px;">
+    <div class="profile-main-card">
+        <header class="mb-8 border-bottom pb-6" style="border-color: rgba(255,255,255,0.05);">
+            <h1 class="mb-2">Privacy Protocol</h1>
+            <p class="text-secondary">Effective Date: May 14, 2026</p>
+        </header>
+
+        <section class="legal-content" style="color: var(--text-secondary); line-height: 1.8;">
+            <h2 class="h4 text-white mb-4">1. Data Ingestion</h2>
+            <p class="mb-6">
+                WebMaps ingests geographic and business data to provide precise routing and discovery services. 
+                We prioritize user anonymity and encrypt all location-based queries using enterprise-grade protocols.
+            </p>
+
+            <h2 class="h4 text-white mb-4">2. Geographic Privacy</h2>
+            <p class="mb-6">
+                Your precise coordinates are only processed locally for map rendering and route calculation. 
+                Our servers do not store your persistent movement history unless explicitly authorized for navigation logs.
+            </p>
+
+            <h2 class="h4 text-white mb-4">3. Third-Party Integration</h2>
+            <p class="mb-6">
+                We use OpenStreetMap and Leaflet for mapping. While we do not share your profile data with them, 
+                standard tile request headers may be visible to map providers.
+            </p>
+
+            <div class="secondary-card" style="padding: 24px; margin-top: 40px; border: 1px solid rgba(255,255,255,0.05); border-radius: 16px;">
+                <p class="text-secondary" style="margin: 0; line-height: 1.5;">WebMaps is committed to the highest standards of data integrity and user sovereignty.</p>
+                <h3 class="h5 text-white mb-2 mt-4">Questions?</h3>
+                <p class="text-sm" style="margin: 0;">Contact our compliance team at <span class="text-primary">privacy@webmaps.ai</span></p>
+            </div>
+        </section>
+    </div>
+</div>
+
+<style>
+.legal-content h2 { font-size: 1.25rem; font-weight: 700; margin-top: 2rem; }
+.legal-content p { font-size: 0.95rem; }
+</style>
+{% endblock %}

@@ -23,6 +23,15 @@ def home_view(request):
     """Main map page — search by location or route."""
     return render(request, 'maps/home.html')
 
+def search_view(request):
+    """Template-based search entry point for deep links (e.g. from footer)."""
+    context = {
+        'initial_query': request.GET.get('q', ''),
+        'initial_category': request.GET.get('category', ''),
+        'initial_location': request.GET.get('location', ''),
+    }
+    return render(request, 'maps/home.html', context)
+
 
 def serialize_listings(results, rating_filter):
     listings_data = []
@@ -153,11 +162,23 @@ def listing_detail_view(request, slug):
     if request.user.is_authenticated:
         user_review = reviews.filter(user=request.user).first()
 
+    from utils.seo import get_listing_schema, render_json_ld
+    
+    listing_schema = get_listing_schema(listing, request)
+    seo_data = {
+        'title': f"{listing.company_name} — {listing.location_name} | WebMaps",
+        'description': listing.short_description[:160],
+        'og_image': None, # Listing model has no image field
+        'canonical_url': request.build_absolute_uri(listing.get_absolute_url()),
+    }
+
     return render(request, 'maps/listing_detail.html', {
         'listing': listing,
         'services': services,
         'reviews': reviews,
         'user_review': user_review,
+        'seo_data': seo_data,
+        'listing_schema': render_json_ld(listing_schema),
     })
 
 
@@ -214,3 +235,14 @@ def delete_review_view(request, review_id):
         return redirect(listing_url)
     return redirect('maps:home')
 
+def privacy_policy(request):
+    """View for Privacy Protocol / Privacy Policy."""
+    return render(request, 'legal/privacy.html')
+
+def terms_of_service(request):
+    """View for Service Agreement / Terms of Service."""
+    return render(request, 'legal/terms.html')
+
+def api_documentation(request):
+    """View for Developer API / Integration Docs."""
+    return render(request, 'legal/api_docs.html')
