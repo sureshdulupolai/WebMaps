@@ -7412,3 +7412,63 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-14 20:12:31,362] INFO django.server "GET /adminpanel/users/?q=&role=customer&date= HTTP/1.1" 200 27892
 [2026-05-14 20:12:31,905] INFO django.server "GET /adminpanel/users/?q=&role=customer&date= HTTP/1.1" 200 27892
 [2026-05-14 20:12:34,508] INFO django.server "GET /adminpanel/users/?q=&role=&date= HTTP/1.1" 200 32618
+[2026-05-14 20:13:46,061] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-14 20:14:06,420] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\adminpanel\views.py changed, reloading.
+[2026-05-14 20:14:10,365] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-14 20:15:04,546] INFO django.server "GET /adminpanel/users/?q=&role=&date= HTTP/1.1" 200 32654
+[2026-05-14 20:17:22,519] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\adminpanel\views.py changed, reloading.
+[2026-05-14 20:17:25,352] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-14 20:17:57,621] INFO django.server "GET /adminpanel/users/?q=&role=&date= HTTP/1.1" 200 32060
+[2026-05-14 20:17:57,779] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-14 20:18:02,391] INFO django.server "GET /adminpanel/users/?q=&role=host HTTP/1.1" 200 29634
+[2026-05-14 20:18:05,673] INFO django.server "GET /adminpanel/users/?q=&role=admin HTTP/1.1" 200 29638
+[2026-05-14 20:18:07,327] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 32060
+[2026-05-14 20:19:20,117] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 32060
+[2026-05-14 20:19:27,059] INFO django.server "GET / HTTP/1.1" 200 18327
+[2026-05-14 20:19:27,239] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-14 20:19:27,277] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-14 20:19:27,409] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 20:19:28,907] INFO django.server "GET /admin/ HTTP/1.1" 200 14373
+[2026-05-14 20:19:45,979] INFO django.server "GET /adminpanel/listings/ HTTP/1.1" 200 27796
+[2026-05-14 20:19:50,841] INFO django.server "GET /adminpanel/listings/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 31450
+[2026-05-14 20:20:18,760] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 32060
+[2026-05-14 20:26:18,465] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 36192
+[2026-05-14 20:26:18,666] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-14 20:27:30,983] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 302 0
+[2026-05-14 20:27:31,090] INFO django.server "GET /auth/login/ HTTP/1.1" 200 8023
+[2026-05-14 20:27:31,212] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-05-14 20:27:32,659] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-14 20:27:35,146] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-05-14 20:27:35,149] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-14 20:27:35,227] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33788
+[2026-05-14 20:27:36,875] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 37522
+[2026-05-14 20:27:42,966] INFO django.server "GET /adminpanel/users/?q=python&role= HTTP/1.1" 200 32999
+[2026-05-14 20:27:46,853] INFO django.server "GET /adminpanel/users/?q=&role= HTTP/1.1" 200 37522
+[2026-05-14 20:27:49,102] INFO django.server "GET /adminpanel/promotions/ HTTP/1.1" 200 45807
+[2026-05-14 20:27:50,734] INFO django.server "GET /adminpanel/listings/ HTTP/1.1" 200 27796
+[2026-05-14 20:27:51,705] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 30633
+[2026-05-14 20:27:55,255] INFO webmaps User logged out
+[2026-05-14 20:27:55,259] INFO django.server "POST /auth/logout/ HTTP/1.1" 302 0
+[2026-05-14 20:27:55,289] INFO django.server "GET /auth/login/ HTTP/1.1" 200 8023
+[2026-05-14 20:28:27,571] INFO django.server "GET / HTTP/1.1" 200 16302
+[2026-05-14 20:28:27,804] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 20:28:31,024] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 42168
+[2026-05-14 20:28:31,024] INFO django.server "POST /api/analytics/track/ HTTP/1.1" 200 12
+[2026-05-14 20:28:36,656] INFO django.server "GET / HTTP/1.1" 200 16302
+[2026-05-14 20:28:36,876] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 20:37:45,934] INFO django.server "GET /api/maps/search/?q=NH59%2C+Hinjilicut&category=All&rating=&distance=10&price=&lat=19.47273328247686&lng=84.74582040759655 HTTP/1.1" 200 132
+[2026-05-14 20:38:51,970] INFO django.server "GET /api/maps/search/?q=NH59%2C+Hinjilicut&category=All&rating=&distance=5&price=&lat=19.47273328247686&lng=84.74582040759655 HTTP/1.1" 200 132
+[2026-05-14 20:38:58,216] INFO django.server "GET / HTTP/1.1" 200 16302
+[2026-05-14 20:38:58,278] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-14 20:38:58,285] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-14 20:38:58,402] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 20:38:59,220] INFO django.server "GET /auth/register/ HTTP/1.1" 200 10712
+[2026-05-14 20:38:59,681] INFO django.server "GET /static/images/register_illustration.png HTTP/1.1" 200 649560
+[2026-05-14 20:39:03,788] INFO django.server "GET /auth/login/ HTTP/1.1" 200 8023
+[2026-05-14 20:43:05,772] INFO django.server "GET /auth/login/ HTTP/1.1" 200 8049
+[2026-05-14 20:43:05,834] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-05-14 20:43:58,988] INFO django.server "GET /auth/login/ HTTP/1.1" 200 8049
+[2026-05-14 20:44:02,332] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-14 20:44:04,252] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-05-14 20:44:04,254] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-14 20:44:04,353] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33788

@@ -5,18 +5,32 @@
 {% block breadcrumb %}User Control{% endblock %}
 
 {% block content %}
-<div class="animate-fade-in">
-    <div class="glass-header d-flex justify-between align-center" style="padding: 0.8rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(13, 17, 23, 0.4); border-radius: 12px 12px 0 0;">
-        <div>
-            <h1 class="page-title" style="font-size: 1.1rem; margin-bottom: 0; font-weight: 800; letter-spacing: -0.02em;">Identity Control</h1>
-            <p class="page-subtitle" style="font-size: 0.65rem; opacity: 0.4; margin-top: 2px;">System-wide identity & permission management</p>
+<div class="animate-fade-in" style="margin-top: 40px;">
+    <div class="glass-header" style="position: relative; overflow: hidden; padding: 24px 32px; background: rgba(20,20,28,0.7); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center;">
+        <!-- Decorative Background Glow -->
+        <div style="position: absolute; top: -50px; left: -50px; width: 150px; height: 150px; background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%); z-index: 0;"></div>
+        
+        <div style="position: relative; z-index: 1; display: flex; align-items: center; gap: 16px;">
+            <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.2); display: grid; place-items: center;">
+                <i class="material-icons" style="color: #818cf8; font-size: 24px;">security</i>
+            </div>
+            <div>
+                <h1 style="font-size: 20px; font-weight: 900; color: #fff; margin: 0; letter-spacing: -0.5px; text-transform: uppercase;">Identity Registry</h1>
+                <p style="font-size: 10px; color: rgba(255,255,255,0.3); margin: 2px 0 0; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; display: flex; align-items: center; gap: 6px;">
+                    <i class="material-icons" style="font-size: 12px;">hub</i> Central Authority Management
+                </p>
+            </div>
         </div>
-        <div class="d-flex align-center gap-3">
-            <div class="glass-card py-1.5 px-3 d-flex align-center gap-3" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px;">
-                <div class="stat-icon" style="margin: 0; width: 24px; height: 24px; background: rgba(99, 102, 241, 0.1); color: var(--secondary); display: grid; place-items: center; border-radius: 6px;">
-                    <i class="material-icons" style="font-size: 14px;">people</i>
+
+        <div style="position: relative; z-index: 1;">
+            <div class="glass-card" style="padding: 10px 20px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; display: flex; align-items: center; gap: 14px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
+                <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                    <span style="font-size: 8px; font-weight: 900; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 1px;">Active Identities</span>
+                    <span style="font-size: 18px; font-weight: 900; color: #fff; line-height: 1;">{{ users|length }}</span>
                 </div>
-                <div class="text-sm font-black text-white leading-none" style="font-size: 14px;">{{ users|length }}</div>
+                <div style="width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.2)); color: #fff; display: grid; place-items: center;">
+                    <i class="material-icons" style="font-size: 18px;">people_alt</i>
+                </div>
             </div>
         </div>
     </div>
@@ -32,19 +46,9 @@
             
             <div class="filter-select-wrapper">
                 <select name="role" class="admin-filter-input">
-                    <option value="" class="dark-option">All Roles</option>
-                    <option value="customer" class="dark-option" {% if role_filter == 'customer' %}selected{% endif %}>Customer</option>
+                    <option value="" class="dark-option">All Identities</option>
                     <option value="host" class="dark-option" {% if role_filter == 'host' %}selected{% endif %}>Host</option>
                     <option value="admin" class="dark-option" {% if role_filter == 'admin' %}selected{% endif %}>Admin</option>
-                </select>
-            </div>
-
-            <div class="filter-select-wrapper">
-                <select name="date" class="admin-filter-input">
-                    <option value="" class="dark-option">All Time</option>
-                    <option value="today" class="dark-option" {% if date_filter == 'today' %}selected{% endif %}>Today</option>
-                    <option value="week" class="dark-option" {% if date_filter == 'week' %}selected{% endif %}>Last 7 Days</option>
-                    <option value="month" class="dark-option" {% if date_filter == 'month' %}selected{% endif %}>Last 30 Days</option>
                 </select>
             </div>
 
@@ -101,25 +105,49 @@
                             <a href="{% url 'adminpanel:user_detail' user.id %}" class="action-icon-btn" style="width: 30px; height: 30px; background: rgba(255,255,255,0.03);" title="Deep Analytics">
                                 <i class="material-icons" style="font-size: 16px;">analytics</i>
                             </a>
-                            <form action="{% url 'adminpanel:user_delete' user.id %}" method="POST" class="m-0" onsubmit="return confirm('Terminate this system identity?');">
-                                {% csrf_token %}
-                                <button type="submit" class="action-icon-btn btn-danger" style="width: 30px; height: 30px;" title="Terminate">
-                                    <i class="material-icons" style="font-size: 16px;">delete</i>
-                                </button>
-                            </form>
+                            <button type="button" class="action-icon-btn btn-danger" style="width: 30px; height: 30px;" title="Terminate" 
+                                    onclick="triggerUserDelete('{{ user.id }}', '{{ user.username }}')">
+                                <i class="material-icons" style="font-size: 16px;">delete</i>
+                            </button>
                         </div>
                     </td>
                 </tr>
-                {% empty %}
-                <tr>
-                    <td colspan="5" class="text-center py-24 opacity-10">
-                        <i class="material-icons mb-4" style="font-size: 48px; display: block;">person_off</i>
-                        <p class="font-mono text-[10px] letter-spacing-2">REGISTRY_EMPTY: NO_SIGNATURES_DETECTED</p>
-                    </td>
-                </tr>
-                {% endfor %}
+{% endfor %}
             </tbody>
         </table>
+    </div>
+
+    <!-- Hidden form for actual deletion -->
+    <form id="global-delete-form" method="POST" style="display:none;">
+        {% csrf_token %}
+    </form>
+
+    <!-- CRITICAL TERMINATION MODAL -->
+    <div id="deleteModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content glass-card animate-scale-in" style="max-width: 440px; padding: 40px; text-align: center;">
+            <div style="width: 64px; height: 64px; background: rgba(239, 68, 68, 0.1); border-radius: 50%; display: grid; place-items: center; margin: 0 auto 24px;">
+                <i class="material-icons" style="color: #ef4444; font-size: 32px;">warning</i>
+            </div>
+            
+            <h2 style="font-size: 20px; font-weight: 900; color: #fff; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">CRITICAL: TERMINATE IDENTITY</h2>
+            <p style="font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 24px;">
+                You are about to permanently remove <span id="target-username" style="color:#fff; font-weight:700;"></span> and all associated data.
+            </p>
+
+            <div style="background: rgba(255,255,255,0.03); border-radius: 8px; padding: 12px; margin-bottom: 24px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.3); border: 1px dashed rgba(255,255,255,0.1);">
+                THIS ACTION IS IRREVERSIBLE. YOU CANNOT UNDO THIS.
+            </div>
+
+            <div style="text-align: left; margin-bottom: 24px;">
+                <label style="font-size: 10px; font-weight: 900; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px;">TYPE "DELETE" TO CONFIRM</label>
+                <input type="text" id="confirm-input" class="admin-filter-input" style="background: rgba(0,0,0,0.2) !important; border-color: rgba(255,255,255,0.05) !important;" placeholder="Type here...">
+            </div>
+
+            <div class="d-flex gap-3">
+                <button type="button" class="btn-secondary" style="flex: 1; height: 48px; border-radius: 12px; font-weight: 800;" onclick="closeDeleteModal()">CANCEL</button>
+                <button type="button" id="confirm-delete-btn" class="btn-danger opacity-50 pointer-events-none" style="flex: 1; height: 48px; border-radius: 12px; font-weight: 800;" onclick="executeDelete()">DELETE PERMANENTLY</button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -169,5 +197,70 @@
         border-bottom: 1px solid rgba(255,255,255,0.05);
         padding: 14px 12px;
     }
+
+    /* Modal Styles */
+    .modal-overlay {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.8);
+        backdrop-filter: blur(8px);
+        display: grid;
+        place-items: center;
+        z-index: 9999;
+    }
+    .animate-scale-in {
+        animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes scaleIn {
+        from { transform: scale(0.9); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+    .btn-secondary {
+        background: rgba(255,255,255,0.05);
+        color: #fff;
+        border: 1px solid rgba(255,255,255,0.1);
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); }
 </style>
+
+<script>
+    let currentDeleteId = null;
+
+    function triggerUserDelete(userId, username) {
+        currentDeleteId = userId;
+        document.getElementById('target-username').innerText = username;
+        document.getElementById('deleteModal').style.display = 'grid';
+        document.getElementById('confirm-input').value = '';
+        validateDeleteInput();
+    }
+
+    function closeDeleteModal() {
+        document.getElementById('deleteModal').style.display = 'none';
+        currentDeleteId = null;
+    }
+
+    function validateDeleteInput() {
+        const input = document.getElementById('confirm-input');
+        const btn = document.getElementById('confirm-delete-btn');
+        if (input.value === 'DELETE') {
+            btn.classList.remove('opacity-50', 'pointer-events-none');
+            btn.style.cursor = 'pointer';
+        } else {
+            btn.classList.add('opacity-50', 'pointer-events-none');
+            btn.style.cursor = 'not-allowed';
+        }
+    }
+
+    function executeDelete() {
+        if (!currentDeleteId) return;
+        const form = document.getElementById('global-delete-form');
+        // Construct the URL dynamically based on the current user ID
+        form.action = `/adminpanel/users/${currentDeleteId}/delete/`;
+        form.submit();
+    }
+
+    document.getElementById('confirm-input').addEventListener('input', validateDeleteInput);
+</script>
 {% endblock %}
