@@ -231,4 +231,5 @@ WebMaps/
 
 ## 📄 License
 
-This project is licensed under the **MIT License**. See standard declarations for permissions.
+This project is licensed under a **Proprietary Commercial License**. All rights reserved. 
+Unauthorized cloning, distribution, or commercial hosting is strictly prohibited. See the [LICENSE](file:///c:/Users/user/Desktop/WebMaps/LICENSE) file for full legal terms.

@@ -7594,3 +7594,8 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-14 22:06:18,739] INFO django.utils.autoreload Watching for file changes with StatReloader
 [2026-05-14 22:06:22,320] INFO django.server "GET /robots.txt HTTP/1.1" 200 65
 [2026-05-14 22:06:39,380] INFO django.server "GET /sitemap.xml HTTP/1.1" 200 568
+[2026-05-14 22:07:58,415] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-14 22:10:15,740] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\maps\views.py changed, reloading.
+[2026-05-14 22:10:17,752] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-14 22:10:23,159] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\maps\urls.py changed, reloading.
+[2026-05-14 22:10:25,159] INFO django.utils.autoreload Watching for file changes with StatReloader

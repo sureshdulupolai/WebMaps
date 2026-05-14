@@ -1,5 +1,7 @@
 """
-maps/views.py — Public map views: home, search, listing detail.
+maps/views.py — WebMaps Intelligence Engine
+Copyright (c) 2026 WebMaps. All Rights Reserved.
+Proprietary & Confidential.
 """
 import json
 import logging

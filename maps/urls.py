@@ -1,5 +1,7 @@
 """
-maps/urls.py
+maps/urls.py — WebMaps Intelligence Engine
+Copyright (c) 2026 WebMaps. All Rights Reserved.
+Proprietary & Confidential.
 """
 from django.urls import path
 from . import views
