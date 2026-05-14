@@ -246,3 +246,33 @@ def terms_of_service(request):
 def api_documentation(request):
     """View for Developer API / Integration Docs."""
     return render(request, 'legal/api_docs.html')
+
+def robots_txt(request):
+    """Serve robots.txt for search engines."""
+    content = "User-agent: *\nAllow: /\nSitemap: " + request.build_absolute_uri('/sitemap.xml')
+    from django.http import HttpResponse
+    return HttpResponse(content, content_type="text/plain")
+
+def sitemap_xml(request):
+    """Dynamic sitemap for business listings and core pages."""
+    listings = Listing.objects.filter(status='approved', deleted_at__isnull=True)
+    pages = [
+        {'url': '/', 'priority': '1.0'},
+        {'url': '/privacy-protocol/', 'priority': '0.3'},
+        {'url': '/service-agreement/', 'priority': '0.3'},
+        {'url': '/developer-api/', 'priority': '0.5'},
+    ]
+    
+    # We can use a simple template or build XML string
+    xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    
+    for p in pages:
+        xml += f'  <url><loc>{request.build_absolute_uri(p["url"])}</loc><priority>{p["priority"]}</priority></url>\n'
+    
+    for l in listings:
+        xml += f'  <url><loc>{request.build_absolute_uri(l.get_absolute_url())}</loc><priority>0.8</priority></url>\n'
+        
+    xml += '</urlset>'
+    from django.http import HttpResponse
+    return HttpResponse(xml, content_type="application/xml")

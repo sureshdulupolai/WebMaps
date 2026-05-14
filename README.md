@@ -1,12 +1,11 @@
-# 🗺️ WebMaps — Next-Gen Location-Based Service SaaS Platform
+# 🗺️ WebMaps — Enterprise-Grade Location Intelligence SaaS
 
-[![Django](https://img.shields.io/badge/Framework-Django%204.2-092E20?style=for-the-badge&logo=django&logoColor=white)](https://djangoproject.com)
+[![Django](https://img.shields.io/badge/Framework-Django%205.0-092E20?style=for-the-badge&logo=django&logoColor=white)](https://djangoproject.com)
 [![Leaflet](https://img.shields.io/badge/Map%20Engine-Leaflet%201.9-green?style=for-the-badge&logo=leaflet&logoColor=white)](https://leafletjs.com)
-[![JWT](https://img.shields.io/badge/Auth-Secure%20JWT%20Cookies-orange?style=for-the-badge&logo=json-web-tokens&logoColor=white)](https://jwt.io)
-[![Razorpay](https://img.shields.io/badge/Payments-Razorpay%20v2-blue?style=for-the-badge&logo=razorpay&logoColor=white)](https://razorpay.com)
-[![Security](https://img.shields.io/badge/Security-Hacker%20Protected-red?style=for-the-badge&logo=google-cloud-security&logoColor=white)](#-advanced-hacker-protection--security-stack)
+[![SEO](https://img.shields.io/badge/SEO-Optimized-blueviolet?style=for-the-badge&logo=google-search-console&logoColor=white)](#-enterprise-seo--compliance-infrastructure)
+[![Security](https://img.shields.io/badge/Security-Hacker%20Protected-red?style=for-the-badge&logo=google-cloud-security&logoColor=white)](#-advanced-security--hacker-protection)
 
-WebMaps is a highly-optimized, location-intelligent, and secure Software-as-a-Service (SaaS) directory platform. It connects customers searching for specialized local business services (such as premium auto detailing, ceramic coating, custom wraps, etc.) with verified business hosts. 
+WebMaps is a high-performance, location-intelligent Software-as-a-Service (SaaS) platform designed for precision business discovery. Built on a robust Django architecture, it leverages OpenStreetMap and Leaflet to provide a seamless, interactive geographic canvas for specialized local service industries.
 
 Unlike conventional directories, WebMaps is built around an **interactive geographic canvas** utilizing OpenStreetMap and Leaflet, and features **advanced route-based proximity searching** along path networks.
 
@@ -48,12 +47,30 @@ graph TD
 
 ---
 
+## 🚀 Enterprise SEO & Compliance Infrastructure
+
+WebMaps is engineered for peak search engine visibility and AI-search optimization (Perplexity, ChatGPT, Gemini).
+
+### 1. 📑 Production-Grade Documentation
+*   **Privacy Protocol:** Comprehensive data sovereignty and encryption disclosures.
+*   **Service Agreement:** Standard enterprise-grade SaaS terms and host obligations.
+*   **Developer API Docs:** Professional integration guides with fetch-only security enforcement.
+
+### 2. 🔍 Advanced SEO Engineering
+*   **Dynamic Metadata Architecture:** Context-aware Title tags, Meta descriptions, and OpenGraph (OG) properties for social sharing.
+*   **Semantic HTML5:** 100% adherence to accessibility and heading hierarchy standards.
+*   **Search Deep-Linking:** Modular footer categories (e.g., "Fine Dining") that trigger event-driven map searches via URL state synchronization.
+*   **JSON-LD Structured Data:** Automated Schema.org injection for **LocalBusiness** and **FAQ** rich snippets.
+
+---
+
 ## 🛠️ Key Product Features & Core Use Cases
 
 ### 1. 👥 Customer Features
 *   **Geographic Discovery:** Find active, approved business listings in real-time on a beautiful Leaflet-powered visual map canvas. Filter markers dynamically based on distances, business categories, or rating thresholds.
 *   **Elite Proximity Search:** Highly responsive searching within a configurable radius of any point, supported by double-tier coordinate indexing.
 *   **"X to Y" Route-Based Proximity Search:** Search for services *along a scheduled travel route* (e.g. from Delhi to Noida). The platform evaluates listing proximities relative to the transit polyline.
+*   **Standardized 100vh Layout:** A unified Flexbox-based UI that eliminates vertical artifacts and ensures a premium "app-like" experience across all devices.
 *   **Advanced Review & Feedback Loop:** Write, edit, and moderate star ratings (1 to 5) and textual reviews, complete with anti-double-posting guards.
 
 ### 2. 💼 Host & Merchant Features
@@ -76,7 +93,10 @@ graph TD
 
 WebMaps was engineered from the ground up to address critical security vectors. It contains a highly customized stack of automated defensive middlewares and models:
 
-### 1. 🛑 Sliding-Window IP Rate Limiter (`RateLimitMiddleware`)
+### 1. 🔐 API Security Enforcer
+POST endpoints are strictly locked to internal system services. External write-access is permanently disabled to prevent unauthorized data injection and ensure listing integrity.
+
+### 2. 🛑 Sliding-Window IP Rate Limiter (`RateLimitMiddleware`)
 Protects key system endpoints against automated scripts and brute-force flooding.
 *   **Login Endpoint Limit:** Max 5 requests/minute.
 *   **Register Endpoint Limit:** Max 3 requests/minute.
@@ -202,12 +222,10 @@ WebMaps/
 
 ---
 
-## 🔍 Code Optimization & DB Performance Practices
-
-To ensure sub-millisecond response rates, the repository implements strict optimization rules:
-1.  **Fast Bounding-Box Indexing:** Before calculating heavy mathematical Haversine distances on geographic queries, the DB filters coordinates using a fast indexable bounding-box filter (`latitude__gte`, etc.). This limits processing to relevant listings.
-2.  **Bulk Creation:** The Service Sheet Parser uses Django's `bulk_create` to insert service items into the database in a single SQL operation, rather than calling `.save()` on individual items, which reduces server loads.
-3.  **Relational Fetching (Prefetch):** Complex geographic map listings prefetch relations (`prefetch_related('services', 'subscription')`), reducing potential $N+1$ database query bottlenecks.
+## 🔍 Future Roadmap
+1.  **PostgreSQL + PostGIS Migration:** Moving from SQLite to spatial-indexed PostgreSQL for hyper-scale geographic performance.
+2.  **Advanced Analytics AI:** Predictive insights for host growth and search trends.
+3.  **Expanded Developer API:** Authorized write-access for enterprise partners.
 
 ---
 

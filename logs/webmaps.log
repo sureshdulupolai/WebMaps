@@ -7591,3 +7591,6 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-14 21:59:59,847] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
 [2026-05-14 22:00:14,338] INFO django.server "GET //api/maps/all/ HTTP/1.1" 200 438
 [2026-05-14 22:00:17,538] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 22:06:18,739] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-14 22:06:22,320] INFO django.server "GET /robots.txt HTTP/1.1" 200 65
+[2026-05-14 22:06:39,380] INFO django.server "GET /sitemap.xml HTTP/1.1" 200 568

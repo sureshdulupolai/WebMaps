@@ -21,4 +21,8 @@ urlpatterns = [
     path('privacy-protocol/', views.privacy_policy, name='privacy'),
     path('service-agreement/', views.terms_of_service, name='terms'),
     path('developer-api/', views.api_documentation, name='api_docs'),
+    
+    # SEO
+    path('robots.txt', views.robots_txt, name='robots_txt'),
+    path('sitemap.xml', views.sitemap_xml, name='sitemap_xml'),
 ]
