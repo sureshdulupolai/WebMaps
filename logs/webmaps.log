@@ -6635,3 +6635,11 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-14 17:24:19,342] INFO django.server "GET / HTTP/1.1" 200 16517
 [2026-05-14 17:24:19,471] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 16194
 [2026-05-14 17:24:19,571] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 17:26:29,143] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-14 17:27:10,370] INFO django.server "GET / HTTP/1.1" 200 16151
+[2026-05-14 17:27:10,457] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-14 17:27:10,626] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 17:27:12,640] INFO django.server "GET / HTTP/1.1" 200 16151
+[2026-05-14 17:27:12,773] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 17:27:45,922] INFO django.server "POST /api/analytics/track/ HTTP/1.1" 200 12
+[2026-05-14 17:27:45,975] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 39572
