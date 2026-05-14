@@ -138,10 +138,26 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         if (currentStep === 1) {
-            const categorySelect = activeStep.querySelector('[name="category"]');
-            if (categorySelect && !categorySelect.value) {
+            const categoryInput = activeStep.querySelector('#id_category_hidden');
+            const customSelect = document.getElementById('category-custom-select');
+            if (categoryInput && !categoryInput.value) {
+                if (customSelect) customSelect.querySelector('.custom-select-trigger').style.borderColor = 'var(--danger)';
                 showDialog("Category Required", "Please select a business category.");
                 valid = false;
+            } else {
+                if (customSelect) customSelect.querySelector('.custom-select-trigger').style.borderColor = 'rgba(255, 255, 255, 0.08)';
+            }
+
+            const mobileInput = activeStep.querySelector('#id_mobile_number');
+            if (mobileInput) {
+                const val = mobileInput.value.trim();
+                if (val.length !== 10 || /^(\d)\1{9}$/.test(val)) {
+                    mobileInput.closest('.mobile-prefix-container').style.borderColor = 'var(--danger)';
+                    showDialog("Invalid Mobile", "Please enter a valid 10-digit mobile number.");
+                    valid = false;
+                } else {
+                    mobileInput.closest('.mobile-prefix-container').style.borderColor = 'rgba(255, 255, 255, 0.08)';
+                }
             }
             if (!latInput.value || !lngInput.value) {
                 showDialog("Location Needed", "Please select your business location on the map.");
@@ -1138,6 +1154,85 @@ document.addEventListener('DOMContentLoaded', function () {
     if (closeSampleBtn) {
         closeSampleBtn.addEventListener('click', () => {
             if (sampleModal) sampleModal.style.display = 'none';
+        });
+    }
+
+    // 16. CUSTOM SELECT LOGIC
+    const categoryCustomSelect = document.getElementById('category-custom-select');
+    if (categoryCustomSelect) {
+        const trigger = categoryCustomSelect.querySelector('.custom-select-trigger');
+        const hiddenInput = document.getElementById('id_category_hidden');
+        const options = categoryCustomSelect.querySelectorAll('.custom-option');
+        const selectedText = categoryCustomSelect.querySelector('.selected-text');
+
+        // Initial Hydration from hidden input
+        if (hiddenInput && hiddenInput.value) {
+            const selectedOption = categoryCustomSelect.querySelector(`.custom-option[data-value="${hiddenInput.value}"]`);
+            if (selectedOption) {
+                selectedText.textContent = selectedOption.textContent.trim();
+                selectedText.classList.remove('is-placeholder');
+                options.forEach(o => o.classList.remove('selected'));
+                selectedOption.classList.add('selected');
+            }
+        } else {
+            selectedText.classList.add('is-placeholder');
+        }
+
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            categoryCustomSelect.classList.toggle('open');
+        });
+
+        options.forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const val = option.dataset.value;
+                selectedText.textContent = option.textContent.trim();
+                selectedText.classList.remove('is-placeholder');
+                hiddenInput.value = val;
+                
+                options.forEach(o => o.classList.remove('selected'));
+                option.classList.add('selected');
+                
+                categoryCustomSelect.classList.remove('open');
+                categoryCustomSelect.querySelector('.custom-select-trigger').style.borderColor = 'rgba(255, 255, 255, 0.08)';
+                saveToLocal();
+            });
+        });
+
+        document.addEventListener('click', () => {
+            categoryCustomSelect.classList.remove('open');
+        });
+    }
+
+    // 17. MOBILE NUMBER VALIDATION
+    const mobileField = document.getElementById('id_mobile_number');
+    if (mobileField) {
+        mobileField.addEventListener('input', (e) => {
+            // Remove all non-digits
+            let val = e.target.value.replace(/\D/g, '');
+            // Limit to 10 digits
+            if (val.length > 10) val = val.substring(0, 10);
+            e.target.value = val;
+            saveToLocal();
+        });
+
+        mobileField.addEventListener('blur', (e) => {
+            const val = e.target.value;
+            const container = mobileField.closest('.mobile-prefix-container');
+            if (val.length > 0 && val.length < 10) {
+                showDialog("Invalid Number", "Please enter exactly 10 digits for your mobile number.", 'warning');
+                if (container) container.style.borderColor = 'var(--danger)';
+            } else if (val.length === 10) {
+                // Check for spam (all digits same)
+                if (/^(\d)\1{9}$/.test(val)) {
+                    showDialog("Invalid Number", "This number pattern is restricted. Please enter a valid mobile number.", 'warning');
+                    e.target.value = '';
+                    if (container) container.style.borderColor = 'var(--danger)';
+                } else {
+                    if (container) container.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+                }
+            }
         });
     }
 

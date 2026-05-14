@@ -5,7 +5,7 @@ from functools import wraps
 from django.shortcuts import redirect
 from django.conf import settings
 from rest_framework_simplejwt.tokens import AccessToken
-from rest_framework_simplejwt.exceptions import TokenError
+from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
 import logging
 
 logger = logging.getLogger('webmaps')
@@ -29,7 +29,7 @@ def jwt_login_required(view_func):
             user = auth.get_user(validated)
             request.user = user
             request._jwt_token = token
-        except TokenError as e:
+        except (TokenError, InvalidToken) as e:
             logger.debug(f"JWT decode error: {e}")
             response = redirect('auth_app:login')
             response.delete_cookie(settings.JWT_ACCESS_COOKIE)

@@ -280,10 +280,11 @@ def listing_edit_view(request, slug):
             'initial_hours_json': json.dumps(listing.operating_hours or {}),
             'form_data': {
                 'company_name': listing.company_name, 'website_url': listing.website_url,
-                'mobile_number': listing.mobile_number,
+                'mobile_number': listing.mobile_number, 'category_id': listing.category_id,
                 'short_description': listing.short_description, 'latitude': listing.latitude,
                 'longitude': listing.longitude, 'location_name': listing.location_name
             },
+            'categories': Category.objects.all(),
         })
     
     data = {
