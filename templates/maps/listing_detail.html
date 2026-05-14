@@ -431,7 +431,7 @@
   <div class="container hero-content">
     <div class="hero-badge">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      {{ listing.category|default:"Premium Business" }}
+      {{ listing.category.name|default:"Premium Business" }}
     </div>
     <h1 class="hero-title">{{ listing.company_name }}</h1>
     <div class="hero-meta">
@@ -615,7 +615,10 @@
         <p class="text-sm text-secondary mb-4">
           {{ listing.location_name }}
         </p>
-        <button class="btn btn-outline btn-sm btn-block" onclick="copyAddress()">Copy Address</button>
+        <div class="d-flex gap-3">
+          <button class="btn btn-outline btn-sm flex-1" onclick="copyAddress()">Copy Address</button>
+          <a href="https://www.google.com/maps/dir/?api=1&destination={{ listing.latitude }},{{ listing.longitude }}" target="_blank" class="btn btn-primary btn-sm flex-1" style="display: flex; justify-content: center; align-items: center; text-decoration: none;">Get Directions</a>
+        </div>
       </div>
 
       <!-- Operating Hours -->

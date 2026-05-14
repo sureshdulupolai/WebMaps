@@ -6643,3 +6643,35 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-14 17:27:12,773] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
 [2026-05-14 17:27:45,922] INFO django.server "POST /api/analytics/track/ HTTP/1.1" 200 12
 [2026-05-14 17:27:45,975] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 39572
+[2026-05-14 17:30:16,019] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-14 17:30:18,103] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 39877
+[2026-05-14 17:47:01,134] INFO django.server "GET / HTTP/1.1" 200 16151
+[2026-05-14 17:47:01,307] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-14 17:47:01,530] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-14 17:47:03,649] INFO django.server "GET /admin/ HTTP/1.1" 302 0
+[2026-05-14 17:47:04,096] INFO django.server "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4182
+[2026-05-14 17:47:04,793] INFO django.server "GET /static/admin/css/base.css HTTP/1.1" 200 21310
+[2026-05-14 17:47:04,812] INFO django.server "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2929
+[2026-05-14 17:47:04,868] INFO django.server "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+[2026-05-14 17:47:05,569] INFO django.server "GET /static/admin/css/login.css HTTP/1.1" 200 958
+[2026-05-14 17:47:05,573] INFO django.server "GET /static/admin/css/responsive.css HTTP/1.1" 200 18559
+[2026-05-14 17:47:05,631] INFO django.server "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2694
+[2026-05-14 17:47:05,665] INFO django.server "GET /static/admin/js/theme.js HTTP/1.1" 200 1943
+[2026-05-14 17:47:06,277] WARNING django.request Not Found: /favicon.ico
+[2026-05-14 17:47:06,278] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 5020
+[2026-05-14 17:47:18,080] INFO django.server "POST /admin/login/?next=/admin/ HTTP/1.1" 200 4358
+[2026-05-14 17:47:20,956] INFO django.server "GET /auth/login/ HTTP/1.1" 200 7872
+[2026-05-14 17:47:21,029] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 6775
+[2026-05-14 17:47:21,057] INFO django.server "GET /static/css/auth.css HTTP/1.1" 200 7053
+[2026-05-14 17:47:21,222] INFO django.server "GET /static/images/login_illustration.png HTTP/1.1" 200 672382
+[2026-05-14 17:47:25,902] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-14 17:47:28,642] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-05-14 17:47:28,644] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-14 17:47:28,811] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 31875
+[2026-05-14 17:47:28,872] INFO django.server "GET /static/css/admin.css HTTP/1.1" 200 9585
+[2026-05-14 17:47:37,809] INFO django.server "POST /admin/login/?next=/admin/ HTTP/1.1" 200 3896
+[2026-05-14 17:47:44,655] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 31875
+[2026-05-14 17:47:53,148] INFO django.server "POST /admin/login/?next=/admin/ HTTP/1.1" 200 3896
+[2026-05-14 17:49:29,323] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 31875
+[2026-05-14 17:49:32,397] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 41471
+[2026-05-14 17:49:32,643] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
