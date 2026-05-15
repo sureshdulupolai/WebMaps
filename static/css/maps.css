@@ -720,9 +720,12 @@ body.map-page-fixed main {
     margin-bottom: 0 !important; /* Remove spacing when collapsed */
   }
   
-  .map-sidebar.collapsed #search-form-location,
-  .map-sidebar.collapsed .view-toggle-group {
-    display: none;
+  .map-sidebar.collapsed .tab-content,
+  .map-sidebar.collapsed .view-toggle-group,
+  .map-sidebar.collapsed .search-flex-container,
+  .map-sidebar.collapsed .filter-section-title,
+  .map-sidebar.collapsed #loc-filters {
+    display: none !important;
   }
   
   .map-sidebar.collapsed .map-sidebar-header {
@@ -891,13 +894,16 @@ body.map-page-fixed main {
 
 /* ─── PRODUCT VIEW FILTERS ─── */
 .product-filter-bar-premium {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(15, 17, 23, 0.7); /* Slightly more opaque for stickiness */
   padding: 24px;
   border-radius: 20px;
   border: 1px solid var(--border);
   margin-bottom: 32px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(20px); /* Increased blur for premium feel */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  position: sticky;
+  top: 0;
+  z-index: 50; /* Ensure dropdowns go over cards */
 }
 
 .product-filter-flex {
@@ -1264,4 +1270,66 @@ body.map-page-fixed main {
   height: 100%;
   background: linear-gradient(90deg, var(--primary), #818cf8);
   transition: width 0.4s ease;
+}
+
+/* 📱 Responsive Fixes for Product/Services View */
+@media (max-width: 768px) {
+  .product-view-absolute {
+    padding: 1rem;
+  }
+
+  .product-filter-bar-premium {
+    padding: 16px;
+    margin-bottom: 24px;
+    border-radius: 16px;
+  }
+
+  .product-filter-flex {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .product-category-wrapper {
+    min-width: 100%;
+  }
+
+  .product-search-wrapper {
+    width: 100%;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding-bottom: 80px;
+  }
+
+  .listing-card-premium {
+    height: auto;
+    min-height: 160px;
+    padding: 20px;
+  }
+
+  .listing-card-premium .card-title {
+    font-size: 1.15rem;
+  }
+
+  .listing-card-premium .card-desc {
+    -webkit-line-clamp: 3;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-view-absolute {
+    padding: 0.75rem;
+  }
+  
+  .product-filter-bar-premium {
+    padding: 12px;
+  }
+  
+  .listing-card-premium {
+    padding: 16px;
+    border-radius: 20px;
+  }
 }

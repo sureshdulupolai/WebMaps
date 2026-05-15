@@ -63,6 +63,17 @@ function switchView(view) {
     }
   }
 
+  // Mobile: Auto-collapse sidebar on BOTH views for "folder" effect (saves space)
+  const sidebar = document.querySelector('.map-sidebar');
+  if (window.innerWidth <= 768 && sidebar && !sidebar.classList.contains('collapsed')) {
+    sidebar.classList.add('collapsed');
+    const toggleBtn = document.getElementById('sidebar-toggle-btn');
+    if (toggleBtn) {
+      const icon = toggleBtn.querySelector('.toggle-icon');
+      if (icon) icon.innerHTML = '<polyline points="6 9 12 15 18 9"></polyline>';
+    }
+  }
+
   // Persist state across refreshes
   localStorage.setItem('webmaps_current_view', view);
 }
