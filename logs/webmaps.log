@@ -8305,3 +8305,15 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-15 19:49:23,749] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
 [2026-05-15 19:49:23,807] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
 [2026-05-15 19:49:24,813] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33544
+[2026-05-15 19:51:13,887] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 19:58:10,902] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\middleware\middleware.py changed, reloading.
+[2026-05-15 19:58:13,950] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 19:58:21,488] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\WebMaps\settings.py changed, reloading.
+[2026-05-15 19:58:24,890] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 19:59:21,195] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 19:59:24,878] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33544
+[2026-05-15 19:59:27,272] INFO django.server "GET / HTTP/1.1" 200 23231
+[2026-05-15 19:59:27,335] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 19:59:27,336] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 19:59:27,403] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 19:59:27,463] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314

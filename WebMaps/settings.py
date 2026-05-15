@@ -192,9 +192,10 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:8000',
     'http://127.0.0.1:8000',
 ]
-CSRF_COOKIE_HTTPONLY = False  # JS needs to read it for AJAX
-CSRF_COOKIE_SECURE = config('CSRF_COOKIE_SECURE', default=False, cast=bool)
+CSRF_COOKIE_HTTPONLY = False  # JS needs to read it for AJAX (for X-CSRFToken header)
+CSRF_COOKIE_SECURE = config('CSRF_COOKIE_SECURE', default=not DEBUG, cast=bool)
 CSRF_COOKIE_SAMESITE = 'Lax'
+CSRF_USE_SESSIONS = False  # Use cookie-based CSRF for better AJAX compatibility
 
 # ─────────────────────────────────────────────
 #  SECURITY HEADERS (production)
@@ -202,8 +203,8 @@ CSRF_COOKIE_SAMESITE = 'Lax'
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = 'DENY'
-SECURE_SSL_REDIRECT = config('SECURE_SSL_REDIRECT', default=False, cast=bool)
-SESSION_COOKIE_SECURE = config('SESSION_COOKIE_SECURE', default=False, cast=bool)
+SECURE_SSL_REDIRECT = config('SECURE_SSL_REDIRECT', default=not DEBUG, cast=bool)
+SESSION_COOKIE_SECURE = config('SESSION_COOKIE_SECURE', default=not DEBUG, cast=bool)
 SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SAMESITE = 'Lax'
 

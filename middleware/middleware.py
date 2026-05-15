@@ -46,6 +46,11 @@ class SecurityHeadersMiddleware:
         response['X-XSS-Protection'] = '1; mode=block'
         response['Referrer-Policy'] = 'strict-origin-when-cross-origin'
         response['Permissions-Policy'] = 'geolocation=(self), camera=(), microphone=()'
+        
+        # Add HSTS in production (if not DEBUG)
+        if not getattr(settings, 'DEBUG', True):
+            response['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains; preload'
+
         response['Content-Security-Policy'] = (
             "default-src 'self'; "
             "script-src 'self' 'unsafe-inline' https://maps.googleapis.com https://checkout.razorpay.com https://cdn.razorpay.com https://unpkg.com https://cdn.jsdelivr.net; "
@@ -77,10 +82,21 @@ class RateLimitMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
 
-    def _get_ip(self, request):
+    def _get_tracking_key(self, request):
+        """
+        Creates a unique key combining IP and Session/UA to prevent easy bypass.
+        Even if IP changes, if session/UA persists, they might be blocked.
+        """
         xff = request.META.get('HTTP_X_FORWARDED_FOR')
-        ip = xff.split(',')[0].strip() if xff else request.META.get('REMOTE_ADDR', '')
-        return hashlib.md5(ip.encode()).hexdigest()
+        ip = xff.split(',')[0].strip() if xff else request.META.get('REMOTE_ADDR', 'unknown')
+        ua = request.META.get('HTTP_USER_AGENT', 'unknown')
+        
+        # If user is logged in, use their ID for a much stronger rate limit
+        user_id = 'anon'
+        if hasattr(request, 'user') and request.user.is_authenticated:
+            user_id = str(request.user.id)
+            
+        return hashlib.md5(f"{ip}:{ua}:{user_id}".encode()).hexdigest()
 
     def _is_rate_limited(self, ip_key: str, window_key: str, window_seconds: int, max_count: int) -> bool:
         key = f"{ip_key}:{window_key}"
@@ -96,7 +112,7 @@ class RateLimitMiddleware:
             return False
 
     def __call__(self, request):
-        ip_key = self._get_ip(request)
+        track_key = self._get_tracking_key(request)
         path = request.path_info
 
         # Skip if rate limiting is disabled
@@ -109,8 +125,8 @@ class RateLimitMiddleware:
                 if rule_name in ['login', 'register'] and request.method != 'POST':
                     break
 
-                if self._is_rate_limited(ip_key, rule_name, window, max_count):
-                    logger.warning(f"Rate limit hit: {rule_name} from {ip_key[:8]}...")
+                if self._is_rate_limited(track_key, rule_name, window, max_count):
+                    logger.warning(f"Rate limit hit: {rule_name} for key {track_key[:8]}...")
                     
                     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                         return JsonResponse(
