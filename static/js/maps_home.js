@@ -34,17 +34,33 @@ function switchView(view) {
   const productBtn = document.getElementById('view-product-btn');
   const productView = document.getElementById('product-view');
   const mapEl = document.getElementById('map');
+  const sidebarSearch = document.getElementById('search-form-location');
+  const sidebarHeader = document.querySelector('.explorer-header p'); // "Discover curated places"
   
   if (view === 'map') {
     if(mapBtn) mapBtn.classList.add('active');
     if(productBtn) productBtn.classList.remove('active');
     if(productView) productView.classList.remove('active');
     if(mapEl) mapEl.style.opacity = '1';
+    
+    // Show sidebar search when on Map view
+    if(sidebarSearch) sidebarSearch.style.display = 'block';
+    if(sidebarHeader) {
+      sidebarHeader.style.display = 'block';
+      sidebarHeader.textContent = 'Discover curated places';
+    }
   } else {
     if(mapBtn) mapBtn.classList.remove('active');
     if(productBtn) productBtn.classList.add('active');
     if(productView) productView.classList.add('active');
     if(mapEl) mapEl.style.opacity = '0';
+    
+    // Hide sidebar search but keep and update header
+    if(sidebarSearch) sidebarSearch.style.display = 'none';
+    if(sidebarHeader) {
+      sidebarHeader.style.display = 'block';
+      sidebarHeader.textContent = 'Explore premium services';
+    }
   }
 
   // Persist state across refreshes
@@ -213,7 +229,7 @@ async function handleLocationEnable() {
 
   window.bypassTimerSet = false;
 
-  // 1. FAST ATTEMPT
+  // 1. FAST ATTEMPT - Quick check
   navigator.geolocation.getCurrentPosition(
     (pos) => {
       const { latitude, longitude, accuracy } = pos.coords;
@@ -222,14 +238,14 @@ async function handleLocationEnable() {
       if (typeof updateUserLocation === 'function') {
         updateUserLocation(latitude, longitude, accuracy);
       }
-      // If accuracy is already perfect, complete immediately
-      if (accuracy < 40) window.completeLocationFetch(latitude, longitude);
+      // If accuracy is decent enough (< 100m) on first try, complete fast
+      if (accuracy < 100) window.completeLocationFetch(latitude, longitude);
     },
-    (err) => console.warn("Initial getCurrentPosition failed", err),
-    { enableHighAccuracy: true, timeout: 8000, maximumAge: 0 }
+    (err) => console.warn("Initial quick lock failed", err),
+    { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
   );
 
-  // 2. REFINEMENT ATTEMPT
+  // 2. REFINEMENT ATTEMPT - Keep watching but with lower threshold for "completion"
   window.activeWatcher = navigator.geolocation.watchPosition(
     (pos) => {
       const { latitude, longitude, accuracy } = pos.coords;
@@ -240,32 +256,29 @@ async function handleLocationEnable() {
       if (!window.bestCoords || accuracy < window.bestCoords.accuracy) {
         window.bestCoords = { latitude, longitude, accuracy };
       }
-      // CRITICAL: Only auto-dismiss when accuracy is very high (< 35 meters)
-      if (accuracy < 35) window.completeLocationFetch(latitude, longitude);
+      // If we hit < 60m, that's excellent, no need to wait for 35m anymore
+      if (accuracy < 60) window.completeLocationFetch(latitude, longitude);
     },
     (err) => {
       console.error("WatchPosition error:", err);
       if (!window.bestCoords) {
         window.completeLocationFetch(null, null);
-        const locOverlay = document.getElementById('location-overlay');
-        if (locOverlay) locOverlay.classList.remove('hidden');
       }
     },
-    { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 }
+    { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 }
   );
 
-  // 3. SAFETY TIMEOUT: Close overlay after 25 seconds if we have a good lock
+  // 3. SPEED TIMEOUT: If we have ANY decent lock after 10 seconds, just use it
   window.activeLockTimeout = setTimeout(() => {
     if (!detected) {
-      if (window.bestCoords && window.bestCoords.accuracy < 300) {
-        // Only use if accuracy is decent (< 300m)
+      if (window.bestCoords && window.bestCoords.accuracy < 500) {
+        // Use whatever we have if it's better than 500m
         window.completeLocationFetch(window.bestCoords.latitude, window.bestCoords.longitude);
-      } else {
-        // If still bad after 25s, show error in card
-        showLocationError("GPS Signal is weak. Please move to an open area and try again.");
+      } else if (!window.bestCoords) {
+        showLocationError("GPS Signal is taking too long. Try moving or search manually.");
       }
     }
-  }, 25000);
+  }, 12000); // Reduced from 25s to 12s for speed
 }
 
 function hideFetchingOverlay() {

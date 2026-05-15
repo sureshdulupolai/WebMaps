@@ -13,6 +13,12 @@ from django.http import JsonResponse
 from django.conf import settings
 
 from hosts.models import Listing, Review, Category
+from .services import (
+    parse_route_query, geocode_location,
+    get_listings_along_route, get_listings_near_location
+)
+
+logger = logging.getLogger('webmaps')
 
 def home_view(request):
     """Main map page — search by location or route."""
