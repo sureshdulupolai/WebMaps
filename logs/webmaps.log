@@ -9137,3 +9137,31 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-15 22:21:14,998] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
 [2026-05-15 22:21:15,216] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
 [2026-05-15 22:21:15,308] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-15 22:24:16,891] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 22:24:22,624] INFO django.server "GET / HTTP/1.1" 200 23320
+[2026-05-15 22:24:22,718] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 22:24:22,718] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 22:24:22,820] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 22:24:22,886] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-15 22:24:27,461] INFO django.server "GET /users/profile/ HTTP/1.1" 200 18657
+[2026-05-15 22:24:27,607] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 22:27:56,575] INFO django.server "GET /users/profile/ HTTP/1.1" 200 18657
+[2026-05-15 22:27:56,681] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 22:28:04,344] INFO django.server "GET /users/profile/ HTTP/1.1" 200 18657
+[2026-05-15 22:28:04,852] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 18259
+[2026-05-15 22:28:04,875] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-15 22:28:05,237] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-15 22:28:05,367] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-15 22:28:05,373] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-15 22:28:05,453] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 22:31:56,883] DEBUG webmaps JWT decode error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-15 22:31:56,886] INFO django.server "GET /users/profile/ HTTP/1.1" 302 0
+[2026-05-15 22:31:56,932] INFO django.server "GET /auth/login/ HTTP/1.1" 200 13957
+[2026-05-15 22:32:04,027] INFO webmaps Login attempt: User found for sureshone@gmail.com
+[2026-05-15 22:32:06,108] INFO webmaps User logged in: sureshone@gmail.com
+[2026-05-15 22:32:06,111] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-15 22:32:06,216] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 24178
+[2026-05-15 22:32:06,314] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 22:32:06,394] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 22:32:08,693] INFO django.server "GET /users/profile/ HTTP/1.1" 200 18700
+[2026-05-15 22:32:08,783] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
