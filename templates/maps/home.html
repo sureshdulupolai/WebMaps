@@ -27,7 +27,7 @@
     <h2 class="mb-2">Enable Location</h2>
     <p class="text-secondary text-sm mb-6">Enable location access to automatically find the best businesses and hidden
       gems exactly where you are.</p>
-    <div class="d-flex align-center gap-4 mt-8">
+    <div class="btn-group-responsive mt-8">
       <button type="button" class="btn btn-primary btn-lg flex-1" id="location-allow-btn"
         onclick="handleLocationEnable()" style="padding: 14px 24px;">
         Allow Access
@@ -98,7 +98,7 @@
     <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 32px;">
       <p id="map-click-address" class="text-secondary" style="font-size: 1.1rem; line-height: 1.5; margin-bottom: 0; font-weight: 500;">Fetching address...</p>
     </div>
-    <div class="d-flex align-center gap-4">
+    <div class="btn-group-responsive">
       <button type="button" class="btn btn-primary btn-lg flex-1" id="confirm-map-btn" style="height: 56px; border-radius: 16px; font-weight: 700;">
         Confirm Location
       </button>
@@ -128,6 +128,12 @@
           <h1>Explorer</h1>
           <p>Discover curated places</p>
         </div>
+        <!-- Mobile Toggle Button -->
+        <button type="button" class="btn-sidebar-toggle" id="sidebar-toggle-btn" aria-label="Toggle Search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="toggle-icon">
+            <polyline points="18 15 12 9 6 15"></polyline>
+          </svg>
+        </button>
       </div>
 
 
@@ -274,6 +280,23 @@
         setTimeout(() => {
           if (typeof handleSearchLocation === 'function') handleSearchLocation({ preventDefault: () => {} });
         }, 800);
+    }
+
+    // Sidebar Toggle Logic for Mobile
+    const toggleBtn = document.getElementById('sidebar-toggle-btn');
+    const sidebar = document.querySelector('.map-sidebar');
+    
+    if (toggleBtn && sidebar) {
+      toggleBtn.addEventListener('click', function() {
+        sidebar.classList.toggle('collapsed');
+        // Update icon based on state
+        const icon = toggleBtn.querySelector('.toggle-icon');
+        if (sidebar.classList.contains('collapsed')) {
+          icon.innerHTML = '<polyline points="6 9 12 15 18 9"></polyline>'; // Chevron Down
+        } else {
+          icon.innerHTML = '<polyline points="18 15 12 9 6 15"></polyline>'; // Chevron Up
+        }
+      });
     }
   });
 </script>

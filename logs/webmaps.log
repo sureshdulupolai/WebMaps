@@ -7936,3 +7936,92 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-15 08:54:21,894] INFO django.server "GET /static/css/listing_detail.css HTTP/1.1" 304 0
 [2026-05-15 08:54:22,005] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
 [2026-05-15 08:54:22,006] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 12:44:09,667] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 12:44:42,618] INFO django.server "GET / HTTP/1.1" 200 19029
+[2026-05-15 12:44:42,653] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 12:44:42,725] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 12:44:43,036] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-15 12:44:50,873] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 12:44:50,875] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 12:45:27,967] INFO django.server "GET / HTTP/1.1" 200 19029
+[2026-05-15 12:45:28,282] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 12:45:28,284] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 12:45:28,507] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-15 12:47:37,618] INFO django.server "GET /api/maps/search/?q=Hinjilicut&category=All&rating=&distance=10&price= HTTP/1.1" 200 151
+[2026-05-15 12:47:52,270] INFO django.server "GET /api/maps/search/?q=NH59%2C+Hinjilicut&category=All&rating=&distance=10&price=&lat=19.468380658743044&lng=84.74539528547783 HTTP/1.1" 200 133
+[2026-05-15 12:48:12,348] INFO django.server "GET /api/maps/search/?q=Ramakrishna+Chemburkar+Marg%2C+Mumbai&category=All&rating=&distance=10&price=&lat=19.0567671348479&lng=72.89539431712701 HTTP/1.1" 200 688
+[2026-05-15 12:49:21,150] INFO django.server "GET / HTTP/1.1" 200 19019
+[2026-05-15 12:49:21,635] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 12:49:21,639] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 12:49:21,814] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-15 12:50:11,311] INFO django.server "GET / HTTP/1.1" 200 19019
+[2026-05-15 12:50:12,413] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 19264
+[2026-05-15 12:50:12,432] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 18140
+[2026-05-15 12:50:12,452] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 18157
+[2026-05-15 12:50:12,462] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 16194
+[2026-05-15 12:50:13,173] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-15 12:50:13,258] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-15 12:50:13,441] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-15 12:50:13,465] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-15 12:50:13,765] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-15 12:50:36,562] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 12:50:36,674] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 12:50:36,676] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 12:50:47,583] INFO django.server "GET / HTTP/1.1" 200 19019
+[2026-05-15 12:50:47,938] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 12:50:48,032] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 12:50:48,036] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 12:50:48,371] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-15 12:50:56,734] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 12:50:56,735] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 12:51:02,713] INFO django.server "GET / HTTP/1.1" 200 19019
+[2026-05-15 12:51:03,080] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 12:51:03,147] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 12:51:03,148] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 12:51:03,364] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-15 12:54:02,010] INFO django.server "GET / HTTP/1.1" 200 19019
+[2026-05-15 12:54:02,306] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 12:54:02,398] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 12:54:02,400] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 12:54:02,751] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-15 12:54:11,690] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 12:54:11,701] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 12:54:12,377] INFO django.server "GET / HTTP/1.1" 200 19019
+[2026-05-15 12:54:12,720] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 18157
+[2026-05-15 12:54:12,723] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-15 12:54:12,725] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 19615
+[2026-05-15 12:54:12,728] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-15 12:54:12,731] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-15 12:54:12,732] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-15 12:54:12,918] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 18140
+[2026-05-15 12:54:12,976] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 16194
+[2026-05-15 12:54:13,071] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 12:54:13,074] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 12:54:13,727] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-15 12:54:24,190] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 12:54:24,362] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 12:54:24,364] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 12:56:31,567] INFO django.server "GET / HTTP/1.1" 200 20163
+[2026-05-15 12:56:31,955] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 12:56:31,967] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 19980
+[2026-05-15 12:56:32,044] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 12:56:32,046] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 12:56:32,561] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-15 12:57:03,584] INFO django.server "GET / HTTP/1.1" 200 20163
+[2026-05-15 12:57:03,940] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 20201
+[2026-05-15 12:57:03,941] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 18157
+[2026-05-15 12:57:03,943] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-15 12:57:03,945] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-15 12:57:03,945] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-15 12:57:03,945] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-15 12:57:04,132] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 18140
+[2026-05-15 12:57:04,141] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 16194
+[2026-05-15 12:57:04,234] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 12:57:04,237] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 12:57:04,596] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-15 12:58:47,079] INFO django.server "GET / HTTP/1.1" 200 20163
+[2026-05-15 12:58:47,349] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 12:58:47,355] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 20543
+[2026-05-15 12:58:47,448] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 12:58:47,453] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 12:58:47,851] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438

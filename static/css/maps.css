@@ -40,6 +40,9 @@ body.map-page-fixed main {
   padding: var(--space-6) var(--space-6);
   border-bottom: 1px solid var(--border);
   background: linear-gradient(to bottom, rgba(255,255,255,0.02), transparent);
+  flex-shrink: 0; /* Prevent header from collapsing in flex containers */
+  position: relative;
+  z-index: 10;
 }
 
 .explorer-header {
@@ -60,7 +63,27 @@ body.map-page-fixed main {
   place-items: center;
   box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
   flex-shrink: 0;
-  margin-top: 2px; /* Slight alignment adjust for the text baseline */
+  margin-top: 2px;
+}
+
+.btn-sidebar-toggle {
+  display: none; /* Hidden on desktop */
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-left: auto;
+}
+
+.btn-sidebar-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
 }
 
 .explorer-title-group {
@@ -673,12 +696,43 @@ body.map-page-fixed main {
   }
   .map-sidebar { 
     box-shadow: 0 4px 20px rgba(0,0,0,0.3); 
-    z-index: 10; 
+    z-index: 1100; 
     border-right: none;
     border-bottom: 1px solid var(--border);
-    max-height: 40vh; /* Limit sidebar height on mobile */
+    max-height: 70vh; /* Increased to push map down further when expanded */
+    display: flex;
+    flex-direction: column;
+    overflow: visible !important; 
   }
-  .map-container-wrap { min-height: 500px; }
+  
+  .btn-sidebar-toggle {
+    display: flex; /* Show on mobile */
+  }
+
+  /* Collapsed state logic */
+  .map-sidebar.collapsed .view-toggle-group,
+  .map-sidebar.collapsed #search-form-location,
+  .map-sidebar.collapsed .explorer-header {
+    margin-bottom: 0 !important; /* Remove spacing when collapsed */
+  }
+  
+  .map-sidebar.collapsed #search-form-location,
+  .map-sidebar.collapsed .view-toggle-group {
+    display: none;
+  }
+  
+  .map-sidebar.collapsed .map-sidebar-header {
+    padding-bottom: var(--space-4); /* More compact padding when closed */
+  }
+
+  .map-sidebar.collapsed {
+    max-height: fit-content;
+  }
+
+  .map-sidebar-header {
+    padding: var(--space-4); 
+  }
+  .map-container-wrap { min-height: 400px; }
 }
 
 /* ─── PREMIUM MAP POPUPS ─── */
