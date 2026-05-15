@@ -8432,3 +8432,638 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-15 20:26:50,911] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
 [2026-05-15 20:26:55,470] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
 [2026-05-15 20:26:55,471] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:27:49,261] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 20:28:43,864] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 20145
+[2026-05-15 20:28:44,085] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:32:11,907] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 20145
+[2026-05-15 20:32:12,145] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:32:18,918] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 20145
+[2026-05-15 20:32:19,164] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:34:29,783] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 20145
+[2026-05-15 20:34:29,886] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:34:34,529] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:34:34,531] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:34:36,670] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 20145
+[2026-05-15 20:34:36,931] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:34:36,934] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:34:37,094] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:34:38,193] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 20145
+[2026-05-15 20:34:38,434] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:34:38,436] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:34:38,798] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 18157
+[2026-05-15 20:34:38,902] INFO django.server "GET /static/js/dashboard.js HTTP/1.1" 200 1967
+[2026-05-15 20:34:39,061] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 200 12418
+[2026-05-15 20:34:39,287] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-15 20:34:39,341] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-15 20:34:39,514] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-15 20:34:39,529] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-15 20:34:39,577] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:34:47,965] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 20:34:48,245] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:34:48,249] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:35:01,949] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 22967
+[2026-05-15 20:35:02,167] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 200 1146
+[2026-05-15 20:35:02,168] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 20:35:02,241] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:35:02,247] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:35:02,533] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:35:19,665] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 200 23418
+[2026-05-15 20:35:19,851] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 20:35:19,852] INFO django.server "GET /static/css/host_billing.css HTTP/1.1" 200 1353
+[2026-05-15 20:35:19,929] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:35:19,933] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:35:20,133] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:35:25,865] INFO django.server "GET / HTTP/1.1" 200 23320
+[2026-05-15 20:35:26,049] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 20:35:26,053] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 20:35:26,054] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 20:35:26,113] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:35:26,116] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:35:26,360] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:35:26,426] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-15 20:35:29,617] INFO django.server "GET / HTTP/1.1" 200 23320
+[2026-05-15 20:35:29,888] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-15 20:35:29,890] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 18157
+[2026-05-15 20:35:29,892] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-15 20:35:29,893] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-15 20:35:29,912] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 27632
+[2026-05-15 20:35:29,937] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:35:29,938] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:35:29,948] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-15 20:35:30,123] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 20726
+[2026-05-15 20:35:30,132] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 17073
+[2026-05-15 20:35:31,082] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:35:31,170] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-15 20:35:33,207] INFO django.server "GET /notifications/ HTTP/1.1" 200 17864
+[2026-05-15 20:35:33,455] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:35:33,483] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:35:33,501] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:35:34,561] ERROR webmaps Captured error: TemplateSyntaxError: Invalid block tag on line 246: 'endblock'. Did you forget to register or load this tag? @ /hosts/dashboard/
+[2026-05-15 20:35:34,561] ERROR webmaps Unhandled exception at /hosts/dashboard/: TemplateSyntaxError: Invalid block tag on line 246: 'endblock'. Did you forget to register or load this tag?
+[2026-05-15 20:35:34,585] ERROR django.request Internal Server Error: /hosts/dashboard/
+[2026-05-15 20:35:34,587] ERROR django.server "GET /hosts/dashboard/ HTTP/1.1" 500 16914
+[2026-05-15 20:35:34,717] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:35:34,721] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:35:34,741] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:35:36,510] INFO django.server "GET / HTTP/1.1" 200 23320
+[2026-05-15 20:35:36,821] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:35:36,827] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:35:36,990] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:35:37,030] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-15 20:35:41,149] ERROR webmaps Captured error: TemplateSyntaxError: Invalid block tag on line 246: 'endblock'. Did you forget to register or load this tag? @ /hosts/dashboard/
+[2026-05-15 20:35:41,149] ERROR webmaps Unhandled exception at /hosts/dashboard/: TemplateSyntaxError: Invalid block tag on line 246: 'endblock'. Did you forget to register or load this tag?
+[2026-05-15 20:35:41,154] ERROR django.request Internal Server Error: /hosts/dashboard/
+[2026-05-15 20:35:41,155] ERROR django.server "GET /hosts/dashboard/ HTTP/1.1" 500 16914
+[2026-05-15 20:35:41,284] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:35:47,995] INFO webmaps User logged out
+[2026-05-15 20:35:47,997] INFO django.server "POST /auth/logout/ HTTP/1.1" 302 0
+[2026-05-15 20:35:48,053] INFO django.server - Broken pipe from ('127.0.0.1', 52622)
+[2026-05-15 20:35:48,075] INFO webmaps User logged out
+[2026-05-15 20:35:48,076] INFO django.server "POST /auth/logout/ HTTP/1.1" 302 0
+[2026-05-15 20:35:48,104] INFO django.server "GET /auth/login/ HTTP/1.1" 200 13957
+[2026-05-15 20:35:55,618] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-15 20:35:57,350] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-05-15 20:35:57,353] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-15 20:35:57,654] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33766
+[2026-05-15 20:35:58,535] WARNING django.request Not Found: /favicon.ico
+[2026-05-15 20:35:58,554] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 6080
+[2026-05-15 20:36:04,538] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 33949
+[2026-05-15 20:37:38,186] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 23890
+[2026-05-15 20:37:38,258] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-15 20:37:38,259] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-15 20:37:38,259] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-15 20:37:38,262] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-15 20:37:38,265] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 200 12418
+[2026-05-15 20:37:38,265] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 18157
+[2026-05-15 20:37:38,268] INFO django.server "GET /static/js/dashboard.js HTTP/1.1" 200 1967
+[2026-05-15 20:37:38,506] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:37:44,963] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:37:44,965] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:37:50,185] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 23890
+[2026-05-15 20:37:50,478] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:37:50,494] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:37:50,527] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:37:59,266] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 22967
+[2026-05-15 20:37:59,492] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 304 0
+[2026-05-15 20:37:59,494] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 20:37:59,750] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:37:59,775] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:37:59,995] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:38:04,706] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 200 23418
+[2026-05-15 20:38:04,929] INFO django.server "GET /static/css/host_billing.css HTTP/1.1" 304 0
+[2026-05-15 20:38:04,997] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:38:05,000] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:38:05,192] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:39:09,502] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 23890
+[2026-05-15 20:39:09,700] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 20:39:09,779] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:39:09,782] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:39:09,949] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:39:17,752] INFO django.server "GET /hosts/listing/create/?new=true HTTP/1.1" 200 33256
+[2026-05-15 20:39:17,981] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 200 19588
+[2026-05-15 20:39:18,112] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:39:18,114] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 200 56141
+[2026-05-15 20:39:18,114] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:39:18,600] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:41:37,476] INFO django.server "GET /hosts/listing/create/?new=true HTTP/1.1" 200 33256
+[2026-05-15 20:41:37,693] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 200 19899
+[2026-05-15 20:41:37,821] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:41:37,830] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:41:38,252] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:41:43,311] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 23890
+[2026-05-15 20:41:43,580] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 200 12524
+[2026-05-15 20:41:43,641] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:41:43,645] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:41:43,837] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:41:47,354] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 23890
+[2026-05-15 20:41:47,590] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-15 20:41:47,592] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-15 20:41:47,591] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-15 20:41:47,593] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 200 12524
+[2026-05-15 20:41:47,599] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-15 20:41:47,604] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 18157
+[2026-05-15 20:41:47,776] INFO django.server "GET /static/js/dashboard.js HTTP/1.1" 200 1967
+[2026-05-15 20:41:47,813] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:41:47,814] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:41:48,084] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:41:52,952] DEBUG webmaps JWT decode error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-15 20:41:52,955] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 302 0
+[2026-05-15 20:41:53,165] INFO django.server "GET /auth/login/ HTTP/1.1" 200 13957
+[2026-05-15 20:41:53,494] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:41:53,497] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 20:42:09,133] INFO webmaps Login attempt: User found for sureshone@gmail.com
+[2026-05-15 20:42:10,520] INFO webmaps User logged in: sureshone@gmail.com
+[2026-05-15 20:42:10,525] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-15 20:42:10,600] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 23890
+[2026-05-15 20:42:10,842] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 20:42:10,896] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:42:10,898] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:42:11,092] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:42:14,632] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 22967
+[2026-05-15 20:42:14,851] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 200 1262
+[2026-05-15 20:42:14,928] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:42:14,931] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:42:15,165] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:42:22,208] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 200 23418
+[2026-05-15 20:42:22,446] INFO django.server "GET /static/css/host_billing.css HTTP/1.1" 200 1614
+[2026-05-15 20:42:22,447] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 20:42:22,513] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:42:22,515] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:42:22,716] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:43:34,029] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 200 23418
+[2026-05-15 20:43:34,266] INFO django.server "GET /static/css/host_billing.css HTTP/1.1" 304 0
+[2026-05-15 20:43:34,269] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 200 12609
+[2026-05-15 20:43:34,304] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:43:34,309] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:43:34,522] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:49:24,761] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 200 23418
+[2026-05-15 20:49:24,845] INFO django.server "GET /static/css/host_billing.css HTTP/1.1" 304 0
+[2026-05-15 20:49:24,847] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 20:49:24,990] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:51:16,018] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 200 23322
+[2026-05-15 20:51:16,154] INFO django.server "GET /static/css/host_billing.css HTTP/1.1" 200 1934
+[2026-05-15 20:51:16,155] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 200 12728
+[2026-05-15 20:51:16,185] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:51:24,504] INFO django.server "GET /static/css/host_billing.css HTTP/1.1" 304 0
+[2026-05-15 20:51:24,690] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:51:24,692] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:51:25,320] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 200 23322
+[2026-05-15 20:51:25,572] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:51:25,786] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:51:25,791] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:53:26,397] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 200 23424
+[2026-05-15 20:53:26,454] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 20:53:26,455] INFO django.server "GET /static/css/host_billing.css HTTP/1.1" 200 2059
+[2026-05-15 20:53:26,535] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:53:32,299] INFO django.server "GET /static/css/host_billing.css HTTP/1.1" 304 0
+[2026-05-15 20:53:32,499] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:53:32,501] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:53:35,381] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 200 23424
+[2026-05-15 20:53:35,698] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:53:35,704] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:53:35,758] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:54:37,843] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 200 23424
+[2026-05-15 20:54:38,084] INFO django.server "GET /static/css/host_billing.css HTTP/1.1" 200 2059
+[2026-05-15 20:54:38,088] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 200 13042
+[2026-05-15 20:54:38,110] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 18259
+[2026-05-15 20:54:38,308] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-15 20:54:38,359] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-15 20:54:38,359] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-15 20:54:38,431] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:54:38,432] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:54:38,452] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-15 20:54:55,814] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 200 23424
+[2026-05-15 20:54:55,879] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 20:54:55,886] INFO django.server "GET /static/css/host_billing.css HTTP/1.1" 304 0
+[2026-05-15 20:54:56,294] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:54:56,511] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:55:05,655] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 200 23424
+[2026-05-15 20:55:05,862] INFO django.server "GET /static/css/host_billing.css HTTP/1.1" 304 0
+[2026-05-15 20:55:05,863] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 20:55:05,969] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:55:05,971] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:55:06,125] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:57:51,208] DEBUG webmaps JWT decode error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-15 20:57:51,211] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 302 0
+[2026-05-15 20:57:51,452] INFO django.server "GET /auth/login/ HTTP/1.1" 200 13957
+[2026-05-15 20:57:51,662] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 20:57:51,759] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:57:51,768] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 20:58:01,309] INFO webmaps Login attempt: User found for sureshone@gmail.com
+[2026-05-15 20:58:03,221] INFO webmaps User logged in: sureshone@gmail.com
+[2026-05-15 20:58:03,228] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-15 20:58:03,393] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 23890
+[2026-05-15 20:58:03,545] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 20:58:03,643] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:58:03,647] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:58:03,882] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:58:11,449] INFO django.server "GET / HTTP/1.1" 200 23320
+[2026-05-15 20:58:11,516] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 20:58:11,517] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 20:58:11,517] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 20:58:11,705] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:58:11,805] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-15 20:58:12,984] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 23890
+[2026-05-15 20:58:13,083] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:58:20,750] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 22967
+[2026-05-15 20:58:20,859] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 200 1339
+[2026-05-15 20:58:20,995] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:58:20,998] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:58:21,299] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:58:30,937] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 22967
+[2026-05-15 20:58:31,002] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 200 13065
+[2026-05-15 20:58:31,098] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:58:33,190] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 200 23424
+[2026-05-15 20:58:33,253] INFO django.server "GET /static/css/host_billing.css HTTP/1.1" 200 2335
+[2026-05-15 20:58:33,311] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:58:36,442] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 200 23424
+[2026-05-15 20:58:36,666] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 200 13065
+[2026-05-15 20:58:36,758] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:58:36,760] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:58:36,925] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:58:45,431] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 23890
+[2026-05-15 20:58:45,500] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 20:58:45,577] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:59:02,735] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 23890
+[2026-05-15 20:59:02,925] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 20:59:03,010] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:59:03,014] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:59:03,202] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 20:59:04,747] INFO django.server "GET /hosts/listing/create/?new=true HTTP/1.1" 200 33256
+[2026-05-15 20:59:04,905] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 200 19903
+[2026-05-15 20:59:05,001] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 20:59:05,004] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 20:59:13,152] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:02:39,419] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 23890
+[2026-05-15 21:02:39,704] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 21:02:39,705] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 21:02:39,794] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:02:41,578] INFO django.server "GET /hosts/listing/create/?new=true HTTP/1.1" 200 33256
+[2026-05-15 21:02:41,800] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 304 0
+[2026-05-15 21:02:42,800] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:02:44,466] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 23890
+[2026-05-15 21:02:44,569] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:02:46,934] INFO django.server "GET /hosts/listing/create/?new=true HTTP/1.1" 200 33256
+[2026-05-15 21:02:47,286] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:02:47,293] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:02:47,714] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:03:57,765] INFO django.server "GET /hosts/listing/create/?new=true HTTP/1.1" 200 33279
+[2026-05-15 21:03:58,025] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:03:58,037] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:03:58,442] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:04:01,892] INFO django.server "GET /hosts/listing/create/?new=true HTTP/1.1" 200 33279
+[2026-05-15 21:04:02,191] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 18259
+[2026-05-15 21:04:02,226] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:04:02,232] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:04:02,251] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 200 20240
+[2026-05-15 21:04:02,399] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-15 21:04:02,460] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-15 21:04:02,501] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-15 21:04:02,502] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-15 21:04:02,612] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 200 56141
+[2026-05-15 21:04:04,624] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:05:19,894] WARNING django.request Method Not Allowed (GET): /auth/logout/
+[2026-05-15 21:05:19,898] WARNING django.server "GET /auth/logout/ HTTP/1.1" 405 0
+[2026-05-15 21:05:23,099] WARNING django.request Method Not Allowed (GET): /auth/logout/
+[2026-05-15 21:05:23,101] WARNING django.server "GET /auth/logout/ HTTP/1.1" 405 0
+[2026-05-15 21:06:00,177] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 304 0
+[2026-05-15 21:06:00,314] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:06:00,316] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:06:00,642] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:06:00,660] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:06:01,195] INFO django.server "GET /hosts/listing/create/?new=true HTTP/1.1" 200 33279
+[2026-05-15 21:06:01,531] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:06:01,537] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:06:02,145] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:06:29,008] INFO django.server "GET /hosts/listing/create/?new=true HTTP/1.1" 200 33279
+[2026-05-15 21:06:29,088] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 304 0
+[2026-05-15 21:06:29,089] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 21:06:30,108] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:06:32,039] INFO django.server "GET / HTTP/1.1" 200 23320
+[2026-05-15 21:06:32,237] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:06:32,288] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-15 21:06:33,196] INFO django.server "GET / HTTP/1.1" 200 23320
+[2026-05-15 21:06:33,309] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-15 21:06:33,311] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-15 21:06:33,312] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 18259
+[2026-05-15 21:06:33,313] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-15 21:06:33,322] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-15 21:06:33,357] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 27632
+[2026-05-15 21:06:33,468] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 20726
+[2026-05-15 21:06:33,507] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 17073
+[2026-05-15 21:06:38,560] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:06:38,659] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-15 21:06:40,728] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 23890
+[2026-05-15 21:06:40,819] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 21:06:40,941] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:06:42,569] INFO django.server "GET /hosts/listing/create/?new=true HTTP/1.1" 200 33279
+[2026-05-15 21:06:42,988] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:06:43,937] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 23890
+[2026-05-15 21:06:44,046] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:06:45,678] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 22967
+[2026-05-15 21:06:45,767] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 304 0
+[2026-05-15 21:06:45,878] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:06:49,018] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 23890
+[2026-05-15 21:06:49,124] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:06:55,893] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 38151
+[2026-05-15 21:06:55,975] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 304 0
+[2026-05-15 21:06:56,190] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:06:59,479] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 23890
+[2026-05-15 21:06:59,594] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:07:50,276] INFO django.server "GET /hosts/listing/create/?new=true HTTP/1.1" 200 33567
+[2026-05-15 21:07:50,480] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 304 0
+[2026-05-15 21:07:50,603] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:07:50,609] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:07:51,717] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:07:52,681] INFO django.server "GET /notifications/ HTTP/1.1" 200 17864
+[2026-05-15 21:07:52,920] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:07:53,050] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:07:53,054] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:08:02,009] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 24178
+[2026-05-15 21:08:02,188] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 21:08:02,288] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:08:02,291] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:08:02,558] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:08:05,645] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 24178
+[2026-05-15 21:08:05,963] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:08:05,975] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:08:06,038] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:09:08,279] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 24178
+[2026-05-15 21:09:08,485] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 21:09:08,486] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 21:09:08,580] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:09:08,585] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:09:08,796] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:09:48,881] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 24178
+[2026-05-15 21:09:49,360] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:09:49,364] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:09:49,432] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:09:51,814] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 24178
+[2026-05-15 21:09:52,022] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-15 21:09:52,025] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 18259
+[2026-05-15 21:09:52,025] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-15 21:09:52,025] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 200 13241
+[2026-05-15 21:09:52,085] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:09:52,090] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:09:52,110] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-15 21:09:52,205] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-15 21:09:52,255] INFO django.server "GET /static/js/dashboard.js HTTP/1.1" 200 1967
+[2026-05-15 21:09:53,193] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:10:03,326] INFO django.server "GET /hosts/listing/create/?new=true HTTP/1.1" 200 33567
+[2026-05-15 21:10:03,552] INFO django.server "GET /static/css/listing_form.css HTTP/1.1" 304 0
+[2026-05-15 21:10:03,673] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:10:03,678] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:10:06,426] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:10:09,599] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 24178
+[2026-05-15 21:10:09,779] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 21:10:09,848] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:10:09,862] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:10:10,052] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:10:26,320] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 23249
+[2026-05-15 21:10:26,528] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 21:10:26,528] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 304 0
+[2026-05-15 21:10:26,630] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:10:26,635] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:10:26,896] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:12:27,336] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 23249
+[2026-05-15 21:12:27,564] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 21:12:27,632] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:12:27,634] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:12:27,922] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:12:30,142] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 23249
+[2026-05-15 21:12:30,424] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 200 2060
+[2026-05-15 21:12:30,424] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-15 21:12:30,425] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 18259
+[2026-05-15 21:12:30,426] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 200 13241
+[2026-05-15 21:12:30,431] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-15 21:12:30,617] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-15 21:12:30,619] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-15 21:12:30,766] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:12:30,778] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:12:35,818] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:12:36,521] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 24178
+[2026-05-15 21:12:36,590] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 200 13241
+[2026-05-15 21:12:36,667] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:12:39,731] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 23249
+[2026-05-15 21:12:39,960] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 304 0
+[2026-05-15 21:12:40,097] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:12:40,106] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:12:40,277] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:12:49,194] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 23249
+[2026-05-15 21:12:49,413] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 21:12:49,421] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 304 0
+[2026-05-15 21:12:49,493] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:12:49,496] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:12:49,705] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:14:14,086] DEBUG webmaps JWT decode error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-15 21:14:14,091] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 302 0
+[2026-05-15 21:14:14,342] INFO django.server "GET /auth/login/ HTTP/1.1" 200 13957
+[2026-05-15 21:14:14,580] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-05-15 21:14:14,681] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:14:14,690] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 21:14:22,100] INFO webmaps Login attempt: User found for sureshone@gmail.com
+[2026-05-15 21:14:24,204] INFO webmaps User logged in: sureshone@gmail.com
+[2026-05-15 21:14:24,209] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-15 21:14:24,338] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 24178
+[2026-05-15 21:14:24,544] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 21:14:24,627] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:14:24,629] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:14:24,904] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:14:35,443] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 25690
+[2026-05-15 21:14:35,692] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 200 2470
+[2026-05-15 21:14:35,754] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:14:35,756] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:14:35,989] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:14:47,046] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 304 0
+[2026-05-15 21:14:47,374] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:14:47,377] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:16:37,634] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 28479
+[2026-05-15 21:16:37,707] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 21:16:37,708] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 21:16:37,710] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 200 2381
+[2026-05-15 21:16:37,873] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:16:41,386] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 28479
+[2026-05-15 21:16:41,448] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 304 0
+[2026-05-15 21:16:41,539] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:16:45,945] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 200 3745
+[2026-05-15 21:16:46,132] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:16:46,135] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:18:42,309] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 28479
+[2026-05-15 21:18:42,525] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 21:18:42,539] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 304 0
+[2026-05-15 21:18:42,692] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:18:42,699] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:18:42,992] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:19:29,859] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 28479
+[2026-05-15 21:19:29,934] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 304 0
+[2026-05-15 21:19:30,046] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:42:09,839] DEBUG webmaps JWT decode error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-15 21:42:09,843] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 302 0
+[2026-05-15 21:42:09,970] INFO django.server "GET /auth/login/ HTTP/1.1" 200 13957
+[2026-05-15 21:42:10,038] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 21:42:15,582] INFO webmaps Login attempt: User found for sureshone@gmail.com
+[2026-05-15 21:42:17,511] INFO webmaps User logged in: sureshone@gmail.com
+[2026-05-15 21:42:17,517] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-15 21:42:17,628] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 24178
+[2026-05-15 21:42:17,710] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 21:42:17,750] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:42:19,767] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 25663
+[2026-05-15 21:42:19,835] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 200 3610
+[2026-05-15 21:42:19,919] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:44:35,528] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 25911
+[2026-05-15 21:44:35,611] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 304 0
+[2026-05-15 21:44:35,714] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:44:51,047] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:44:51,066] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:45:49,265] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 25911
+[2026-05-15 21:45:49,489] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 21:45:49,585] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:45:49,590] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:45:49,884] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:45:52,636] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 25911
+[2026-05-15 21:45:52,851] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:46:15,409] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 200 23706
+[2026-05-15 21:46:15,480] INFO django.server "GET /static/css/host_billing.css HTTP/1.1" 304 0
+[2026-05-15 21:46:15,554] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:46:16,694] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 25911
+[2026-05-15 21:46:16,828] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:47:22,404] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 25866
+[2026-05-15 21:47:22,467] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 200 4890
+[2026-05-15 21:47:22,529] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:47:31,420] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 25866
+[2026-05-15 21:47:31,493] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 304 0
+[2026-05-15 21:47:31,553] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:47:32,663] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 25866
+[2026-05-15 21:47:32,974] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:47:32,978] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:47:33,068] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:47:42,276] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 25866
+[2026-05-15 21:47:42,338] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 304 0
+[2026-05-15 21:47:42,375] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:48:06,662] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 25866
+[2026-05-15 21:48:06,888] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 21:48:06,889] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 304 0
+[2026-05-15 21:48:07,216] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:48:07,225] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:48:07,273] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:49:51,351] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 25866
+[2026-05-15 21:49:51,593] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 21:49:51,677] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:49:51,681] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:49:51,708] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 200 5199
+[2026-05-15 21:49:51,962] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:49:56,976] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 25866
+[2026-05-15 21:49:57,059] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 21:49:57,060] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 200 5199
+[2026-05-15 21:49:57,128] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:51:50,649] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 25760
+[2026-05-15 21:51:50,870] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 200 5756
+[2026-05-15 21:51:50,954] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:51:50,962] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:51:51,192] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:51:58,765] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 25760
+[2026-05-15 21:51:58,825] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 304 0
+[2026-05-15 21:51:58,860] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:52:08,115] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 25760
+[2026-05-15 21:52:08,346] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 304 0
+[2026-05-15 21:52:08,417] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:52:08,419] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:52:08,637] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:52:10,634] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 25760
+[2026-05-15 21:52:10,881] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 200 13241
+[2026-05-15 21:52:10,881] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 18259
+[2026-05-15 21:52:11,105] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 200 5756
+[2026-05-15 21:52:11,107] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-15 21:52:11,206] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-15 21:52:11,207] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-15 21:52:11,208] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-15 21:52:11,245] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:52:11,246] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:52:12,664] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:52:51,197] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 200 23651
+[2026-05-15 21:52:51,401] INFO django.server "GET /static/css/host_billing.css HTTP/1.1" 304 0
+[2026-05-15 21:52:51,459] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:52:51,465] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:52:51,687] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:52:53,686] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 24178
+[2026-05-15 21:52:53,911] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:52:53,914] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:52:53,941] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:52:57,364] INFO django.server "GET /notifications/ HTTP/1.1" 200 17864
+[2026-05-15 21:52:57,676] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:52:57,679] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:52:57,688] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:53:00,384] INFO django.server "GET /users/profile/ HTTP/1.1" 200 18657
+[2026-05-15 21:53:00,557] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:53:00,561] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:53:00,586] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:53:07,865] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 24178
+[2026-05-15 21:53:08,134] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:53:08,138] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:53:08,180] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:53:13,825] INFO django.server "GET /notifications/ HTTP/1.1" 200 17864
+[2026-05-15 21:53:14,173] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:53:14,183] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:53:14,184] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:53:16,085] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 24178
+[2026-05-15 21:53:16,344] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:53:16,376] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:53:16,412] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:53:18,922] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 25760
+[2026-05-15 21:53:19,049] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 304 0
+[2026-05-15 21:53:19,129] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:53:19,142] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:53:19,476] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:53:22,124] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 24178
+[2026-05-15 21:53:22,493] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:53:22,528] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 21:53:22,574] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 21:56:12,616] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 25760
+[2026-05-15 21:56:12,787] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 304 0
+[2026-05-15 21:56:12,787] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 21:56:12,863] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 21:56:15,682] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 200 23651
+[2026-05-15 21:56:15,799] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 22:00:26,521] DEBUG webmaps JWT decode error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-15 22:00:26,523] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 302 0
+[2026-05-15 22:00:26,642] INFO django.server "GET /auth/login/ HTTP/1.1" 200 13957
+[2026-05-15 22:00:26,695] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 22:00:33,275] INFO webmaps Login attempt: User found for sureshone@gmail.com
+[2026-05-15 22:00:34,988] INFO webmaps User logged in: sureshone@gmail.com
+[2026-05-15 22:00:34,991] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-15 22:00:35,074] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 24178
+[2026-05-15 22:00:35,202] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 22:00:36,804] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/insights/ HTTP/1.1" 200 25760
+[2026-05-15 22:00:36,864] INFO django.server "GET /static/css/host_insights.css HTTP/1.1" 304 0
+[2026-05-15 22:00:36,922] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 22:00:39,198] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 200 23651
+[2026-05-15 22:00:39,247] INFO django.server "GET /static/css/host_billing.css HTTP/1.1" 304 0
+[2026-05-15 22:00:39,286] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 22:02:28,810] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 24178
+[2026-05-15 22:02:28,956] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 200 13659
+[2026-05-15 22:02:29,011] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 22:02:37,506] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 24178
+[2026-05-15 22:02:37,730] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 200 13659
+[2026-05-15 22:02:37,800] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 22:02:37,814] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 22:02:38,067] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40

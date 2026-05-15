@@ -1,0 +1,108 @@
+/* static/css/host_billing.css — Billing & Subscription Management */
+.billing-card {
+    background: var(--pro-surface);
+    border: 1px solid var(--pro-border);
+    border-radius: 24px;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.billing-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.billing-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    min-width: 600px; /* Force scroll on mobile if needed */
+}
+
+.billing-table th {
+    text-align: left;
+    padding: 1rem;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--pro-text-secondary);
+    border-bottom: 1px solid var(--pro-border);
+}
+
+.billing-table td {
+    padding: 1.25rem 1rem;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* 📱 Mobile Responsive Rules */
+@media (max-width: 992px) {
+    /* Hide repeated icons from top navbar on mobile */
+    .nav-actions {
+        display: none !important;
+    }
+
+    .billing-card {
+        padding: 1.25rem;
+        margin-top: 1rem;
+        border-radius: 20px;
+    }
+
+    .subscription-icon-box {
+        width: 48px !important;
+        height: 48px !important;
+        min-width: 48px;
+    }
+    .insights-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .billing-card {
+        padding: 1rem;
+        margin-top: 1rem;
+        border-radius: 16px;
+    }
+
+    .subscription-icon-box {
+        width: 44px !important;
+        height: 44px !important;
+        min-width: 44px;
+    }
+
+    .pro-stats-row {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem !important;
+        margin-top: 0.5rem;
+    }
+
+    .billing-header-row {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 0.5rem; 
+        margin-bottom: 0.75rem !important; /* Reduced margin */
+    }
+
+    .billing-header-row > div:first-child {
+        gap: 0.75rem !important;
+    }
+
+    .pro-status-pill {
+        padding: 4px 12px !important;
+        font-size: 10px !important;
+        align-self: flex-start;
+    }
+}
+
+@media (max-width: 640px) {
+    .billing-card {
+        padding: 1.25rem;
+        border-radius: 20px;
+    }
+    
+    .billing-table td, .billing-table th {
+        padding: 0.75rem;
+        font-size: 13px;
+    }
+}

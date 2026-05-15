@@ -195,6 +195,7 @@
     {% endif %}
   </main>
 </div>
+{% include 'hosts/partials/mobile_nav.html' %}
 
 <!-- High-Security Archive Modal -->
 <div id="archive-modal" class="archive-modal-overlay">
@@ -232,13 +233,13 @@
       <input type="text" id="archive-confirm-input" class="archive-input" placeholder="type 'delete' here..." autocomplete="off">
     </div>
 
-    <form id="archive-form" method="post" action="">
-      {% csrf_token %}
-      <div class="d-flex gap-4">
-        <button type="button" class="btn btn-outline btn-close-archive flex-1">Cancel</button>
-        <button type="submit" id="btn-confirm-archive" class="btn btn-confirm-delete flex-1" disabled>Archive Permanently</button>
-      </div>
-    </form>
+    <div class="d-flex gap-4">
+      <button type="button" class="btn btn-outline btn-close-archive flex-1">Cancel</button>
+      <form id="archive-form" method="post" action="" class="flex-1">
+        {% csrf_token %}
+        <button type="submit" id="btn-confirm-archive" class="btn btn-confirm-delete w-full" disabled>Archive Permanently</button>
+      </form>
+    </div>
   </div>
 </div>
 {% endblock %}
