@@ -12,18 +12,12 @@ from django.contrib import messages
 from django.http import JsonResponse
 from django.conf import settings
 
-from hosts.models import Listing, Review
-from .services import (
-    parse_route_query, geocode_location,
-    get_listings_along_route, get_listings_near_location
-)
-
-logger = logging.getLogger('webmaps')
-
+from hosts.models import Listing, Review, Category
 
 def home_view(request):
     """Main map page — search by location or route."""
-    return render(request, 'maps/home.html')
+    categories = Category.objects.all()
+    return render(request, 'maps/home.html', {'categories': categories})
 
 def search_view(request):
     """Template-based search entry point for deep links (e.g. from footer)."""
@@ -31,6 +25,7 @@ def search_view(request):
         'initial_query': request.GET.get('q', ''),
         'initial_category': request.GET.get('category', ''),
         'initial_location': request.GET.get('location', ''),
+        'categories': Category.objects.all(),
     }
     return render(request, 'maps/home.html', context)
 
@@ -45,6 +40,9 @@ def serialize_listings(results, rating_filter):
             'slug': listing.slug,
             'company_name': listing.company_name,
             'short_description': listing.short_description,
+            'category_name': listing.category.name if listing.category else 'Other',
+            'services': [s.service_name for s in listing.services.all()],
+            'average_rating': listing.average_rating,
             'website_url': listing.website_url,
             'lat': float(listing.latitude),
             'lng': float(listing.longitude),
@@ -132,13 +130,16 @@ def route_search(request):
 
 def all_listings_api(request):
     """AJAX endpoint to return all approved listings."""
-    listings = Listing.objects.filter(status='approved', deleted_at__isnull=True, is_active_on_map=True)
+    listings = Listing.objects.filter(status='approved', deleted_at__isnull=True, is_active_on_map=True).select_related('category').prefetch_related('services')
     listings_data = []
     for l in listings:
         listings_data.append({
             'slug': l.slug,
             'company_name': l.company_name,
             'short_description': l.short_description,
+            'category_name': l.category.name if l.category else 'Other',
+            'services': [s.service_name for s in l.services.all()],
+            'average_rating': l.average_rating,
             'lat': float(l.latitude),
             'lng': float(l.longitude),
             'detail_url': l.get_absolute_url(),

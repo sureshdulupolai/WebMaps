@@ -8,6 +8,7 @@ let markers = [];
 let routeLayer;
 let userMarker;
 let userAccuracyCircle;
+let currentListings = []; // Global store for client-side filtering
 
 
 // Initialize Leaflet map
@@ -129,6 +130,7 @@ async function handleSearchLocation(e, lat = null, lng = null) {
     }
 
     data.listings.forEach(listing => addMarker(listing.lat, listing.lng, listing));
+    currentListings = data.listings; // Store globally
     setResultsPanel(data.listings);
     setLoading('loc-search-btn', false);
   } catch (err) {
@@ -173,6 +175,7 @@ async function handleSearchRoute(e) {
     }
 
     data.listings.forEach(listing => addMarker(listing.lat, listing.lng, listing));
+    currentListings = data.listings; // Store globally
     setResultsPanel(data.listings);
     setLoading('route-search-btn', false);
   } catch (err) {
@@ -266,14 +269,12 @@ function setResultsPanel(listings) {
 
   if (!listings || listings.length === 0) {
     panel.innerHTML = `
-      <div class="empty-state-container" style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: rgba(255,255,255,0.02); border-radius: 24px; border: 2px dashed rgba(255,255,255,0.05);">
-        <div style="font-size: 3rem; margin-bottom: 20px; opacity: 0.5;">🔍</div>
-        <h3 style="color: white; margin-bottom: 10px; font-size: 1.5rem;">No Results in this Area</h3>
-        <p style="color: var(--text-muted); max-width: 300px; margin: 0 auto 20px;">Try expanding your search distance or choosing a different category.</p>
-        <button class="btn btn-outline btn-sm" onclick="resetFilters()">Reset All Filters</button>
+      <div class="product-empty-state">
+        <div class="product-empty-icon">📂</div>
+        <h3 class="product-empty-title">No Listings Found</h3>
+        <p class="product-empty-text">We couldn't find any data matching your current filters or location. Try adjusting your search criteria.</p>
       </div>
     `;
-    showMapNotice('No Results Found', "We couldn't find any listings matching your search. Try adjusting your filters or area.");
     return;
   }
 
@@ -290,21 +291,102 @@ function setResultsPanel(listings) {
   `).join('');
 }
 
-function resetFilters() {
-  const cat = document.getElementById('loc-filter-category');
-  const dist = document.getElementById('loc-filter-distance');
-  const rat = document.getElementById('loc-filter-rating');
-  const price = document.getElementById('loc-filter-price');
-  
-  if (cat) cat.value = 'All';
-  if (dist) dist.value = '20';
-  if (rat) rat.value = '';
-  if (price) price.value = '';
-  
-  // Refresh custom selects if they exist
-  document.querySelectorAll('.custom-option[data-value="All"]').forEach(el => el.click());
-  
-  handleSearchLocation(null);
+/**
+ * Client-side filtering for the Product View
+ */
+function applyProductFilters() {
+  const queryInput = document.getElementById('prod-filter-search');
+  const query = queryInput.value.toLowerCase().trim();
+  const category = document.getElementById('prod-filter-category').value;
+  const clearBtn = document.getElementById('prod-search-clear');
+
+  if (clearBtn) {
+    clearBtn.style.display = query.length > 0 ? 'flex' : 'none';
+  }
+
+  const filtered = currentListings.filter(l => {
+    const matchesQuery = !query || 
+           (l.company_name || '').toLowerCase().includes(query) || 
+           (l.short_description || '').toLowerCase().includes(query) || 
+           (l.category_name || '').toLowerCase().includes(query) ||
+           (l.services || []).join(' ').toLowerCase().includes(query);
+    
+    const matchesCategory = category === 'All' || l.category_name === category;
+
+    return matchesQuery && matchesCategory;
+  });
+
+  renderProductResults(filtered);
+}
+
+function renderProductResults(listings) {
+  const panel = document.getElementById('results-panel');
+  if (!panel) return;
+
+  if (listings.length === 0) {
+    panel.innerHTML = `
+      <div class="product-empty-state">
+        <div class="product-empty-icon">🔍</div>
+        <h3 class="product-empty-title">No Matches Found</h3>
+        <p class="product-empty-text">Your filters are too restrictive. Try searching for something else or clearing the inputs.</p>
+      </div>
+    `;
+    return;
+  }
+
+  const truncate = (str, n) => {
+    if (!str) return '';
+    return (str.length > n) ? str.substr(0, n - 1) + '...' : str;
+  };
+
+  const renderStars = (rating) => {
+    const fullStars = Math.floor(rating);
+    const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+    const emptyStars = 5 - fullStars - halfStar;
+    return '★'.repeat(fullStars) + (halfStar ? '½' : '') + '☆'.repeat(emptyStars);
+  };
+
+  panel.innerHTML = listings.map(l => `
+    <a href="${l.detail_url}" class="listing-card-premium" style="text-decoration:none;">
+      <div class="card-content">
+        <div class="card-main">
+          <h3 class="card-title">${truncate(l.company_name, 20)}</h3>
+          <p class="card-desc">${truncate(l.short_description || 'No description available.', 85)}</p>
+        </div>
+        <div class="card-footer">
+          <div class="card-rating-footer" title="${l.average_rating} stars">
+            <span class="rating-stars">${renderStars(l.average_rating)}</span>
+          </div>
+        </div>
+      </div>
+    </a>
+  `).join('');
+}
+
+function renderSkeleton() {
+  const panel = document.getElementById('results-panel');
+  if (!panel) return;
+  panel.innerHTML = Array(6).fill(0).map(() => `
+    <div class="skeleton-card-premium">
+      <div class="skeleton-main">
+        <div class="skeleton-title"></div>
+        <div class="skeleton-desc"></div>
+        <div class="skeleton-desc" style="width: 60%"></div>
+      </div>
+      <div class="skeleton-footer">
+        <div class="skeleton-tag"></div>
+        <div class="skeleton-circle"></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function clearProductSearch() {
+  const input = document.getElementById('prod-filter-search');
+  if (input) {
+    input.value = '';
+    applyProductFilters();
+  }
 }
 
 function showMapNotice(title, message) {
@@ -474,14 +556,19 @@ function updateUserLocation(lat, lng, accuracy) {
 }
 
 async function loadInitialListings() {
+  renderSkeleton();
   try {
     const res = await fetch('/api/maps/all/');
     const data = await res.json();
     if (data.listings) {
       data.listings.forEach(listing => addMarker(listing.lat, listing.lng, listing));
+      currentListings = data.listings; // Store for product view
+      renderProductResults(data.listings); // Populate product view immediately
     }
   } catch (err) {
     console.warn("Could not load initial listings:", err);
   }
 }
+
+window.applyProductFilters = applyProductFilters;
 

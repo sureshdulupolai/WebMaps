@@ -8025,3 +8025,125 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-15 12:58:47,448] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
 [2026-05-15 12:58:47,453] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
 [2026-05-15 12:58:47,851] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-15 13:00:07,441] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 13:00:35,960] INFO django.server "POST /api/analytics/track/ HTTP/1.1" 200 12
+[2026-05-15 16:44:02,987] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 16:44:15,790] INFO django.server "GET / HTTP/1.1" 200 21016
+[2026-05-15 16:44:15,959] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 16:44:16,291] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 16:44:16,732] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 21957
+[2026-05-15 16:44:17,204] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-15 16:45:59,203] INFO django.server "GET / HTTP/1.1" 200 21016
+[2026-05-15 16:45:59,340] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-15 16:48:13,220] INFO django.server "POST /api/analytics/track/ HTTP/1.1" 200 12
+[2026-05-15 16:48:13,311] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 47465
+[2026-05-15 16:48:13,387] INFO django.server "GET /static/css/listing_detail.css HTTP/1.1" 304 0
+[2026-05-15 16:51:38,000] INFO django.server "GET / HTTP/1.1" 200 20853
+[2026-05-15 16:51:38,217] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-15 16:54:06,577] INFO django.server "GET / HTTP/1.1" 200 20853
+[2026-05-15 16:54:06,810] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-15 16:54:11,798] INFO django.server "GET / HTTP/1.1" 200 20853
+[2026-05-15 16:54:11,932] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 18157
+[2026-05-15 16:54:11,933] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 22070
+[2026-05-15 16:54:11,940] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-15 16:54:11,940] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-15 16:54:11,949] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-15 16:54:11,949] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-15 16:54:11,955] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 16194
+[2026-05-15 16:54:11,955] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 19756
+[2026-05-15 16:54:19,547] INFO django.server "GET / HTTP/1.1" 200 20853
+[2026-05-15 16:54:29,082] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 16:54:29,333] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 16:54:29,342] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 16:54:45,718] INFO django.server "GET / HTTP/1.1" 200 20853
+[2026-05-15 16:54:45,903] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 19723
+[2026-05-15 16:54:46,017] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-15 16:54:57,039] INFO django.server "GET / HTTP/1.1" 200 20853
+[2026-05-15 16:54:57,192] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 16:54:57,193] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 16:54:57,323] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-15 16:55:31,639] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 47465
+[2026-05-15 16:55:44,522] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 47465
+[2026-05-15 17:01:06,961] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\maps\views.py changed, reloading.
+[2026-05-15 17:01:09,637] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 17:02:39,648] ERROR webmaps Captured error: TemplateSyntaxError: Unclosed tag on line 5: 'block'. Looking for one of: endblock. @ /
+[2026-05-15 17:02:39,649] ERROR webmaps Unhandled exception at /: TemplateSyntaxError: Unclosed tag on line 5: 'block'. Looking for one of: endblock.
+[2026-05-15 17:02:39,715] ERROR django.request Internal Server Error: /
+[2026-05-15 17:02:39,716] ERROR django.server "GET / HTTP/1.1" 500 10840
+[2026-05-15 17:02:44,546] INFO django.server "GET /auth/login/ HTTP/1.1" 200 13957
+[2026-05-15 17:02:44,615] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-05-15 17:02:46,085] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-15 17:02:48,444] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-05-15 17:02:48,448] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-15 17:02:48,775] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 34226
+[2026-05-15 17:02:49,311] WARNING django.request Not Found: /favicon.ico
+[2026-05-15 17:02:49,314] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 6080
+[2026-05-15 17:02:50,397] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 38441
+[2026-05-15 17:03:29,909] INFO django.server "POST /adminpanel/errors/clear-all/ HTTP/1.1" 302 0
+[2026-05-15 17:03:29,950] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 27059
+[2026-05-15 17:04:29,114] INFO django.server "GET / HTTP/1.1" 200 22732
+[2026-05-15 17:04:29,474] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 23944
+[2026-05-15 17:04:29,638] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 19418
+[2026-05-15 17:04:29,694] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 17:04:29,745] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1291
+[2026-05-15 17:04:51,282] INFO django.server "GET / HTTP/1.1" 200 22732
+[2026-05-15 17:04:51,511] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 17:04:51,511] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 17:04:51,582] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 17:04:51,643] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1291
+[2026-05-15 17:41:17,674] INFO django.server "GET / HTTP/1.1" 200 22117
+[2026-05-15 17:41:17,744] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 17:41:17,750] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 24283
+[2026-05-15 17:41:17,761] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 19775
+[2026-05-15 17:41:17,912] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1291
+[2026-05-15 17:43:39,699] INFO django.server "GET / HTTP/1.1" 200 22117
+[2026-05-15 17:43:40,041] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1291
+[2026-05-15 17:43:47,575] INFO django.server "GET / HTTP/1.1" 200 22117
+[2026-05-15 17:43:47,681] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 18157
+[2026-05-15 17:43:47,692] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 24857
+[2026-05-15 17:43:47,696] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-15 17:43:47,706] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-15 17:43:47,719] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-15 17:43:47,720] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-15 17:43:47,731] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 19946
+[2026-05-15 17:43:47,737] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 16194
+[2026-05-15 17:43:48,253] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1291
+[2026-05-15 17:44:14,785] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 47465
+[2026-05-15 17:44:14,867] INFO django.server "GET /static/css/listing_detail.css HTTP/1.1" 304 0
+[2026-05-15 17:45:54,641] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\maps\views.py changed, reloading.
+[2026-05-15 17:45:57,623] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 17:46:13,608] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\maps\views.py changed, reloading.
+[2026-05-15 17:46:17,195] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 17:46:21,899] INFO django.server "GET / HTTP/1.1" 200 22117
+[2026-05-15 17:46:22,047] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 17:46:22,048] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 17:46:22,226] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-15 17:46:24,655] INFO django.server "GET / HTTP/1.1" 200 22117
+[2026-05-15 17:46:24,887] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-15 17:46:28,581] INFO django.server "GET / HTTP/1.1" 200 22117
+[2026-05-15 17:46:29,331] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 18157
+[2026-05-15 17:46:29,376] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-15 17:46:29,400] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 16194
+[2026-05-15 17:46:29,403] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 24857
+[2026-05-15 17:46:29,485] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 21373
+[2026-05-15 17:46:29,845] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-15 17:46:29,849] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-15 17:46:29,960] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-15 17:46:30,095] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-15 17:48:23,807] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 26162
+[2026-05-15 17:48:24,040] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 17:48:24,042] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 17:49:19,115] INFO django.server "GET / HTTP/1.1" 200 22117
+[2026-05-15 17:49:19,265] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 20911
+[2026-05-15 17:49:19,265] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 26070
+[2026-05-15 17:49:19,448] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-15 17:51:26,680] INFO django.server "GET / HTTP/1.1" 200 22117
+[2026-05-15 17:51:26,766] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-15 17:51:26,767] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-15 17:51:26,769] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 18157
+[2026-05-15 17:51:26,770] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-15 17:51:26,771] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-15 17:51:26,775] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 200 25684
+[2026-05-15 17:51:26,788] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 200 16194
+[2026-05-15 17:51:26,789] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 200 20726
+[2026-05-15 17:51:29,381] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
