@@ -107,7 +107,13 @@ def listing_insights_view(request, slug):
 def listing_create_view(request):
     if request.method == 'GET':
         plans = SubscriptionPlan.objects.all()
-        categories = Category.objects.all()
+        
+        from django.core.cache import cache
+        categories = cache.get('global_categories')
+        if not categories:
+            categories = list(Category.objects.all())
+            cache.set('global_categories', categories, 3600)  # Cache for 1 hour
+        
         latest_draft = Listing.objects.filter(host=request.user, status=ListingStatus.DRAFT).first()
         
         return render(request, 'hosts/listing_form.html', {
@@ -133,6 +139,7 @@ def listing_create_view(request):
         'longitude': request.POST.get('longitude', '').strip(),
         'location_name': sanitize_input(request.POST.get('location_name', '').strip()),
         'operating_hours': request.POST.get('operating_hours'),
+        'cover_image': request.FILES.get('cover_image'),
     }
 
     # Validate
@@ -298,6 +305,7 @@ def listing_edit_view(request, slug):
         'location_name': sanitize_input(request.POST.get('location_name', '').strip()),
         'operating_hours': request.POST.get('operating_hours'),
         'toggle_visibility': request.POST.get('toggle_visibility'),
+        'cover_image': request.FILES.get('cover_image'),
     }
 
     # Handle parsed services JSON

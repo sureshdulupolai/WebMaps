@@ -42,6 +42,7 @@ def create_listing(host, data: dict, file_obj=None, parsed_services: list = None
         longitude=lng,
         location_name=data.get('location_name', ''),
         operating_hours=data.get('operating_hours'),
+        cover_image=data.get('cover_image'),
         status=ListingStatus.DRAFT if is_draft else ListingStatus.PENDING,
     )
 
@@ -149,6 +150,9 @@ def update_listing(listing, data: dict, file_obj=None, parsed_services: list = N
     listing.longitude = lng
     listing.location_name = data.get('location_name', listing.location_name)
     listing.operating_hours = data.get('operating_hours', listing.operating_hours)
+    
+    if data.get('cover_image'):
+        listing.cover_image = data.get('cover_image')
     
     # Handle Stop/Start Visibility with 8h Cooldown
     toggle_visibility = data.get('toggle_visibility')

@@ -19,10 +19,9 @@ class Category(models.Model):
     Global category for listings (e.g., Restaurant, Cafe).
     """
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=100, unique=True)
-    slug = models.SlugField(max_length=120, unique=True)
-    icon_svg = models.TextField(blank=True, help_text="SVG path or icon class name")
-    created_at = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=100, unique=True, db_index=True)
+    slug = models.SlugField(max_length=120, unique=True, db_index=True)
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True)
 
     class Meta:
         verbose_name_plural = "Categories"
@@ -53,10 +52,11 @@ class Listing(models.Model):
         related_name='listings'
     )
     website_url = models.URLField(max_length=500)
-    company_name = models.CharField(max_length=200)
+    company_name = models.CharField(max_length=200, db_index=True)
     mobile_number = models.CharField(max_length=20, blank=True, null=True)
     short_description = models.CharField(max_length=300)
     slug = models.SlugField(max_length=80, unique=True, db_index=True)
+    cover_image = models.ImageField(upload_to='listing_covers/%Y/%m/', null=True, blank=True)
 
     # Location
     latitude = models.DecimalField(
@@ -67,7 +67,7 @@ class Listing(models.Model):
         max_digits=9, decimal_places=6,
         validators=[MinValueValidator(-180), MaxValueValidator(180)]
     )
-    location_name = models.CharField(max_length=200, blank=True)
+    location_name = models.CharField(max_length=200, blank=True, db_index=True)
 
     # Status & moderation
     status = models.CharField(
@@ -129,6 +129,42 @@ class Listing(models.Model):
     @property
     def total_reviews(self):
         return self.reviews.count()
+
+    def save(self, *args, **kwargs):
+        # 1. Handle Slug
+        if not self.slug:
+            from utils.helpers import generate_listing_slug
+            self.slug = generate_listing_slug(self.company_name, self.location_name)
+
+        # 2. Image Compression (JPEG 80% Quality, Max 1200px)
+        if self.cover_image:
+            from PIL import Image
+            import io
+            from django.core.files.base import ContentFile
+            import os
+
+            # Open image
+            img = Image.open(self.cover_image)
+            
+            # Convert to RGB if needed (for PNG/RGBA to JPEG)
+            if img.mode in ("RGBA", "P"):
+                img = img.convert("RGB")
+
+            # Resize if too large (Max width 1200px)
+            if img.width > 1200:
+                output_size = (1200, int((1200 / img.width) * img.height))
+                img = img.resize(output_size, Image.Resampling.LANCZOS)
+
+            # Compress
+            output = io.BytesIO()
+            img.save(output, format='JPEG', quality=80, optimize=True)
+            output.seek(0)
+
+            # Update the field with compressed content
+            new_name = os.path.splitext(self.cover_image.name)[0] + ".jpg"
+            self.cover_image.save(new_name, ContentFile(output.read()), save=False)
+
+        super().save(*args, **kwargs)
 
 
 class ServiceItem(models.Model):

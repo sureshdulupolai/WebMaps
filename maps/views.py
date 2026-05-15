@@ -22,16 +22,26 @@ logger = logging.getLogger('webmaps')
 
 def home_view(request):
     """Main map page — search by location or route."""
-    categories = Category.objects.all()
+    from django.core.cache import cache
+    categories = cache.get('global_categories')
+    if not categories:
+        categories = list(Category.objects.all())
+        cache.set('global_categories', categories, 3600)
     return render(request, 'maps/home.html', {'categories': categories})
 
 def search_view(request):
     """Template-based search entry point for deep links (e.g. from footer)."""
+    from django.core.cache import cache
+    categories = cache.get('global_categories')
+    if not categories:
+        categories = list(Category.objects.all())
+        cache.set('global_categories', categories, 3600)
+        
     context = {
         'initial_query': request.GET.get('q', ''),
         'initial_category': request.GET.get('category', ''),
         'initial_location': request.GET.get('location', ''),
-        'categories': Category.objects.all(),
+        'categories': categories,
     }
     return render(request, 'maps/home.html', context)
 
@@ -177,7 +187,7 @@ def listing_detail_view(request, slug):
     seo_data = {
         'title': f"{listing.company_name} — {listing.location_name} | WebMaps",
         'description': listing.short_description[:160],
-        'og_image': None, # Listing model has no image field
+        'og_image': listing.cover_image.url if listing.cover_image else None,
         'canonical_url': request.build_absolute_uri(listing.get_absolute_url()),
     }
 
