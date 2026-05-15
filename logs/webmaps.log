@@ -9304,3 +9304,129 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-15 23:03:42,594] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
 [2026-05-15 23:03:44,733] INFO django.server "GET /notifications/ HTTP/1.1" 200 22632
 [2026-05-15 23:03:44,868] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:04:45,128] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 23:04:47,782] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 25035
+[2026-05-15 23:04:48,001] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:05:12,950] INFO django.server "GET /notifications/ HTTP/1.1" 200 22632
+[2026-05-15 23:05:13,121] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:05:15,054] INFO django.server "GET /notifications/?type=security HTTP/1.1" 200 22702
+[2026-05-15 23:05:15,179] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:06:42,378] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 23:06:42,392] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17875
+[2026-05-15 23:06:57,656] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 23:06:57,811] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17875
+[2026-05-15 23:07:34,402] INFO django.server "GET /notifications/?type=all HTTP/1.1" 200 22697
+[2026-05-15 23:07:34,516] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 23:07:34,863] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:08:01,595] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\notifications\views.py changed, reloading.
+[2026-05-15 23:08:11,735] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 23:10:45,124] ERROR webmaps Captured error: UnboundLocalError: cannot access local variable 'Q' where it is not associated with a value @ /notifications/
+[2026-05-15 23:10:45,129] ERROR webmaps Unhandled exception at /notifications/: UnboundLocalError: cannot access local variable 'Q' where it is not associated with a value
+[2026-05-15 23:10:45,479] ERROR django.request Internal Server Error: /notifications/
+[2026-05-15 23:10:45,480] ERROR django.server "GET /notifications/?type=all HTTP/1.1" 500 17761
+[2026-05-15 23:10:46,233] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:10:52,564] DEBUG webmaps JWT decode error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-15 23:10:52,578] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 302 0
+[2026-05-15 23:10:52,754] INFO django.server "GET /auth/login/ HTTP/1.1" 200 14814
+[2026-05-15 23:10:52,919] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-05-15 23:10:55,062] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 18259
+[2026-05-15 23:10:57,446] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-15 23:11:08,935] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-05-15 23:11:09,124] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-15 23:11:11,469] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 34214
+[2026-05-15 23:11:14,530] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 37741
+[2026-05-15 23:12:20,896] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\notifications\views.py changed, reloading.
+[2026-05-15 23:12:48,068] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 23:13:23,633] INFO django.server "GET /notifications/?type=all HTTP/1.1" 200 24387
+[2026-05-15 23:13:24,826] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:15:34,414] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\notifications\views.py changed, reloading.
+[2026-05-15 23:15:37,508] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 23:15:50,780] INFO django.server "POST /adminpanel/errors/clear-all/ HTTP/1.1" 302 0
+[2026-05-15 23:15:50,875] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 27059
+[2026-05-15 23:16:53,576] INFO django.server "GET /notifications/?type=all HTTP/1.1" 200 24760
+[2026-05-15 23:16:53,665] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:16:54,999] INFO django.server "GET /notifications/?type=coupons HTTP/1.1" 200 25587
+[2026-05-15 23:16:55,078] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:19:23,487] DEBUG webmaps JWT decode error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-15 23:19:23,490] INFO django.server "GET /notifications/?type=coupons HTTP/1.1" 302 0
+[2026-05-15 23:19:23,538] INFO django.server "GET /auth/login/ HTTP/1.1" 200 14814
+[2026-05-15 23:19:29,883] INFO webmaps Login attempt: User found for sureshone@gmail.com
+[2026-05-15 23:19:31,344] INFO webmaps User logged in: sureshone@gmail.com
+[2026-05-15 23:19:31,345] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-15 23:19:31,444] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 25035
+[2026-05-15 23:19:31,512] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 23:19:31,547] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:19:37,071] INFO django.server "GET /notifications/ HTTP/1.1" 200 24800
+[2026-05-15 23:19:37,166] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:19:38,106] INFO django.server "GET /notifications/?type=coupons HTTP/1.1" 200 25781
+[2026-05-15 23:19:38,189] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:20:22,786] INFO django.server "GET / HTTP/1.1" 200 23320
+[2026-05-15 23:20:22,851] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 23:20:22,853] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 23:20:22,864] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 23:20:22,958] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:20:23,063] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-15 23:20:27,929] INFO django.server "POST /api/analytics/track/ HTTP/1.1" 200 12
+[2026-05-15 23:21:58,261] INFO django.server "GET /notifications/ HTTP/1.1" 200 25999
+[2026-05-15 23:21:58,358] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:21:59,542] INFO django.server "GET /notifications/?type=coupons HTTP/1.1" 200 26498
+[2026-05-15 23:21:59,629] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:26:19,220] INFO django.server "GET /notifications/?type=coupons HTTP/1.1" 200 26498
+[2026-05-15 23:26:19,285] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 23:26:19,325] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:28:34,031] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 23:28:34,033] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17875
+[2026-05-15 23:28:40,327] INFO django.server "GET /notifications/?type=coupons HTTP/1.1" 200 26498
+[2026-05-15 23:28:40,510] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:28:50,554] INFO django.server "GET /notifications/?type=coupons HTTP/1.1" 200 27007
+[2026-05-15 23:28:50,652] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:30:01,553] INFO django.server "GET /notifications/?type=coupons HTTP/1.1" 200 27759
+[2026-05-15 23:30:01,661] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:32:21,954] INFO django.server "GET /notifications/?type=coupons HTTP/1.1" 200 27818
+[2026-05-15 23:32:22,075] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:32:33,714] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 23:32:33,721] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17875
+[2026-05-15 23:32:37,948] INFO django.server "GET /notifications/?type=coupons HTTP/1.1" 200 27818
+[2026-05-15 23:32:38,254] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 23:32:38,258] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17875
+[2026-05-15 23:32:38,404] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:37:14,265] DEBUG webmaps JWT decode error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-15 23:37:14,269] INFO django.server "GET /notifications/?type=coupons HTTP/1.1" 302 0
+[2026-05-15 23:37:14,462] INFO django.server "GET /auth/login/ HTTP/1.1" 200 14814
+[2026-05-15 23:37:14,773] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 23:37:14,778] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 16672
+[2026-05-15 23:37:22,157] INFO webmaps Login attempt: User found for sureshone@gmail.com
+[2026-05-15 23:37:23,581] INFO webmaps User logged in: sureshone@gmail.com
+[2026-05-15 23:37:23,584] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-15 23:37:23,671] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 25035
+[2026-05-15 23:37:23,888] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 23:37:23,948] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 23:37:23,954] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17875
+[2026-05-15 23:37:24,200] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:37:26,471] INFO django.server "GET /notifications/ HTTP/1.1" 200 17906
+[2026-05-15 23:37:26,791] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 23:37:26,793] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17875
+[2026-05-15 23:37:27,032] INFO django.server "GET /static/css/notifications.css HTTP/1.1" 200 8982
+[2026-05-15 23:37:27,157] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:37:32,124] INFO django.server "GET /notifications/?type=coupons HTTP/1.1" 200 18405
+[2026-05-15 23:37:32,418] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 23:37:32,439] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17875
+[2026-05-15 23:37:32,471] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:42:36,300] INFO django.server "GET /notifications/?type=coupons HTTP/1.1" 200 19169
+[2026-05-15 23:42:36,421] INFO django.server "GET /static/css/notifications.css HTTP/1.1" 200 9109
+[2026-05-15 23:42:36,505] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:42:51,781] INFO django.server "GET /notifications/?type=security HTTP/1.1" 200 18740
+[2026-05-15 23:42:51,854] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 23:42:51,854] INFO django.server "GET /static/css/notifications.css HTTP/1.1" 304 0
+[2026-05-15 23:42:51,918] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:42:52,793] INFO django.server "GET /notifications/?type=unread HTTP/1.1" 200 18738
+[2026-05-15 23:42:52,881] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:42:54,382] INFO django.server "GET /notifications/?type=all HTTP/1.1" 200 18735
+[2026-05-15 23:42:54,480] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:42:55,788] INFO django.server "GET /notifications/?type=all HTTP/1.1" 200 18735
+[2026-05-15 23:42:55,872] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:42:56,882] INFO django.server "GET / HTTP/1.1" 200 23320
+[2026-05-15 23:42:56,952] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 23:42:56,956] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 23:42:57,047] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 23:42:57,157] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314

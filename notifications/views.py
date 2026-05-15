@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.utils import timezone
 from auth_app.decorators import jwt_login_required
+from django.db.models import Q
 from .models import Notification
 from .services import mark_all_read
 
@@ -36,22 +37,50 @@ def notification_list_view(request):
 
 @jwt_login_required
 def notification_page_view(request):
-    """HTML page for all notifications with search."""
+    """HTML page for all notifications with search and type filtering."""
     now = timezone.now()
     # Auto-delete expired
     Notification.objects.filter(user=request.user, expires_at__lt=now).delete()
     
     query = request.GET.get('q', '').strip()
+    filter_type = request.GET.get('type', 'all')
+    
     notifications = Notification.objects.filter(user=request.user)
     
-    if query:
+    # 1. Handle Filtering
+    if filter_type == 'unread':
+        notifications = notifications.filter(is_read=False)
+    elif filter_type == 'security':
+        # Simple security filter based on keywords in message
+        notifications = notifications.filter(
+            Q(message__icontains='login') | 
+            Q(message__icontains='password') | 
+            Q(message__icontains='security') |
+            Q(message__icontains='alert')
+        )
+    elif filter_type == 'coupons':
+        notifications = notifications.none()
+    
+    # 2. Handle Search
+    if query and filter_type != 'coupons':
         notifications = notifications.filter(message__icontains=query)
         
     notifications = notifications.order_by('-created_at')
     
+    # 3. Fetch User Coupons
+    from coupon.models import Coupon
+    coupons = Coupon.objects.filter(
+        is_active=True,
+        expire_date__gt=now
+    ).filter(
+        Q(target='all') | Q(user=request.user)
+    ).order_by('-created_at')[:5]
+    
     return render(request, 'notifications/list.html', {
         'notifications': notifications,
-        'query': query
+        'query': query,
+        'coupons': coupons,
+        'active_filter': filter_type
     })
 
 
