@@ -13,7 +13,7 @@ from users.models import User
 from hosts.models import Listing, Review
 from hosts.services import approve_listing, reject_listing
 from errors.models import AppError
-from analytics.models import AnalyticsEvent
+from analytics.models import ListingDailyStats
 from payments.models import Subscription
 from coupon.models import Coupon, CouponUsage
 
@@ -37,7 +37,7 @@ def dashboard_view(request):
         'total_listings': Listing.objects.filter(deleted_at__isnull=True).count(),
         'pending_listings': Listing.objects.filter(status='pending').count(),
         'approved_listings': Listing.objects.filter(status='approved').count(),
-        'total_events': AnalyticsEvent.objects.count(),
+        'total_events': ListingDailyStats.objects.aggregate(total=Sum('views_count'))['total'] or 0,
         'total_errors': AppError.objects.count(),
         'active_subs': Subscription.objects.filter(is_active=True).count(),
         'total_revenue': total_revenue,
@@ -190,7 +190,7 @@ def reject_listing_view(request, slug):
 def analytics_view(request):
     from analytics.services import aggregate_listing_stats
     from hosts.models import Listing as L
-    from analytics.models import AnalyticsEvent, EventType
+    from analytics.models import ListingDailyStats, EventType
 
     q = request.GET.get('q', '').strip()
     listings = L.objects.filter(status='approved', deleted_at__isnull=True)
@@ -204,9 +204,14 @@ def analytics_view(request):
     ]
 
     # Calculate aggregate totals
-    total_page_views = AnalyticsEvent.objects.filter(event_type=EventType.VIEW).count()
-    total_contact_clicks = AnalyticsEvent.objects.filter(event_type=EventType.CLICK).count()
-    total_direction_clicks = AnalyticsEvent.objects.filter(event_type=EventType.MAP_OPEN).count()
+    global_stats = ListingDailyStats.objects.aggregate(
+        total_views=Sum('views_count'),
+        total_clicks=Sum('clicks_count'),
+        total_map_opens=Sum('map_opens_count')
+    )
+    total_page_views = global_stats['total_views'] or 0
+    total_contact_clicks = global_stats['total_clicks'] or 0
+    total_direction_clicks = global_stats['total_map_opens'] or 0
 
     return render(request, 'adminpanel/analytics.html', {
         'listing_stats': listing_stats,

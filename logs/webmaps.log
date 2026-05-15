@@ -8258,3 +8258,50 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-15 18:19:18,501] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
 [2026-05-15 18:19:18,501] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
 [2026-05-15 18:19:18,618] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-15 19:24:51,043] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 19:24:58,072] INFO django.server "GET / HTTP/1.1" 200 22117
+[2026-05-15 19:24:58,137] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 19:24:58,141] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 19:24:58,146] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 19:24:58,147] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 19:24:58,531] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-15 19:43:01,196] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\analytics\models.py changed, reloading.
+[2026-05-15 19:43:04,996] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 19:43:10,184] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\analytics\models.py changed, reloading.
+[2026-05-15 19:43:14,151] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 19:43:56,364] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\analytics\admin.py changed, reloading.
+[2026-05-15 19:43:59,459] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 19:48:13,617] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 19:48:16,212] INFO django.server "GET / HTTP/1.1" 200 22117
+[2026-05-15 19:48:16,284] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 19:48:16,307] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 19:48:16,315] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 19:48:16,429] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-15 19:48:18,862] INFO django.server "POST /api/analytics/track/ HTTP/1.1" 200 12
+[2026-05-15 19:48:18,942] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 47465
+[2026-05-15 19:48:19,000] INFO django.server "GET /static/css/listing_detail.css HTTP/1.1" 304 0
+[2026-05-15 19:48:28,889] INFO django.server "GET /auth/login/ HTTP/1.1" 200 13957
+[2026-05-15 19:48:28,949] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-05-15 19:48:30,044] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-15 19:48:31,781] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-05-15 19:48:31,783] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-15 19:48:31,891] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33781
+[2026-05-15 19:48:32,886] WARNING django.request Not Found: /favicon.ico
+[2026-05-15 19:48:32,890] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 6080
+[2026-05-15 19:48:34,508] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 31157
+[2026-05-15 19:48:37,722] INFO django.server "GET /adminpanel/listings/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 31450
+[2026-05-15 19:48:47,333] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 37548
+[2026-05-15 19:48:49,228] INFO django.server "GET /adminpanel/listings/ HTTP/1.1" 200 27796
+[2026-05-15 19:48:51,995] INFO django.server "GET /adminpanel/listings/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 31450
+[2026-05-15 19:48:54,503] INFO django.server "GET /adminpanel/promotions/ HTTP/1.1" 200 45807
+[2026-05-15 19:48:57,137] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 30303
+[2026-05-15 19:48:59,788] INFO django.server "POST /adminpanel/errors/clear-all/ HTTP/1.1" 302 0
+[2026-05-15 19:48:59,832] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 27059
+[2026-05-15 19:49:01,246] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 37548
+[2026-05-15 19:49:02,801] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33544
+[2026-05-15 19:49:04,065] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 31157
+[2026-05-15 19:49:04,964] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33544
+[2026-05-15 19:49:23,597] INFO django.server "GET / HTTP/1.1" 200 23231
+[2026-05-15 19:49:23,749] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 19:49:23,807] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-15 19:49:24,813] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33544

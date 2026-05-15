@@ -2,28 +2,28 @@
 analytics/services.py — Analytics aggregation.
 """
 from django.db.models import Sum, Count
-from .models import AnalyticsEvent, EventType
+from .models import EventType
 
 
 def aggregate_listing_stats(listing_id) -> dict:
     """Return aggregated stats for a listing dashboard."""
-    qs = AnalyticsEvent.objects.filter(listing_id=listing_id)
+    from django.db.models import Sum
+    from .models import ListingDailyStats
 
-    clicks = qs.filter(event_type=EventType.CLICK).count()
-    views = qs.filter(event_type=EventType.VIEW).count()
-    map_opens = qs.filter(event_type=EventType.MAP_OPEN).count()
-    time_spent = qs.filter(event_type=EventType.TIME_SPENT).aggregate(
-        total=Sum('value')
-    )['total'] or 0
-
-    unique_visitors = qs.filter(
-        event_type=EventType.VIEW
-    ).values('ip_hash').distinct().count()
+    qs = ListingDailyStats.objects.filter(listing_id=listing_id)
+    
+    stats = qs.aggregate(
+        clicks=Sum('clicks_count'),
+        views=Sum('views_count'),
+        map_opens=Sum('map_opens_count'),
+        time_spent=Sum('total_time_spent'),
+        unique_visitors=Sum('unique_visitors_count')
+    )
 
     return {
-        'clicks': clicks,
-        'views': views,
-        'map_opens': map_opens,
-        'time_spent_seconds': time_spent,
-        'unique_visitors': unique_visitors,
+        'clicks': stats['clicks'] or 0,
+        'views': stats['views'] or 0,
+        'map_opens': stats['map_opens'] or 0,
+        'time_spent_seconds': stats['time_spent'] or 0,
+        'unique_visitors': stats['unique_visitors'] or 0,
     }
