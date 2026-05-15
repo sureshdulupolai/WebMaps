@@ -46,6 +46,9 @@ function switchView(view) {
     if(productView) productView.classList.add('active');
     if(mapEl) mapEl.style.opacity = '0';
   }
+
+  // Persist state across refreshes
+  localStorage.setItem('webmaps_current_view', view);
 }
 
 // Geolocation & Auto-fill Logic
@@ -445,6 +448,12 @@ function selectSuggestion(name, lat, lon) {
 document.addEventListener('DOMContentLoaded', () => {
   initSearchEnhancements();
   if (typeof initMap === 'function') initMap();
+
+  // Restore view state (Map vs Services)
+  const savedView = localStorage.getItem('webmaps_current_view');
+  if (savedView) {
+    switchView(savedView);
+  }
 });
 
 // Expose globals
