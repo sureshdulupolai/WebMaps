@@ -13,6 +13,29 @@ Unlike conventional directories, WebMaps is built around an **interactive geogra
 
 ## 🏛️ System Architecture Overview
 
+---
+
+## 🆕 Recent Engineering Improvements (May 2026)
+
+The platform has undergone a massive architecture and UI refinement phase to reach "Pro" standards:
+
+### 1. 📱 Advanced Mobile Responsiveness (Map Explorer)
+*   **Intelligent Folder Logic:** Implemented auto-collapsing search sidebars on mobile to maximize viewport area.
+*   **Sticky Search Controls:** The Services/Product view now features a high-performance sticky filter bar with optimized z-index stacking.
+*   **Responsive Grid Systems:** Completely overhauled the listing grid for tablet and phone viewports, switching from rigid layouts to fluid, single-column stacks.
+
+### 2. 🛡️ Advanced Security & Identity Safeguards
+*   **Profile Update Cooldown:** Added a strict server-side cooldown for sensitive account modifications (SMS alerts, phone numbers). Includes a real-time JS countdown timer for user transparency.
+*   **Institutional Identity Protection:** Restricted self-service account deletion for institutional security, implementing a managed deactivation workflow.
+*   **Hacker-Protected Footers:** Optimized footer navigation with centered, high-contrast links and secure enterprise versioning labels.
+
+### 3. 💎 Pro UI/UX Standardization
+*   **Insights Engine:** Added SVG-based circular progress indicators and icon-only compact headers for the host analytics module.
+*   **Layout Persistence:** Fixed sidebar backgrounds to ensure full-height coverage reaching the footer on all management dashboards.
+*   **Glassmorphism Overhaul:** Increased backdrop-blur depths (20px+) and refined border-transparency ratios for a true premium SaaS aesthetic.
+
+---
+
 The system is decoupled into specific, modular Django application domains interacting with a secure middleware layer, relational models, caching interfaces, and external API services (Razorpay, OpenStreetMap, Nominatim, and OSRM).
 
 ```mermaid

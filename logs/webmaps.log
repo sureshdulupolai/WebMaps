@@ -9165,3 +9165,27 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-15 22:32:06,394] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
 [2026-05-15 22:32:08,693] INFO django.server "GET /users/profile/ HTTP/1.1" 200 18700
 [2026-05-15 22:32:08,783] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 22:32:52,757] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 22:36:11,524] INFO django.server "GET /users/profile/ HTTP/1.1" 200 18700
+[2026-05-15 22:36:11,647] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 22:36:15,960] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 22:36:15,964] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17018
+[2026-05-15 22:40:23,882] INFO django.server "GET /users/profile/ HTTP/1.1" 200 19557
+[2026-05-15 22:40:24,044] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 22:40:24,129] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 22:40:30,215] INFO django.server "GET / HTTP/1.1" 200 23320
+[2026-05-15 22:40:30,552] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 22:40:30,552] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 22:40:30,785] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 22:40:30,786] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17875
+[2026-05-15 22:40:31,068] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 22:40:31,112] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-15 22:40:32,150] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 25035
+[2026-05-15 22:40:32,278] INFO django.server "GET /static/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-15 22:40:32,345] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 22:40:32,348] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17875
+[2026-05-15 22:40:32,609] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 22:40:38,416] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 25035
+[2026-05-15 22:40:38,714] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 22:40:38,715] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 17875
+[2026-05-15 22:40:38,780] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
