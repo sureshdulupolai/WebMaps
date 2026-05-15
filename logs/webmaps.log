@@ -7851,3 +7851,88 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-15 08:33:29,261] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
 [2026-05-15 08:33:29,348] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
 [2026-05-15 08:33:29,359] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 08:35:54,094] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 08:35:57,920] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 53951
+[2026-05-15 08:35:58,025] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 08:35:59,004] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:35:59,202] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 08:36:26,558] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 53951
+[2026-05-15 08:36:26,865] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 08:36:26,935] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:36:26,938] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 08:37:25,131] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 08:37:25,404] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:37:25,406] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 08:37:25,472] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 53951
+[2026-05-15 08:37:25,787] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:37:25,789] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 08:37:38,542] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 54593
+[2026-05-15 08:37:38,872] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:37:38,875] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 08:37:54,109] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:37:54,110] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 08:39:17,838] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 54762
+[2026-05-15 08:39:18,118] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 08:39:18,177] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:39:18,182] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 08:39:37,886] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:39:37,897] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 08:39:39,025] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 54708
+[2026-05-15 08:39:39,521] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:39:39,523] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 08:39:57,526] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:39:57,527] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 08:43:37,652] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 44781
+[2026-05-15 08:43:37,827] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 08:43:38,106] INFO django.server "GET /static/css/listing_detail.css HTTP/1.1" 200 9093
+[2026-05-15 08:43:43,207] INFO django.server "GET /static/css/listing_detail.css HTTP/1.1" 304 0
+[2026-05-15 08:43:43,310] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:43:43,311] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 08:43:50,553] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 44781
+[2026-05-15 08:43:50,752] INFO django.server "GET /static/css/listing_detail.css HTTP/1.1" 200 9093
+[2026-05-15 08:43:50,806] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 17842
+[2026-05-15 08:43:50,860] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-15 08:43:50,915] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-15 08:43:50,932] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-15 08:43:50,965] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-15 08:45:14,823] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 40882
+[2026-05-15 08:45:14,889] INFO django.server "GET /static/css/listing_detail.css HTTP/1.1" 200 9093
+[2026-05-15 08:45:14,891] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 17842
+[2026-05-15 08:45:14,891] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-15 08:45:14,899] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-15 08:45:14,902] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-15 08:45:14,903] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-15 08:45:14,908] INFO django.server "GET /static/js/listing_detail.js HTTP/1.1" 200 4561
+[2026-05-15 08:48:18,366] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 41705
+[2026-05-15 08:48:18,513] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 08:48:18,516] INFO django.server "GET /static/js/listing_detail.js HTTP/1.1" 304 0
+[2026-05-15 08:48:18,519] INFO django.server "GET /static/css/listing_detail.css HTTP/1.1" 200 9770
+[2026-05-15 08:48:50,357] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 41705
+[2026-05-15 08:48:50,534] INFO django.server "GET /static/css/listing_detail.css HTTP/1.1" 304 0
+[2026-05-15 08:48:50,537] INFO django.server "GET /static/js/listing_detail.js HTTP/1.1" 200 6619
+[2026-05-15 08:49:07,100] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 41705
+[2026-05-15 08:49:07,202] INFO django.server "GET /static/css/listing_detail.css HTTP/1.1" 200 9770
+[2026-05-15 08:49:07,205] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-15 08:49:07,208] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 17842
+[2026-05-15 08:49:07,216] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-15 08:49:07,223] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-15 08:49:07,224] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-15 08:49:07,229] INFO django.server "GET /static/js/listing_detail.js HTTP/1.1" 200 6619
+[2026-05-15 08:49:25,508] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 41705
+[2026-05-15 08:49:25,722] INFO django.server "GET /static/css/listing_detail.css HTTP/1.1" 304 0
+[2026-05-15 08:49:25,724] INFO django.server "GET /static/js/listing_detail.js HTTP/1.1" 304 0
+[2026-05-15 08:50:51,330] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 47817
+[2026-05-15 08:50:51,460] INFO django.server "GET /static/css/listing_detail.css HTTP/1.1" 304 0
+[2026-05-15 08:50:51,460] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 08:51:23,057] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 47817
+[2026-05-15 08:51:23,217] INFO django.server "GET /static/css/listing_detail.css HTTP/1.1" 200 9927
+[2026-05-15 08:52:59,027] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 48724
+[2026-05-15 08:52:59,277] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 08:52:59,281] INFO django.server "GET /static/css/listing_detail.css HTTP/1.1" 200 10048
+[2026-05-15 08:53:42,322] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 49139
+[2026-05-15 08:53:42,532] INFO django.server "GET /static/css/listing_detail.css HTTP/1.1" 304 0
+[2026-05-15 08:54:00,622] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 47465
+[2026-05-15 08:54:00,863] INFO django.server "GET /static/css/listing_detail.css HTTP/1.1" 304 0
+[2026-05-15 08:54:21,894] INFO django.server "GET /static/css/listing_detail.css HTTP/1.1" 304 0
+[2026-05-15 08:54:22,005] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:54:22,006] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
