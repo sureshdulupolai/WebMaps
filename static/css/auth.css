@@ -289,3 +289,94 @@ input[type="radio"]:checked + .role-option-card {
   background: rgba(99, 102, 241, 0.1);
   box-shadow: 0 0 15px -10px rgba(99, 102, 241, 0.5);
 }
+
+.auth-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-6);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.forgot-link {
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+  color: var(--primary-hover);
+}
+
+/* ─── RESPONSIVE DESIGN (MOBILE & TABLET) ─── */
+@media (max-width: 992px) {
+  .auth-split-container {
+    flex-direction: column;
+    height: auto;
+    overflow-y: visible;
+  }
+  
+  .auth-illustration-side {
+    display: none; /* Hide illustration on mobile as per user preference for focus */
+  }
+  
+  .auth-form-side {
+    flex: 1;
+    width: 100%;
+    padding: var(--space-10) var(--space-4);
+    min-height: calc(100vh - 72px);
+    justify-content: flex-start;
+  }
+  
+  .auth-side-card {
+    max-width: 100%;
+    margin-top: 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .auth-page {
+    padding: var(--space-6) var(--space-4);
+  }
+  
+  .auth-card {
+    padding: var(--space-8) var(--space-5);
+  }
+  
+  .role-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+  
+  .auth-header h1 {
+    font-size: 24px !important;
+  }
+}
+
+/* Ensure no horizontal scroll on any page */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+/* Utility to prevent horizontal overflow in grids */
+.grid {
+  width: 100%;
+  max-width: 100%;
+}

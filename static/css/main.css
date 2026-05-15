@@ -92,7 +92,9 @@ a:hover { color: var(--primary-hover); }
 /* ─── NAVBAR ─── */
 .navbar {
   height: 72px;
-  background: var(--bg-color);
+  background: rgba(8, 9, 13, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
@@ -691,8 +693,61 @@ input:-webkit-autofill:active {
   box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
 }
 
-.hidden {
-  display: none !important;
+/* --- RESPONSIVE NAVBAR (BALANCED MOBILE VIEW) --- */
+.nav-text {
+  display: inline; /* Default Desktop */
+}
+
+.nav-btn-responsive svg {
+  display: none; /* Hidden on Desktop */
+}
+
+@media (max-width: 1024px) {
+  /* Restore Brand Name (Small) */
+  .nav-brand {
+    font-size: 1rem !important;
+    gap: var(--space-2) !important;
+    color: var(--text-primary) !important;
+  }
+  
+  .nav-brand .brand-icon {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  /* Keep Button Text Hidden on Mobile */
+  .nav-text {
+    display: none !important;
+  }
+
+  /* Slightly Smaller Action Buttons */
+  .nav-btn-responsive {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 12px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+  }
+
+  .nav-btn-responsive svg {
+    display: block !important;
+    width: 18px !important;
+    height: 18px !important;
+    margin: 0 !important;
+  }
+
+  .nav-actions {
+    gap: var(--space-2) !important;
+  }
+  
+  .nav-inner {
+    padding: 0 var(--space-4) !important;
+  }
 }
 
 

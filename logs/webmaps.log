@@ -7738,3 +7738,116 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-14 23:07:02,319] INFO django.server "POST /api/analytics/track/ HTTP/1.1" 200 12
 [2026-05-14 23:07:02,499] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 55092
 [2026-05-14 23:07:02,588] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-15 08:11:27,478] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 08:11:42,491] INFO django.server "GET / HTTP/1.1" 200 18118
+[2026-05-15 08:11:42,748] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-15 08:11:42,749] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 08:11:43,148] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-15 08:11:46,080] INFO django.server "GET /auth/login/ HTTP/1.1" 200 12998
+[2026-05-15 08:11:46,499] INFO django.server "GET /static/css/auth.css HTTP/1.1" 200 8660
+[2026-05-15 08:11:47,728] INFO django.server "GET /auth/register/ HTTP/1.1" 200 16936
+[2026-05-15 08:11:47,777] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-05-15 08:11:49,409] INFO django.server "GET /auth/login/ HTTP/1.1" 200 12998
+[2026-05-15 08:11:49,456] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-05-15 08:11:52,491] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-05-15 08:11:52,877] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:11:52,886] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 14904
+[2026-05-15 08:11:57,829] INFO django.server "GET /auth/register/ HTTP/1.1" 200 16936
+[2026-05-15 08:11:58,275] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-05-15 08:11:59,103] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:11:59,105] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 14904
+[2026-05-15 08:13:26,637] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\auth_app\views.py changed, reloading.
+[2026-05-15 08:13:30,100] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 08:13:49,053] INFO django.server "GET /auth/register/ HTTP/1.1" 200 16130
+[2026-05-15 08:13:49,144] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-05-15 08:13:57,065] INFO django.server "GET /auth/register/ HTTP/1.1" 200 16957
+[2026-05-15 08:15:20,915] INFO django.server "GET /auth/register/ HTTP/1.1" 200 17571
+[2026-05-15 08:15:20,990] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-05-15 08:16:18,091] INFO django.server "GET /auth/register/developer HTTP/1.1" 301 0
+[2026-05-15 08:16:18,124] INFO django.server "GET /auth/register/developer/ HTTP/1.1" 200 12910
+[2026-05-15 08:16:18,191] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-05-15 08:18:01,200] INFO django.server "GET /auth/register/developer/ HTTP/1.1" 200 12910
+[2026-05-15 08:18:01,269] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-05-15 08:18:05,439] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:18:05,440] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 14904
+[2026-05-15 08:18:08,615] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\auth_app\views.py changed, reloading.
+[2026-05-15 08:18:11,002] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 08:18:34,484] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:18:34,486] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 14904
+[2026-05-15 08:18:34,559] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:18:34,561] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 14904
+[2026-05-15 08:18:34,711] INFO django.server "GET /auth/register/ HTTP/1.1" 200 14605
+[2026-05-15 08:18:35,077] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:18:35,080] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 14904
+[2026-05-15 08:19:04,410] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\auth_app\views.py changed, reloading.
+[2026-05-15 08:19:07,074] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-15 08:20:05,987] INFO django.server "GET /auth/register/ HTTP/1.1" 200 14606
+[2026-05-15 08:20:06,071] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-05-15 08:20:18,422] INFO django.server "GET /auth/register HTTP/1.1" 301 0
+[2026-05-15 08:20:18,443] INFO django.server "GET /auth/register/ HTTP/1.1" 200 14606
+[2026-05-15 08:20:26,532] INFO django.server "GET /auth/register/ HTTP/1.1" 200 14632
+[2026-05-15 08:20:27,389] INFO django.server "GET /auth/register/ HTTP/1.1" 200 14632
+[2026-05-15 08:20:40,426] INFO django.server "GET /auth/register/ HTTP/1.1" 200 14882
+[2026-05-15 08:20:54,367] INFO django.server "GET /auth/login/ HTTP/1.1" 200 13046
+[2026-05-15 08:21:00,156] INFO django.server "GET /auth/register/ HTTP/1.1" 200 14882
+[2026-05-15 08:21:00,246] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-05-15 08:21:41,891] INFO django.server "GET /auth/register/ HTTP/1.1" 200 14886
+[2026-05-15 08:24:06,965] INFO django.server "GET /auth/register/ HTTP/1.1" 200 15192
+[2026-05-15 08:24:07,054] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-05-15 08:24:21,121] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:24:21,123] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 14904
+[2026-05-15 08:27:44,556] INFO django.server "GET /auth/register/ HTTP/1.1" 200 16103
+[2026-05-15 08:27:44,875] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-05-15 08:27:44,946] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:27:44,948] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 08:29:03,817] INFO django.server "GET /auth/register/ HTTP/1.1" 200 16103
+[2026-05-15 08:29:04,170] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:29:04,178] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 08:30:17,262] INFO django.server "GET /auth/register/ HTTP/1.1" 200 16103
+[2026-05-15 08:30:17,527] INFO django.server "GET /static/css/auth.css HTTP/1.1" 304 0
+[2026-05-15 08:30:17,577] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:30:17,580] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 08:31:17,797] INFO django.server "GET /auth/register/ HTTP/1.1" 200 16103
+[2026-05-15 08:31:18,101] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:31:18,105] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 08:31:19,466] INFO django.server "GET /static/css/auth.css HTTP/1.1" 200 8660
+[2026-05-15 08:31:19,481] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 17708
+[2026-05-15 08:31:19,542] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-15 08:31:19,773] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-15 08:31:19,953] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4125
+[2026-05-15 08:31:20,001] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-15 08:31:20,160] INFO django.server "GET /static/js/auth.js HTTP/1.1" 200 6775
+[2026-05-15 08:31:20,290] INFO django.server "GET /static/images/register_illustration.png HTTP/1.1" 200 649560
+[2026-05-15 08:32:38,590] INFO django.server "GET /auth/register/ HTTP/1.1" 200 16103
+[2026-05-15 08:32:38,836] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 17842
+[2026-05-15 08:32:38,877] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:32:38,881] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 08:32:44,115] INFO django.server "GET /auth/login/ HTTP/1.1" 200 13957
+[2026-05-15 08:32:44,355] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 08:32:44,403] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:32:44,407] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 08:32:45,828] INFO django.server "GET /auth/register/ HTTP/1.1" 200 16103
+[2026-05-15 08:32:46,049] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 08:32:46,092] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:32:46,093] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 08:32:47,436] INFO django.server "GET /auth/login/ HTTP/1.1" 200 13957
+[2026-05-15 08:32:47,668] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:32:47,672] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 08:32:48,837] INFO django.server "GET /auth/register/ HTTP/1.1" 200 16103
+[2026-05-15 08:32:49,153] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 08:32:49,198] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:32:49,205] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 08:32:50,843] INFO django.server "GET /auth/login/ HTTP/1.1" 200 13957
+[2026-05-15 08:32:51,193] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:32:51,197] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 08:32:51,883] INFO django.server "GET / HTTP/1.1" 200 19029
+[2026-05-15 08:32:52,201] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 08:32:52,239] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:32:52,241] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815
+[2026-05-15 08:32:52,845] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 438
+[2026-05-15 08:33:17,336] INFO django.server "GET /api/maps/search/?q=Sakinaka+Tele+Exchange+Lane%2C+Bindal+Estate%2C+Asalpha%2C+L+Ward%2C+Mumbai+Zone+5%2C+Mumbai%2C+Mumbai+Suburban+District%2C+Maharashtra%2C+400072%2C+India&category=All&rating=&distance=10&price=&lat=19.098858&lng=72.8809552 HTTP/1.1" 200 775
+[2026-05-15 08:33:28,887] INFO django.server "POST /api/analytics/track/ HTTP/1.1" 200 12
+[2026-05-15 08:33:29,030] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 53094
+[2026-05-15 08:33:29,261] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-15 08:33:29,348] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-15 08:33:29,359] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15815

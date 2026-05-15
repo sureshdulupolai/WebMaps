@@ -100,8 +100,14 @@
           </button>
         </form>
       {% else %}
-        <a href="{% url 'auth_app:login' %}" class="btn btn-outline btn-sm px-6" id="nav-login">Sign In</a>
-        <a href="{% url 'auth_app:register' %}" class="btn btn-primary btn-sm px-6" id="nav-register">Get Started</a>
+        <a href="{% url 'auth_app:login' %}" class="btn btn-outline btn-sm px-6 nav-btn-responsive" id="nav-login" title="Sign In">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+          <span class="nav-text">Sign In</span>
+        </a>
+        <a href="{% url 'auth_app:register' %}" class="btn btn-primary btn-sm px-6 nav-btn-responsive" id="nav-register" title="Get Started">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+          <span class="nav-text">Get Started</span>
+        </a>
       {% endif %}
     </div>
   </div>

@@ -32,33 +32,32 @@ def register_view(request):
     username = sanitize_input(request.POST.get('username', '').strip())
     password = request.POST.get('password', '')
     confirm_password = request.POST.get('confirm_password', '')
-    role = request.POST.get('role', UserRole.CUSTOMER)
+    # Force role to HOST for this registration page
+    role = UserRole.HOST
     first_name = sanitize_input(request.POST.get('first_name', '').strip())
     last_name = sanitize_input(request.POST.get('last_name', '').strip())
     phone = sanitize_input(request.POST.get('phone', '').strip())
-
+ 
     errors = {}
 
-    # Validate
+    # Standard Validation
     try:
         validate_email_format(email)
     except Exception as e:
         errors['email'] = str(e)
-
     try:
         validate_username(username)
     except Exception as e:
         errors['username'] = str(e)
-
     try:
         validate_password_strength(password)
     except Exception as e:
         errors['password'] = str(e)
-
     if password != confirm_password:
         errors['confirm_password'] = 'Passwords do not match.'
 
-    if role not in [UserRole.CUSTOMER, UserRole.HOST]:
+    # Standard role validation (redundant but safe)
+    if role not in [UserRole.CUSTOMER, UserRole.HOST, UserRole.ADMIN]:
         errors['role'] = 'Invalid role selection.'
 
     if phone:
@@ -160,12 +159,11 @@ def register_developer_view(request):
             'verified_key': secret_key
         })
 
-    # Create admin user
-    user = User.objects.create_user(
+    # Create admin user (Superuser)
+    user = User.objects.create_superuser(
         email=email,
         username=username,
         password=password,
-        role=UserRole.ADMIN,  # Developer gets admin UI panel access
         first_name=first_name,
         last_name=last_name,
         phone=phone,
