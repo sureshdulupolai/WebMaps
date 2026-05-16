@@ -438,11 +438,40 @@
   color: #ef4444;
 }
 
+.form-control-premium {
+  width: 100% !important;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  font-size: 15px;
+  color: #fff !important;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  resize: vertical;
+}
+
 .form-control-premium:focus {
   outline: none;
   border-color: var(--primary);
   background: rgba(255, 255, 255, 0.05);
   box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+/* Custom Scrollbar for Textarea */
+.form-control-premium::-webkit-scrollbar {
+  width: 6px;
+}
+.form-control-premium::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+}
+.form-control-premium::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.3);
+  border-radius: 10px;
+}
+.form-control-premium::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
 }
 
 @media (max-width: 1024px) {

@@ -90,7 +90,15 @@
   const listingSlug = document.body.dataset.listingSlug;
 
   if (listingSlug) {
-    addEvent(listingSlug, 'view');
+    const VIEW_COOLDOWN_MS = 30 * 60 * 1000; // 30 minutes
+    const lastViewKey = `wm_view_last_${listingSlug}`;
+    const lastView = localStorage.getItem(lastViewKey);
+    const now = Date.now();
+
+    if (!lastView || (now - parseInt(lastView)) > VIEW_COOLDOWN_MS) {
+      addEvent(listingSlug, 'view');
+      localStorage.setItem(lastViewKey, now.toString());
+    }
 
     // Track time spent
     const startTime = Date.now();
