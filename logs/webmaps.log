@@ -9536,3 +9536,46 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-16 15:47:21,597] INFO django.server "GET / HTTP/1.1" 200 23708
 [2026-05-16 15:47:21,694] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
 [2026-05-16 15:47:21,744] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-16 15:48:05,277] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-16 15:49:54,824] DEBUG webmaps JWT decode error: {'detail': ErrorDetail(string='Given token not valid for any token type', code='token_not_valid'), 'code': ErrorDetail(string='token_not_valid', code='token_not_valid'), 'messages': [{'token_class': ErrorDetail(string='AccessToken', code='token_not_valid'), 'token_type': ErrorDetail(string='access', code='token_not_valid'), 'message': ErrorDetail(string='Token is expired', code='token_not_valid')}]}
+[2026-05-16 15:49:54,864] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 302 0
+[2026-05-16 15:49:54,975] INFO django.server "GET /auth/login/ HTTP/1.1" 200 15291
+[2026-05-16 15:49:56,260] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-16 15:49:57,857] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-05-16 15:49:57,858] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-16 15:49:58,074] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33776
+[2026-05-16 15:49:59,733] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 42018
+[2026-05-16 15:51:30,075] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 38255
+[2026-05-16 15:51:46,915] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 38255
+[2026-05-16 15:51:47,307] INFO django.server "GET /static/css/admin.css HTTP/1.1" 200 9585
+[2026-05-16 15:51:47,314] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 20563
+[2026-05-16 15:51:48,218] WARNING django.request Not Found: /favicon.ico
+[2026-05-16 15:51:48,219] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 6080
+[2026-05-16 15:53:08,026] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 41293
+[2026-05-16 15:53:38,643] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 41293
+[2026-05-16 15:56:03,050] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 42233
+[2026-05-16 15:56:15,982] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 42233
+[2026-05-16 15:56:16,018] INFO django.server "GET /static/css/admin.css HTTP/1.1" 200 9585
+[2026-05-16 15:56:16,019] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 20563
+[2026-05-16 15:56:16,538] WARNING django.request Not Found: /favicon.ico
+[2026-05-16 15:56:16,539] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 6080
+[2026-05-16 15:56:59,587] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 42233
+[2026-05-16 15:57:56,683] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 42500
+[2026-05-16 15:58:07,772] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 42500
+[2026-05-16 15:58:07,816] INFO django.server "GET /static/css/admin.css HTTP/1.1" 200 9585
+[2026-05-16 15:58:07,816] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 20563
+[2026-05-16 15:58:08,400] WARNING django.request Not Found: /favicon.ico
+[2026-05-16 15:58:08,401] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 6080
+[2026-05-16 15:59:06,038] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 43050
+[2026-05-16 15:59:10,628] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 43050
+[2026-05-16 15:59:31,331] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 43050
+[2026-05-16 15:59:31,412] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 20563
+[2026-05-16 15:59:31,416] INFO django.server "GET /static/css/admin.css HTTP/1.1" 200 9585
+[2026-05-16 15:59:32,123] WARNING django.request Not Found: /favicon.ico
+[2026-05-16 15:59:32,126] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 6080
+[2026-05-16 16:02:35,383] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 43569
+[2026-05-16 16:03:32,821] INFO django.server "POST /adminpanel/errors/clear-all/ HTTP/1.1" 302 0
+[2026-05-16 16:03:32,875] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 37075
+[2026-05-16 16:04:04,132] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33544
+[2026-05-16 16:04:06,863] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 31157
+[2026-05-16 16:04:10,316] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 37548
