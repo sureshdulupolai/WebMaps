@@ -202,6 +202,11 @@ def login_view(request):
     email = request.POST.get('email', '').strip().lower()
     password = request.POST.get('password', '')
 
+    # Honey Pot check (Anti-Bot)
+    if request.POST.get('honeypot_field'):
+        logger.warning(f"Honey Pot triggered by IP: {request.META.get('REMOTE_ADDR')}")
+        return render(request, 'auth/login.html', {'error': 'Security check failed. Automated activity detected.'})
+
     try:
         user = User.objects.get(email=email)
         logger.info(f"Login attempt: User found for {email}")

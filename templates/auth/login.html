@@ -13,6 +13,11 @@
 <form method="post" action="{% url 'auth_app:login' %}" id="login-form">
     {% csrf_token %}
     <input type="hidden" name="next" value="{{ request.GET.next }}">
+    
+    <!-- Anti-Bot Honey Pot (Hidden from real users) -->
+    <div style="display:none !important; visibility:hidden !important; position:absolute; left:-9999px;">
+        <input type="text" name="honeypot_field" tabindex="-1" autocomplete="off">
+    </div>
 
     <div class="auth-form-group">
         <label class="auth-label" for="login-email">Email Horizon</label>

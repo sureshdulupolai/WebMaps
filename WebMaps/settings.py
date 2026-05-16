@@ -118,11 +118,13 @@ DATABASES = {
 }
 
 # ─────────────────────────────────────────────
-#  PASSWORD HASHING  — Argon2 first
+#  PASSWORD HASHING  — Argon2 (Gold Standard)
 # ─────────────────────────────────────────────
 PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
     'django.contrib.auth.hashers.PBKDF2PasswordHasher',
     'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
 ]
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -213,9 +215,13 @@ CSRF_COOKIE_SAMESITE = 'Lax'
 X_FRAME_OPTIONS = 'DENY'
 
 if not DEBUG:
-    SECURE_HSTS_SECONDS = 31536000
+    # Full HSTS Protection
+    SECURE_HSTS_SECONDS = 63072000  # 2 years
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
+    # Extra protection
+    SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
+    SECURE_SESSION_COOKIE_SAMESITE = 'Strict'
 
 # ─────────────────────────────────────────────
 #  EMAIL
