@@ -303,6 +303,33 @@
     color: #fff;
 }
 
+/* Error Handling */
+.auth-error-box {
+    background: rgba(239, 68, 68, 0.05);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: 14px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    color: #f87171;
+    font-size: 14px;
+    font-weight: 600;
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+.auth-error-box i {
+    font-size: 20px;
+}
+
+@keyframes shake {
+    10%, 90% { transform: translate3d(-1px, 0, 0); }
+    20%, 80% { transform: translate3d(2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+    40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
     .auth-container {

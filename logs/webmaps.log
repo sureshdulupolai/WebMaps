@@ -9832,3 +9832,112 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-16 16:35:47,832] INFO django.server "GET /static/adminpanel/js/admin_base.js HTTP/1.1" 304 0
 [2026-05-16 16:35:48,396] WARNING django.request Not Found: /favicon.ico
 [2026-05-16 16:35:48,408] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 6080
+[2026-05-16 16:36:46,335] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-16 16:45:03,783] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 11478
+[2026-05-16 16:45:03,894] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-16 16:45:03,894] INFO django.server "GET /static/adminpanel/css/admin_base.css HTTP/1.1" 304 0
+[2026-05-16 16:45:03,895] INFO django.server "GET /static/adminpanel/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-16 16:45:03,901] INFO django.server "GET /static/adminpanel/js/admin_base.js HTTP/1.1" 304 0
+[2026-05-16 16:45:03,901] INFO django.server "GET /static/adminpanel/js/dashboard.js HTTP/1.1" 304 0
+[2026-05-16 16:45:09,895] INFO django.server "GET / HTTP/1.1" 200 23712
+[2026-05-16 16:45:09,974] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 304 0
+[2026-05-16 16:45:10,063] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-16 16:45:10,148] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-16 16:45:13,071] INFO django.server "GET / HTTP/1.1" 200 23712
+[2026-05-16 16:45:13,211] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-16 16:45:13,255] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-16 16:45:14,286] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 11478
+[2026-05-16 16:47:23,805] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\auth_app\views.py changed, reloading.
+[2026-05-16 16:47:27,306] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-16 16:49:54,842] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 11490
+[2026-05-16 16:49:54,931] INFO django.server "GET /static/adminpanel/css/admin_base.css HTTP/1.1" 304 0
+[2026-05-16 16:49:54,939] INFO django.server "GET /static/adminpanel/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-16 16:49:54,940] INFO django.server "GET /static/adminpanel/js/admin_base.js HTTP/1.1" 304 0
+[2026-05-16 16:49:54,943] INFO django.server "GET /static/adminpanel/js/dashboard.js HTTP/1.1" 304 0
+[2026-05-16 16:49:56,802] INFO webmaps User logged out
+[2026-05-16 16:49:56,806] INFO django.server "GET /auth/logout/ HTTP/1.1" 302 0
+[2026-05-16 16:49:56,876] INFO django.server "GET / HTTP/1.1" 200 22598
+[2026-05-16 16:49:57,146] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-16 16:49:59,229] INFO django.server "GET /auth/login/ HTTP/1.1" 200 8037
+[2026-05-16 16:49:59,312] INFO django.server "GET /static/auth/css/auth_base.css HTTP/1.1" 304 0
+[2026-05-16 16:49:59,313] INFO django.server "GET /static/auth/js/auth_base.js HTTP/1.1" 304 0
+[2026-05-16 16:50:05,660] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-16 16:50:07,725] WARNING webmaps Login attempt: Password mismatch for sureshpolai63@gmail.com
+[2026-05-16 16:50:07,739] INFO django.server "POST /auth/login/ HTTP/1.1" 200 8060
+[2026-05-16 16:50:11,989] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-16 16:50:13,494] WARNING webmaps Login attempt: Password mismatch for sureshpolai63@gmail.com
+[2026-05-16 16:50:13,502] INFO django.server "POST /auth/login/ HTTP/1.1" 200 8060
+[2026-05-16 16:50:16,152] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-16 16:50:17,672] WARNING webmaps Login attempt: Password mismatch for sureshpolai63@gmail.com
+[2026-05-16 16:50:17,680] INFO django.server "POST /auth/login/ HTTP/1.1" 200 8060
+[2026-05-16 16:50:19,696] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-16 16:50:21,543] WARNING webmaps Login attempt: Password mismatch for sureshpolai63@gmail.com
+[2026-05-16 16:50:21,559] INFO django.server "POST /auth/login/ HTTP/1.1" 200 8060
+[2026-05-16 16:50:23,526] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-16 16:50:25,225] WARNING webmaps Login attempt: Password mismatch for sureshpolai63@gmail.com
+[2026-05-16 16:50:25,231] INFO django.server "POST /auth/login/ HTTP/1.1" 200 8060
+[2026-05-16 16:50:27,343] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-16 16:50:28,938] WARNING webmaps Login attempt: Password mismatch for sureshpolai63@gmail.com
+[2026-05-16 16:50:28,944] INFO django.server "POST /auth/login/ HTTP/1.1" 200 8060
+[2026-05-16 16:50:30,968] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-16 16:50:32,511] WARNING webmaps Login attempt: Password mismatch for sureshpolai63@gmail.com
+[2026-05-16 16:50:32,516] INFO django.server "POST /auth/login/ HTTP/1.1" 200 8060
+[2026-05-16 16:50:34,928] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-16 16:50:36,599] WARNING webmaps Login attempt: Password mismatch for sureshpolai63@gmail.com
+[2026-05-16 16:50:36,605] INFO django.server "POST /auth/login/ HTTP/1.1" 200 8060
+[2026-05-16 16:50:38,427] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-16 16:50:40,111] WARNING webmaps Login attempt: Password mismatch for sureshpolai63@gmail.com
+[2026-05-16 16:50:40,118] INFO django.server "POST /auth/login/ HTTP/1.1" 200 8060
+[2026-05-16 16:50:41,992] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-16 16:50:43,638] WARNING webmaps Login attempt: Password mismatch for sureshpolai63@gmail.com
+[2026-05-16 16:50:43,650] INFO django.server "POST /auth/login/ HTTP/1.1" 200 8060
+[2026-05-16 16:50:45,683] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-16 16:50:47,207] WARNING webmaps Login attempt: Password mismatch for sureshpolai63@gmail.com
+[2026-05-16 16:50:47,214] INFO django.server "POST /auth/login/ HTTP/1.1" 200 8060
+[2026-05-16 16:50:49,432] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-16 16:50:51,147] WARNING webmaps Login attempt: Password mismatch for sureshpolai63@gmail.com
+[2026-05-16 16:50:51,167] INFO django.server "POST /auth/login/ HTTP/1.1" 200 8060
+[2026-05-16 16:50:53,191] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-16 16:50:54,935] WARNING webmaps Login attempt: Password mismatch for sureshpolai63@gmail.com
+[2026-05-16 16:50:54,944] INFO django.server "POST /auth/login/ HTTP/1.1" 200 8060
+[2026-05-16 16:50:56,804] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-16 16:50:58,456] WARNING webmaps Login attempt: Password mismatch for sureshpolai63@gmail.com
+[2026-05-16 16:50:58,466] INFO django.server "POST /auth/login/ HTTP/1.1" 200 8060
+[2026-05-16 16:52:14,169] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\WebMaps\settings.py changed, reloading.
+[2026-05-16 16:52:18,631] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-16 16:52:35,082] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-16 16:52:36,664] WARNING webmaps Login attempt: Password mismatch for sureshpolai63@gmail.com
+[2026-05-16 16:52:36,746] INFO django.server "POST /auth/login/ HTTP/1.1" 200 8060
+[2026-05-16 16:52:36,809] INFO django.server "GET /static/auth/css/auth_base.css HTTP/1.1" 304 0
+[2026-05-16 16:52:39,192] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-16 16:52:41,437] WARNING webmaps Login attempt: Password mismatch for sureshpolai63@gmail.com
+[2026-05-16 16:52:41,451] INFO django.server "POST /auth/login/ HTTP/1.1" 200 8060
+[2026-05-16 16:52:41,531] INFO django.server "GET /static/auth/js/auth_base.js HTTP/1.1" 304 0
+[2026-05-16 16:52:44,059] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-16 16:52:45,696] WARNING webmaps Login attempt: Password mismatch for sureshpolai63@gmail.com
+[2026-05-16 16:52:45,703] INFO django.server "POST /auth/login/ HTTP/1.1" 200 8060
+[2026-05-16 16:52:47,929] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-16 16:52:49,532] WARNING webmaps Login attempt: Password mismatch for sureshpolai63@gmail.com
+[2026-05-16 16:52:49,537] INFO django.server "POST /auth/login/ HTTP/1.1" 200 8060
+[2026-05-16 16:52:52,102] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-16 16:52:53,877] WARNING webmaps Login attempt: Password mismatch for sureshpolai63@gmail.com
+[2026-05-16 16:52:53,883] INFO django.server "POST /auth/login/ HTTP/1.1" 200 8060
+[2026-05-16 16:52:55,848] WARNING webmaps Rate limit hit: login for key fb2c176b...
+[2026-05-16 16:52:55,874] WARNING django.request Too Many Requests: /auth/login/
+[2026-05-16 16:52:55,878] WARNING django.server "POST /auth/login/ HTTP/1.1" 429 13400
+[2026-05-16 16:52:56,430] INFO django.server "GET /static/errors/css/429.css HTTP/1.1" 200 4418
+[2026-05-16 16:52:56,430] INFO django.server "GET /static/errors/js/429.js HTTP/1.1" 200 713
+[2026-05-16 16:53:06,302] WARNING webmaps Rate limit hit: login for key fb2c176b...
+[2026-05-16 16:53:06,328] WARNING django.request Too Many Requests: /auth/login/
+[2026-05-16 16:53:06,345] WARNING django.server "POST /auth/login/ HTTP/1.1" 429 13400
+[2026-05-16 16:54:11,594] INFO django.server "GET / HTTP/1.1" 200 22598
+[2026-05-16 16:54:11,921] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-16 16:54:13,382] INFO django.server "GET /auth/login/ HTTP/1.1" 200 8051
+[2026-05-16 16:54:23,253] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-16 16:54:25,410] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-05-16 16:54:25,413] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-16 16:54:25,581] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 11490
+[2026-05-16 16:54:25,652] INFO django.server "GET /static/adminpanel/css/admin_base.css HTTP/1.1" 304 0
+[2026-05-16 16:54:25,653] INFO django.server "GET /static/adminpanel/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-16 16:54:25,659] INFO django.server "GET /static/adminpanel/js/dashboard.js HTTP/1.1" 304 0
+[2026-05-16 16:54:25,660] INFO django.server "GET /static/adminpanel/js/admin_base.js HTTP/1.1" 304 0

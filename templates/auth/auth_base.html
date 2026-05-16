@@ -50,6 +50,13 @@
                 <p>{% block auth_subtitle %}{% endblock %}</p>
             </div>
 
+            {% if error %}
+            <div class="auth-error-box">
+                <i class="material-icons">error_outline</i>
+                <span>{{ error }}</span>
+            </div>
+            {% endif %}
+
             {% block auth_form %}{% endblock %}
 
             <div class="auth-footer-links">

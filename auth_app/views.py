@@ -247,9 +247,9 @@ def _get_redirect_after_login(user):
 # ─────────────────────────────────────────────
 #  LOGOUT
 # ─────────────────────────────────────────────
-@require_POST
+@require_http_methods(['GET', 'POST'])
 def logout_view(request):
-    response = redirect('auth_app:login')
+    response = redirect('maps:home')
     clear_auth_cookies(response)
     # Blacklist refresh token if present
     refresh_token = request.COOKIES.get(settings.JWT_REFRESH_COOKIE)
