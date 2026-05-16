@@ -11,6 +11,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import JsonResponse
 from django.conf import settings
+from django.utils import timezone
+from datetime import timedelta
 
 from hosts.models import Listing, Review, Category
 from .services import (
@@ -175,7 +177,7 @@ def listing_detail_view(request, slug):
         deleted_at__isnull=True
     )
     services = listing.services.all()
-    reviews = listing.reviews.select_related('user').all()
+    reviews = listing.reviews.filter(deleted_at__isnull=True).select_related('user').all()
     
     user_review = None
     if request.user.is_authenticated:
@@ -208,17 +210,29 @@ def add_review_view(request, slug):
         rating = int(request.POST.get('rating', 0))
         comment = request.POST.get('comment', '').strip()
 
-        if not (1 <= rating <= 5):
-            messages.error(request, 'Rating must be between 1 and 5.')
+        # Security & Cooldown Check
+        COOLDOWN_HOURS = 7
+        last_review = Review.objects.filter(user=request.user, listing=listing).order_by('-updated_at').first()
+        
+        if last_review:
+            if not last_review.deleted_at:
+                messages.error(request, 'You already have an active review for this listing.')
+                return redirect(listing.get_absolute_url())
+            
+            # If deleted, check cooldown since deletion
+            if timezone.now() < last_review.updated_at + timedelta(hours=COOLDOWN_HOURS):
+                remaining = (last_review.updated_at + timedelta(hours=COOLDOWN_HOURS)) - timezone.now()
+                hours = int(remaining.total_seconds() // 3600)
+                mins = int((remaining.total_seconds() % 3600) // 60)
+                messages.error(request, f'Please wait {hours}h {mins}m before adding a new review.')
+                return redirect(listing.get_absolute_url())
+
+        if not (1 <= rating <= 5) or not comment:
+            messages.error(request, 'Invalid rating or comment.')
             return redirect(listing.get_absolute_url())
 
-        if not comment:
-            messages.error(request, 'Comment cannot be empty.')
-            return redirect(listing.get_absolute_url())
-
-        if Review.objects.filter(user=request.user, listing=listing).exists():
-            messages.error(request, 'You have already reviewed this listing.')
-            return redirect(listing.get_absolute_url())
+        # Check for case-only changes if they had a previous one? 
+        # Actually for a NEW review after delete, we just let it be.
 
         Review.objects.create(user=request.user, listing=listing, rating=rating, comment=comment)
         messages.success(request, 'Review added successfully.')
@@ -228,10 +242,24 @@ def add_review_view(request, slug):
 
 @login_required
 def edit_review_view(request, review_id):
-    review = get_object_or_404(Review, id=review_id, user=request.user)
+    review = get_object_or_404(Review, id=review_id, user=request.user, deleted_at__isnull=True)
     if request.method == 'POST':
         rating = int(request.POST.get('rating', review.rating))
         comment = request.POST.get('comment', '').strip()
+
+        # 1. Case-Insensitive check (Hacker protection)
+        if comment.lower() == review.comment.lower() and rating == review.rating:
+            messages.warning(request, 'No significant changes detected (case-only changes are not allowed).')
+            return redirect(review.listing.get_absolute_url())
+
+        # 2. Cooldown Check (7 Hours)
+        COOLDOWN_HOURS = 7
+        if timezone.now() < review.updated_at + timedelta(hours=COOLDOWN_HOURS):
+            remaining = (review.updated_at + timedelta(hours=COOLDOWN_HOURS)) - timezone.now()
+            hours = int(remaining.total_seconds() // 3600)
+            mins = int((remaining.total_seconds() % 3600) // 60)
+            messages.error(request, f'Cooldown active. Please wait {hours}h {mins}m.')
+            return redirect(review.listing.get_absolute_url())
 
         if 1 <= rating <= 5:
             review.rating = rating
@@ -246,11 +274,12 @@ def edit_review_view(request, review_id):
 
 @login_required
 def delete_review_view(request, review_id):
-    review = get_object_or_404(Review, id=review_id, user=request.user)
+    review = get_object_or_404(Review, id=review_id, user=request.user, deleted_at__isnull=True)
     if request.method == 'POST':
         listing_url = review.listing.get_absolute_url()
-        review.delete()
-        messages.success(request, 'Review deleted successfully.')
+        review.deleted_at = timezone.now()
+        review.save(update_fields=['deleted_at'])
+        messages.success(request, 'Review removed. Cooldown for new review is active.')
         return redirect(listing_url)
     return redirect('maps:home')
 

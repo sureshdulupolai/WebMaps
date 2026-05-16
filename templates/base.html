@@ -115,11 +115,24 @@
 </header>
 
 <!-- ══ MESSAGES ═════════════════════════════════════════ -->
+<!-- ══ TOAST NOTIFICATIONS ════════════════════════════════ -->
 {% if messages %}
-  <div class="fixed-top-right z-5000">
+  <div class="toast-container" id="toast-container">
     {% for message in messages %}
-      <div class="alert alert-{{ message.tags }} mb-2 slide-down">
-        {{ message }}
+      <div class="toast-item toast-{{ message.tags }} slide-in-right" role="alert">
+        <div class="toast-icon">
+          {% if message.tags == 'success' %}
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+          {% elif message.tags == 'error' %}
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          {% elif message.tags == 'warning' %}
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          {% else %}
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          {% endif %}
+        </div>
+        <div class="toast-content">{{ message }}</div>
+        <button class="toast-close" onclick="this.closest('.toast-item').classList.add('fade-out')">✕</button>
       </div>
     {% endfor %}
   </div>
@@ -138,6 +151,18 @@
 <script src="{% static 'js/main.js' %}"></script>
 <script src="{% static 'js/modals.js' %}"></script>
 <script src="{% static 'js/analytics.js' %}"></script>
+<script>
+  // Auto-hide Toast Notifications
+  document.addEventListener('DOMContentLoaded', () => {
+    const toasts = document.querySelectorAll('.toast-item');
+    toasts.forEach(toast => {
+      setTimeout(() => {
+        toast.classList.add('fade-out');
+        setTimeout(() => toast.remove(), 500);
+      }, 5000);
+    });
+  });
+</script>
 {% block extra_js %}{% endblock %}
 
 </body>

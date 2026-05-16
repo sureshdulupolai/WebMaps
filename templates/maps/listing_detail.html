@@ -393,43 +393,76 @@
       });
     });
 
-    // 4. EDIT REVIEW LOGIC
+    // 4. EDIT REVIEW LOGIC (Strict 7-Hour Cooldown)
     const editForm = document.getElementById('edit-review-form');
     if (editForm) {
-      const origComment = editForm.getAttribute('data-orig-comment').trim().toLowerCase();
-      const origRating = editForm.getAttribute('data-orig-rating');
-      const updatedAtStr = editForm.getAttribute('data-updated-at');
-      
       const textarea = document.getElementById('edit-review-textarea');
       const ratingInputs = editForm.querySelectorAll('input[name="rating"]');
       const updateBtn = document.getElementById('update-review-btn');
       const cooldownMsg = document.getElementById('update-cooldown-msg');
+      
+      const origComment = editForm.getAttribute('data-orig-comment').trim();
+      const origRating = editForm.getAttribute('data-orig-rating');
+      const updatedAtStr = editForm.getAttribute('data-updated-at');
 
-      const COOLDOWN_MINUTES = 2;
+      const COOLDOWN_HOURS = 7;
+      const COOLDOWN_MS = COOLDOWN_HOURS * 60 * 60 * 1000;
 
       function checkFormState() {
-        const currentComment = textarea.value.trim().toLowerCase();
+        const currentCommentRaw = textarea.value.trim();
+        const currentCommentLower = currentCommentRaw.toLowerCase();
+        const origCommentLower = origComment.toLowerCase();
+        
         let currentRating = origRating;
         ratingInputs.forEach(radio => {
           if (radio.checked) currentRating = radio.value;
         });
 
-        const isChanged = (currentComment !== origComment) || (currentRating !== origRating);
+        const isContentChanged = (currentCommentLower !== origCommentLower) || (currentRating !== origRating);
+        const isCaseOnlyChange = (currentCommentRaw !== origComment && currentCommentLower === origCommentLower);
+
         const lastUpdated = new Date(updatedAtStr).getTime();
         const now = Date.now();
-        const minutesElapsed = (now - lastUpdated) / (1000 * 60);
+        const timeRemaining = (lastUpdated + COOLDOWN_MS) - now;
 
-        if (!isChanged) {
-          updateBtn.disabled = true;
-          cooldownMsg.style.display = 'none';
-        } else if (minutesElapsed < COOLDOWN_MINUTES) {
-          updateBtn.disabled = true;
-          const waitTime = Math.ceil(COOLDOWN_MINUTES - minutesElapsed);
-          cooldownMsg.textContent = `Please wait ${waitTime} min before updating again.`;
+        // 1. Handle Button Visibility
+        if (!isContentChanged) {
+          updateBtn.style.display = 'none';
+          
+          if (isCaseOnlyChange) {
+            cooldownMsg.textContent = "Converting small letters to capital is not allowed as a change.";
+            cooldownMsg.style.display = 'inline-block';
+            cooldownMsg.className = "text-xs text-warning font-weight-bold";
+          } else {
+            cooldownMsg.style.display = 'none';
+          }
+          return;
+        }
+
+        // 2. Handle Cooldown
+        if (timeRemaining > 0) {
+          updateBtn.style.display = 'none'; // Keep hidden during cooldown
+          textarea.readOnly = true; // Prevent typing
+          textarea.style.cursor = 'not-allowed';
+          textarea.style.opacity = '0.7';
+          
+          const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
+          const mins = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+          const secs = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+          
+          cooldownMsg.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="margin-right:4px;"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Next update in: <b>${hours}h ${mins}m ${secs}s</b>`;
           cooldownMsg.style.display = 'inline-block';
+          cooldownMsg.className = "text-xs text-primary font-weight-bold";
+          
+          // Auto refresh timer
+          setTimeout(checkFormState, 1000);
         } else {
-          updateBtn.disabled = false;
+          updateBtn.style.display = 'inline-block';
           cooldownMsg.style.display = 'none';
+          updateBtn.disabled = false;
+          textarea.readOnly = false; // Enable typing
+          textarea.style.cursor = 'text';
+          textarea.style.opacity = '1';
         }
       }
 
