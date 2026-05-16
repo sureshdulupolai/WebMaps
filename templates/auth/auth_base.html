@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block navbar %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block extra_css %}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'auth/css/auth_base.css' %}">
+{% block auth_css %}{% endblock %}
+{% endblock %}
+
+{% block content %}
+<div class="auth-wrapper">
+    <!-- Atmospheric Background -->
+    <div class="auth-atmosphere">
+        <div class="atmosphere-core"></div>
+    </div>
+
+    <div class="auth-container">
+        <!-- Visual/Illustration Side -->
+        <div class="auth-visual-side">
+            <div class="visual-glow"></div>
+            
+            <div class="visual-content">
+                <a href="{% url 'maps:home' %}" class="visual-label" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px;">
+                    <div class="icon">
+                        <i class="material-icons" style="font-size: 18px; display: block;">navigation</i>
+                    </div>
+                    <span class="text" style="font-size: 18px; font-weight: 800; letter-spacing: -0.5px;">WebMaps</span>
+                </a>
+                
+                <h2 class="visual-headline">
+                    {% block visual_title %}Navigate with Precision.{% endblock %}
+                </h2>
+                <p class="visual-subline">
+                    {% block visual_subtitle %}Connect your business to the local grid with our high-fidelity geospatial intelligence platform.{% endblock %}
+                </p>
+            </div>
+
+            <div class="visual-footer">
+                &copy; 2026 WebMaps Intelligence Engine &bull; Secure Protocol Active
+            </div>
+        </div>
+
+        <!-- Form Side -->
+        <div class="auth-form-side">
+            <div class="auth-form-header">
+                <h1>{% block auth_title %}{% endblock %}</h1>
+                <p>{% block auth_subtitle %}{% endblock %}</p>
+            </div>
+
+            {% block auth_form %}{% endblock %}
+
+            <div class="auth-footer-links">
+                {% block auth_links %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'auth/js/auth_base.js' %}"></script>
+{% block auth_js %}{% endblock %}
+{% endblock %}

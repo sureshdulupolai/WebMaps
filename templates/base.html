@@ -54,6 +54,7 @@
 <body {% block body_attrs %}{% endblock %} style="min-height: 100vh; display: flex; flex-direction: column; background: var(--bg-color); color: var(--text-primary);">
 
 <!-- ══ NAVBAR ══════════════════════════════════════════ -->
+{% block navbar %}
 <header role="banner">
 <nav class="navbar" role="navigation" aria-label="Main navigation">
   <div class="nav-inner container">
@@ -113,6 +114,7 @@
   </div>
 </nav>
 </header>
+{% endblock %}
 
 <!-- ══ MESSAGES ═════════════════════════════════════════ -->
 <!-- ══ TOAST NOTIFICATIONS ════════════════════════════════ -->
@@ -143,9 +145,11 @@
   {% block content %}{% endblock %}
 </main>
 
+{% block footer %}
 {% if request.resolver_match.view_name != 'maps:home' and request.resolver_match.view_name != 'maps:search' %}
   {% include 'includes/footer.html' %}
 {% endif %}
+{% endblock %}
 
 <!-- ══ SCRIPTS ════════════════════════════════════════════ -->
 <script src="{% static 'js/main.js' %}"></script>
