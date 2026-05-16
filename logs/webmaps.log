@@ -10320,3 +10320,6 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-16 18:08:33,366] INFO django.server "GET /auth/login/ HTTP/1.1" 200 8473
 [2026-05-16 18:08:35,459] INFO django.server "GET / HTTP/1.1" 200 22598
 [2026-05-16 18:08:35,715] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-16 18:09:23,161] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-16 18:12:40,884] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\auth_app\decorators.py changed, reloading.
+[2026-05-16 18:12:53,519] INFO django.utils.autoreload Watching for file changes with StatReloader

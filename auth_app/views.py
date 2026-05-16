@@ -24,6 +24,10 @@ logger = logging.getLogger('webmaps')
 # ─────────────────────────────────────────────
 @require_http_methods(['GET', 'POST'])
 def register_view(request):
+    # Already logged in? No need to register.
+    if request.user.is_authenticated:
+        return redirect(_get_redirect_after_login(request.user))
+        
     if request.method == 'GET':
         return render(request, 'auth/register.html')
 
@@ -103,6 +107,10 @@ def register_view(request):
 # ─────────────────────────────────────────────
 @require_http_methods(['GET', 'POST'])
 def register_developer_view(request):
+    # Already logged in?
+    if request.user.is_authenticated:
+        return redirect(_get_redirect_after_login(request.user))
+
     if request.method == 'GET':
         return render(request, 'auth/register_developer.html')
 
@@ -295,6 +303,10 @@ def refresh_token_view(request):
 # ─────────────────────────────────────────────
 @require_http_methods(['GET', 'POST'])
 def password_reset_request_view(request):
+    # Already logged in?
+    if request.user.is_authenticated:
+        return redirect(_get_redirect_after_login(request.user))
+
     if request.method == 'GET':
         return render(request, 'auth/password_reset_request.html')
 

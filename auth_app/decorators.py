@@ -44,11 +44,14 @@ def role_required(*roles):
     Decorator requiring the user to have one of the given roles.
     Must be used AFTER @jwt_login_required.
     """
+    from django.core.exceptions import PermissionDenied
     def decorator(view_func):
         @wraps(view_func)
         def wrapper(request, *args, **kwargs):
             if request.user.role not in roles:
-                return redirect('maps:home')
+                # Instead of redirecting to home, we raise PermissionDenied
+                # which will be caught by our CustomErrorMiddleware to show the 403 page.
+                raise PermissionDenied("You do not have permission to access this resource.")
             return view_func(request, *args, **kwargs)
         return wrapper
     return decorator
