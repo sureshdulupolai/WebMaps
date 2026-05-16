@@ -1,0 +1,215 @@
+/* Executive Overview — Dashboard Styling */
+
+.dashboard-header-premium {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background: rgba(20,20,28,0.7);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    margin-bottom: 24px;
+}
+
+.dashboard-header-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.dashboard-header-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(168,85,247,0.1);
+    border: 1px solid rgba(168,85,247,0.2);
+    display: grid;
+    place-items: center;
+}
+
+.dashboard-header-title {
+    font-size: 16px;
+    font-weight: 800;
+    margin: 0;
+    color: #fff;
+    letter-spacing: -0.2px;
+}
+
+.dashboard-header-subtitle {
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+    margin: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-tier-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.stat-tier-card {
+    padding: 20px;
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: 18px;
+    transition: all 0.3s;
+}
+
+.stat-tier-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(168, 85, 247, 0.2);
+}
+
+.stat-tier-label {
+    font-size: 10px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+    margin: 0 0 4px;
+}
+
+.stat-tier-value {
+    font-size: 28px;
+    font-weight: 900;
+    color: #fff;
+    margin: 0;
+    letter-spacing: -1px;
+}
+
+.stat-tier-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+}
+
+.stat-tier-change {
+    margin-top: 16px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.dashboard-layout-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.chart-section {
+    padding: 24px;
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: 20px;
+}
+
+.chart-header-title {
+    font-size: 11px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.chart-header-subtitle {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    margin: 4px 0 0;
+}
+
+.queue-section {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.queue-header {
+    padding: 16px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.queue-item {
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.02);
+}
+
+.queue-item:last-child { border-bottom: none; }
+
+.performer-section {
+    padding: 24px;
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: 20px;
+}
+
+.performer-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+.anomaly-section {
+    padding: 24px;
+    background: var(--admin-surface);
+    border: 1px solid rgba(239,68,68,0.15);
+    border-radius: 20px;
+}
+
+.anomaly-item {
+    font-size: 11px;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(239,68,68,0.05);
+    border-left: 2px solid #ef4444;
+}
+
+.promo-intel-card {
+    padding: 20px;
+    background: rgba(16,185,129,0.03);
+    border: 1px solid rgba(16,185,129,0.1);
+    border-radius: 18px;
+}
+
+/* Utilities */
+.space-y-6 > * + * { margin-top: 24px; }
+.space-y-4 > * + * { margin-top: 16px; }
+.space-y-3 > * + * { margin-top: 12px; }
+
+.pulse-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #10b981;
+    animation: wmPulse 2s infinite;
+}
+
+@keyframes wmPulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.4); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+@media (max-width: 1024px) {
+    .dashboard-layout-grid { grid-template-columns: 1fr; }
+}

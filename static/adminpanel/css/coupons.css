@@ -1,0 +1,285 @@
+/* Promotions & Coupons — Styling */
+
+:root {
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 32px;
+    --spacing-xl: 48px;
+    --card-bg: rgba(255, 255, 255, 0.02);
+
+    /* Card Gradients */
+    --grad-public: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    --grad-private: linear-gradient(135deg, #4c1d95 0%, #1e1b4b 100%);
+    --grad-secret: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
+}
+
+.coupons-container {
+    max-width: 100%;
+}
+
+.coupons-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background: rgba(20,20,28,0.7);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    margin-bottom: 20px;
+}
+
+.coupons-header-title {
+    font-size: 15px;
+    font-weight: 800;
+    margin: 0;
+    color: #fff;
+    letter-spacing: -0.3px;
+}
+
+.coupons-header-subtitle {
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+    font-weight: 500;
+}
+
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: var(--spacing-xl);
+}
+
+@media (max-width: 1200px) {
+    .dashboard-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ─── QUICK STATS ─── */
+.quick-stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.quick-stat-chip {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: #14171f;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+}
+
+.quick-stat-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+}
+
+.quick-stat-label {
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 2px;
+}
+
+.quick-stat-value {
+    font-size: 22px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: -0.5px;
+}
+
+/* ─── BANK CARD ─── */
+.bank-card {
+    width: 100%;
+    height: 250px;
+    background: var(--grad-public);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 28px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-top {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.card-chip {
+    width: 52px;
+    height: 38px;
+    background: linear-gradient(135deg, #ffd700, #b8860b);
+    border-radius: 8px;
+}
+
+.card-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 30px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 4px;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.card-info-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.card-info-label {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card-info-value {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.card-discount-tag {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--admin-accent);
+    text-shadow: 0 0 20px var(--admin-accent-glow);
+}
+
+/* ─── FORM & FIELDS ─── */
+.form-section {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 28px;
+    padding: 40px;
+}
+
+.form-group-spaced {
+    margin-bottom: 32px;
+}
+
+.label-premium {
+    font-size: 11px;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+}
+
+.premium-dropdown {
+    position: relative;
+    width: 100%;
+}
+
+.dropdown-trigger {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 18px 24px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #14181f;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    z-index: 1000;
+    display: none;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-item {
+    padding: 16px 24px;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.dropdown-item:hover {
+    background: var(--admin-accent);
+    color: #fff;
+}
+
+.input-hint {
+    margin-top: 14px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Utilities */
+.hidden-field {
+    display: none !important;
+}
+
+.status-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 800;
+    color: #fff;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    background: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #10b981;
+}
+
+.badge-premium {
+    padding: 4px 10px;
+    background: rgba(168, 85, 247, 0.1);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 6px;
+    color: var(--admin-accent);
+    font-weight: 800;
+    font-size: 12px;
+    display: inline-block;
+}

@@ -4,11 +4,15 @@
 {% block title %}Identity Control — WebMaps Admin{% endblock %}
 {% block breadcrumb %}User Control{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'adminpanel/css/users.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="animate-fade-in" style="margin-top: 40px;">
-    <div class="glass-header" style="position: relative; overflow: hidden; padding: 24px 32px; background: rgba(20,20,28,0.7); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center;">
+    <div class="users-header">
         <!-- Decorative Background Glow -->
-        <div style="position: absolute; top: -50px; left: -50px; width: 150px; height: 150px; background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%); z-index: 0;"></div>
+        <div class="header-glow"></div>
         
         <div style="position: relative; z-index: 1; display: flex; align-items: center; gap: 16px;">
             <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.2); display: grid; place-items: center;">
@@ -112,7 +116,7 @@
                         </div>
                     </td>
                 </tr>
-{% endfor %}
+                {% endfor %}
             </tbody>
         </table>
     </div>
@@ -124,7 +128,7 @@
 
     <!-- CRITICAL TERMINATION MODAL -->
     <div id="deleteModal" class="modal-overlay" style="display: none;">
-        <div class="modal-content glass-card animate-scale-in" style="max-width: 440px; padding: 40px; text-align: center;">
+        <div class="modal-content animate-scale-in">
             <div style="width: 64px; height: 64px; background: rgba(239, 68, 68, 0.1); border-radius: 50%; display: grid; place-items: center; margin: 0 auto 24px;">
                 <i class="material-icons" style="color: #ef4444; font-size: 32px;">warning</i>
             </div>
@@ -150,117 +154,8 @@
         </div>
     </div>
 </div>
+{% endblock %}
 
-<style>
-    .admin-filter-input {
-        width: 100%;
-        height: 42px;
-        background: rgba(255, 255, 255, 0.03) !important;
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
-        border-radius: 10px !important;
-        color: #fff !important;
-        padding: 0 16px;
-        font-size: 13px;
-        transition: all 0.3s ease;
-        outline: none;
-    }
-    .admin-filter-input:focus {
-        background: rgba(255, 255, 255, 0.05) !important;
-        border-color: rgba(99, 102, 241, 0.4) !important;
-        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
-    }
-    .dark-option {
-        background-color: #0d1117 !important;
-        color: #fff !important;
-    }
-    .filter-select-wrapper { position: relative; width: 140px; }
-    .admin-filter-input select {
-        appearance: auto !important; /* Use browser default for simplicity and to avoid double arrows */
-        -webkit-appearance: auto !important;
-    }
-    
-    .badge-outline { border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.4); padding: 2px 8px; font-size: 8px; font-weight: 800; border-radius: 4px; }
-    
-    .status-badge {
-        padding: 2px 8px;
-        font-size: 8px;
-        font-weight: 800;
-        border-radius: 4px;
-        display: inline-block;
-    }
-    .premium-table th {
-        font-size: 9px;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        color: rgba(255,255,255,0.3);
-        font-weight: 900;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
-        padding: 14px 12px;
-    }
-
-    /* Modal Styles */
-    .modal-overlay {
-        position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(0,0,0,0.8);
-        backdrop-filter: blur(8px);
-        display: grid;
-        place-items: center;
-        z-index: 9999;
-    }
-    .animate-scale-in {
-        animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    @keyframes scaleIn {
-        from { transform: scale(0.9); opacity: 0; }
-        to { transform: scale(1); opacity: 1; }
-    }
-    .btn-secondary {
-        background: rgba(255,255,255,0.05);
-        color: #fff;
-        border: 1px solid rgba(255,255,255,0.1);
-        cursor: pointer;
-        transition: all 0.2s;
-    }
-    .btn-secondary:hover { background: rgba(255,255,255,0.1); }
-</style>
-
-<script>
-    let currentDeleteId = null;
-
-    function triggerUserDelete(userId, username) {
-        currentDeleteId = userId;
-        document.getElementById('target-username').innerText = username;
-        document.getElementById('deleteModal').style.display = 'grid';
-        document.getElementById('confirm-input').value = '';
-        validateDeleteInput();
-    }
-
-    function closeDeleteModal() {
-        document.getElementById('deleteModal').style.display = 'none';
-        currentDeleteId = null;
-    }
-
-    function validateDeleteInput() {
-        const input = document.getElementById('confirm-input');
-        const btn = document.getElementById('confirm-delete-btn');
-        if (input.value === 'DELETE') {
-            btn.classList.remove('opacity-50', 'pointer-events-none');
-            btn.style.cursor = 'pointer';
-        } else {
-            btn.classList.add('opacity-50', 'pointer-events-none');
-            btn.style.cursor = 'not-allowed';
-        }
-    }
-
-    function executeDelete() {
-        if (!currentDeleteId) return;
-        const form = document.getElementById('global-delete-form');
-        // Construct the URL dynamically based on the current user ID
-        form.action = `/adminpanel/users/${currentDeleteId}/delete/`;
-        form.submit();
-    }
-
-    document.getElementById('confirm-input').addEventListener('input', validateDeleteInput);
-</script>
+{% block extra_js %}
+<script src="{% static 'adminpanel/js/users.js' %}"></script>
 {% endblock %}

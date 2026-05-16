@@ -1,0 +1,110 @@
+/* Identity Control — Users Styling */
+
+.users-header {
+    position: relative;
+    overflow: hidden;
+    padding: 24px 32px;
+    background: rgba(20,20,28,0.7);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-glow {
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+    z-index: 0;
+}
+
+.admin-filter-input {
+    width: 100%;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 10px !important;
+    color: #fff !important;
+    padding: 0 16px;
+    font-size: 13px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.admin-filter-input:focus {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(99, 102, 241, 0.4) !important;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+.dark-option {
+    background-color: #0d1117 !important;
+    color: #fff !important;
+}
+
+.filter-select-wrapper { position: relative; width: 140px; }
+
+.status-badge {
+    padding: 2px 8px;
+    font-size: 8px;
+    font-weight: 800;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.badge-outline { border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.4); }
+
+.premium-table th {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.3);
+    font-weight: 900;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding: 14px 12px;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(8px);
+    display: grid;
+    place-items: center;
+    z-index: 9999;
+}
+
+.modal-content {
+    background: #111218;
+    border: 1px solid var(--admin-border);
+    border-radius: 24px;
+    max-width: 440px;
+    width: 90%;
+    padding: 40px;
+    text-align: center;
+}
+
+.btn-secondary {
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.1);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+.animate-scale-in {
+    animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}

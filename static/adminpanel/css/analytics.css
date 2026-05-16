@@ -1,0 +1,162 @@
+/* Strategic Intelligence — Analytics Styling */
+
+.analytics-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background: rgba(20,20,28,0.7);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.analytics-info-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.analytics-icon-box {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(168,85,247,0.1);
+    border: 1px solid rgba(168,85,247,0.2);
+    display: grid;
+    place-items: center;
+}
+
+.analytics-search-form {
+    flex: 1;
+    max-width: 400px;
+    display: flex;
+    gap: 8px;
+}
+
+.analytics-search-input-wrap {
+    position: relative;
+    flex: 1;
+}
+
+.analytics-search-input-wrap i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: rgba(255,255,255,0.2);
+}
+
+.analytics-search-input {
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 8px 12px 8px 40px;
+    color: #fff;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.analytics-search-input:focus {
+    border-color: var(--admin-accent);
+}
+
+.analytics-health-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: rgba(16,185,129,0.05);
+    border: 1px solid rgba(16,185,129,0.15);
+    border-radius: 10px;
+}
+
+.analytics-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.analytics-stat-card {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: 18px;
+}
+
+.analytics-insights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+.insight-card {
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(20,23,31,0.4);
+    border-radius: 18px;
+    transition: all 0.3s ease;
+}
+
+.insight-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--admin-accent) !important;
+    box-shadow: 0 12px 30px -10px rgba(168,85,247,0.3);
+}
+
+.insight-card-header {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.insight-stats-content {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.insight-stat-box {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.03);
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+}
+
+.insight-card-footer {
+    padding: 12px 20px;
+    background: rgba(0,0,0,0.15);
+    border-top: 1px solid rgba(255,255,255,0.03);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pulse-green {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 8px #10b981;
+    animation: wmPulse 2s infinite;
+}
+
+@keyframes wmPulse {
+    0% { opacity: 0.4; }
+    50% { opacity: 1; }
+    100% { opacity: 0.4; }
+}

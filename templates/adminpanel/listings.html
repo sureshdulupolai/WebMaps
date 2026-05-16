@@ -4,15 +4,19 @@
 {% block title %}Business Entity Registry — WebMaps Admin{% endblock %}
 {% block breadcrumb %}Business Sites{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'adminpanel/css/listings.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="animate-fade-in">
     <!-- Slim Registry Header -->
-    <div style="display:flex; justify-content:space-between; align-items:center; padding:12px 20px; background:rgba(20,20,28,0.7); border:1px solid rgba(255,255,255,0.06); border-radius:14px; margin-bottom:20px;">
-        <div style="display:flex; align-items:center; gap:12px;">
-            <h1 style="font-size:15px; font-weight:800; margin:0; color:#fff; letter-spacing:-0.3px;">Business Registry</h1>
-            <span style="font-size:11px; color:rgba(255,255,255,0.25); font-weight:500;">Entity lifecycle management</span>
+    <div class="listings-header">
+        <div class="d-flex align-center gap-3">
+            <h1 class="listings-header-title">Business Registry</h1>
+            <span class="listings-header-subtitle">Entity lifecycle management</span>
         </div>
-        <div style="display:flex; gap:8px;">
+        <div class="d-flex gap-2">
             <a href="?status=pending" style="padding:6px 14px; font-size:10px;"
                 class="admin-btn {% if status_filter == 'pending' %}btn-primary{% else %}btn-outline{% endif %}">PENDING</a>
             <a href="?status=approved" style="padding:6px 14px; font-size:10px;"
@@ -28,14 +32,11 @@
         <table class="premium-table">
             <thead>
                 <tr>
-                    <th style="padding-left: 24px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">
-                        Commercial Entity</th>
-                    <th style="font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Authority (Host)</th>
-                    <th style="font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Status Phase</th>
-                    <th style="font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Creation Horizon</th>
-                    <th class="text-right"
-                        style="padding-right: 24px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">
-                        Operations</th>
+                    <th style="padding-left: 24px;">Commercial Entity</th>
+                    <th>Authority (Host)</th>
+                    <th>Status Phase</th>
+                    <th>Creation Horizon</th>
+                    <th class="text-right" style="padding-right: 24px;">Operations</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,19 +44,16 @@
                 <tr class="hover:bg-white-5 transition-all">
                     <td style="padding-left: 24px;">
                         <div class="d-flex align-center gap-3">
-                            <div class="entity-preview"
-                                style="width: 44px; height: 44px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--admin-border); overflow: hidden; display:grid; place-items:center;">
+                            <div class="entity-preview">
                                 {% if listing.images.exists %}
-                                <img src="{{ listing.images.first.image.url }}" alt=""
-                                    style="width:100%; height:100%; object-fit:cover;">
+                                <img src="{{ listing.images.first.image.url }}" alt="">
                                 {% else %}
                                 <i class="material-icons opacity-10" style="font-size: 20px;">image</i>
                                 {% endif %}
                             </div>
                             <div>
                                 <div class="font-bold text-white text-sm">{{ listing.company_name }}</div>
-                                <div class="text-[9px] opacity-30 font-mono uppercase tracking-wider">{{
-                                    listing.category.name|default:"General Entity" }}</div>
+                                <div class="text-[9px] opacity-30 font-mono uppercase tracking-wider">{{ listing.category.name|default:"General Entity" }}</div>
                             </div>
                         </div>
                     </td>
@@ -65,20 +63,16 @@
                     </td>
                     <td>
                         {% if listing.status == 'approved' %}
-                        <span class="status-badge badge-success"
-                            style="font-size: 8px; font-weight: 800;">APPROVED</span>
+                        <span class="status-badge badge-success">APPROVED</span>
                         {% elif listing.status == 'rejected' %}
-                        <span class="status-badge badge-danger"
-                            style="font-size: 8px; font-weight: 800;">REJECTED</span>
+                        <span class="status-badge badge-danger">REJECTED</span>
                         {% else %}
-                        <span class="status-badge badge-warning" style="font-size: 8px; font-weight: 800;">AUDIT
-                            PENDING</span>
+                        <span class="status-badge badge-warning">AUDIT PENDING</span>
                         {% endif %}
                     </td>
                     <td>
                         <div class="text-xs text-white/60">{{ listing.created_at|date:"M d, Y" }}</div>
-                        <div class="text-[9px] opacity-20 uppercase font-bold">{{ listing.created_at|timesince }} ago
-                        </div>
+                        <div class="text-[9px] opacity-20 uppercase font-bold">{{ listing.created_at|timesince }} ago</div>
                     </td>
                     <td style="padding-right: 24px;">
                         <div class="d-flex gap-2 justify-end">
@@ -100,8 +94,7 @@
                 {% empty %}
                 <tr>
                     <td colspan="5" class="text-center py-24 opacity-20">
-                        <i class="material-icons mb-4"
-                            style="font-size: 40px; display: block;">business_center</i>
+                        <i class="material-icons mb-4" style="font-size: 40px; display: block;">business_center</i>
                         <p class="font-mono text-xs letter-spacing-1">REGISTRY SEGMENT IS VACANT</p>
                     </td>
                 </tr>
@@ -110,21 +103,8 @@
         </table>
     </div>
 </div>
+{% endblock %}
 
-<script>
-async function handleDelete(slug, name) {
-    const confirmed = await window.systemModal.show({
-        title: 'CRITICAL: PURGE ENTITY',
-        message: `You are about to permanently remove "${name}" from the commercial registry.`,
-        rationale: 'THIS ACTION BYPASSES THE ARCHIVE AND CANNOT BE REVERSED.',
-        verifyPhrase: 'delete',
-        confirmText: 'PURGE REGISTRY ENTRY',
-        confirmClass: 'btn-danger'
-    });
-    
-    if (confirmed) {
-        document.getElementById(`delete-form-${slug}`).submit();
-    }
-}
-</script>
+{% block extra_js %}
+<script src="{% static 'adminpanel/js/listings.js' %}"></script>
 {% endblock %}

@@ -9579,3 +9579,64 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-16 16:04:04,132] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 33544
 [2026-05-16 16:04:06,863] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 31157
 [2026-05-16 16:04:10,316] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 37548
+[2026-05-16 16:06:41,408] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-16 16:15:10,659] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-16 16:15:17,169] INFO webmaps User logged out
+[2026-05-16 16:15:17,172] INFO django.server "POST /auth/logout/ HTTP/1.1" 302 0
+[2026-05-16 16:15:17,426] INFO django.server "GET /auth/login/ HTTP/1.1" 200 15291
+[2026-05-16 16:15:17,494] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 304 0
+[2026-05-16 16:15:17,496] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-16 16:15:25,253] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-16 16:15:26,981] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-05-16 16:15:26,983] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-16 16:15:27,570] ERROR webmaps Captured error: NoReverseMatch: Reverse for 'index' not found. 'index' is not a valid view function or pattern name. @ /adminpanel/
+[2026-05-16 16:15:27,572] ERROR webmaps Unhandled exception at /adminpanel/: NoReverseMatch: Reverse for 'index' not found. 'index' is not a valid view function or pattern name.
+[2026-05-16 16:15:27,627] ERROR django.request Internal Server Error: /adminpanel/
+[2026-05-16 16:15:27,629] ERROR django.server "GET /adminpanel/ HTTP/1.1" 500 18134
+[2026-05-16 16:15:27,748] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-16 16:18:09,694] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 11476
+[2026-05-16 16:18:09,818] INFO django.server "GET /static/css/admin.css HTTP/1.1" 304 0
+[2026-05-16 16:18:10,404] INFO django.server "GET /static/adminpanel/css/admin_base.css HTTP/1.1" 200 7296
+[2026-05-16 16:18:10,776] INFO django.server "GET /static/adminpanel/js/dashboard.js HTTP/1.1" 200 1723
+[2026-05-16 16:18:10,870] INFO django.server "GET /static/adminpanel/css/dashboard.css HTTP/1.1" 200 4391
+[2026-05-16 16:18:10,961] INFO django.server "GET /static/adminpanel/js/admin_base.js HTTP/1.1" 200 3750
+[2026-05-16 16:18:12,623] WARNING django.request Not Found: /favicon.ico
+[2026-05-16 16:18:12,624] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 6080
+[2026-05-16 16:18:16,062] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 15869
+[2026-05-16 16:18:16,148] INFO django.server "GET /static/adminpanel/js/users.js HTTP/1.1" 200 1715
+[2026-05-16 16:18:16,150] INFO django.server "GET /static/adminpanel/css/users.css HTTP/1.1" 200 2537
+[2026-05-16 16:18:17,620] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 11160
+[2026-05-16 16:18:17,685] INFO django.server "GET /static/adminpanel/css/analytics.css HTTP/1.1" 200 3364
+[2026-05-16 16:18:19,110] INFO django.server "GET /adminpanel/promotions/ HTTP/1.1" 200 16837
+[2026-05-16 16:18:19,192] INFO django.server "GET /static/adminpanel/css/coupons.css HTTP/1.1" 200 5529
+[2026-05-16 16:18:19,193] INFO django.server "GET /static/adminpanel/js/coupons.js HTTP/1.1" 200 5325
+[2026-05-16 16:18:20,042] INFO django.server "GET /adminpanel/listings/ HTTP/1.1" 200 8618
+[2026-05-16 16:18:20,164] INFO django.server "GET /static/adminpanel/css/listings.css HTTP/1.1" 200 1515
+[2026-05-16 16:18:20,167] INFO django.server "GET /static/adminpanel/js/listings.js HTTP/1.1" 200 909
+[2026-05-16 16:18:20,978] INFO django.server "GET /adminpanel/users/ HTTP/1.1" 200 15869
+[2026-05-16 16:18:22,295] INFO django.server "GET /adminpanel/listings/ HTTP/1.1" 200 8618
+[2026-05-16 16:18:23,411] INFO django.server "GET /adminpanel/promotions/ HTTP/1.1" 200 16837
+[2026-05-16 16:18:24,864] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 15268
+[2026-05-16 16:18:24,946] INFO django.server "GET /static/adminpanel/css/errors.css HTTP/1.1" 200 7023
+[2026-05-16 16:18:24,949] INFO django.server "GET /static/adminpanel/js/errors.js HTTP/1.1" 200 3658
+[2026-05-16 16:18:27,176] INFO django.server "GET /adminpanel/analytics/ HTTP/1.1" 200 11160
+[2026-05-16 16:19:20,292] INFO django.server "GET / HTTP/1.1" 200 23708
+[2026-05-16 16:19:20,809] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-16 16:19:20,889] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-16 16:19:21,825] INFO django.server "GET /notifications/ HTTP/1.1" 200 19058
+[2026-05-16 16:19:21,896] INFO django.server "GET /static/css/notifications.css HTTP/1.1" 304 0
+[2026-05-16 16:19:22,066] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-16 16:19:23,834] INFO django.server "GET /users/profile/ HTTP/1.1" 200 20200
+[2026-05-16 16:19:23,945] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-16 16:19:24,625] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 11476
+[2026-05-16 16:19:24,687] INFO django.server "GET /static/adminpanel/css/admin_base.css HTTP/1.1" 304 0
+[2026-05-16 16:19:24,688] INFO django.server "GET /static/adminpanel/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-16 16:19:24,697] INFO django.server "GET /static/adminpanel/js/admin_base.js HTTP/1.1" 304 0
+[2026-05-16 16:19:24,707] INFO django.server "GET /static/adminpanel/js/dashboard.js HTTP/1.1" 304 0
+[2026-05-16 16:19:28,246] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 11476
+[2026-05-16 16:19:29,857] INFO django.server "GET / HTTP/1.1" 200 23708
+[2026-05-16 16:19:29,986] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-16 16:19:30,031] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-16 16:19:31,505] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 11476
+[2026-05-16 16:19:37,342] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 11476
+[2026-05-16 16:19:59,659] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 11477

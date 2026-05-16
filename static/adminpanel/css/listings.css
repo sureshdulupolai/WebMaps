@@ -1,0 +1,66 @@
+/* Business Entity Registry — Listings Styling */
+
+.listings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background: rgba(20,20,28,0.7);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    margin-bottom: 20px;
+}
+
+.listings-header-title {
+    font-size: 15px;
+    font-weight: 800;
+    margin: 0;
+    color: #fff;
+    letter-spacing: -0.3px;
+}
+
+.listings-header-subtitle {
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+    font-weight: 500;
+}
+
+.entity-preview {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--admin-border);
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+}
+
+.entity-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 8px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.badge-success { background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.2); }
+.badge-danger { background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.2); }
+.badge-warning { background: rgba(245, 158, 11, 0.1); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.2); }
+
+.premium-table th {
+    padding: 14px 20px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.premium-table td {
+    padding: 14px 20px;
+}

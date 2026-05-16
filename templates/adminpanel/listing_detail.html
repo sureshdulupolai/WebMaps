@@ -4,14 +4,18 @@
 {% block title %}Business Details: {{ listing.company_name }} — WebMaps Admin{% endblock %}
 {% block breadcrumb %}Business Details{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'adminpanel/css/listing_detail.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="animate-fade-in">
     <!-- Quick Identity Header -->
     <div class="glass-header d-flex justify-between align-center mb-6" style="padding: 16px 24px;">
         <div class="d-flex align-center gap-4">
-            <div style="width: 54px; height: 54px; border-radius: 14px; background: rgba(168, 85, 247, 0.05); border: 1px solid rgba(168, 85, 247, 0.1); display:grid; place-items:center; overflow: hidden;">
+            <div class="entity-header-icon">
                 {% if listing.images.exists %}
-                <img src="{{ listing.images.first.image.url }}" alt="" style="width:100%; height:100%; object-fit:cover;">
+                <img src="{{ listing.images.first.image.url }}" alt="">
                 {% else %}
                 <i class="material-icons opacity-10" style="font-size: 24px;">business</i>
                 {% endif %}
@@ -46,7 +50,7 @@
         <!-- Technical Specifications -->
         <div class="lg:col-span-2">
             {% if listing.status == 'pending' %}
-            <div class="glass-card mb-6" style="background: rgba(168, 85, 247, 0.03); border-color: rgba(168, 85, 247, 0.15); padding: 24px;">
+            <div class="verification-protocol-card mb-6">
                 <div class="d-flex align-center gap-3 mb-4">
                     <div style="color: var(--primary);"><i class="material-icons">verified_user</i></div>
                     <h3 class="text-[11px] font-black m-0 text-white uppercase tracking-widest">Administrative Verification Protocol</h3>
@@ -56,7 +60,7 @@
                     <form method="post" action="{% url 'adminpanel:approve_listing' listing.slug %}" class="m-0">
                         {% csrf_token %}<button type="submit" class="admin-btn btn-primary" style="padding: 10px 24px; font-size: 11px; font-weight: 900;">AUTHORIZE ENTITY</button>
                     </form>
-                    <button class="admin-btn btn-outline" style="padding: 10px 24px; font-size: 11px; font-weight: 900;" onclick="document.getElementById('reject-form').classList.toggle('d-none')">REJECT ACCESS</button>
+                    <button class="admin-btn btn-outline" style="padding: 10px 24px; font-size: 11px; font-weight: 900;" onclick="toggleRejectForm()">REJECT ACCESS</button>
                 </div>
                 
                 <form id="reject-form" method="post" action="{% url 'adminpanel:reject_listing' listing.slug %}" class="mt-5 d-none">
@@ -127,7 +131,7 @@
                     <i class="material-icons" style="font-size: 18px;">account_circle</i>
                     Origin Authority
                 </h3>
-                <div class="d-flex align-center gap-3 mb-6 bg-white-5 p-4 rounded-2xl border border-white-5">
+                <div class="authority-chip mb-6">
                     <div class="chip-avatar" style="width: 44px; height: 44px; font-size: 16px; background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.2); color: var(--admin-accent);">
                         {{ listing.host.username|first|upper }}
                     </div>
@@ -148,7 +152,7 @@
                     Subscription Phase
                 </h3>
                 {% if subscription %}
-                <div class="p-6 rounded-2xl border border-white-5" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), transparent);">
+                <div class="subscription-card">
                     <div class="text-[16px] font-black text-white mb-1">{{ subscription.plan_name|upper }}</div>
                     <div class="text-[10px] font-black text-success uppercase tracking-widest">{{ subscription.status }} SITE</div>
                     <div class="mt-8 pt-6 border-top border-white-5 d-flex justify-between align-end">
@@ -169,57 +173,8 @@
         </div>
     </div>
 </div>
-
-{% endblock content %}
+{% endblock %}
 
 {% block extra_js %}
-<script>
-async function handleDeleteBusiness(slug) {
-    console.log("Delete triggered for:", slug);
-    const confirmed = await systemModal.show({
-        title: 'CRITICAL: DELETE BUSINESS',
-        message: 'You are about to permanently remove this business and all its associated data.',
-        rationale: 'THIS ACTION IS IRREVERSIBLE. YOU CANNOT UNDO THIS.',
-        verifyPhrase: 'delete',
-        confirmText: 'DELETE PERMANENTLY',
-        confirmClass: 'btn-danger-glow'
-    });
-    
-    if (confirmed) {
-        document.getElementById(`delete-form-${slug}`).submit();
-    }
-}
-</script>
-<style>
-    .metadata-row {
-        display: flex;
-        align-items: flex-start;
-        padding: 24px 32px;
-        border-bottom: 1px solid rgba(255,255,255,0.03);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .metadata-row:hover {
-        background: rgba(255,255,255,0.015);
-    }
-    .metadata-label {
-        width: 220px;
-        min-width: 220px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        font-size: 10px;
-        font-weight: 900;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        color: rgba(255,255,255,0.25);
-    }
-    .metadata-label i { font-size: 16px; opacity: 0.4; }
-    .metadata-value {
-        font-size: 15px;
-        font-weight: 600;
-        color: #fff;
-        line-height: 1.6;
-        letter-spacing: -0.2px;
-    }
-</style>
+<script src="{% static 'adminpanel/js/listing_detail.js' %}"></script>
 {% endblock %}

@@ -8,11 +8,15 @@
     <span class="text-white">{{ target_user.username }}</span>
 {% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'adminpanel/css/user_detail.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="animate-fade-in px-4">
     
     <!-- Professional Header -->
-    <div style="display:flex; justify-content:space-between; align-items:center; padding: 20px 32px; background: rgba(20,20,28,0.7); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; margin-bottom: 32px;">
+    <div class="user-detail-header">
         <div style="display:flex; align-items:center; gap:16px;">
             <div style="width:48px; height:48px; border-radius:14px; background:rgba(168,85,247,0.1); border:1px solid rgba(168,85,247,0.2); display:grid; place-items:center;">
                 <i class="material-icons" style="font-size:24px; color:var(--admin-accent);">person</i>
@@ -34,30 +38,30 @@
         </a>
     </div>
 
-    <!-- Top Metrics Row: 3 Cards Per Line -->
+    <!-- Top Metrics Row -->
     <div class="metrics-grid mb-8">
         <!-- Gross Revenue -->
-        <div class="glass-card stat-card-mini" style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.05), transparent);">
+        <div class="stat-card-mini" style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.05), transparent);">
             <div class="stat-card-inner">
                 <div class="stat-card-data">
                     <p class="stat-card-label">Gross Revenue</p>
                     <h2 class="stat-card-value">₹{{ total_paid }}</h2>
                 </div>
-                <div class="stat-card-icon bg-green-500/10 text-green-400">
+                <div class="stat-card-icon" style="background:rgba(34, 197, 94, 0.1); color:#4ade80;">
                     <i class="material-icons">payments</i>
                 </div>
             </div>
-            <div class="stat-card-footer text-green-400">LIFETIME_LTV</div>
+            <div class="stat-card-footer" style="color:#4ade80;">LIFETIME_LTV</div>
         </div>
 
         <!-- Platform Assets -->
-        <div class="glass-card stat-card-mini">
+        <div class="stat-card-mini">
             <div class="stat-card-inner">
                 <div class="stat-card-data">
                     <p class="stat-card-label">Assets</p>
                     <h2 class="stat-card-value">{{ listings.count }}</h2>
                 </div>
-                <div class="stat-card-icon bg-indigo-500/10 text-indigo-400">
+                <div class="stat-card-icon" style="background:rgba(99, 102, 241, 0.1); color:#818cf8;">
                     <i class="material-icons">business_center</i>
                 </div>
             </div>
@@ -65,13 +69,13 @@
         </div>
 
         <!-- Redemptions -->
-        <div class="glass-card stat-card-mini">
+        <div class="stat-card-mini">
             <div class="stat-card-inner">
                 <div class="stat-card-data">
                     <p class="stat-card-label">Coupons</p>
                     <h2 class="stat-card-value">{{ coupon_usages.count }}</h2>
                 </div>
-                <div class="stat-card-icon bg-purple-500/10 text-purple-400">
+                <div class="stat-card-icon" style="background:rgba(168, 85, 247, 0.1); color:var(--admin-accent);">
                     <i class="material-icons">style</i>
                 </div>
             </div>
@@ -79,13 +83,13 @@
         </div>
 
         <!-- Engagement -->
-        <div class="glass-card stat-card-mini">
+        <div class="stat-card-mini">
             <div class="stat-card-inner">
                 <div class="stat-card-data">
                     <p class="stat-card-label">Reviews</p>
                     <h2 class="stat-card-value">{{ reviews.count }}</h2>
                 </div>
-                <div class="stat-card-icon bg-orange-500/10 text-orange-400">
+                <div class="stat-card-icon" style="background:rgba(249, 115, 22, 0.1); color:#fb923c;">
                     <i class="material-icons">forum</i>
                 </div>
             </div>
@@ -93,20 +97,20 @@
         </div>
 
         <!-- Promotion Intel -->
-        <div class="glass-card stat-card-mini" style="background: rgba(129, 140, 248, 0.05);">
+        <div class="stat-card-mini" style="background: rgba(129, 140, 248, 0.05);">
             <div class="stat-card-inner">
                 <div class="stat-card-data" style="min-width: 0;">
                     <p class="stat-card-label">Promotion Intel</p>
                     {% if coupon_usages %}
                         {% with usage=coupon_usages.first %}
                         <h2 class="stat-card-value-small" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">{{ usage.coupon.code }}</h2>
-                        <div class="stat-card-subvalue text-green-400">-₹{{ usage.discount_applied }}</div>
+                        <div class="stat-card-subvalue" style="color:#4ade80;">-₹{{ usage.discount_applied }}</div>
                         {% endwith %}
                     {% else %}
                         <h2 class="stat-card-value">NONE</h2>
                     {% endif %}
                 </div>
-                <div class="stat-card-icon bg-indigo-500/10 text-indigo-400">
+                <div class="stat-card-icon" style="background:rgba(129, 140, 248, 0.1); color:#818cf8;">
                     <i class="material-icons">local_offer</i>
                 </div>
             </div>
@@ -227,107 +231,4 @@
         </div>
     </div>
 </div>
-
-<style>
-    .grid { display: grid; }
-    
-    /* Metrics Grid: 3 cards per line */
-    .metrics-grid {
-        display: grid;
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-        gap: 20px;
-    }
-    @media (min-width: 640px) { .metrics-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (min-width: 1024px) { .metrics-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-
-    .stat-card-mini {
-        padding: 24px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        min-height: 120px;
-    }
-    .stat-card-inner {
-        display: flex;
-        justify-content: space-between;
-        align-items: start;
-        gap: 12px;
-    }
-    .stat-card-label {
-        font-size: 10px;
-        font-weight: 800;
-        color: rgba(255,255,255,0.3);
-        text-transform: uppercase;
-        margin: 0 0 4px;
-    }
-    .stat-card-value {
-        font-size: 28px;
-        font-weight: 900;
-        color: #fff;
-        margin: 0;
-        letter-spacing: -1px;
-    }
-    .stat-card-value-small {
-        font-size: 16px;
-        font-weight: 900;
-        color: #818cf8;
-        margin: 0;
-        font-family: 'JetBrains Mono', monospace;
-    }
-    .stat-card-subvalue {
-        font-size: 10px;
-        font-weight: 800;
-        margin-top: 4px;
-    }
-    .stat-card-icon {
-        width: 44px;
-        height: 44px;
-        border-radius: 12px;
-        display: grid;
-        place-items: center;
-        flex-shrink: 0;
-    }
-    .stat-card-icon i { font-size: 20px; }
-    .stat-card-footer {
-        margin-top: 16px;
-        font-size: 9px;
-        color: rgba(255,255,255,0.2);
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-
-    .status-badge {
-        padding: 2px 8px;
-        font-size: 8px;
-        font-weight: 800;
-        border-radius: 4px;
-        display: inline-block;
-    }
-    .badge-success { background: rgba(34, 197, 94, 0.1); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.2); }
-    .badge-danger { background: rgba(239, 68, 68, 0.1); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.2); }
-    .badge-info { background: rgba(59, 130, 246, 0.1); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.2); }
-    .badge-outline { background: transparent; color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.1); }
-
-    .premium-table { border-collapse: collapse; width: 100%; }
-    .premium-table th {
-        font-size: 9px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: rgba(255,255,255,0.2);
-        padding: 16px 20px;
-        text-align: left;
-        border-bottom: 1px solid rgba(255,255,255,0.03);
-    }
-    .premium-table td {
-        padding: 18px 20px;
-        border-bottom: 1px solid rgba(255,255,255,0.01);
-    }
-
-    @media (min-width: 1024px) {
-        .lg\:grid-cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
-        .lg\:col-span-4 { grid-column: span 4 / span 4; }
-        .lg\:col-span-8 { grid-column: span 8 / span 8; }
-    }
-</style>
 {% endblock %}

@@ -2,19 +2,24 @@
 {% load static %}
 
 {% block title %}Executive Overview — WebMaps Admin{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'adminpanel/css/dashboard.css' %}">
+{% endblock %}
+
 {% block breadcrumb %}Overview{% endblock %}
 
 {% block content %}
 <div class="animate-fade-in space-y-6">
     <!-- Premium Dashboard Header -->
-    <div style="display:flex; justify-content:space-between; align-items:center; padding: 12px 24px; background: rgba(20,20,28,0.7); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; margin-bottom: 24px;">
-        <div style="display:flex; align-items:center; gap:12px;">
-            <div style="width:36px; height:36px; border-radius:10px; background:rgba(168,85,247,0.1); border:1px solid rgba(168,85,247,0.2); display:grid; place-items:center;">
+    <div class="dashboard-header-premium">
+        <div class="dashboard-header-info">
+            <div class="dashboard-header-icon">
                 <i class="material-icons" style="font-size:20px; color:var(--admin-accent);">dashboard</i>
             </div>
             <div>
-                <h1 style="font-size:16px; font-weight:800; margin:0; color:#fff; letter-spacing:-0.2px;">Executive Overview</h1>
-                <p style="font-size:10px; color:rgba(255,255,255,0.3); margin:0; font-weight:600; text-transform:uppercase; letter-spacing:0.5px;">Real-time system telemetry</p>
+                <h1 class="dashboard-header-title">Executive Overview</h1>
+                <p class="dashboard-header-subtitle">Real-time system telemetry</p>
             </div>
         </div>
         <div class="live-indicator" style="font-size:10px; padding:6px 14px; background:rgba(16,185,129,0.05); border:1px solid rgba(16,185,129,0.15); border-radius:10px; color:#10b981; font-weight:800; display:flex; align-items:center; gap:8px;">
@@ -23,55 +28,55 @@
     </div>
 
     <!-- Tier 1 Stats: Revenue & Scale -->
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px; margin-bottom:24px;">
-        <div class="glass-card" style="padding:20px; background: linear-gradient(135deg, rgba(168,85,247,0.05), transparent);">
-            <div style="display:flex; justify-content:space-between; align-items:start; mb-4">
+    <div class="stat-tier-grid">
+        <div class="stat-tier-card" style="background: linear-gradient(135deg, rgba(168,85,247,0.05), transparent);">
+            <div class="d-flex justify-between align-start">
                 <div>
-                    <p style="font-size:10px; font-weight:800; color:rgba(255,255,255,0.3); text-transform:uppercase; margin:0 0 4px;">Total Revenue</p>
-                    <h2 style="font-size:28px; font-weight:900; color:#fff; margin:0; letter-spacing:-1px;">₹{{ stats.total_revenue|default:"0" }}</h2>
+                    <p class="stat-tier-label">Total Revenue</p>
+                    <h2 class="stat-tier-value">₹{{ stats.total_revenue|default:"0" }}</h2>
                 </div>
-                <div style="width:40px; height:40px; border-radius:12px; background:rgba(16,185,129,0.1); color:#10b981; display:grid; place-items:center;">
+                <div class="stat-tier-icon" style="background:rgba(16,185,129,0.1); color:#10b981;">
                     <i class="material-icons">payments</i>
                 </div>
             </div>
-            <div style="margin-top:16px; font-size:10px; color:#10b981; font-weight:700;">↑ 12.5% vs last month</div>
+            <div class="stat-tier-change text-green">↑ 12.5% vs last month</div>
         </div>
 
-        <div class="glass-card" style="padding:20px;">
-            <div style="display:flex; justify-content:space-between; align-items:start; mb-4">
+        <div class="stat-tier-card">
+            <div class="d-flex justify-between align-start">
                 <div>
-                    <p style="font-size:10px; font-weight:800; color:rgba(255,255,255,0.3); text-transform:uppercase; margin:0 0 4px;">Active Subscriptions</p>
-                    <h2 style="font-size:28px; font-weight:900; color:#fff; margin:0; letter-spacing:-1px;">{{ stats.active_subs }}</h2>
+                    <p class="stat-tier-label">Active Subscriptions</p>
+                    <h2 class="stat-tier-value">{{ stats.active_subs }}</h2>
                 </div>
-                <div style="width:40px; height:40px; border-radius:12px; background:rgba(59,130,246,0.1); color:#3b82f6; display:grid; place-items:center;">
+                <div class="stat-tier-icon" style="background:rgba(59,130,246,0.1); color:#3b82f6;">
                     <i class="material-icons">card_membership</i>
                 </div>
             </div>
-            <div style="margin-top:16px; font-size:10px; color:rgba(255,255,255,0.2); font-weight:600;">{{ stats.total_listings }} total listings tracked</div>
+            <div class="stat-tier-change opacity-30">{{ stats.total_listings }} total listings tracked</div>
         </div>
 
-        <div class="glass-card" style="padding:20px;">
-            <div style="display:flex; justify-content:space-between; align-items:start; mb-4">
+        <div class="stat-tier-card">
+            <div class="d-flex justify-between align-start">
                 <div>
-                    <p style="font-size:10px; font-weight:800; color:rgba(255,255,255,0.3); text-transform:uppercase; margin:0 0 4px;">Growth Index</p>
-                    <h2 style="font-size:28px; font-weight:900; color:#fff; margin:0; letter-spacing:-1px;">{{ stats.total_users }}</h2>
+                    <p class="stat-tier-label">Growth Index</p>
+                    <h2 class="stat-tier-value">{{ stats.total_users }}</h2>
                 </div>
-                <div style="width:40px; height:40px; border-radius:12px; background:rgba(168,85,247,0.1); color:var(--admin-accent); display:grid; place-items:center;">
+                <div class="stat-tier-icon" style="background:rgba(168,85,247,0.1); color:var(--admin-accent);">
                     <i class="material-icons">trending_up</i>
                 </div>
             </div>
-            <div style="margin-top:16px; font-size:10px; color:rgba(255,255,255,0.2); font-weight:600;">{{ stats.total_hosts }} hosts / {{ stats.total_customers }} customers</div>
+            <div class="stat-tier-change opacity-30">{{ stats.total_hosts }} hosts / {{ stats.total_customers }} customers</div>
         </div>
     </div>
 
-    <div style="display:grid; grid-template-columns: 2fr 1fr; gap:20px;">
+    <div class="dashboard-layout-grid">
         <div class="space-y-6">
             <!-- Strategic Traffic Horizon (Chart) -->
-            <div class="glass-card" style="padding:24px;">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+            <div class="chart-section">
+                <div class="d-flex justify-between align-center mb-6">
                     <div>
-                        <h3 style="font-size:11px; font-weight:900; color:rgba(255,255,255,0.2); text-transform:uppercase; letter-spacing:1px; margin:0;">Strategic Traffic Horizon</h3>
-                        <p style="font-size:14px; font-weight:700; color:#fff; margin:4px 0 0;">Global Engagement Signals</p>
+                        <h3 class="chart-header-title">Strategic Traffic Horizon</h3>
+                        <p class="chart-header-subtitle">Global Engagement Signals</p>
                     </div>
                     <div style="padding:6px 12px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:8px; font-size:10px; font-weight:700; color:rgba(255,255,255,0.5);">
                         TOTAL_EVENTS: {{ stats.total_events }}
@@ -83,25 +88,25 @@
             </div>
 
             <!-- Verification Queue -->
-            <div class="glass-card" style="padding:0; overflow:hidden;">
-                <div style="padding:16px 24px; border-bottom:1px solid rgba(255,255,255,0.03); display:flex; justify-content:space-between; align-items:center;">
-                    <div style="display:flex; align-items:center; gap:10px;">
+            <div class="queue-section">
+                <div class="queue-header">
+                    <div class="d-flex align-center gap-2">
                         <i class="material-icons" style="font-size:18px; color:#f59e0b;">pending_actions</i>
                         <span style="font-size:11px; font-weight:900; color:#fff; text-transform:uppercase; letter-spacing:1px;">Verification Queue</span>
                     </div>
                     <span style="font-size:10px; font-weight:800; color:#f59e0b;">{{ recent_listings|length }} PENDING</span>
                 </div>
-                <div style="padding:0;">
+                <div>
                     {% for listing in recent_listings %}
-                    <div style="padding:16px 24px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.02);">
-                        <div style="display:flex; gap:12px; align-items:center;">
+                    <div class="queue-item">
+                        <div class="d-flex gap-3 align-center">
                             <div style="width:32px; height:32px; border-radius:8px; background:rgba(255,255,255,0.03); display:grid; place-items:center; font-size:14px; color:rgba(255,255,255,0.2);">{{ forloop.counter }}</div>
                             <div>
                                 <div style="font-size:13px; font-weight:700; color:#fff;">{{ listing.company_name }}</div>
                                 <div style="font-size:9px; color:rgba(255,255,255,0.2); font-weight:600;">BY {{ listing.host.username|upper }} — {{ listing.created_at|timesince }} ago</div>
                             </div>
                         </div>
-                        <div style="display:flex; gap:8px;">
+                        <div class="d-flex gap-2">
                             <form method="post" action="{% url 'adminpanel:approve_listing' listing.slug %}" style="margin:0;">
                                 {% csrf_token %}
                                 <button type="submit" class="action-icon-btn" style="color:#10b981;" title="Approve"><i class="material-icons">check</i></button>
@@ -121,14 +126,14 @@
 
         <div class="space-y-6">
             <!-- Top Performers -->
-            <div class="glass-card" style="padding:24px;">
-                <h3 style="font-size:10px; font-weight:900; color:rgba(255,255,255,0.2); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:20px;">Top Performing Nodes</h3>
+            <div class="performer-section">
+                <h3 class="chart-header-title mb-5" style="letter-spacing: 1.5px;">Top Performing Nodes</h3>
                 <div class="space-y-4">
                     {% for item in top_listings %}
-                    <div style="display:flex; align-items:center; gap:12px; padding:12px; border-radius:12px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03);">
+                    <div class="performer-item">
                         <div style="width:32px; height:32px; border-radius:8px; background:rgba(168,85,247,0.1); color:var(--admin-accent); display:grid; place-items:center; font-size:14px; font-weight:900;">{{ forloop.counter }}</div>
                         <div style="flex:1; min-width:0;">
-                            <div style="font-size:12px; font-weight:700; color:#fff; truncate;">{{ item.listing.company_name }}</div>
+                            <div style="font-size:12px; font-weight:700; color:#fff;" class="truncate">{{ item.listing.company_name }}</div>
                             <div style="font-size:9px; color:rgba(255,255,255,0.3); font-weight:600;">{{ item.views }} IMPRESSIONS</div>
                         </div>
                     </div>
@@ -137,15 +142,15 @@
             </div>
 
             <!-- Kernel Anomalies -->
-            <div class="glass-card" style="padding:24px; border-color:rgba(239,68,68,0.15);">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-                    <h3 style="font-size:10px; font-weight:900; color:#ef4444; text-transform:uppercase; letter-spacing:1.5px; margin:0;">Kernel Anomalies</h3>
+            <div class="anomaly-section">
+                <div class="d-flex justify-between align-center mb-5">
+                    <h3 class="chart-header-title" style="color:#ef4444; letter-spacing:1.5px;">Kernel Anomalies</h3>
                     <a href="{% url 'adminpanel:errors' %}" style="font-size:9px; font-weight:800; color:rgba(255,255,255,0.2); text-decoration:none;">VIEW_ALL</a>
                 </div>
                 <div class="space-y-3">
                     {% for err in recent_errors %}
-                    <div style="font-size:11px; padding:8px; border-radius:8px; background:rgba(239,68,68,0.05); border-left:2px solid #ef4444;">
-                        <div style="font-weight:700; color:#fff; truncate;">{{ err.error_message|truncatechars:40 }}</div>
+                    <div class="anomaly-item">
+                        <div style="font-weight:700; color:#fff;" class="truncate">{{ err.error_message|truncatechars:40 }}</div>
                         <div style="font-size:8px; color:rgba(255,255,255,0.3); margin-top:2px;">{{ err.last_seen_at|timesince }} ago</div>
                     </div>
                     {% empty %}
@@ -157,82 +162,18 @@
             </div>
 
             <!-- Promotion Intel -->
-            <div class="glass-card" style="padding:20px; background:rgba(16,185,129,0.03);">
-                <div style="display:flex; align-items:center; gap:10px; margin-bottom:4px;">
+            <div class="promo-intel-card">
+                <div class="d-flex align-center gap-2 mb-1">
                     <i class="material-icons" style="font-size:18px; color:#10b981;">local_offer</i>
                     <span style="font-size:16px; font-weight:900; color:#fff;">{{ stats.active_coupons }}</span>
                 </div>
-                <p style="font-size:10px; font-weight:700; color:rgba(255,255,255,0.3); text-transform:uppercase; margin:0;">Active Promotions</p>
+                <p class="stat-tier-label">Active Promotions</p>
             </div>
         </div>
     </div>
 </div>
-
-<style>
-    .space-y-6 > * + * { margin-top: 24px; }
-    .space-y-4 > * + * { margin-top: 16px; }
-    .space-y-3 > * + * { margin-top: 12px; }
-    .pulse-dot {
-        display: inline-block;
-        width: 6px;
-        height: 6px;
-        background: #10b981;
-        border-radius: 50%;
-        box-shadow: 0 0 10px #10b981;
-        animation: wmPulse 2s infinite;
-    }
-    @keyframes wmPulse {
-        0% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.4; transform: scale(1.4); }
-        100% { opacity: 1; transform: scale(1); }
-    }
-    .truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-</style>
 {% endblock content %}
 
 {% block extra_js %}
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const ctx = document.getElementById('trafficChart').getContext('2d');
-        const gradient = ctx.createLinearGradient(0, 0, 0, 200);
-        gradient.addColorStop(0, 'rgba(168, 85, 247, 0.2)');
-        gradient.addColorStop(1, 'rgba(168, 85, 247, 0)');
-
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', 'Now'],
-                datasets: [{
-                    label: 'Engagement',
-                    data: [18, 12, 25, 45, 38, 55, 62],
-                    borderColor: '#a855f7',
-                    backgroundColor: gradient,
-                    borderWidth: 3,
-                    tension: 0.4,
-                    fill: true,
-                    pointBackgroundColor: '#fff',
-                    pointBorderColor: '#a855f7',
-                    pointBorderWidth: 2,
-                    pointRadius: 0,
-                    pointHoverRadius: 6
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: {
-                    y: {
-                        display: false,
-                        grid: { display: false }
-                    },
-                    x: {
-                        grid: { display: false },
-                        ticks: { color: 'rgba(255,255,255,0.2)', font: { size: 9, weight: '700' } }
-                    }
-                }
-            }
-        });
-    });
-</script>
+<script src="{% static 'adminpanel/js/dashboard.js' %}"></script>
 {% endblock extra_js %}
