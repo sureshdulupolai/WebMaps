@@ -10032,3 +10032,179 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-16 17:09:31,012] INFO django.utils.autoreload Watching for file changes with StatReloader
 [2026-05-16 17:11:37,944] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\WebMaps\settings.py changed, reloading.
 [2026-05-16 17:11:41,683] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-16 17:14:06,138] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-16 17:14:18,312] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\WebMaps\settings.py changed, reloading.
+[2026-05-16 17:14:21,627] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-16 17:14:33,851] INFO django.server "GET / HTTP/1.1" 200 23801
+[2026-05-16 17:14:34,054] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-16 17:14:34,156] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-16 17:14:37,986] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 49323
+[2026-05-16 17:14:38,069] INFO django.server "GET /static/css/footer.css HTTP/1.1" 304 0
+[2026-05-16 17:14:38,069] INFO django.server "GET /static/css/listing_detail.css HTTP/1.1" 304 0
+[2026-05-16 17:14:38,246] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-16 17:14:43,599] INFO django.server "GET / HTTP/1.1" 200 23801
+[2026-05-16 17:14:43,741] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-16 17:14:43,820] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-16 17:14:46,301] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 49323
+[2026-05-16 17:14:46,466] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-16 17:14:50,341] ERROR webmaps Captured error: Http404: No Listing matches the given query. @ /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113903/
+[2026-05-16 17:14:50,342] ERROR webmaps Unhandled exception at /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113903/: Http404: No Listing matches the given query.
+[2026-05-16 17:14:50,382] ERROR django.request Internal Server Error: /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113903/
+[2026-05-16 17:14:50,384] ERROR django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113903/ HTTP/1.1" 500 11016
+[2026-05-16 17:14:50,889] INFO django.server "GET /static/errors/css/500.css HTTP/1.1" 200 3834
+[2026-05-16 17:14:50,903] INFO django.server "GET /static/errors/js/500.js HTTP/1.1" 200 161
+[2026-05-16 17:14:50,982] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-16 17:15:46,447] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 49323
+[2026-05-16 17:15:46,648] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-16 17:15:48,479] INFO webmaps User logged out
+[2026-05-16 17:15:48,483] INFO django.server "POST /auth/logout/ HTTP/1.1" 302 0
+[2026-05-16 17:15:48,514] INFO django.server "GET / HTTP/1.1" 200 22598
+[2026-05-16 17:15:48,727] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-16 17:15:49,713] INFO django.server "GET /auth/login/ HTTP/1.1" 200 8051
+[2026-05-16 17:15:49,786] INFO django.server "GET /static/auth/css/auth_base.css HTTP/1.1" 304 0
+[2026-05-16 17:15:49,786] INFO django.server "GET /static/auth/js/auth_base.js HTTP/1.1" 304 0
+[2026-05-16 17:15:55,713] INFO webmaps Login attempt: User found for sureshpolai63@gmail.com
+[2026-05-16 17:15:57,307] INFO webmaps User logged in: sureshpolai63@gmail.com
+[2026-05-16 17:15:57,310] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-16 17:15:57,531] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 11830
+[2026-05-16 17:15:57,620] INFO django.server "GET /static/adminpanel/css/admin_base.css HTTP/1.1" 304 0
+[2026-05-16 17:15:57,621] INFO django.server "GET /static/adminpanel/css/dashboard.css HTTP/1.1" 304 0
+[2026-05-16 17:15:57,633] INFO django.server "GET /static/adminpanel/js/admin_base.js HTTP/1.1" 304 0
+[2026-05-16 17:15:57,634] INFO django.server "GET /static/adminpanel/js/dashboard.js HTTP/1.1" 304 0
+[2026-05-16 17:15:58,816] WARNING django.request Not Found: /favicon.ico
+[2026-05-16 17:15:58,822] WARNING django.server "GET /favicon.ico HTTP/1.1" 404 6080
+[2026-05-16 17:15:59,442] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 19089
+[2026-05-16 17:15:59,512] INFO django.server "GET /static/adminpanel/css/errors.css HTTP/1.1" 304 0
+[2026-05-16 17:15:59,513] INFO django.server "GET /static/adminpanel/js/errors.js HTTP/1.1" 304 0
+[2026-05-16 17:18:11,127] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\middleware\middleware.py changed, reloading.
+[2026-05-16 17:18:15,650] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-16 17:18:22,163] INFO django.server "POST /adminpanel/errors/clear-all/ HTTP/1.1" 302 0
+[2026-05-16 17:18:22,220] INFO django.server "GET /adminpanel/errors/ HTTP/1.1" 200 8420
+[2026-05-16 17:18:29,403] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\WebMaps\settings.py changed, reloading.
+[2026-05-16 17:18:32,666] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-16 17:19:32,427] INFO django.server "GET /adminpanel/ HTTP/1.1" 200 11349
+[2026-05-16 17:19:33,795] INFO webmaps User logged out
+[2026-05-16 17:19:33,798] INFO django.server "GET /auth/logout/ HTTP/1.1" 302 0
+[2026-05-16 17:19:33,850] INFO django.server "GET / HTTP/1.1" 200 22598
+[2026-05-16 17:19:34,187] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-16 17:19:35,376] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 47022
+[2026-05-16 17:19:35,451] INFO django.server "GET /static/css/footer.css HTTP/1.1" 304 0
+[2026-05-16 17:19:40,674] ERROR webmaps Captured error: Http404: No Listing matches the given query. @ /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:19:40,675] ERROR webmaps Unhandled exception at /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/: Http404: No Listing matches the given query.
+[2026-05-16 17:19:40,688] ERROR django.request Internal Server Error: /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:19:40,690] ERROR django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/ HTTP/1.1" 500 9813
+[2026-05-16 17:19:40,747] INFO django.server "GET /static/errors/css/500.css HTTP/1.1" 304 0
+[2026-05-16 17:19:40,749] INFO django.server "GET /static/errors/js/500.js HTTP/1.1" 304 0
+[2026-05-16 17:19:51,513] ERROR webmaps Captured error: Http404: No Listing matches the given query. @ /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:19:51,516] ERROR webmaps Unhandled exception at /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/: Http404: No Listing matches the given query.
+[2026-05-16 17:19:51,531] ERROR django.request Internal Server Error: /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:19:51,532] ERROR django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/ HTTP/1.1" 500 9813
+[2026-05-16 17:19:52,189] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-16 17:19:52,196] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-16 17:19:52,206] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4459
+[2026-05-16 17:19:52,223] INFO django.server "GET /static/errors/css/500.css HTTP/1.1" 200 3834
+[2026-05-16 17:19:52,237] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 20563
+[2026-05-16 17:19:52,554] INFO django.server "GET /static/css/footer.css HTTP/1.1" 200 3515
+[2026-05-16 17:19:52,670] INFO django.server "GET /static/errors/js/500.js HTTP/1.1" 200 161
+[2026-05-16 17:19:52,676] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-16 17:22:06,407] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\middleware\middleware.py changed, reloading.
+[2026-05-16 17:22:09,426] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-16 17:31:59,190] ERROR webmaps Captured error: Http404: No Listing matches the given query. @ /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:31:59,201] ERROR webmaps Unhandled exception at /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/: Http404: No Listing matches the given query.
+[2026-05-16 17:31:59,422] ERROR django.request Internal Server Error: /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:31:59,425] ERROR django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/ HTTP/1.1" 500 9813
+[2026-05-16 17:31:59,508] INFO django.server "GET /static/errors/js/500.js HTTP/1.1" 304 0
+[2026-05-16 17:31:59,509] INFO django.server "GET /static/errors/css/500.css HTTP/1.1" 304 0
+[2026-05-16 17:31:59,512] INFO django.server "GET /static/css/footer.css HTTP/1.1" 304 0
+[2026-05-16 17:32:00,919] INFO django.server "GET / HTTP/1.1" 200 22598
+[2026-05-16 17:32:01,302] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-16 17:32:02,437] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 47022
+[2026-05-16 17:32:02,502] INFO django.server "GET /static/css/listing_detail.css HTTP/1.1" 304 0
+[2026-05-16 17:33:07,272] ERROR webmaps Captured error: Http404: No Listing matches the given query. @ /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:33:07,275] ERROR webmaps Unhandled exception at /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/: Http404: No Listing matches the given query.
+[2026-05-16 17:33:07,281] ERROR django.request Internal Server Error: /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:33:07,285] ERROR django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/ HTTP/1.1" 500 9813
+[2026-05-16 17:35:54,713] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\middleware\middleware.py changed, reloading.
+[2026-05-16 17:35:58,189] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-16 17:37:09,302] ERROR webmaps Captured error: Http404: No Listing matches the given query. @ /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:37:09,304] ERROR webmaps Unhandled exception at /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/: Http404: No Listing matches the given query.
+[2026-05-16 17:37:09,542] ERROR django.request Internal Server Error: /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:37:09,547] ERROR django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/ HTTP/1.1" 500 9813
+[2026-05-16 17:37:09,641] INFO django.server "GET /static/errors/css/500.css HTTP/1.1" 304 0
+[2026-05-16 17:37:09,642] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-16 17:37:09,643] INFO django.server "GET /static/errors/js/500.js HTTP/1.1" 304 0
+[2026-05-16 17:37:09,650] INFO django.server "GET /static/css/footer.css HTTP/1.1" 304 0
+[2026-05-16 17:37:09,651] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 304 0
+[2026-05-16 17:37:10,932] INFO django.server "GET / HTTP/1.1" 200 22598
+[2026-05-16 17:37:11,075] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-05-16 17:37:11,084] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-16 17:37:11,325] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-16 17:37:12,459] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 47022
+[2026-05-16 17:37:35,123] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\middleware\middleware.py changed, reloading.
+[2026-05-16 17:37:38,470] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-16 17:38:19,867] ERROR webmaps Captured error: Http404: No Listing matches the given query. @ /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:38:19,868] ERROR webmaps Unhandled exception at /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/: Http404: No Listing matches the given query.
+[2026-05-16 17:38:19,959] ERROR django.request Internal Server Error: /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:38:19,961] ERROR django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/ HTTP/1.1" 500 9813
+[2026-05-16 17:41:01,958] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\middleware\middleware.py changed, reloading.
+[2026-05-16 17:41:05,207] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-16 17:42:07,574] ERROR webmaps Captured error: Http404: No Listing matches the given query. @ /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:42:07,587] ERROR webmaps Unhandled exception at /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/: Http404: No Listing matches the given query.
+[2026-05-16 17:42:07,803] ERROR django.request Internal Server Error: /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:42:07,806] ERROR django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/ HTTP/1.1" 500 9813
+[2026-05-16 17:42:07,882] INFO django.server "GET /static/css/footer.css HTTP/1.1" 304 0
+[2026-05-16 17:42:09,305] INFO django.server "GET / HTTP/1.1" 200 22598
+[2026-05-16 17:42:09,722] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-16 17:42:10,996] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 47022
+[2026-05-16 17:42:13,884] ERROR webmaps Captured error: Http404: No Listing matches the given query. @ /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:42:13,885] ERROR webmaps Unhandled exception at /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/: Http404: No Listing matches the given query.
+[2026-05-16 17:42:13,895] ERROR django.request Internal Server Error: /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:42:13,898] ERROR django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/ HTTP/1.1" 500 9813
+[2026-05-16 17:42:14,530] ERROR webmaps Captured error: Http404: No Listing matches the given query. @ /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:42:14,531] ERROR webmaps Unhandled exception at /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/: Http404: No Listing matches the given query.
+[2026-05-16 17:42:14,537] ERROR django.request Internal Server Error: /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:42:14,538] ERROR django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/ HTTP/1.1" 500 9813
+[2026-05-16 17:42:23,427] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 47022
+[2026-05-16 17:43:57,352] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 47022
+[2026-05-16 17:43:57,733] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 20563
+[2026-05-16 17:43:57,773] INFO django.server "GET /static/css/footer.css HTTP/1.1" 200 3515
+[2026-05-16 17:43:57,790] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-16 17:43:57,806] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-16 17:43:57,807] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-16 17:43:57,826] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4459
+[2026-05-16 17:43:57,904] INFO django.server "GET /static/css/listing_detail.css HTTP/1.1" 200 10753
+[2026-05-16 17:44:02,914] ERROR webmaps Captured error: Http404: No Listing matches the given query. @ /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:44:02,916] ERROR webmaps Unhandled exception at /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/: Http404: No Listing matches the given query.
+[2026-05-16 17:44:02,926] ERROR django.request Internal Server Error: /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:44:02,928] ERROR django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/ HTTP/1.1" 500 9813
+[2026-05-16 17:44:03,202] ERROR webmaps Captured error: Http404: No Listing matches the given query. @ /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:44:03,203] ERROR webmaps Unhandled exception at /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/: Http404: No Listing matches the given query.
+[2026-05-16 17:44:03,214] ERROR django.request Internal Server Error: /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:44:03,216] ERROR django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/ HTTP/1.1" 500 9813
+[2026-05-16 17:44:03,263] INFO django.server "GET /static/errors/css/500.css HTTP/1.1" 304 0
+[2026-05-16 17:44:03,273] INFO django.server "GET /static/errors/js/500.js HTTP/1.1" 304 0
+[2026-05-16 17:44:19,418] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\maps\views.py changed, reloading.
+[2026-05-16 17:44:22,985] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-16 17:44:40,909] WARNING django.request Not Found: /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:44:40,913] WARNING django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/ HTTP/1.1" 404 9763
+[2026-05-16 17:44:41,432] INFO django.server "GET /static/errors/css/404.css HTTP/1.1" 200 3834
+[2026-05-16 17:44:41,500] INFO django.server "GET /static/errors/js/404.js HTTP/1.1" 200 143
+[2026-05-16 17:44:55,023] INFO django.server "GET / HTTP/1.1" 200 22598
+[2026-05-16 17:44:55,264] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1314
+[2026-05-16 17:44:57,950] INFO django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 47022
+[2026-05-16 17:45:00,847] WARNING django.request Not Found: /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:45:00,850] WARNING django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/ HTTP/1.1" 404 9763
+[2026-05-16 17:45:01,179] WARNING django.request Not Found: /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:45:01,183] WARNING django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/ HTTP/1.1" 404 9763
+[2026-05-16 17:45:48,737] WARNING django.request Not Found: /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:45:48,739] WARNING django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/ HTTP/1.1" 404 9763
+[2026-05-16 17:45:52,529] WARNING django.request Not Found: /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/
+[2026-05-16 17:45:52,606] WARNING django.server "GET /listing/webmaps-durga-mata-mandir-90ft-raod-saki-113930/ HTTP/1.1" 404 9763
+[2026-05-16 17:45:52,854] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 20563
+[2026-05-16 17:45:52,878] INFO django.server "GET /static/errors/css/404.css HTTP/1.1" 200 3864
+[2026-05-16 17:45:52,915] INFO django.server "GET /static/css/footer.css HTTP/1.1" 200 3515
+[2026-05-16 17:45:52,933] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-16 17:45:52,950] INFO django.server "GET /static/errors/js/404.js HTTP/1.1" 200 143
+[2026-05-16 17:45:52,968] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-16 17:45:52,983] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-16 17:45:53,004] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4459

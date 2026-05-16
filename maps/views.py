@@ -170,12 +170,20 @@ def listing_detail_view(request, slug):
     """
     Listing detail page with embedded map and services table.
     """
-    listing = get_object_or_404(
-        Listing,
-        slug=slug,
-        status='approved',
-        deleted_at__isnull=True
-    )
+    from django.http import Http404
+    from errors.views import error_404
+    
+    try:
+        listing = get_object_or_404(
+            Listing,
+            slug=slug,
+            status='approved',
+            deleted_at__isnull=True
+        )
+    except Http404:
+        # If listing is not found, show the premium 404 page instead of a 500 error
+        return error_404(request)
+
     services = listing.services.all()
     reviews = listing.reviews.filter(deleted_at__isnull=True).select_related('user').all()
     

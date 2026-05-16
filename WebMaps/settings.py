@@ -63,6 +63,8 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'middleware.middleware.CustomErrorMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -73,7 +75,6 @@ MIDDLEWARE = [
 
     # Custom middleware
     'middleware.middleware.SecurityHeadersMiddleware',
-    'middleware.middleware.CustomErrorMiddleware',     # ← forces premium error pages (DEBUG-safe)
     'middleware.middleware.RateLimitMiddleware',
     'middleware.middleware.BotProtectionMiddleware',
     'middleware.middleware.ErrorCaptureMiddleware',
@@ -202,11 +203,14 @@ CSRF_USE_SESSIONS = False  # Use cookie-based CSRF for better AJAX compatibility
 # ─────────────────────────────────────────────
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
-X_FRAME_OPTIONS = 'DENY'
 SECURE_SSL_REDIRECT = config('SECURE_SSL_REDIRECT', default=not DEBUG, cast=bool)
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SESSION_COOKIE_SECURE = config('SESSION_COOKIE_SECURE', default=not DEBUG, cast=bool)
 SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_SECURE = config('CSRF_COOKIE_SECURE', default=not DEBUG, cast=bool)
+CSRF_COOKIE_SAMESITE = 'Lax'
+X_FRAME_OPTIONS = 'DENY'
 
 if not DEBUG:
     SECURE_HSTS_SECONDS = 31536000
@@ -233,7 +237,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Versioned static files for cache busting and tampering prevention (Production only)
 if not DEBUG:
-    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'

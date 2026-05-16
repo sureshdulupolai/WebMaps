@@ -177,20 +177,31 @@ class CustomErrorMiddleware:
                 return self.get_response(request)
 
         try:
+            # We call the next middleware/view
             response = self.get_response(request)
-        except Exception:
+
+            # Intercept 404 / 403 responses (even if returned by Django handlers)
+            if response.status_code == 404:
+                from errors.views import error_404
+                return error_404(request)
+
+            if response.status_code == 403:
+                from errors.views import error_403
+                return error_403(request)
+
+            return response
+
+        except Exception as e:
+            # Explicitly catch 404-related exceptions to avoid 500 crashes
+            from django.http import Http404
+            from django.core.exceptions import ObjectDoesNotExist
+            
+            if isinstance(e, (Http404, ObjectDoesNotExist)):
+                from errors.views import error_404
+                return error_404(request)
+            
+            # For other exceptions, let process_exception or Django handle it
             raise
-
-        # Intercept 404 / 403 and render our premium templates
-        if response.status_code == 404:
-            from errors.views import error_404
-            return error_404(request)
-
-        if response.status_code == 403:
-            from errors.views import error_403
-            return error_403(request)
-
-        return response
 
     def process_exception(self, request, exception):
         """
