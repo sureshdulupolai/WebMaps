@@ -353,6 +353,7 @@ input:-webkit-autofill:active {
 
 .hover-underline:hover { text-decoration: underline; }
 .cursor-pointer { cursor: pointer; }
+.d-none { display: none !important; }
 
 /* Existing components restored */
 .stat-card { background: var(--card-bg); padding: 20px; border-radius: 16px; border: 1px solid var(--border); }
