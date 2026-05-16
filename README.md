@@ -15,24 +15,20 @@ Unlike conventional directories, WebMaps is built around an **interactive geogra
 
 ---
 
-## 🆕 Recent Engineering Improvements (May 2026)
+### 1. 🛡️ Standardized Auth & Administrative Security
+*   **Unified Logout Protocol:** Standardized sidebar and header logout buttons across the Admin Panel and Host Dashboard to ensure secure session termination with automatic home-page redirection.
+*   **Brute-Force Login Hardening:** Reduced login attempt threshold from 20 to **5 per minute**. Integrated a premium **429 "Too Many Requests"** error page with a dynamic wait-timer to block automated credential attacks.
+*   **Authentication Feedback:** Implemented a high-visibility, animated error notification system on the login page to provide instant, secure feedback during failed authorization attempts.
 
-The platform has undergone a massive architecture and UI refinement phase to reach "Pro" standards:
+### 2. 🏗️ High-Performance Asset Modularization
+*   **Template Decoupling:** Fully refactored monolithic HTML files (Error pages, Footer, Notifications, Profiles) by externalizing internal CSS and JavaScript into dedicated static files.
+*   **Static Asset Integrity:** Configured **ManifestStaticFilesStorage** for production, ensuring each file receives a unique version hash. This prevents old file caching and makes unauthorized file tampering detectable.
+*   **Clean Component Architecture:** Moved complex UI logic (e.g., Activity Center, Profile countdowns) to modular `.js` files, significantly improving page load speed and maintainability.
 
-### 1. 📱 Advanced Mobile Responsiveness (Map Explorer)
-*   **Intelligent Folder Logic:** Implemented auto-collapsing search sidebars on mobile to maximize viewport area.
-*   **Sticky Search Controls:** The Services/Product view now features a high-performance sticky filter bar with optimized z-index stacking.
-*   **Responsive Grid Systems:** Completely overhauled the listing grid for tablet and phone viewports, switching from rigid layouts to fluid, single-column stacks.
-
-### 2. 🛡️ Advanced Security & Identity Safeguards
-*   **Profile Update Cooldown:** Added a strict server-side cooldown for sensitive account modifications (SMS alerts, phone numbers). Includes a real-time JS countdown timer for user transparency.
-*   **Institutional Identity Protection:** Restricted self-service account deletion for institutional security, implementing a managed deactivation workflow.
-*   **Hacker-Protected Footers:** Optimized footer navigation with centered, high-contrast links and secure enterprise versioning labels.
-
-### 3. 💎 Pro UI/UX Standardization
-*   **Insights Engine:** Added SVG-based circular progress indicators and icon-only compact headers for the host analytics module.
-*   **Layout Persistence:** Fixed sidebar backgrounds to ensure full-height coverage reaching the footer on all management dashboards.
-*   **Glassmorphism Overhaul:** Increased backdrop-blur depths (20px+) and refined border-transparency ratios for a true premium SaaS aesthetic.
+### 3. 💎 Premium UI/UX Polish
+*   **Refined Activity Center:** Optimized the promotional rewards system with a dual-panel layout, click-to-copy functionality, and custom non-intrusive toast notifications.
+*   **Interactive Toasts:** Implemented a bottom-centered, "fit-to-content" toast notification system for better mobile ergonomics and a modern SaaS feel.
+*   **Glassmorphism Persistence:** Standardized the Indigo/Glassmorphism design system across all authentication and administrative interfaces for 100% visual consistency.
 
 ---
 

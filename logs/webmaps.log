@@ -10029,3 +10029,6 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-16 17:08:50,690] INFO django.server "GET /static/css/footer.css HTTP/1.1" 304 0
 [2026-05-16 17:08:50,973] INFO django.server "GET /static/js/profile.js HTTP/1.1" 200 2279
 [2026-05-16 17:08:51,025] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-16 17:09:31,012] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-16 17:11:37,944] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\WebMaps\settings.py changed, reloading.
+[2026-05-16 17:11:41,683] INFO django.utils.autoreload Watching for file changes with StatReloader
