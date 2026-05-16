@@ -357,9 +357,9 @@
 }
 
 /* ─── TOAST NOTIFICATION ─── */
-.toast-container {
+.activity-toast-container {
   position: fixed;
-  bottom: 100px;
+  bottom: 80px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 9999;
@@ -370,18 +370,21 @@
 }
 
 .toast-notif {
-  background: rgba(15, 17, 23, 0.9);
-  backdrop-filter: blur(15px);
+  background: rgba(15, 17, 23, 0.95);
+  backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: #fff;
-  padding: 14px 28px;
+  padding: 12px 24px;
   border-radius: 100px;
   font-size: 13px;
-  font-weight: 600;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  font-weight: 700;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   gap: 12px;
+  width: max-content;
+  max-width: 90vw;
+  white-space: nowrap;
   animation: toast-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
