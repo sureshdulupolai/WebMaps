@@ -330,13 +330,141 @@
     40%, 60% { transform: translate3d(4px, 0, 0); }
 }
 
-/* Responsive */
+/* ══ RESPONSIVE OVERHAUL (MOBILE & TABLET) ════════════════ */
+
 @media (max-width: 1024px) {
-    .auth-container {
-        max-width: 500px;
+    /* Allow scrolling - NO MORE CUT-OFF CONTENT */
+    html, body {
+        overflow-x: hidden;
+        overflow-y: auto;
         height: auto;
+        min-height: 100%;
+        position: relative;
     }
+
+    .auth-wrapper {
+        padding: 40px 20px; /* Consistent padding for scroll room */
+        background: #06070a;
+        min-height: 100dvh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Centers short forms, long forms start from top */
+        position: relative;
+    }
+
+    .auth-atmosphere {
+        position: fixed; /* Keep background fixed while scrolling */
+        inset: 0;
+        opacity: 0.5;
+        z-index: 0;
+    }
+
+    .atmosphere-core {
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at center, rgba(99, 102, 241, 0.1) 0%, transparent 80%);
+    }
+
+    .auth-container {
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+        border: none;
+        border-radius: 0;
+        background: transparent;
+        display: block; /* Use block for natural flow */
+        padding: 0;
+        backdrop-filter: none;
+        z-index: 10;
+    }
+
+    /* Hide Desktop-only Visual Side */
     .auth-visual-side {
         display: none;
+    }
+
+    .auth-form-side {
+        padding: 0;
+        width: 100%;
+        max-width: 380px;
+        margin: 0 auto;
+    }
+
+    /* Mobile Brand Header - Refined sizing */
+    .auth-form-side::before {
+        content: '';
+        display: block;
+        width: 52px;
+        height: 52px;
+        background: linear-gradient(135deg, var(--auth-accent), #818cf8);
+        border-radius: 16px;
+        margin: 0 auto 32px;
+        box-shadow: 0 15px 35px rgba(99, 102, 241, 0.2);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7'/%3E%3C/svg%3E");
+        background-size: 26px;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .auth-form-header {
+        text-align: center;
+        margin-bottom: 32px;
+    }
+
+    .auth-form-header h1 {
+        font-size: 30px;
+        letter-spacing: -1.2px;
+        margin-bottom: 10px;
+    }
+
+    .auth-form-header p {
+        font-size: 15px;
+        max-width: 260px;
+        margin: 0 auto;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Modern Glassmorphism Inputs for Mobile */
+    .auth-form-group {
+        margin-bottom: 20px;
+    }
+
+    .auth-label {
+        font-size: 11px;
+        margin-left: 2px;
+        margin-bottom: 8px;
+        letter-spacing: 1.2px;
+        opacity: 0.6;
+    }
+
+    .auth-input {
+        height: 54px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 14px;
+        font-size: 16px;
+    }
+
+    .auth-btn-primary {
+        height: 58px;
+        border-radius: 16px;
+        font-size: 16px;
+        font-weight: 700;
+        margin-top: 10px;
+        box-shadow: 0 12px 30px var(--auth-accent-glow);
+    }
+
+    .auth-footer-links {
+        margin-top: 40px;
+        padding-bottom: 20px;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.3);
+    }
+
+    .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 0;
     }
 }
