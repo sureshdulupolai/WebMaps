@@ -23,8 +23,8 @@
         <label class="auth-label" for="login-email">Email Horizon</label>
         <div class="auth-input-wrap">
             <input type="email" id="login-email" name="email" class="auth-input"
-                   placeholder="name@nexus.com" required autocomplete="username"
-                   value="{{ request.POST.email|default:'' }}">
+                   placeholder="name@nexus.com" required autocomplete="off"
+                   value="{{ request.POST.email|default:remembered_email|default:'' }}">
         </div>
     </div>
 
@@ -41,7 +41,7 @@
 
     <div class="d-flex justify-between align-center mb-8">
         <label class="auth-checkbox-wrap">
-            <input type="checkbox" name="remember">
+            <input type="checkbox" name="remember" {% if remember_checked or request.POST.remember == 'on' %}checked{% endif %}>
             <div class="custom-box">
                 <i class="material-icons">check</i>
             </div>

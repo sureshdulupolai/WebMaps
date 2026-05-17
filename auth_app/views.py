@@ -196,8 +196,24 @@ def login_view(request):
     if request.user.is_authenticated:
         return redirect(_get_redirect_after_login(request.user))
 
+    from django.core import signing
+
     if request.method == 'GET':
-        return render(request, 'auth/login.html')
+        remembered_email = ""
+        remember_checked = False
+        cookie_val = request.COOKIES.get('remember_me')
+        if cookie_val:
+            try:
+                # Cryptographically verify and unsign the email with a 30-day expiry
+                remembered_email = signing.loads(cookie_val, max_age=30*24*60*60)
+                remember_checked = True
+            except Exception:
+                pass # Invalid signature or expired
+
+        return render(request, 'auth/login.html', {
+            'remembered_email': remembered_email,
+            'remember_checked': remember_checked
+        })
 
     email = request.POST.get('email', '').strip().lower()
     password = request.POST.get('password', '')
@@ -243,6 +259,21 @@ def login_view(request):
         response = redirect(_get_redirect_after_login(user))
         
     set_auth_cookies(response, access_token, refresh_token, remember=remember)
+    
+    # Securely set cryptographically signed remember_me cookie
+    if remember:
+        signed_email = signing.dumps(email)
+        response.set_cookie(
+            'remember_me',
+            signed_email,
+            max_age=30*24*60*60, # 30 days
+            httponly=True, # Prevent theft via XSS/JS
+            secure=not settings.DEBUG, # Secure in production
+            samesite='Lax'
+        )
+    else:
+        response.delete_cookie('remember_me')
+
     logger.info(f"User logged in: {email}")
     return response
 
