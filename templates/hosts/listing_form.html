@@ -445,4 +445,73 @@
   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script src="{% static 'js/listing_form.js' %}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const latInput = document.getElementById('id_latitude');
+    const lngInput = document.getElementById('id_longitude');
+    const verifyBtn = document.getElementById('verify-coords-btn');
+    
+    let initialLat = (latInput && parseFloat(latInput.value)) || 19.076;
+    let initialLng = (lngInput && parseFloat(lngInput.value)) || 72.877;
+
+    const mapElement = document.getElementById('listing-map');
+    let marker;
+    
+    if (mapElement) {
+        window.map = L.map('listing-map', { zoomControl: false, attributionControl: false }).setView([initialLat, initialLng], 12);
+        L.control.zoom({ position: 'bottomright' }).addTo(window.map);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(window.map);
+
+        if (latInput && latInput.value && lngInput && lngInput.value) {
+            marker = L.marker([initialLat, initialLng], { draggable: true }).addTo(window.map);
+            marker.on('dragend', updateCoords);
+        }
+
+        // Geolocation Auto-Detect
+        if ("geolocation" in navigator && latInput && !latInput.value) {
+            navigator.geolocation.getCurrentPosition((pos) => {
+                const { latitude, longitude } = pos.coords;
+                latInput.value = latitude.toFixed(6);
+                lngInput.value = longitude.toFixed(6);
+
+                window.map.setView([latitude, longitude], 16);
+                if (marker) marker.setLatLng([latitude, longitude]);
+                else {
+                    marker = L.marker([latitude, longitude], { draggable: true }).addTo(window.map);
+                    marker.on('dragend', updateCoords);
+                }
+                if (window.webmapsSaveToLocal) window.webmapsSaveToLocal();
+            }, (err) => {
+                console.warn("Geolocation denied or failed.", err);
+            }, { enableHighAccuracy: true });
+        }
+
+        window.map.on('click', function (e) {
+            const { lat, lng } = e.latlng;
+            if (marker) marker.setLatLng([lat, lng]);
+            else {
+                marker = L.marker([lat, lng], { draggable: true }).addTo(window.map);
+                marker.on('dragend', updateCoords);
+            }
+            updateCoords({ target: marker });
+        });
+    }
+
+    function updateCoords(e) {
+        if (!latInput || !lngInput) return;
+        const pos = e.target.getLatLng();
+        latInput.value = pos.lat.toFixed(6);
+        lngInput.value = pos.lng.toFixed(6);
+        if (window.webmapsSaveToLocal) window.webmapsSaveToLocal();
+    }
+
+    if (verifyBtn) {
+        verifyBtn.addEventListener('click', () => {
+            if (latInput && latInput.value && lngInput && lngInput.value) {
+                window.map.flyTo([latInput.value, lngInput.value], 18, { duration: 1.5 });
+            }
+        });
+    }
+});
+</script>
 {% endblock %}

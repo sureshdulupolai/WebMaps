@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const fileStatus = document.getElementById('file-status');
 
     // 02. STATE & CONSTANTS
-    const container = document.querySelector('.container');
+    const container = document.querySelector('.host-listing-container');
     const needsPayment = container && container.dataset.needsPayment === 'true';
     const needsSubscription = container && container.dataset.needsSubscription === 'true';
     const hasActiveSub = container && container.dataset.hasSubscription === 'true';
@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let data = saved ? JSON.parse(saved) : null;
 
         // If no saved data but we have initial database data, HYDRATE first time
-        if (!data && initialData) {
+        if (!data && initialData && initialData.services) {
             console.log("Hydrating wizard state from database...");
             
             // Group services back for the UI
@@ -256,72 +256,18 @@ document.addEventListener('DOMContentLoaded', function () {
             if (hoursInput) hoursInput.value = JSON.stringify(data.operatingHours);
         }
 
+        if (typeof window.hydrateCategoryDropdown === 'function') {
+            window.hydrateCategoryDropdown();
+        }
+
         currentStep = data.currentStep || 1;
         updateWizard();
         renderSummary();
     }
+    
+    // Make saveToLocal globally available for map logic in HTML
+    window.webmapsSaveToLocal = saveToLocal;
 
-    // 05. MAP LOGIC (Step 1)
-    let initialLat = (latInput && parseFloat(latInput.value)) || 19.076;
-    let initialLng = (lngInput && parseFloat(lngInput.value)) || 72.877;
-
-    const mapElement = document.getElementById('listing-map');
-    let map;
-
-    if (mapElement) {
-        map = L.map('listing-map', { zoomControl: false, attributionControl: false }).setView([initialLat, initialLng], 12);
-        L.control.zoom({ position: 'bottomright' }).addTo(map);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(map);
-
-        if (latInput && latInput.value && lngInput && lngInput.value) {
-            marker = L.marker([initialLat, initialLng], { draggable: true }).addTo(map);
-        }
-
-        // Geolocation Auto-Detect
-        if ("geolocation" in navigator && latInput && !latInput.value) {
-            navigator.geolocation.getCurrentPosition((pos) => {
-                const { latitude, longitude } = pos.coords;
-                latInput.value = latitude.toFixed(6);
-                lngInput.value = longitude.toFixed(6);
-
-                map.setView([latitude, longitude], 16);
-                if (marker) marker.setLatLng([latitude, longitude]);
-                else {
-                    marker = L.marker([latitude, longitude], { draggable: true }).addTo(map);
-                    marker.on('dragend', updateCoords);
-                }
-                saveToLocal();
-            }, (err) => {
-                console.warn("Geolocation denied or failed.", err);
-            }, { enableHighAccuracy: true });
-        }
-
-        map.on('click', function (e) {
-            const { lat, lng } = e.latlng;
-            if (marker) marker.setLatLng([lat, lng]);
-            else {
-                marker = L.marker([lat, lng], { draggable: true }).addTo(map);
-                marker.on('dragend', updateCoords);
-            }
-            updateCoords({ target: marker });
-        });
-    }
-
-    function updateCoords(e) {
-        if (!latInput || !lngInput) return;
-        const pos = e.target.getLatLng();
-        latInput.value = pos.lat.toFixed(6);
-        lngInput.value = pos.lng.toFixed(6);
-        saveToLocal();
-    }
-
-    if (verifyBtn) {
-        verifyBtn.addEventListener('click', () => {
-            if (latInput && latInput.value && lngInput && lngInput.value) {
-                map.flyTo([latInput.value, lngInput.value], 18, { duration: 1.5 });
-            }
-        });
-    }
 
     // 06. ENHANCED PARSER (Step 2)
     if (tabUpload) {
@@ -944,7 +890,6 @@ document.addEventListener('DOMContentLoaded', function () {
             submitBtn.innerHTML = '<span class="loading-spinner"></span> Saving Listing...';
 
             try {
-                // 1. Check plan selection FIRST (so backend knows this is a paid update)
                 // 1. Check plan selection
                 let planId = null;
                 const selectedPlan = form.querySelector('[name="plan_id"]:checked');
@@ -956,21 +901,19 @@ document.addEventListener('DOMContentLoaded', function () {
                     planId = currentPlanId;
                 }
 
-                if (!planId) {
-                    const isPaidUpdate = (container?.dataset?.needsPayment || '').toLowerCase() === 'true';
-                    if (isPaidUpdate && hasActiveSub) {
-                         // Double check: if we are here and still no planId, use currentPlanId
-                         planId = currentPlanId;
-                    }
-                }
-
-                if (!planId) {
+                const isPaidUpdate = (container?.dataset?.needsPayment || '').toLowerCase() === 'true';
+                
+                if (!planId && !hasActiveSub) {
                     showDialog("Plan Required", "Please select a subscription plan to continue.");
                     submitBtn.disabled = false;
-                    submitBtn.textContent = hasActiveSub ? 'Pay ₹29 & Save Changes' : 'Pay & Initialize Listing';
+                    submitBtn.textContent = 'Pay & Initialize Listing';
                     return;
                 }
-                console.log("Selected Plan ID:", planId);
+                if (planId) {
+                    console.log("Selected Plan ID:", planId);
+                } else {
+                    console.log("Proceeding with Update Fee only (No Plan ID needed)");
+                }
 
                 // 2. Save listing via AJAX
                 const formData = new FormData(form);
@@ -1002,7 +945,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // 3. Initiate Payment
                 submitBtn.innerHTML = '<span class="loading-spinner"></span> Creating Order...';
-                const isPaidUpdate = (container?.dataset?.needsPayment || '').toLowerCase() === 'true';
+                
                 const paymentType = selectedPlan ? 'subscription' : (isPaidUpdate ? 'update' : 'subscription');
 
                 const payInitResp = await fetch(`/payments/initiate/${activeSlug}/`, {
@@ -1166,17 +1109,20 @@ document.addEventListener('DOMContentLoaded', function () {
         const selectedText = categoryCustomSelect.querySelector('.selected-text');
 
         // Initial Hydration from hidden input
-        if (hiddenInput && hiddenInput.value) {
-            const selectedOption = categoryCustomSelect.querySelector(`.custom-option[data-value="${hiddenInput.value}"]`);
-            if (selectedOption) {
-                selectedText.textContent = selectedOption.textContent.trim();
-                selectedText.classList.remove('is-placeholder');
-                options.forEach(o => o.classList.remove('selected'));
-                selectedOption.classList.add('selected');
+        window.hydrateCategoryDropdown = function() {
+            if (hiddenInput && hiddenInput.value) {
+                const selectedOption = categoryCustomSelect.querySelector(`.custom-option[data-value="${hiddenInput.value}"]`);
+                if (selectedOption) {
+                    selectedText.textContent = selectedOption.textContent.trim();
+                    selectedText.classList.remove('is-placeholder');
+                    options.forEach(o => o.classList.remove('selected'));
+                    selectedOption.classList.add('selected');
+                }
+            } else {
+                selectedText.classList.add('is-placeholder');
             }
-        } else {
-            selectedText.classList.add('is-placeholder');
-        }
+        };
+        window.hydrateCategoryDropdown();
 
         trigger.addEventListener('click', (e) => {
             e.stopPropagation();

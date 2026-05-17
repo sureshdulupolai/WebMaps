@@ -43,20 +43,25 @@ def initiate_payment_view(request, slug):
     plan_id = request.POST.get('plan_id')
 
     try:
-        plan = SubscriptionPlan.objects.get(id=plan_id)
-    except SubscriptionPlan.DoesNotExist:
-        return JsonResponse({'error': 'Invalid plan.'}, status=400)
+        plan = None
+        if plan_id:
+            try:
+                plan = SubscriptionPlan.objects.get(id=plan_id)
+            except SubscriptionPlan.DoesNotExist:
+                return JsonResponse({'error': 'Invalid plan.'}, status=400)
+        
+        payment_type = request.POST.get('payment_type', '')
+        if payment_type != 'update' and not plan:
+            return JsonResponse({'error': 'Plan ID is required.'}, status=400)
 
-    try:
-        # 1. Base amount from plan (Model's total_cost already includes its own platform_fee)
-        base_amount = Decimal(str(plan.total_cost))
+        # 1. Base amount from plan
+        base_amount = Decimal('0')
+        if payment_type != 'update' and plan:
+            base_amount = Decimal(str(plan.total_cost))
         
         # 2. Check for update surcharge (matching listing_form.js logic)
         update_surcharge = Decimal('0')
         if listing.update_count >= 2:
-            # Check if they have an active subscription
-            # The user wants to charge ₹29 for updates AFTER 2 free ones, 
-            # even if membership is active, as per their specific request.
             update_surcharge = Decimal('22.88') # This results in ~29 total
         
         # 3. Calculate Taxes (18% total GST)
@@ -99,18 +104,18 @@ def initiate_payment_view(request, slug):
                 'amount': 0,
                 'is_free': True,
                 'currency': 'INR',
-                'plan_name': plan.name,
+                'plan_name': plan.name if plan else 'Listing Update',
                 'listing_name': listing.company_name,
             })
 
-        logger.info(f"Payment Initiation: Listing={listing.slug}, Plan={plan.name}, Total={final_total_inr}")
+        logger.info(f"Payment Initiation: Listing={listing.slug}, Plan={plan.name if plan else 'Update'}, Total={final_total_inr}")
 
         order = create_razorpay_order(float(final_total_inr), listing.id)
         return JsonResponse({
             'order_id': order['id'],
             'amount': final_amount_paise,
             'currency': 'INR',
-            'plan_name': plan.name,
+            'plan_name': plan.name if plan else 'Listing Update',
             'listing_name': listing.company_name,
         })
     except Exception as e:
@@ -147,7 +152,9 @@ def verify_payment_view(request):
 
     try:
         listing = Listing.objects.get(slug=slug)
-        plan = SubscriptionPlan.objects.get(id=plan_id)
+        plan = None
+        if plan_id:
+            plan = SubscriptionPlan.objects.get(id=plan_id)
         
         # Determine if it's an update-only payment
         is_update_only = (payment_type == 'update')
@@ -164,7 +171,7 @@ def verify_payment_view(request):
             user=listing.host,
             listing=listing,
             plan=plan,
-            amount=plan.total_cost,
+            amount=plan.total_cost if plan else Decimal('29.00'),
             razorpay_order_id=order_id,
             razorpay_payment_id=payment_id or 'FREE',
             status='success'
@@ -175,9 +182,18 @@ def verify_payment_view(request):
             try:
                 coupon = Coupon.objects.get(code=coupon_code)
                 # (Re-calculate subtotal for log - MUST match initiate_payment_view)
-                base_amt = Decimal(str(plan.total_cost))
+                base_amt = Decimal(str(plan.total_cost)) if plan and not is_update_only else Decimal('0')
                 surcharge = Decimal('22.88') if listing.update_count >= 2 else Decimal('0')
-                subtotal = (base_amt + surcharge) * Decimal('1.18') + Decimal('2')
+                
+                # Use same logic as initiate_payment_view
+                taxable = base_amt + surcharge
+                gst = taxable * Decimal('0.18')
+                platform = Decimal('2')
+                
+                if base_amt == Decimal('0') and surcharge > 0:
+                    subtotal = Decimal('29.00')
+                else:
+                    subtotal = (taxable + gst + platform).quantize(Decimal('0.01'))
                 
                 if coupon.discount_type == 'percentage':
                     discount_val = (subtotal * coupon.discount_value / Decimal('100')).quantize(Decimal('0.01'))

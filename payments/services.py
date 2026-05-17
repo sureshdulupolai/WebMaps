@@ -51,7 +51,10 @@ def verify_razorpay_payment(order_id: str, payment_id: str, signature: str) -> b
 def activate_subscription(listing, plan: SubscriptionPlan, payment_data: dict, is_update_only=False):
     """Activate (or renew) a paid subscription for a listing."""
     sub, _ = Subscription.objects.get_or_create(listing=listing)
-    sub.plan = plan
+    
+    if not is_update_only or plan is not None:
+        sub.plan = plan
+        
     sub.is_trial = False
     sub.is_active = True
     sub.razorpay_order_id = payment_data.get('order_id') or ''
