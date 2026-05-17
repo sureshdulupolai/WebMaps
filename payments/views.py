@@ -234,7 +234,7 @@ def verify_payment_view(request):
             user=listing.host,
             listing=listing,
             plan=plan,
-            amount=plan.total_cost if plan else Decimal('29.00'),
+            amount=Decimal('29.00') if is_update_only else (plan.total_cost if plan else Decimal('29.00')),
             razorpay_order_id=order_id,
             razorpay_payment_id=payment_id or 'FREE',
             status='success'
@@ -398,7 +398,7 @@ def paypal_verify_view(request):
             user=listing.host,
             listing=listing,
             plan=plan,
-            amount=plan.total_cost if plan else Decimal('29.00'),
+            amount=Decimal('29.00') if is_update_only else (plan.total_cost if plan else Decimal('29.00')),
             razorpay_order_id=order_id,
             razorpay_payment_id=trans_id,
             status='success'

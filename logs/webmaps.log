@@ -10611,3 +10611,15 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-17 16:44:20,342] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 200 21909
 [2026-05-17 16:44:20,399] INFO django.server "GET /static/css/host_billing.css HTTP/1.1" 304 0
 [2026-05-17 16:44:20,436] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-17 16:45:44,171] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-17 16:47:06,916] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\payments\views.py changed, reloading.
+[2026-05-17 16:47:10,287] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-17 16:47:18,487] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\payments\views.py changed, reloading.
+[2026-05-17 16:47:21,618] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-17 16:48:06,739] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 200 21908
+[2026-05-17 16:48:06,939] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-17 16:48:26,719] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/billing/ HTTP/1.1" 200 21908
+[2026-05-17 16:48:26,910] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-17 16:48:32,435] INFO django.server "GET / HTTP/1.1" 200 23801
+[2026-05-17 16:48:32,615] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-17 16:48:32,726] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1347
