@@ -10489,3 +10489,78 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-17 15:54:34,568] INFO webmaps Payment Initiation: Listing=webmaps-durga-mata-mandir-90ft-raod-saki-11393, Plan=1 Month, Total=29.00
 [2026-05-17 15:54:39,881] INFO webmaps Razorpay order created: order_SqOhAbaEqP7TNT for listing 559431e9-c62e-499a-b03a-f4a5336888a7
 [2026-05-17 15:54:39,884] INFO django.server "POST /payments/initiate/webmaps-durga-mata-mandir-90ft-raod-saki-11393/ HTTP/1.1" 200 122
+[2026-05-17 16:00:08,778] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-17 16:00:12,749] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 302 0
+[2026-05-17 16:00:12,836] INFO django.server "GET /auth/login/ HTTP/1.1" 200 8735
+[2026-05-17 16:00:20,773] INFO webmaps Login attempt: User found for sureshone@gmail.com
+[2026-05-17 16:00:21,741] INFO webmaps User logged in: sureshone@gmail.com
+[2026-05-17 16:00:21,744] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-17 16:00:21,910] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 22038
+[2026-05-17 16:00:22,022] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-17 16:12:06,268] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\payments\urls.py changed, reloading.
+[2026-05-17 16:12:19,286] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-17 16:12:30,751] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\payments\views.py changed, reloading.
+[2026-05-17 16:12:36,164] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-17 16:12:53,653] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\payments\views.py changed, reloading.
+[2026-05-17 16:12:56,733] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-17 16:13:21,807] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\payments\views.py changed, reloading.
+[2026-05-17 16:13:26,129] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-17 16:15:53,256] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 302 0
+[2026-05-17 16:15:53,527] INFO django.server "GET /auth/login/ HTTP/1.1" 200 8735
+[2026-05-17 16:16:10,018] INFO webmaps Login attempt: User found for sureshone@gmail.com
+[2026-05-17 16:16:10,878] INFO webmaps User logged in: sureshone@gmail.com
+[2026-05-17 16:16:10,881] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-17 16:16:11,111] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 22038
+[2026-05-17 16:16:11,240] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-17 16:16:13,236] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 39304
+[2026-05-17 16:16:13,718] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 200 48888
+[2026-05-17 16:16:13,789] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-17 16:16:16,691] INFO webmaps Saved 35 service items for webmaps-durga-mata-mandir-90ft-raod-saki-11393
+[2026-05-17 16:16:16,693] INFO webmaps Listing updated: webmaps-durga-mata-mandir-90ft-raod-saki-11393 (update #23)
+[2026-05-17 16:16:16,698] INFO django.server "POST /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 79
+[2026-05-17 16:16:16,788] INFO django.server "GET /payments/checkout/webmaps-durga-mata-mandir-90ft-raod-saki-11393/?plan_id=6bb799ee-3e67-4806-a0c6-befabfc4f72c&coupon_code=&payment_type=update HTTP/1.1" 200 18841
+[2026-05-17 16:16:17,020] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-17 16:20:15,839] INFO django.server "GET /payments/checkout/webmaps-durga-mata-mandir-90ft-raod-saki-11393/?plan_id=6bb799ee-3e67-4806-a0c6-befabfc4f72c&coupon_code=&payment_type=update HTTP/1.1" 200 18841
+[2026-05-17 16:20:16,069] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-17 16:24:31,094] INFO django.server "GET /payments/checkout/webmaps-durga-mata-mandir-90ft-raod-saki-11393/?plan_id=6bb799ee-3e67-4806-a0c6-befabfc4f72c&coupon_code=&payment_type=update HTTP/1.1" 200 18841
+[2026-05-17 16:24:35,305] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-17 16:24:39,143] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\WebMaps\settings.py changed, reloading.
+[2026-05-17 16:24:42,997] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-17 16:24:51,488] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\payments\views.py changed, reloading.
+[2026-05-17 16:24:54,471] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-17 16:25:35,290] INFO django.server "GET /payments/checkout/webmaps-durga-mata-mandir-90ft-raod-saki-11393/?plan_id=6bb799ee-3e67-4806-a0c6-befabfc4f72c&coupon_code=&payment_type=update HTTP/1.1" 200 18919
+[2026-05-17 16:25:36,886] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-17 16:25:42,444] INFO django.server "GET /payments/checkout/webmaps-durga-mata-mandir-90ft-raod-saki-11393/?plan_id=6bb799ee-3e67-4806-a0c6-befabfc4f72c&coupon_code=&payment_type=update HTTP/1.1" 200 19119
+[2026-05-17 16:25:43,306] INFO django.server "GET /static/css/footer.css HTTP/1.1" 200 3515
+[2026-05-17 16:25:43,425] INFO django.server "GET /static/js/theme_init.js HTTP/1.1" 200 165
+[2026-05-17 16:25:43,440] INFO django.server "GET /static/css/main.css HTTP/1.1" 200 20563
+[2026-05-17 16:25:43,762] INFO django.server "GET /static/js/main.js HTTP/1.1" 200 3415
+[2026-05-17 16:25:43,904] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 200 4459
+[2026-05-17 16:25:43,917] INFO django.server "GET /static/js/modals.js HTTP/1.1" 200 3727
+[2026-05-17 16:25:45,113] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-17 16:26:13,043] INFO django.server "GET /payments/checkout/webmaps-durga-mata-mandir-90ft-raod-saki-11393/?plan_id=6bb799ee-3e67-4806-a0c6-befabfc4f72c&coupon_code=&payment_type=update HTTP/1.1" 200 19119
+[2026-05-17 16:26:13,423] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-17 16:26:22,403] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-17 16:26:22,404] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 10926
+[2026-05-17 16:26:29,561] INFO django.server "GET /payments/checkout/webmaps-durga-mata-mandir-90ft-raod-saki-11393/?plan_id=6bb799ee-3e67-4806-a0c6-befabfc4f72c&coupon_code=&payment_type=update HTTP/1.1" 200 19119
+[2026-05-17 16:26:29,990] WARNING django.request Not Found: /.well-known/appspecific/com.chrome.devtools.json
+[2026-05-17 16:26:30,034] WARNING django.server "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 10926
+[2026-05-17 16:26:30,278] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-17 16:28:00,741] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\middleware\middleware.py changed, reloading.
+[2026-05-17 16:28:03,819] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-17 16:28:34,077] INFO django.server "GET /payments/checkout/webmaps-durga-mata-mandir-90ft-raod-saki-11393/?plan_id=6bb799ee-3e67-4806-a0c6-befabfc4f72c&coupon_code=&payment_type=update HTTP/1.1" 200 19119
+[2026-05-17 16:28:36,730] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-17 16:29:03,856] INFO webmaps Subscription activated and listing approved: webmaps-durga-mata-mandir-90ft-raod-saki-11393
+[2026-05-17 16:29:03,892] INFO django.server "POST /payments/paypal-verify/ HTTP/1.1" 200 54
+[2026-05-17 16:29:04,199] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 22038
+[2026-05-17 16:29:04,325] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-17 16:29:09,897] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 39304
+[2026-05-17 16:29:09,968] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 304 0
+[2026-05-17 16:29:10,175] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-17 16:29:16,821] INFO django.server "GET / HTTP/1.1" 200 23801
+[2026-05-17 16:29:16,998] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-17 16:29:17,112] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1347
+[2026-05-17 16:29:19,052] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 22038
+[2026-05-17 16:29:19,145] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-17 16:29:20,621] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 39304
+[2026-05-17 16:29:20,825] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40

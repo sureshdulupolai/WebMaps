@@ -1,0 +1,283 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Checkout — WebMaps{% endblock %}
+
+{% block extra_css %}
+<style>
+  .checkout-wrapper {
+    max-width: 600px;
+    margin: 40px auto;
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+  .payment-option {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .payment-option:hover {
+    border-color: var(--primary);
+    background: rgba(99, 102, 241, 0.05);
+  }
+  .payment-option input[type="radio"] {
+    transform: scale(1.2);
+    accent-color: var(--primary);
+  }
+  .price-box {
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  #paypal-button-container {
+    display: none;
+    margin-top: 20px;
+  }
+  .razorpay-btn-container {
+    display: none;
+    margin-top: 20px;
+  }
+</style>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="https://www.paypal.com/sdk/js?client-id={{ paypal_client_id }}&currency=USD"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container container-lg">
+  <div class="checkout-wrapper">
+    <div class="text-center mb-8">
+      <h1 class="h3 mb-2">Secure Checkout</h1>
+      <p class="text-secondary">Choose your preferred payment method</p>
+    </div>
+
+    <div class="price-box">
+      <h2 class="h2 m-0 text-primary">₹{{ final_total_inr }} INR</h2>
+      <p class="text-sm text-secondary m-0 mt-2">Equivalent to ${{ usd_amount }} USD</p>
+    </div>
+
+    <form id="payment-form">
+      {% csrf_token %}
+      <input type="hidden" id="slug" value="{{ listing.slug }}">
+      <input type="hidden" id="plan_id" value="{{ plan_id }}">
+      <input type="hidden" id="payment_type" value="{{ payment_type }}">
+      <input type="hidden" id="coupon_code" value="{{ coupon_code }}">
+      <input type="hidden" id="usd_amount" value="{{ usd_amount }}">
+      
+      <label class="payment-option">
+        <input type="radio" name="gateway" value="razorpay" checked>
+        <div class="w-full">
+          <div class="d-flex justify-between w-full align-center">
+            <span class="font-weight-600">Razorpay (India)</span>
+            <span class="badge" style="background: rgba(255,255,255,0.1)">UPI, Cards, Netbanking</span>
+          </div>
+        </div>
+      </label>
+
+      <label class="payment-option">
+        <input type="radio" name="gateway" value="paypal">
+        <div class="w-full">
+          <div class="d-flex justify-between w-full align-center">
+            <span class="font-weight-600">PayPal (International)</span>
+            <span class="badge" style="background: rgba(255,255,255,0.1)">USD only</span>
+          </div>
+        </div>
+      </label>
+      
+      <!-- Razorpay Button -->
+      <div class="razorpay-btn-container" id="razorpay-btn-container" style="display: block;">
+        <button type="button" id="pay-razorpay-btn" class="btn btn-primary w-full btn-lg">Pay ₹{{ final_total_inr }} with Razorpay</button>
+      </div>
+
+      <!-- PayPal Button Container -->
+      <div id="paypal-button-container">
+        <div class="text-center py-4 text-secondary">
+          <span class="loading-spinner mb-2"></span>
+          <p class="text-xs m-0">Loading PayPal Payment Options...</p>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const radios = document.querySelectorAll('input[name="gateway"]');
+    const rzpBtnContainer = document.getElementById('razorpay-btn-container');
+    const paypalContainer = document.getElementById('paypal-button-container');
+    const rzpBtn = document.getElementById('pay-razorpay-btn');
+    
+    const slug = document.getElementById('slug').value;
+    const planId = document.getElementById('plan_id').value;
+    const paymentType = document.getElementById('payment_type').value;
+    const couponCode = document.getElementById('coupon_code').value;
+    const usdAmount = document.getElementById('usd_amount').value;
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    radios.forEach(radio => {
+      radio.addEventListener('change', function() {
+        if (this.value === 'razorpay') {
+          rzpBtnContainer.style.display = 'block';
+          paypalContainer.style.display = 'none';
+        } else {
+          rzpBtnContainer.style.display = 'none';
+          paypalContainer.style.display = 'block';
+        }
+      });
+    });
+
+    // Handle Razorpay
+    rzpBtn.addEventListener('click', async function() {
+      rzpBtn.disabled = true;
+      rzpBtn.innerHTML = '<span class="loading-spinner"></span> Processing...';
+
+      try {
+        const initResp = await fetch(`/payments/initiate/${slug}/`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRFToken': csrfToken
+          },
+          body: new URLSearchParams({
+            plan_id: planId,
+            coupon_code: couponCode,
+            payment_type: paymentType
+          })
+        });
+
+        const payInfo = await initResp.json();
+        if (!initResp.ok) throw new Error(payInfo.error || "Order creation failed");
+
+        if (payInfo.is_free) {
+            const freeResp = await fetch('/payments/verify/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    razorpay_order_id: payInfo.order_id,
+                    razorpay_payment_id: null,
+                    razorpay_signature: null,
+                    listing_slug: slug,
+                    plan_id: planId,
+                    coupon_code: couponCode,
+                    payment_type: paymentType
+                })
+            });
+            const freeResult = await freeResp.json();
+            if(freeResult.status === 'success') {
+                window.location.href = freeResult.redirect || '/hosts/dashboard/';
+            }
+            return;
+        }
+
+        const options = {
+          key: "{{ razorpay_key }}",
+          amount: payInfo.amount,
+          currency: payInfo.currency,
+          name: "WebMaps",
+          description: "Subscription Payment",
+          order_id: payInfo.order_id,
+          handler: async function (response) {
+            const verifyResp = await fetch('/payments/verify/', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature,
+                listing_slug: slug,
+                plan_id: planId,
+                coupon_code: couponCode,
+                payment_type: paymentType
+              })
+            });
+
+            const verifyResult = await verifyResp.json();
+            if (verifyResult.status === 'success') {
+              window.location.href = verifyResult.redirect || '/hosts/dashboard/';
+            } else {
+              alert("Payment verification failed. Please contact support.");
+              rzpBtn.disabled = false;
+              rzpBtn.textContent = `Pay ₹{{ final_total_inr }} with Razorpay`;
+            }
+          },
+          theme: { color: "#6366f1" },
+          modal: {
+            ondismiss: function() {
+              rzpBtn.disabled = false;
+              rzpBtn.textContent = `Pay ₹{{ final_total_inr }} with Razorpay`;
+            }
+          }
+        };
+
+        const rzp = new window.Razorpay(options);
+        rzp.open();
+
+      } catch(err) {
+        alert(err.message);
+        rzpBtn.disabled = false;
+        rzpBtn.textContent = `Pay ₹{{ final_total_inr }} with Razorpay`;
+      }
+    });
+
+    // Handle PayPal
+    paypal.Buttons({
+      style: {
+        color: 'blue',
+        shape: 'pill',
+        label: 'pay',
+        height: 40,
+      },
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            amount: { value: usdAmount }
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          fetch('/payments/paypal-verify/', {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "X-CSRFToken": csrfToken,
+            },
+            body: JSON.stringify({
+              orderID: data.orderID,
+              transID: details.id,
+              status: details.status,
+              listing_slug: slug,
+              plan_id: planId,
+              coupon_code: couponCode,
+              payment_type: paymentType
+            }),
+          })
+          .then(response => response.json())
+          .then(res => {
+            if (res.status === 'success') {
+                window.location.href = res.redirect || '/hosts/dashboard/';
+            } else {
+                alert("PayPal verification failed.");
+            }
+          });
+        });
+      }
+    }).render('#paypal-button-container');
+
+  });
+</script>
+{% endblock %}

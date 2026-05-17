@@ -3,6 +3,7 @@ payments/views.py — Payment flow: plan selection, Razorpay checkout, verificat
 """
 import logging
 from decimal import Decimal
+import json
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from django.conf import settings
@@ -30,6 +31,68 @@ def plans_view(request, slug):
     return render(request, 'payments/plans.html', {
         'listing': listing,
         'plans': plans,
+        'razorpay_key': settings.RAZORPAY_KEY_ID,
+    })
+
+
+@jwt_login_required
+@role_required('host')
+def checkout_page_view(request, slug):
+    listing = get_object_or_404(Listing, slug=slug, host=request.user)
+    
+    plan_id = request.GET.get('plan_id')
+    payment_type = request.GET.get('payment_type', '')
+    coupon_code = request.GET.get('coupon_code', '')
+    
+    plan = None
+    if plan_id:
+        try:
+            plan = SubscriptionPlan.objects.get(id=plan_id)
+        except SubscriptionPlan.DoesNotExist:
+            pass
+
+    # 1. Base amount
+    base_amount = Decimal('0')
+    if payment_type != 'update' and plan:
+        base_amount = Decimal(str(plan.total_cost))
+    
+    # 2. Update surcharge
+    update_surcharge = Decimal('0')
+    if listing.update_count >= 2:
+        update_surcharge = Decimal('22.88')
+    
+    taxable_amount = base_amount + update_surcharge
+    gst_amount = taxable_amount * Decimal('0.18')
+    platform_fee_extra = Decimal('2')
+    
+    if base_amount == 0 and update_surcharge > 0:
+        final_total_inr = Decimal('29.00')
+    else:
+        final_total_inr = (taxable_amount + gst_amount + platform_fee_extra).quantize(Decimal('0.01'))
+
+    discount_amount = Decimal('0')
+    if coupon_code:
+        try:
+            coupon = Coupon.objects.get(code=coupon_code.strip().upper())
+            is_valid, _ = coupon.is_valid(user=request.user, amount=final_total_inr)
+            if is_valid:
+                if coupon.discount_type == 'percentage':
+                    discount_amount = (final_total_inr * coupon.discount_value / Decimal('100')).quantize(Decimal('0.01'))
+                else:
+                    discount_amount = coupon.discount_value
+                final_total_inr = max(Decimal('0'), final_total_inr - discount_amount)
+        except Coupon.DoesNotExist:
+            pass
+
+    usd_amount = (final_total_inr / Decimal('83.0')).quantize(Decimal('0.01'))
+
+    return render(request, 'payments/checkout.html', {
+        'listing': listing,
+        'final_total_inr': final_total_inr,
+        'usd_amount': usd_amount,
+        'plan_id': plan_id,
+        'payment_type': payment_type,
+        'coupon_code': coupon_code,
         'razorpay_key': settings.RAZORPAY_KEY_ID,
     })
 
@@ -228,3 +291,130 @@ def payment_success_view(request):
 @jwt_login_required
 def payment_failure_view(request):
     return render(request, 'payments/failure.html')
+
+
+@jwt_login_required
+@role_required('host')
+def checkout_page_view(request, slug):
+    listing = get_object_or_404(Listing, slug=slug, host=request.user)
+    
+    plan_id = request.GET.get('plan_id', '')
+    payment_type = request.GET.get('payment_type', '')
+    coupon_code = request.GET.get('coupon_code', '')
+    
+    plan = None
+    if plan_id and plan_id != 'null':
+        try:
+            plan = SubscriptionPlan.objects.get(id=plan_id)
+        except SubscriptionPlan.DoesNotExist:
+            pass
+
+    # Base amount
+    base_amount = Decimal('0')
+    if payment_type != 'update' and plan:
+        base_amount = Decimal(str(plan.total_cost))
+    
+    # Update surcharge
+    update_surcharge = Decimal('0')
+    if listing.update_count >= 2:
+        update_surcharge = Decimal('22.88')
+    
+    taxable_amount = base_amount + update_surcharge
+    gst_amount = taxable_amount * Decimal('0.18')
+    platform_fee_extra = Decimal('2')
+    
+    if base_amount == 0 and update_surcharge > 0:
+        final_total_inr = Decimal('29.00')
+    else:
+        final_total_inr = (taxable_amount + gst_amount + platform_fee_extra).quantize(Decimal('0.01'))
+
+    discount_amount = Decimal('0')
+    if coupon_code and coupon_code != 'null':
+        try:
+            from payments.models import Coupon
+            coupon = Coupon.objects.get(code=coupon_code.strip().upper())
+            is_valid, _ = coupon.is_valid(user=request.user, amount=final_total_inr)
+            if is_valid:
+                if coupon.discount_type == 'percentage':
+                    discount_amount = (final_total_inr * coupon.discount_value / Decimal('100')).quantize(Decimal('0.01'))
+                else:
+                    discount_amount = coupon.discount_value
+                final_total_inr = max(Decimal('0'), final_total_inr - discount_amount)
+        except Exception:
+            pass
+
+    usd_amount = (final_total_inr / Decimal('83.0')).quantize(Decimal('0.01'))
+
+    return render(request, 'payments/checkout.html', {
+        'listing': listing,
+        'final_total_inr': final_total_inr,
+        'usd_amount': usd_amount,
+        'plan_id': plan_id,
+        'payment_type': payment_type,
+        'coupon_code': coupon_code,
+        'razorpay_key': settings.RAZORPAY_KEY_ID,
+        'paypal_client_id': settings.PAYPAL_CLIENT_ID,
+    })
+
+
+@csrf_exempt
+@require_POST
+@jwt_login_required
+@role_required('host')
+def paypal_verify_view(request):
+    try:
+        body = json.loads(request.body)
+    except Exception:
+        return JsonResponse({'error': 'Invalid request.'}, status=400)
+
+    order_id = body.get('orderID', '')
+    trans_id = body.get('transID', '')
+    status = body.get('status', '')
+    
+    slug = body.get('listing_slug', '')
+    plan_id = body.get('plan_id', '')
+    coupon_code = body.get('coupon_code', '').strip().upper()
+    payment_type = body.get('payment_type', '')
+
+    if status != 'COMPLETED':
+        return JsonResponse({'error': 'PayPal payment not completed.'}, status=400)
+
+    try:
+        listing = Listing.objects.get(slug=slug, host=request.user)
+        plan = None
+        if plan_id and plan_id != 'null':
+            plan = SubscriptionPlan.objects.get(id=plan_id)
+        
+        is_update_only = (payment_type == 'update')
+
+        activate_subscription(listing, plan, {
+            'order_id': order_id,
+            'payment_id': trans_id,
+            'signature': 'paypal',
+        }, is_update_only=is_update_only)
+
+        from .models import PaymentLog
+        PaymentLog.objects.create(
+            user=listing.host,
+            listing=listing,
+            plan=plan,
+            amount=plan.total_cost if plan else Decimal('29.00'),
+            razorpay_order_id=order_id,
+            razorpay_payment_id=trans_id,
+            status='success'
+        )
+
+        if coupon_code and coupon_code != 'null':
+            try:
+                from payments.models import Coupon
+                coupon = Coupon.objects.get(code=coupon_code)
+                coupon.increment_usage(request.user)
+            except Exception:
+                pass
+
+        return JsonResponse({'status': 'success', 'redirect': f'/hosts/dashboard/'})
+    except Listing.DoesNotExist:
+        return JsonResponse({'error': 'Listing not found.'}, status=404)
+    except Exception as e:
+        logger.error(f"PayPal activation failed: {e}")
+        return JsonResponse({'error': 'Error activating subscription.'}, status=500)

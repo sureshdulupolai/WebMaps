@@ -278,6 +278,11 @@ RAZORPAY_KEY_ID = config('RAZORPAY_KEY_ID', default='')
 RAZORPAY_KEY_SECRET = config('RAZORPAY_KEY_SECRET', default='')
 
 # ─────────────────────────────────────────────
+#  PAYPAL
+# ─────────────────────────────────────────────
+PAYPAL_CLIENT_ID = config('PAYPAL_CLIENT_ID', default='sb')
+
+# ─────────────────────────────────────────────
 #  FILE UPLOAD SETTINGS
 # ─────────────────────────────────────────────
 FILE_UPLOAD_MAX_MEMORY_SIZE = 5 * 1024 * 1024  # 5MB

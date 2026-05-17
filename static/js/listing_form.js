@@ -943,122 +943,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const activeSlug = result.slug || (initialData ? initialData.slug : '');
 
-                // 3. Initiate Payment
-                submitBtn.innerHTML = '<span class="loading-spinner"></span> Creating Order...';
+                // 3. Redirect to Checkout Page
+                submitBtn.innerHTML = '<span class="loading-spinner"></span> Redirecting to Checkout...';
                 
                 const paymentType = selectedPlan ? 'subscription' : (isPaidUpdate ? 'update' : 'subscription');
 
-                const payInitResp = await fetch(`/payments/initiate/${activeSlug}/`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
-                    },
-                    body: new URLSearchParams({
-                        plan_id: planId,
-                        coupon_code: appliedCoupon || '',
-                        payment_type: paymentType
-                    })
+                const checkoutParams = new URLSearchParams({
+                    plan_id: planId || '',
+                    coupon_code: appliedCoupon || '',
+                    payment_type: paymentType
                 });
 
-                const initText = await payInitResp.text();
-                let payInfo;
-                try {
-                    payInfo = JSON.parse(initText);
-                } catch (e) {
-                    throw new Error("Order creation failed (Invalid Response).");
-                }
-                
-                if (!payInitResp.ok) throw new Error(payInfo.error || "Order creation failed");
+                window.location.href = `/payments/checkout/${activeSlug}/?${checkoutParams.toString()}`;
 
-                // 3.5 Handle FREE Flow (Skip Razorpay)
-                if (payInfo.is_free) {
-                    submitBtn.innerHTML = '<span class="loading-spinner"></span> Activating...';
-                    const freeVerifyResp = await fetch('/payments/verify/', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            razorpay_order_id: payInfo.order_id,
-                            razorpay_payment_id: null,
-                            razorpay_signature: null,
-                            listing_slug: activeSlug,
-                            plan_id: planId,
-                            coupon_code: appliedCoupon
-                        })
-                    });
-                    const freeText = await freeVerifyResp.text();
-                    let freeResult;
-                    try {
-                        freeResult = JSON.parse(freeText);
-                    } catch (e) {
-                        throw new Error("Free activation failed (Invalid Response).");
-                    }
-
-                    if (freeVerifyResp.ok) {
-                        window.location.href = freeResult.redirect;
-                    } else {
-                        throw new Error(freeResult.error || "Free activation failed");
-                    }
-                    return;
-                }
-
-                // 3. Open Razorpay
-                const options = {
-                    key: document.querySelector('[data-rzp-key]').dataset.rzpKey,
-                    amount: payInfo.amount,
-                    currency: payInfo.currency,
-                    name: "WebMaps",
-                    description: `Subscription for ${payInfo.listing_name}`,
-                    order_id: payInfo.order_id,
-                    handler: async function (response) {
-                        submitBtn.innerHTML = '<span class="loading-spinner"></span> Verifying...';
-                        const verifyResp = await fetch('/payments/verify/', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                razorpay_order_id: response.razorpay_order_id,
-                                razorpay_payment_id: response.razorpay_payment_id,
-                                razorpay_signature: response.razorpay_signature,
-                                listing_slug: activeSlug,
-                                plan_id: planId,
-                                coupon_code: appliedCoupon,
-                                payment_type: paymentType
-                            })
-                        });
-
-                        const verifyText = await verifyResp.text();
-                        let verifyResult;
-                        try {
-                            verifyResult = JSON.parse(verifyText);
-                        } catch (e) {
-                            showDialog("Verification Error", "Server returned an invalid response. Please check your dashboard.");
-                            submitBtn.disabled = false;
-                            return;
-                        }
-
-                        if (verifyResult.status === 'success') {
-                            localStorage.removeItem(STORAGE_KEY);
-                            window.location.href = verifyResult.redirect || '/hosts/dashboard/';
-                        } else {
-                            showDialog("Payment Error", "Payment verification failed. Please contact support.");
-                            submitBtn.disabled = false;
-                        }
-                    },
-                    prefill: {
-                        name: "",
-                        email: ""
-                    },
-                    theme: { color: "#6366f1" },
-                    modal: {
-                        ondismiss: function() {
-                            submitBtn.disabled = false;
-                            submitBtn.textContent = 'Pay & Initialize Listing';
-                        }
-                    }
-                };
-
-                const rzp = new Razorpay(options);
-                rzp.open();
 
             } catch (err) {
                 console.error(err);
