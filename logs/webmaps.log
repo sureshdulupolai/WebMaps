@@ -10564,3 +10564,22 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-17 16:29:19,145] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
 [2026-05-17 16:29:20,621] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 39304
 [2026-05-17 16:29:20,825] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-17 16:32:42,049] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-17 16:34:46,861] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 302 0
+[2026-05-17 16:34:47,008] INFO django.server "GET /auth/login/ HTTP/1.1" 200 8735
+[2026-05-17 16:34:54,424] INFO webmaps Login attempt: User found for sureshone@gmail.com
+[2026-05-17 16:34:55,381] INFO webmaps User logged in: sureshone@gmail.com
+[2026-05-17 16:34:55,386] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
+[2026-05-17 16:34:55,566] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 22038
+[2026-05-17 16:34:55,729] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-17 16:35:05,530] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 39720
+[2026-05-17 16:35:06,089] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 200 53222
+[2026-05-17 16:35:06,331] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-17 16:35:40,264] INFO django.utils.autoreload C:\Users\user\Desktop\WebMaps\hosts\services.py changed, reloading.
+[2026-05-17 16:35:43,348] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-17 16:35:59,178] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 39720
+[2026-05-17 16:35:59,810] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 200 53746
+[2026-05-17 16:36:00,069] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-17 16:36:43,077] INFO django.server "GET /hosts/listing/webmaps-durga-mata-mandir-90ft-raod-saki-11393/edit/ HTTP/1.1" 200 39720
+[2026-05-17 16:36:43,172] INFO django.server "GET /static/js/listing_form.js HTTP/1.1" 200 53606
+[2026-05-17 16:36:47,147] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40

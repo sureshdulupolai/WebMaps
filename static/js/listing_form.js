@@ -77,13 +77,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (progressLine) progressLine.style.width = `${(currentStep - 1) * 33.33}%`;
         
-        // Disable 'Back' if we are forcing payment
+        // Show 'Back' button on all steps except Step 1
         if (prevBtn) {
-            if (needsPayment && currentStep === 4) {
-                prevBtn.style.visibility = 'hidden';
-            } else {
-                prevBtn.style.visibility = currentStep === 1 ? 'hidden' : 'visible';
-            }
+            prevBtn.style.visibility = currentStep === 1 ? 'hidden' : 'visible';
         }
 
         if (currentStep === 4) {
@@ -178,6 +174,77 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // 04. LOCALSTORAGE PERSISTENCE
+    function isFormChanged() {
+        if (!initialData) return false;
+
+        // 1. Text / select fields
+        if ((form.querySelector('[name="company_name"]')?.value || '').trim() !== (initialData.company_name || '').trim()) return true;
+        if ((form.querySelector('[name="website_url"]')?.value || '').trim() !== (initialData.website_url || '').trim()) return true;
+        if ((form.querySelector('[name="mobile_number"]')?.value || '').trim() !== (initialData.mobile_number || '').trim()) return true;
+        if ((form.querySelector('[name="short_description"]')?.value || '').trim() !== (initialData.short_description || '').trim()) return true;
+        
+        const catVal = form.querySelector('[name="category"]')?.value || '';
+        if (catVal && String(catVal) !== String(initialData.category_id || '')) return true;
+
+        // 2. Coordinates (rounding to 6 decimals)
+        if (latInput && lngInput && initialData.latitude && initialData.longitude) {
+            const currentLat = parseFloat(latInput.value || 0).toFixed(6);
+            const currentLng = parseFloat(lngInput.value || 0).toFixed(6);
+            const initialLat = parseFloat(initialData.latitude || 0).toFixed(6);
+            const initialLng = parseFloat(initialData.longitude || 0).toFixed(6);
+            if (currentLat !== initialLat || currentLng !== initialLng) return true;
+        }
+
+        // 3. Operating Hours
+        const currentHoursStr = document.getElementById('id_operating_hours')?.value || '{}';
+        let currentHours = {};
+        try { currentHours = JSON.parse(currentHoursStr); } catch(e){}
+        const initialHours = initialData.operating_hours || {};
+        if (JSON.stringify(currentHours) !== JSON.stringify(initialHours)) return true;
+
+        // 4. Services (group initialData.services to group format and compare)
+        const grouped = {};
+        const initialServicesList = initialData.services || [];
+        initialServicesList.forEach(item => {
+            const key = `${item.name}|${item.price}`;
+            if (!grouped[key]) {
+                grouped[key] = { name: item.name, price: item.price, categories: [] };
+            }
+            grouped[key].categories.push(item.category);
+        });
+        const initialGroupedServices = Object.values(grouped);
+        
+        // Sorting helper for comparison
+        const sortServices = (list) => {
+            return JSON.stringify((list || []).map(s => ({
+                name: s.name,
+                price: parseFloat(s.price),
+                categories: [...(s.categories || [])].sort()
+            })).sort((a,b) => a.name.localeCompare(b.name)));
+        };
+
+        if (sortServices(parsedServices) !== sortServices(initialGroupedServices)) return true;
+
+        return false;
+    }
+
+    function checkSubmitButtonState() {
+        if (!hasActiveSub) return; // Only hide for active subscribers who just want to toggle visibility
+        
+        const changed = isFormChanged();
+        if (submitBtn) {
+            if (changed) {
+                submitBtn.style.display = '';
+            } else {
+                submitBtn.style.display = 'none';
+            }
+        }
+    }
+
+    window.webmapsSaveToLocal = function() {
+        saveToLocal();
+    };
+
     function saveToLocal() {
         if (!form) return;
         const formData = new FormData(form);
@@ -189,8 +256,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         data.currentStep = currentStep;
         data.parsedServices = parsedServices;
-        data.operatingHours = getScheduleData ? getScheduleData() : null;
+        data.operatingHours = typeof getScheduleData === 'function' ? getScheduleData() : null;
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        checkSubmitButtonState();
     }
 
     function loadFromLocal() {
@@ -943,7 +1011,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const activeSlug = result.slug || (initialData ? initialData.slug : '');
 
-                // 3. Redirect to Checkout Page
+                // 3. Redirect to Checkout or Dashboard directly if it is a pure visibility toggle
+                const toggleVisibilityVal = document.getElementById('id_toggle_visibility')?.value || '';
+                const isDirty = typeof isFormChanged === 'function' ? isFormChanged() : true;
+
+                if (toggleVisibilityVal && !isDirty) {
+                    submitBtn.innerHTML = '<span class="loading-spinner"></span> Updating Visibility...';
+                    window.location.href = '/hosts/dashboard/';
+                    return;
+                }
+
                 submitBtn.innerHTML = '<span class="loading-spinner"></span> Redirecting to Checkout...';
                 
                 const paymentType = selectedPlan ? 'subscription' : (isPaidUpdate ? 'update' : 'subscription');
@@ -1084,6 +1161,32 @@ document.addEventListener('DOMContentLoaded', function () {
     loadFromLocal();
     updateCharCount();
     updateWizard();
+
+    // 18. INITIALIZE SUBMIT BUTTON VISIBILITY AND EVENT LISTENERS
+    if (form) {
+        setTimeout(() => {
+            checkSubmitButtonState();
+            form.querySelectorAll('input, select, textarea').forEach(el => {
+                el.addEventListener('input', checkSubmitButtonState);
+                el.addEventListener('change', checkSubmitButtonState);
+            });
+            
+            // Also monitor schedule changes or services changes manually if they don't fire input/change
+            const checkBtn = document.getElementById('process-protocol-btn');
+            if (checkBtn) {
+                checkBtn.addEventListener('click', () => {
+                    setTimeout(checkSubmitButtonState, 500);
+                });
+            }
+            
+            // Monitor Leaflet Map Clicks/Drags
+            if (window.map) {
+                window.map.on('click', () => {
+                    setTimeout(checkSubmitButtonState, 100);
+                });
+            }
+        }, 800);
+    }
 
     // 15. COOLDOWN TIMER (On Load)
     if (initialData && (initialData.last_stopped_at || initialData.last_started_at)) {

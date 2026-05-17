@@ -430,10 +430,16 @@
 {% endblock %}
 
 {% block extra_js %}
-<!-- Injection of Existing Listing Data for Hydration -->
 <script id="listing-initial-data" type="application/json">
 {
   "slug": "{{ listing.slug|default:'' }}",
+  "company_name": "{{ listing.company_name|escapejs }}",
+  "website_url": "{{ listing.website_url|escapejs }}",
+  "mobile_number": "{{ listing.mobile_number|escapejs }}",
+  "category_id": "{{ listing.category.id|default:'' }}",
+  "short_description": "{{ listing.short_description|escapejs }}",
+  "latitude": "{{ listing.latitude|default:'0' }}",
+  "longitude": "{{ listing.longitude|default:'0' }}",
   "services": {{ initial_services_json|default:"[]"|safe }},
   "operating_hours": {{ initial_hours_json|default:"{}"|safe }},
   "is_active_on_map": {{ is_active_on_map|yesno:'true,false' }},

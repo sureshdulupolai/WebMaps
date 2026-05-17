@@ -137,6 +137,25 @@ def update_listing(listing, data: dict, file_obj=None, parsed_services: list = N
     lng = data.get('longitude', listing.longitude)
     coord_changed = (str(lat) != str(listing.latitude) or str(lng) != str(listing.longitude))
 
+    # Detect if other data fields actually changed
+    category_changed = (data.get('category_id') is not None and str(data.get('category_id')) != str(listing.category_id))
+    website_changed = (data.get('website_url') is not None and data.get('website_url') != listing.website_url)
+    company_changed = (data.get('company_name') is not None and data.get('company_name') != listing.company_name)
+    mobile_changed = (data.get('mobile_number') is not None and data.get('mobile_number') != listing.mobile_number)
+    desc_changed = (data.get('short_description') is not None and data.get('short_description') != listing.short_description)
+    location_changed = (data.get('location_name') is not None and data.get('location_name') != listing.location_name)
+    hours_changed = (data.get('operating_hours') is not None and data.get('operating_hours') != listing.operating_hours)
+    cover_image_changed = bool(data.get('cover_image'))
+
+    has_data_changes = (coord_changed or category_changed or website_changed or 
+                        company_changed or mobile_changed or desc_changed or 
+                        location_changed or hours_changed or cover_image_changed or 
+                        parsed_services or file_obj)
+
+    if has_data_changes:
+        if not has_active_sub and not listing.can_update and not ignore_limit:
+            return False, 'Maximum update limit (2) reached. Please select a plan to continue.'
+
     if coord_changed:
         if Listing.objects.filter(latitude=lat, longitude=lng).exclude(id=listing.id).exists():
             return False, 'A listing already exists at these exact coordinates.'
@@ -181,7 +200,9 @@ def update_listing(listing, data: dict, file_obj=None, parsed_services: list = N
         listing.last_started_at = now
         logger.info(f"Listing SHOWN on map: {listing.slug}")
 
-    listing.update_count += 1
+    if has_data_changes:
+        listing.update_count += 1
+    
     listing.save()
 
     if parsed_services:
