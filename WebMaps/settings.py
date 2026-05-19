@@ -3,6 +3,8 @@ Django production-grade settings for WebMaps project.
 Uses python-decouple for environment-based configuration.
 """
 
+import os
+import dj_database_url
 from pathlib import Path
 from datetime import timedelta
 from decouple import config, Csv
@@ -13,8 +15,22 @@ from decouple import config, Csv
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY', default='django-insecure-change-me-now')
+
+# In Render or production environments, force DEBUG = False
 DEBUG = config('DEBUG', default=True, cast=bool)
+if os.environ.get('RENDER') == 'true':
+    DEBUG = False
+
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost', cast=Csv())
+# If on Render, make sure to add the Render default hosts dynamically
+if os.environ.get('RENDER') == 'true':
+    render_external_hostname = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+    if render_external_hostname:
+        ALLOWED_HOSTS.append(render_external_hostname)
+    for host in ['*.onrender.com', 'localhost', '127.0.0.1']:
+        if host not in ALLOWED_HOSTS:
+            ALLOWED_HOSTS.append(host)
+
 SITE_URL = config('SITE_URL', default='http://127.0.0.1:8000')
 
 # ─────────────────────────────────────────────
@@ -110,12 +126,25 @@ WSGI_APPLICATION = 'WebMaps.wsgi.application'
 # ─────────────────────────────────────────────
 #  DATABASE
 # ─────────────────────────────────────────────
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# SQLite for local development, PostgreSQL (or other configured DB) for live Render environment
+database_url = os.environ.get('DATABASE_URL')
+is_internal_render_db = database_url and 'dpg-' in database_url and '.render.com' not in database_url and os.environ.get('RENDER') != 'true'
+
+if (os.environ.get('RENDER') == 'true' or database_url) and not is_internal_render_db:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=database_url,
+            conn_max_age=600,
+            ssl_require=os.environ.get('RENDER') == 'true'
+        )
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # ─────────────────────────────────────────────
 #  PASSWORD HASHING  — Argon2 (Gold Standard)
@@ -195,6 +224,19 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:8000',
     'http://127.0.0.1:8000',
 ]
+
+# If deployed on Render, append the default render domain dynamically to trusted origins
+if os.environ.get('RENDER') == 'true':
+    render_external_hostname = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+    if render_external_hostname:
+        CSRF_TRUSTED_ORIGINS.append(f'https://{render_external_hostname}')
+        CORS_ALLOWED_ORIGINS.append(f'https://{render_external_hostname}')
+    # Also support common wildcards/subdomains for Render
+    if 'https://*.onrender.com' not in CSRF_TRUSTED_ORIGINS:
+        CSRF_TRUSTED_ORIGINS.append('https://*.onrender.com')
+    if 'https://*.onrender.com' not in CORS_ALLOWED_ORIGINS:
+        CORS_ALLOWED_ORIGINS.append('https://*.onrender.com')
+
 CSRF_COOKIE_HTTPONLY = False  # JS needs to read it for AJAX (for X-CSRFToken header)
 CSRF_COOKIE_SECURE = config('CSRF_COOKIE_SECURE', default=not DEBUG, cast=bool)
 CSRF_COOKIE_SAMESITE = 'Lax'

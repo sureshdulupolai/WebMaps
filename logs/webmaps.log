@@ -10663,3 +10663,18 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [listing] in [{
 [2026-05-17 16:54:38,206] INFO django.server "POST /auth/login/ HTTP/1.1" 302 0
 [2026-05-17 16:54:38,288] INFO django.server "GET /hosts/dashboard/ HTTP/1.1" 200 22038
 [2026-05-17 16:54:38,447] INFO django.server "GET /notifications/list/ HTTP/1.1" 200 40
+[2026-05-17 22:26:21,736] INFO django.utils.autoreload Watching for file changes with StatReloader
+[2026-05-17 22:26:28,133] INFO django.server "GET / HTTP/1.1" 200 22598
+[2026-05-17 22:26:28,293] INFO django.server "GET /static/css/maps.css?v=4.0 HTTP/1.1" 304 0
+[2026-05-17 22:26:28,302] INFO django.server "GET /static/js/analytics.js HTTP/1.1" 304 0
+[2026-05-17 22:26:28,314] INFO django.server "GET /static/css/main.css HTTP/1.1" 304 0
+[2026-05-17 22:26:28,319] INFO django.server "GET /static/js/maps.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-17 22:26:28,324] INFO django.server "GET /static/js/maps_home.js?v=4.0 HTTP/1.1" 304 0
+[2026-05-17 22:26:28,759] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1347
+[2026-05-17 22:26:37,748] INFO django.server "GET /api/maps/search/?q=Sakinaka+Tele+Exchange+Lane%2C+Bindal+Estate%2C+Asalpha%2C+L+Ward%2C+Mumbai+Zone+5%2C+Mumbai%2C+Mumbai+Suburban+District%2C+Maharashtra%2C+400072%2C+India&category=All&rating=&distance=10&price=&lat=19.1003991&lng=72.8818314 HTTP/1.1" 200 238
+[2026-05-17 22:26:45,637] INFO django.server "GET /api/maps/search/?q=Sakinaka+Tele+Exchange+Lane%2C+Bindal+Estate%2C+Asalpha%2C+L+Ward%2C+Mumbai+Zone+5%2C+Mumbai%2C+Mumbai+Suburban+District%2C+Maharashtra%2C+400072%2C+India&category=All&rating=&distance=10&price=&lat=19.1003991&lng=72.8818314 HTTP/1.1" 200 238
+[2026-05-17 22:26:56,059] INFO django.server "GET /api/maps/search/?q=Sakinaka+Tele+Exchange+Lane%2C+Bindal+Estate%2C+Asalpha%2C+L+Ward%2C+Mumbai+Zone+5%2C+Mumbai%2C+Mumbai+Suburban+District%2C+Maharashtra%2C+400072%2C+India&category=All&rating=&distance=5&price=&lat=19.1003991&lng=72.8818314 HTTP/1.1" 200 238
+[2026-05-17 22:26:59,517] INFO django.server "GET /api/maps/search/?q=Sakinaka+Tele+Exchange+Lane%2C+Bindal+Estate%2C+Asalpha%2C+L+Ward%2C+Mumbai+Zone+5%2C+Mumbai%2C+Mumbai+Suburban+District%2C+Maharashtra%2C+400072%2C+India&category=All&rating=&distance=20&price=&lat=19.1003991&lng=72.8818314 HTTP/1.1" 200 1686
+[2026-05-17 22:27:02,971] INFO django.server "GET / HTTP/1.1" 200 22598
+[2026-05-17 22:27:03,169] INFO django.server "GET /api/maps/all/ HTTP/1.1" 200 1347
+[2026-05-17 22:28:10,404] INFO django.server "POST /api/analytics/track/ HTTP/1.1" 200 12
