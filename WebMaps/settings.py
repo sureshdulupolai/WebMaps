@@ -21,6 +21,13 @@ DEBUG = config('DEBUG', default=True, cast=bool)
 if os.environ.get('RENDER') == 'true':
     DEBUG = False
 
+# Ultimate security safeguard: prevent deploying with a known default secret key in production
+if (os.environ.get('RENDER') == 'true' or not DEBUG) and SECRET_KEY == 'django-insecure-change-me-now':
+    raise ValueError(
+        "CRITICAL SECURITY EXCEPTION: The default insecure SECRET_KEY cannot be used in a production environment! "
+        "Please set a strong, unique SECRET_KEY environment variable in your host panel."
+    )
+
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost', cast=Csv())
 # If on Render, make sure to add the Render default hosts dynamically
 if os.environ.get('RENDER') == 'true':
@@ -256,7 +263,12 @@ CSRF_COOKIE_SECURE = config('CSRF_COOKIE_SECURE', default=not DEBUG, cast=bool)
 CSRF_COOKIE_SAMESITE = 'Lax'
 X_FRAME_OPTIONS = 'DENY'
 
-if not DEBUG:
+if not DEBUG or os.environ.get('RENDER') == 'true':
+    # Force production secure settings, overriding any unsafe local .env settings
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+
     # Full HSTS Protection
     SECURE_HSTS_SECONDS = 63072000  # 2 years
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
