@@ -198,18 +198,18 @@ def login_view(request):
 
     from django.core import signing
 
-    if request.method == 'GET':
-        remembered_email = ""
-        remember_checked = False
-        cookie_val = request.COOKIES.get('remember_me')
-        if cookie_val:
-            try:
-                # Cryptographically verify and unsign the email with a 30-day expiry
-                remembered_email = signing.loads(cookie_val, max_age=30*24*60*60)
-                remember_checked = True
-            except Exception:
-                pass # Invalid signature or expired
+    # Pre-populate remembered email/checked from cookie so they are ALWAYS available in context
+    remembered_email = ""
+    remember_checked = False
+    cookie_val = request.COOKIES.get('remember_me')
+    if cookie_val:
+        try:
+            remembered_email = signing.loads(cookie_val, max_age=30*24*60*60)
+            remember_checked = True
+        except Exception:
+            pass
 
+    if request.method == 'GET':
         return render(request, 'auth/login.html', {
             'remembered_email': remembered_email,
             'remember_checked': remember_checked
@@ -221,21 +221,37 @@ def login_view(request):
     # Honey Pot check (Anti-Bot)
     if request.POST.get('honeypot_field'):
         logger.warning(f"Honey Pot triggered by IP: {request.META.get('REMOTE_ADDR')}")
-        return render(request, 'auth/login.html', {'error': 'Security check failed. Automated activity detected.'})
+        return render(request, 'auth/login.html', {
+            'error': 'Security check failed. Automated activity detected.',
+            'remembered_email': remembered_email,
+            'remember_checked': remember_checked
+        })
 
     try:
         user = User.objects.get(email=email)
         logger.info(f"Login attempt: User found for {email}")
     except User.DoesNotExist:
         logger.warning(f"Login attempt: User NOT found for {email}")
-        return render(request, 'auth/login.html', {'error': '[AUTH_DETECTION_ERROR] Invalid email or password.'})
+        return render(request, 'auth/login.html', {
+            'error': '[AUTH_DETECTION_ERROR] Invalid email or password.',
+            'remembered_email': remembered_email,
+            'remember_checked': remember_checked
+        })
 
     if not user.check_password(password):
         logger.warning(f"Login attempt: Password mismatch for {email}")
-        return render(request, 'auth/login.html', {'error': '[AUTH_VERIFICATION_ERROR] Invalid email or password.'})
+        return render(request, 'auth/login.html', {
+            'error': '[AUTH_VERIFICATION_ERROR] Invalid email or password.',
+            'remembered_email': remembered_email,
+            'remember_checked': remember_checked
+        })
 
     if not user.is_active:
-        return render(request, 'auth/login.html', {'error': 'This account has been deactivated.'})
+        return render(request, 'auth/login.html', {
+            'error': 'This account has been deactivated.',
+            'remembered_email': remembered_email,
+            'remember_checked': remember_checked
+        })
 
     # Update IP
     user.last_login_ip = get_client_ip(request)
